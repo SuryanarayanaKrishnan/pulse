@@ -15,6 +15,8 @@ ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PATH="/app/.venv/bin:$PATH"
 RUN groupadd --system --gid 10001 app && useradd --system --uid 10001 --gid app --no-create-home app
 WORKDIR /app
 COPY --from=builder --chown=app:app /app /app
+# Local-disk statement storage (dev). Production should use STORAGE_BACKEND=s3.
+RUN mkdir -p /data/storage && chown app:app /data/storage
 USER app
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
