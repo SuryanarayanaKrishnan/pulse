@@ -117,7 +117,6 @@ def test_simplify_property_transfers_reproduce_balances():
 def test_simplify_is_order_independent():
     bal = {A: 100, B: -30, C: -40, D: -30}
     results = {
-        tuple(simplify_debts(dict(p)))
-        for p in itertools.islice(itertools.permutations(bal.items()), 12)
+        tuple(simplify_debts(dict(p))) for p in itertools.islice(itertools.permutations(bal.items()), 12)
     }
     assert len(results) == 1

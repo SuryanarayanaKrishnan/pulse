@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pytest
 
-from app.core.crypto import Encryptor, EncryptionError, generate_key
+from app.core.crypto import EncryptionError, Encryptor, generate_key
 from app.core.errors import AppError
 from app.services.pagination import decode_cursor, encode_cursor
 

@@ -5,7 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.db import get_session
-from app.core.queue import QueuePool, get_queue
+from app.core.queue import QueuePool, get_queue_or_none
 
 router = APIRouter(tags=["health"])
 
@@ -20,6 +20,7 @@ async def health() -> dict[str, str]:
 async def ready(
     response: Response,
     session: AsyncSession = Depends(get_session),
+    queue: QueuePool | None = Depends(get_queue_or_none),
 ) -> dict[str, object]:
     """Readiness: database and Redis reachable."""
     checks: dict[str, str] = {}
@@ -29,7 +30,8 @@ async def ready(
     except Exception:
         checks["database"] = "fail"
     try:
-        queue: QueuePool = await asyncio.wait_for(get_queue(), timeout=3)
+        if queue is None:
+            raise ConnectionError("redis unavailable")
         await asyncio.wait_for(queue.ping(), timeout=3)
         checks["redis"] = "ok"
     except Exception:

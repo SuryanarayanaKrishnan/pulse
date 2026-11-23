@@ -1,3 +1,4 @@
+import asyncio
 from typing import Any, Protocol
 
 from arq import create_pool
@@ -30,3 +31,11 @@ async def close_queue() -> None:
     if _pool is not None:
         await _pool.aclose()
         _pool = None
+
+
+async def get_queue_or_none() -> QueuePool | None:
+    """For readiness probes: a dead Redis must degrade /ready, not raise."""
+    try:
+        return await asyncio.wait_for(get_queue(), timeout=3)
+    except Exception:
+        return None
