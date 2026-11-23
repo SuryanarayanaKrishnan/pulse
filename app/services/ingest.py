@@ -17,6 +17,7 @@ from app.models.statement import ParseStatus
 from app.models.transaction import Direction, RawIngest, Transaction, TxnSource
 from app.schemas.ingest import IngestRequest
 from app.services.categorisation import CategoryResolver
+from app.services.institutions import institutions
 from app.services.parsers import ParsedTransaction, ParserRegistry
 from app.services.parsers import registry as default_registry
 
@@ -98,15 +99,32 @@ async def _resolve_account(
         )
         return acc.scalar_one_or_none()
     if parsed.last4:
-        stmt = select(Account.id).where(
-            Account.user_id == user_id, Account.last4 == parsed.last4, Account.deleted_at.is_(None)
+        accounts = list(
+            (
+                await session.execute(
+                    select(Account).where(
+                        Account.user_id == user_id,
+                        Account.last4 == parsed.last4,
+                        Account.deleted_at.is_(None),
+                    )
+                )
+            ).scalars()
         )
-        inst = payload.get("institution")
-        if inst:
-            stmt = stmt.where(Account.institution.ilike(inst))
-        ids = list((await session.execute(stmt)).scalars())
-        if len(ids) == 1:
-            return ids[0]
+        if hint := payload.get("institution"):
+            # An explicit institution from the client is a hard filter.
+            key = institutions.resolve_key(hint)
+            accounts = [
+                a
+                for a in accounts
+                if (a.institution or "").lower() == hint.lower()
+                or (key is not None and institutions.resolve_key(a.institution) == key)
+            ]
+        elif parsed.institution and len(accounts) > 1:
+            # Institution recognised from the SMS itself is only a tie-breaker.
+            matching = [a for a in accounts if institutions.resolve_key(a.institution) == parsed.institution]
+            accounts = matching or accounts
+        if len(accounts) == 1:
+            return accounts[0].id
     return None
 
 

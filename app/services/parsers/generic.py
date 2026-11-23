@@ -1,11 +1,15 @@
-"""Placeholder regex parser used until institution-specific parsers exist."""
+"""Fallback parser: shared bank-agnostic templates first, then loose keyword/regex heuristics."""
 
 import re
+from dataclasses import replace
 from datetime import datetime
 from decimal import Decimal
 
 from app.models.transaction import Direction
 from app.services.parsers.base import ParsedTransaction
+from app.services.parsers.sms.engine import SmsParser
+
+_COMMON = SmsParser("generic", [])
 
 _AMOUNT = re.compile(
     r"(?P<cur>AED|USD|EUR|GBP|Dhs?\.?)\s?(?P<amt>\d[\d,]*(?:\.\d{1,2})?)",
@@ -31,6 +35,8 @@ class GenericParser:
     def parse(self, text: str, *, received_at: datetime | None = None) -> ParsedTransaction | None:
         if _OTP.search(text):
             return None
+        if (common := _COMMON.parse(text, received_at=received_at)) is not None:
+            return replace(common, institution=None, confidence=0.6)
         amount_m = _AMOUNT.search(text)
         if not amount_m:
             return None
