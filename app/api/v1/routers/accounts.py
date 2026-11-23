@@ -25,7 +25,11 @@ async def list_accounts(user: CurrentUser, session: SessionDep) -> list[Account]
 
 @router.post("", response_model=AccountOut, status_code=201)
 async def create_account(payload: AccountCreate, user: CurrentUser, session: SessionDep) -> Account:
-    account = Account(user_id=user.id, **payload.model_dump())
+    data = payload.model_dump()
+    balance = data.pop("balance_minor")
+    account = Account(user_id=user.id, **data)
+    if balance is not None:
+        account.balance_anchor_minor, account.balance_anchor_at = balance, datetime.now(UTC)
     session.add(account)
     await session.commit()
     await session.refresh(account)
@@ -42,7 +46,12 @@ async def update_account(
     account_id: UUID, payload: AccountUpdate, user: CurrentUser, session: SessionDep
 ) -> Account:
     account = await get_owned(session, Account, account_id, user.id)
-    apply_updates(account, payload.model_dump(exclude_unset=True))
+    data = payload.model_dump(exclude_unset=True)
+    if "balance_minor" in data:
+        balance = data.pop("balance_minor")
+        account.balance_anchor_minor = balance
+        account.balance_anchor_at = datetime.now(UTC) if balance is not None else None
+    apply_updates(account, data)
     await session.commit()
     await session.refresh(account)
     return account

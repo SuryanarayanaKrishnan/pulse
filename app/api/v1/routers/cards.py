@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from datetime import UTC, datetime
 from uuid import UUID
 
@@ -9,7 +10,9 @@ from app.api.utils import get_owned
 from app.core.errors import DomainValidationError, NotFoundError
 from app.models.account import Account, AccountType
 from app.models.card import CatalogCard, UserCard
+from app.schemas.insights import CardDueOut, DueDatesOut
 from app.schemas.rewards import CatalogCardOut, UserCardCreate, UserCardOut
+from app.services import insights_service as insights
 from app.services.rewards_service import catalog_out
 
 router = APIRouter(prefix="/cards", tags=["cards"])
@@ -32,6 +35,15 @@ async def card_catalog(user: CurrentUser, session: SessionDep) -> list[CatalogCa
     """Reference card products with reward rules. `data_status` is 'unverified' until `verified_on` is set."""
     rows = await session.execute(select(CatalogCard).order_by(CatalogCard.issuer, CatalogCard.name))
     return [catalog_out(c) for c in rows.scalars()]
+
+
+@router.get("/due-dates", response_model=DueDatesOut)
+async def card_due_dates(user: CurrentUser, session: SessionDep) -> DueDatesOut:
+    """Per credit card: statement date, due date with days left, minimum due and total due (separately,
+    net of payments since the statement), utilisation and pay-by nudges."""
+    today = insights.today_dubai()
+    rows = await insights.card_dues(session, user.id, today)
+    return DueDatesOut(as_of=today, cards=[CardDueOut(**asdict(d)) for d in rows])
 
 
 @router.get("", response_model=list[UserCardOut])

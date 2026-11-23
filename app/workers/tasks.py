@@ -92,3 +92,23 @@ async def sync_all_gmail_connections(ctx: dict[str, Any]) -> int:
             "sync_gmail_connection", str(conn_id), _job_id=f"gmail-sync:{conn_id}:{bucket}"
         )
     return len(ids)
+
+
+async def snapshot_net_worth(ctx: dict[str, Any]) -> dict[str, int]:
+    """arq cron: store today's net-worth snapshot for every user (one user failing never stops the rest)."""
+    from app.models.user import User
+    from app.services.insights_service import take_snapshot, today_dubai
+
+    done = failed = 0
+    async with ctx["session_factory"]() as session:
+        user_ids = list((await session.execute(select(User.id).where(User.deleted_at.is_(None)))).scalars())
+    today = today_dubai()
+    for uid in user_ids:
+        try:
+            async with ctx["session_factory"]() as session:
+                await take_snapshot(session, uid, today)
+            done += 1
+        except Exception:
+            log.exception("net_worth_snapshot_failed", user_id=str(uid))
+            failed += 1
+    return {"snapshotted": done, "failed": failed}

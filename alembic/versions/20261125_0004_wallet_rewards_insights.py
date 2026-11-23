@@ -150,11 +150,75 @@ def _rewards_down() -> None:
         )
 
 
+def _insights_up() -> None:
+    op.create_table('net_worth_snapshots',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('user_id', sa.UUID(), nullable=False),
+    sa.Column('snapshot_date', sa.Date(), nullable=False),
+    sa.Column('currency', sa.String(length=3), server_default='AED', nullable=False),
+    sa.Column('assets_minor', sa.BigInteger(), nullable=False),
+    sa.Column('liabilities_minor', sa.BigInteger(), nullable=False),
+    sa.Column('net_worth_minor', sa.BigInteger(), nullable=False),
+    sa.Column('breakdown', postgresql.JSONB(astext_type=sa.Text()), server_default='{}', nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_net_worth_snapshots_user_id_users'), ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_net_worth_snapshots')),
+    sa.UniqueConstraint('user_id', 'snapshot_date', name='uq_net_worth_snapshots_user_date')
+    )
+    op.create_table('recurring_reviews',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('user_id', sa.UUID(), nullable=False),
+    sa.Column('series_key', sa.String(length=160), nullable=False),
+    sa.Column('status', sa.String(length=12), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.CheckConstraint("status IN ('confirmed', 'dismissed')", name=op.f('ck_recurring_reviews_recurring_review_status')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_recurring_reviews_user_id_users'), ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_recurring_reviews')),
+    sa.UniqueConstraint('user_id', 'series_key', name='uq_recurring_reviews_user_key')
+    )
+    op.create_table('savings_goals',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('user_id', sa.UUID(), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=False),
+    sa.Column('target_minor', sa.BigInteger(), nullable=False),
+    sa.Column('saved_minor', sa.BigInteger(), server_default='0', nullable=False),
+    sa.Column('currency', sa.String(length=3), server_default='AED', nullable=False),
+    sa.Column('target_date', sa.Date(), nullable=True),
+    sa.Column('monthly_contribution_minor', sa.BigInteger(), nullable=True),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('deleted_at', sa.DateTime(timezone=True), nullable=True),
+    sa.CheckConstraint('saved_minor >= 0', name=op.f('ck_savings_goals_goal_saved_non_negative')),
+    sa.CheckConstraint('target_minor > 0', name=op.f('ck_savings_goals_goal_target_positive')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_savings_goals_user_id_users'), ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_savings_goals'))
+    )
+    op.create_index('ix_savings_goals_user_id', 'savings_goals', ['user_id'], unique=False)
+    op.add_column('accounts', sa.Column('balance_anchor_minor', sa.BigInteger(), nullable=True))
+    op.add_column('accounts', sa.Column('balance_anchor_at', sa.DateTime(timezone=True), nullable=True))
+    op.execute("ALTER TABLE net_worth_snapshots ENABLE ROW LEVEL SECURITY")
+    op.execute("ALTER TABLE recurring_reviews ENABLE ROW LEVEL SECURITY")
+    op.execute("ALTER TABLE savings_goals ENABLE ROW LEVEL SECURITY")
+
+
+def _insights_down() -> None:
+    op.drop_column('accounts', 'balance_anchor_at')
+    op.drop_column('accounts', 'balance_anchor_minor')
+    op.drop_index('ix_savings_goals_user_id', table_name='savings_goals')
+    op.drop_table('savings_goals')
+    op.drop_table('recurring_reviews')
+    op.drop_table('net_worth_snapshots')
+
+
 def upgrade() -> None:
     _ingest_up()
     _rewards_up()
+    _insights_up()
 
 
 def downgrade() -> None:
+    _insights_down()
     _rewards_down()
     _ingest_down()

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel, Field
 
 from app.models.account import AccountType
@@ -16,7 +18,9 @@ class AccountBase(BaseModel):
 
 
 class AccountCreate(AccountBase):
-    pass
+    balance_minor: int | None = Field(
+        default=None, description="Current balance (amount owed for a credit card), set as the anchor now"
+    )
 
 
 class AccountUpdate(BaseModel):
@@ -26,7 +30,11 @@ class AccountUpdate(BaseModel):
     credit_limit_minor: MinorAmount | None = None
     statement_day: int | None = Field(default=None, ge=1, le=31)
     due_day: int | None = Field(default=None, ge=1, le=31)
+    balance_minor: int | None = Field(
+        default=None, description="Re-anchor: the balance (amount owed for a card) right now"
+    )
 
 
 class AccountOut(AccountBase, Timestamps):
-    pass
+    balance_anchor_minor: int | None = None
+    balance_anchor_at: datetime | None = None

@@ -1,7 +1,8 @@
 import enum
 import uuid
+from datetime import datetime
 
-from sqlalchemy import BigInteger, CheckConstraint, ForeignKey, Index, SmallInteger, String
+from sqlalchemy import BigInteger, CheckConstraint, DateTime, ForeignKey, Index, SmallInteger, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -36,3 +37,7 @@ class Account(Base, TimestampMixin, SoftDeleteMixin):
     credit_limit_minor: Mapped[int | None] = mapped_column(BigInteger)
     statement_day: Mapped[int | None] = mapped_column(SmallInteger)
     due_day: Mapped[int | None] = mapped_column(SmallInteger)
+    # A balance the user (or a statement) vouches for at a point in time; the live balance is this plus
+    # the transactions after it. For credit cards the anchor is the amount owed.
+    balance_anchor_minor: Mapped[int | None] = mapped_column(BigInteger)
+    balance_anchor_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

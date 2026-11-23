@@ -265,6 +265,41 @@ treat figures as best-effort until someone checks them against the issuer and se
 at 100%) suggests another of the user's cards only when it earns more. Push delivery is a stub
 (`app/services/push.py`: `LoggingPush`; `FcmPush` is not implemented).
 
+## Insights, recurring payments and goals (migration 0004)
+
+All amounts are AED minor units. Everything below is deterministic arithmetic over the user's own data.
+
+**Balances.** Accounts have no running balance of their own. A balance is an *anchor* (`balance_minor` on
+create/PATCH of an account, or the latest parsed statement's closing balance) plus the transactions after it;
+for a credit card the balance is the amount owed. An account with neither has an unknown balance and is left
+out of totals (and called out in `notes`) rather than guessed.
+
+| Endpoint | What it returns |
+|---|---|
+| `GET /v1/insights/cashflow` | 12 months of income, spend, saved and savings rate, plus a day-by-day projection of the liquid balance (recurring bills, loan EMIs, card statements, expected salary, and the 90-day average of other spending) |
+| `GET /v1/insights/spend-trends` | Spend per category per month (sub-categories roll up), change of the last complete month vs the one before, top merchants |
+| `GET /v1/cards/due-dates` | Per card: statement date, due date, `days_left`, minimum due and total due kept separate and net of payments since the statement, utilisation, pay-by nudges |
+| `GET /v1/insights/net-worth-history` | Daily snapshots (assets incl. account balances, liabilities incl. card balances). Refreshed on read and by an arq cron at 00:30 Dubai; history starts at the first snapshot |
+| `GET /v1/insights/safe-to-spend` | Liquid balance minus upcoming bills, loan EMIs, card statements and goal contributions until the next expected salary (else month end), with a breakdown |
+| `GET /v1/insights/health-score` | 0-100 from savings rate (30), credit utilisation (25), on-time card payments (25), emergency runway (20) with component scores and a one-line summary; components without data are dropped and below 50% coverage there is no score |
+| `GET /v1/recurring`, `/upcoming`, `PUT/DELETE /v1/recurring/{key}/review` | Detected recurring payments |
+| `/v1/goals` | Savings goals with required monthly amount and progress |
+
+Conventions worth knowing: income excludes transfers, card payments and any credit on a credit-card account;
+spend excludes transfers, card payments, savings and `exclude_from_budget` transactions. Card spending is
+counted when it happens; the card's statement balance is a separate due-date event, so nothing is counted twice
+as long as bank-side card payments are categorised "Credit Card Payments". Total due is the statement's closing
+balance; both dues are reduced by credits on the card since the statement date. Without a parsed statement the
+due date falls back to the account's `due_day` with no amounts. Savings goals reserve their monthly amount,
+prorated by days left until the horizon.
+
+**Recurring detection** (`app/services/recurring.py`): a merchant with 3+ debits (2+ for yearly) whose gaps fit
+weekly, fortnightly, monthly, quarterly or yearly. Amounts are fixed when within 5% of the median, otherwise
+variable. Flags: `price_increase` (latest charge at least 3% and AED 1 above a stable history),
+`forgotten_subscription` (known subscription merchant, 4+ charges, never confirmed), `lapsed` (expected date
+long passed). A loan with an EMI and due date replaces the matching series. Limitations: AED only; merchant
+grouping relies on normalised names; "forgotten" is a prompt to review, not a claim of non-use.
+
 ## Running locally
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).

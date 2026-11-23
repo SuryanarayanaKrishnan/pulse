@@ -10,6 +10,7 @@ from app.services.storage import get_storage
 from app.workers.tasks import (
     process_ingest,
     process_statement,
+    snapshot_net_worth,
     sync_all_gmail_connections,
     sync_gmail_connection,
 )
@@ -31,7 +32,11 @@ class WorkerSettings:
 
     functions = [process_ingest, process_statement, sync_gmail_connection]
     # Every 6 hours: fan out one sync job per active Gmail connection.
-    cron_jobs = [cron(sync_all_gmail_connections, hour={0, 6, 12, 18}, minute={5}, run_at_startup=False)]
+    cron_jobs = [
+        cron(sync_all_gmail_connections, hour={0, 6, 12, 18}, minute={5}, run_at_startup=False),
+        # 20:30 UTC = 00:30 Dubai: close the day's net-worth snapshot.
+        cron(snapshot_net_worth, hour={20}, minute={30}, run_at_startup=False),
+    ]
     on_startup = startup
     on_shutdown = shutdown
     redis_settings = redis_settings()
