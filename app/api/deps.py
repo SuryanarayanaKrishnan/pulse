@@ -7,17 +7,21 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import Settings, get_settings
+from app.core.crypto import Encryptor, get_encryptor
 from app.core.db import get_session
 from app.core.errors import UnauthorizedError
 from app.core.queue import QueuePool, get_queue
 from app.core.security import TokenClaims, verify_token
 from app.models.user import User
+from app.services.storage import Storage, get_storage
 
 _bearer = HTTPBearer(auto_error=False)
 
 SessionDep = Annotated[AsyncSession, Depends(get_session)]
 SettingsDep = Annotated[Settings, Depends(get_settings)]
 QueueDep = Annotated[QueuePool, Depends(get_queue)]
+StorageDep = Annotated[Storage, Depends(get_storage)]
+EncryptorDep = Annotated[Encryptor, Depends(get_encryptor)]
 
 
 async def get_claims(

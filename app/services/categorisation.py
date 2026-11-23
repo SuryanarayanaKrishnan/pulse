@@ -32,22 +32,14 @@ class CategoryResolver:
 
     @classmethod
     async def load(cls, session: AsyncSession, user_id: UUID) -> "CategoryResolver":
-        rules = dict(
-            (
-                await session.execute(
-                    select(MerchantRule.merchant_key, MerchantRule.category_id).where(
-                        MerchantRule.user_id == user_id
-                    )
-                )
-            )
-            .tuples()
-            .all()
+        rule_rows = await session.execute(
+            select(MerchantRule.merchant_key, MerchantRule.category_id).where(MerchantRule.user_id == user_id)
         )
-        system = dict(
-            (await session.execute(select(Category.name, Category.id).where(Category.user_id.is_(None))))
-            .tuples()
-            .all()
+        system_rows = await session.execute(
+            select(Category.name, Category.id).where(Category.user_id.is_(None))
         )
+        rules = {key: cat_id for key, cat_id in rule_rows}
+        system = {name: cat_id for name, cat_id in system_rows}
         return cls(rules, system)
 
     def enrich(self, merchant_raw: str | None, direction: Direction | None = None) -> Enrichment:

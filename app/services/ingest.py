@@ -20,6 +20,7 @@ from app.services.categorisation import CategoryResolver
 from app.services.institutions import institutions
 from app.services.parsers import ParsedTransaction, ParserRegistry
 from app.services.parsers import registry as default_registry
+from app.services.statements.processing import find_statement_transaction
 
 log = structlog.get_logger(__name__)
 _WS = re.compile(r"\s+")
@@ -174,6 +175,24 @@ async def process_raw_ingest(
         await session.commit()
         return row.parse_status
 
+    posted_at = parsed.posted_at or received_at or row.created_at
+    # If the statement already produced this transaction, link to it instead of duplicating.
+    from_statement = await find_statement_transaction(
+        session,
+        row.user_id,
+        account_id,
+        amount_minor=parsed.amount_minor,
+        currency=parsed.currency,
+        direction=parsed.direction,
+        merchant=parsed.merchant_raw,
+        posted_at=posted_at,
+    )
+    if from_statement is not None:
+        row.transaction_id = from_statement.id
+        row.parse_status = ParseStatus.parsed
+        row.parse_result = {**(row.parse_result or {}), "linked_to_statement_transaction": True}
+        await session.commit()
+        return row.parse_status
     enriched = (await CategoryResolver.load(session, row.user_id)).enrich(
         parsed.merchant_raw, parsed.direction
     )
@@ -186,7 +205,7 @@ async def process_raw_ingest(
         merchant_raw=parsed.merchant_raw,
         merchant_normalized=enriched.merchant_normalized,
         category_id=enriched.category_id,
-        posted_at=parsed.posted_at or received_at or row.created_at,
+        posted_at=posted_at,
         source=row.channel,
         external_hash=row.external_hash,
     )

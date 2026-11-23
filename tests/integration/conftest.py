@@ -8,6 +8,7 @@ import os
 import subprocess
 import sys
 from collections.abc import AsyncIterator, Callable
+from pathlib import Path
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -16,9 +17,11 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
+from app.core.crypto import Encryptor, generate_key, get_encryptor
 from app.core.db import get_session
 from app.core.queue import get_queue, get_queue_or_none
 from app.main import create_app
+from app.services.storage import LocalStorage, get_storage
 from tests.conftest import FakeQueue
 
 TEST_DB = os.environ.get("TEST_DATABASE_URL")
@@ -54,6 +57,16 @@ def queue() -> FakeQueue:
     return FakeQueue()
 
 
+@pytest.fixture
+def storage(tmp_path: Path) -> LocalStorage:
+    return LocalStorage(tmp_path / "storage")
+
+
+@pytest.fixture
+def encryptor() -> Encryptor:
+    return Encryptor([generate_key()])
+
+
 class Api:
     """Tiny helper: an authenticated client for one fresh user."""
 
@@ -69,13 +82,28 @@ class Api:
     async def patch(self, url: str, json: Any = None):
         return await self.c.patch(url, json=json, headers=self.h)
 
+    async def put(self, url: str, json: Any = None):
+        return await self.c.put(url, json=json, headers=self.h)
+
     async def delete(self, url: str):
         return await self.c.delete(url, headers=self.h)
+
+    async def upload(self, url: str, data: bytes, filename: str, data_fields: dict[str, str] | None = None):
+        return await self.c.post(
+            url,
+            files={"file": (filename, data, "application/octet-stream")},
+            data=data_fields or {},
+            headers=self.h,
+        )
 
 
 @pytest.fixture
 async def new_user(
-    sessionmaker_: async_sessionmaker[AsyncSession], queue: FakeQueue, make_token: Callable[..., str]
+    sessionmaker_: async_sessionmaker[AsyncSession],
+    queue: FakeQueue,
+    make_token: Callable[..., str],
+    storage: LocalStorage,
+    encryptor: Encryptor,
 ) -> AsyncIterator[Callable[[], Api]]:
     app = create_app()
 
@@ -89,6 +117,8 @@ async def new_user(
     app.dependency_overrides[get_session] = _session
     app.dependency_overrides[get_queue] = _queue
     app.dependency_overrides[get_queue_or_none] = _queue
+    app.dependency_overrides[get_storage] = lambda: storage
+    app.dependency_overrides[get_encryptor] = lambda: encryptor
     client = AsyncClient(transport=ASGITransport(app=app), base_url="http://test")
 
     def _new() -> Api:

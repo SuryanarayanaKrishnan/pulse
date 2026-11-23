@@ -4,7 +4,7 @@ from app.core.config import get_settings
 from app.core.db import dispose_engine, get_sessionmaker
 from app.core.logging import configure_logging
 from app.core.queue import redis_settings
-from app.workers.tasks import process_ingest
+from app.workers.tasks import process_ingest, process_statement
 
 
 async def startup(ctx: dict[str, Any]) -> None:
@@ -20,7 +20,7 @@ async def shutdown(ctx: dict[str, Any]) -> None:
 class WorkerSettings:
     """Run with: arq app.workers.settings.WorkerSettings"""
 
-    functions = [process_ingest]
+    functions = [process_ingest, process_statement]
     on_startup = startup
     on_shutdown = shutdown
     redis_settings = redis_settings()

@@ -191,7 +191,7 @@ def build_account(style: Style, txns: list[Txn] | None = None, opening: int = AC
 def render_pdf(lines: list[str], password: str | None = None, per_page: int = 55) -> bytes:
     buf = io.BytesIO()
     kw = {"encrypt": password} if password else {}
-    c = canvas.Canvas(buf, pagesize=A4, **kw)
+    c = canvas.Canvas(buf, pagesize=A4, invariant=1, **kw)
     y_start = 800
     y = y_start
     for i, line in enumerate(lines):
