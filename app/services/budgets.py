@@ -33,6 +33,7 @@ async def spent_in_month(
                 Transaction.deleted_at.is_(None),
                 Transaction.category_id.in_(category_ids),
                 Transaction.direction == Direction.debit,
+                Transaction.exclude_from_budget.is_(False),
                 Transaction.currency == currency,
                 Transaction.posted_at >= month,
                 Transaction.posted_at < next_month(month),

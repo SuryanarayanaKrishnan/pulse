@@ -57,6 +57,7 @@ async def budget_overview(
             Transaction.user_id == user.id,
             Transaction.deleted_at.is_(None),
             Transaction.direction == Direction.debit,
+            Transaction.exclude_from_budget.is_(False),
             Transaction.currency == currency,
             Transaction.posted_at >= first,
             Transaction.posted_at < next_month(first),

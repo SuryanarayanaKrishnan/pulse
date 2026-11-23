@@ -15,5 +15,5 @@ class MerchantRuleCreate(BaseModel):
 
 class MerchantRuleOut(Timestamps):
     user_id: UUID
-    merchant_key: str
-    category_id: UUID
+    merchant_key: str | None
+    category_id: UUID | None

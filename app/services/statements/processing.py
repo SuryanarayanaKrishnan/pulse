@@ -16,7 +16,7 @@ from app.models.account import Account, AccountType
 from app.models.integration import StatementPassword
 from app.models.statement import ParseStatus, ReconciliationStatus, Statement, StatementLine
 from app.models.transaction import Direction, RawIngest, Transaction, TxnSource
-from app.services.categorisation import CategoryResolver
+from app.services.categorisation import CategoryResolver, apply_enrichment
 from app.services.institutions import institutions
 from app.services.merchants import clean_descriptor
 from app.services.parsers.dates import DUBAI, at_date, to_dubai_date
@@ -246,8 +246,18 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
             captured = candidates[m.txn_index]
             captured.statement_id = stmt.id
             if captured.category_id is None:
-                direction = Direction(line.direction)
-                captured.category_id = resolver.enrich(line.description, direction).category_id
+                apply_enrichment(
+                    captured,
+                    resolver.enrich(
+                        line.description,
+                        Direction(line.direction),
+                        account_id=captured.account_id,
+                        amount_minor=captured.amount_minor,
+                        source=captured.source,
+                        notes=captured.notes,
+                    ),
+                    set_merchant=False,  # keep the merchant name the SMS gave us
+                )
             line.transaction_id, line.match_status, line.match_score = captured.id, "linked", m.score
             continue
         key = (
@@ -268,12 +278,21 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
         ).scalar_one_or_none()
         txn: Transaction
         if existing is None:
-            enriched = resolver.enrich(line.description, Direction(line.direction))
+            enriched = resolver.enrich(
+                line.description,
+                Direction(line.direction),
+                account_id=stmt.account_id,
+                amount_minor=line.amount_minor,
+                source=TxnSource.statement,
+            )
             txn = Transaction(
                 user_id=stmt.user_id,
                 account_id=stmt.account_id,
                 statement_id=stmt.id,
                 category_id=enriched.category_id,
+                exclude_from_budget=enriched.exclude_from_budget,
+                tags=list(enriched.tags),
+                applied_rule_id=enriched.rule_id,
                 amount_minor=line.amount_minor,
                 currency=line.currency,
                 direction=Direction(line.direction),

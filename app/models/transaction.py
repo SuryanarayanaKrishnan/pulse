@@ -4,6 +4,7 @@ from datetime import datetime
 
 from sqlalchemy import (
     BigInteger,
+    Boolean,
     CheckConstraint,
     DateTime,
     ForeignKey,
@@ -11,8 +12,9 @@ from sqlalchemy import (
     String,
     Text,
     UniqueConstraint,
+    text,
 )
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import ARRAY, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db import Base
@@ -73,6 +75,12 @@ class Transaction(Base, TimestampMixin, SoftDeleteMixin):
     posted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     source: Mapped[TxnSource] = mapped_column(str_enum(TxnSource, "txn_source"))
     external_hash: Mapped[str | None] = mapped_column(String(64))
+    # Set by classification rules (or by hand): kept out of budget/spend totals, free-form labels.
+    exclude_from_budget: Mapped[bool] = mapped_column(Boolean, server_default=text("false"))
+    tags: Mapped[list[str]] = mapped_column(ARRAY(String(40)), server_default=text("'{}'::varchar[]"))
+    applied_rule_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("merchant_rules.id", ondelete="SET NULL")
+    )
 
 
 class RawIngest(Base, TimestampMixin):

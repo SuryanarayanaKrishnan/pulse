@@ -5,6 +5,7 @@ import pytest
 from app.models.transaction import Direction
 from app.services.categorisation import CategoryResolver
 from app.services.merchants import clean_descriptor, guess_category_slug, merchant_key, normalize_merchant
+from app.services.rule_engine import merchant_equals_rule
 
 DEBIT, CREDIT = Direction.debit, Direction.credit
 
@@ -75,16 +76,17 @@ def test_clean_descriptor_strips_noise():
 def test_resolver_rules_beat_dictionary():
     groceries, dining, shopping = uuid4(), uuid4(), uuid4()
     system = {"groceries": groceries, "dining": dining, "shopping": shopping}
-    plain = CategoryResolver({}, system)
+    plain = CategoryResolver([], system)
     assert plain.enrich("CARREFOUR MOE", DEBIT).category_id == groceries
     assert plain.enrich("CARREFOUR MOE", DEBIT).source == "dictionary"
-    ruled = CategoryResolver({"carrefour": shopping}, system)
+    ruled = CategoryResolver([merchant_equals_rule("carrefour", shopping)], system)
     e = ruled.enrich("CARREFOUR MOE", DEBIT)
     assert (e.merchant_normalized, e.category_id, e.source) == ("Carrefour", shopping, "rule")
     unknown = ruled.enrich("JOES CAFE", DEBIT)
     assert unknown.category_id is None and unknown.source is None
     # rule for an otherwise-unknown merchant
-    assert CategoryResolver({"joes cafe": dining}, system).enrich("JOES CAFE", DEBIT).category_id == dining
+    joes = CategoryResolver([merchant_equals_rule("joes cafe", dining)], system)
+    assert joes.enrich("JOES CAFE", DEBIT).category_id == dining
 
 
 @pytest.mark.parametrize(

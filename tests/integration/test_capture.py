@@ -49,8 +49,9 @@ async def test_override_becomes_rule_applied_to_future_ingests(new_user, session
     shopping = await _category_id(api, "Shopping")
     assert t["category_id"] == await _category_id(api, "Groceries")
 
-    r = await api.patch(f"/v1/transactions/{t['id']}", {"category_id": shopping})
+    r = await api.patch(f"/v1/transactions/{t['id']}", {"category_id": shopping, "remember_merchant": True})
     assert r.status_code == 200 and r.json()["category_id"] == shopping
+    assert r.json()["suggested_rule"] is None  # already saved, nothing to offer
     rules = (await api.get("/v1/merchant-rules")).json()
     assert [(x["merchant_key"], x["category_id"]) for x in rules] == [("carrefour", shopping)]
     # Not retroactive by default.
@@ -82,7 +83,10 @@ async def test_rules_are_tenant_scoped(new_user):
     a, b = new_user(), new_user()
     acc = await mk_account(a)
     t = await _create_txn(a, acc["id"], "CARREFOUR")
-    await a.patch(f"/v1/transactions/{t['id']}", {"category_id": await _category_id(a, "Shopping")})
+    await a.patch(
+        f"/v1/transactions/{t['id']}",
+        {"category_id": await _category_id(a, "Shopping"), "remember_merchant": True},
+    )
     rule = (await a.get("/v1/merchant-rules")).json()[0]
     assert (await b.get("/v1/merchant-rules")).json() == []
     assert (await b.delete(f"/v1/merchant-rules/{rule['id']}")).status_code == 404

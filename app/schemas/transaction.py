@@ -4,7 +4,7 @@ from uuid import UUID
 from pydantic import BaseModel, Field
 
 from app.models.transaction import Direction, TxnSource
-from app.schemas.common import Currency, PositiveMinor, Timestamps
+from app.schemas.common import Currency, PositiveMinor, Tag, Timestamps
 
 
 class TransactionCreate(BaseModel):
@@ -18,14 +18,19 @@ class TransactionCreate(BaseModel):
     notes: str | None = Field(default=None, max_length=2000)
     posted_at: datetime
     external_hash: str | None = Field(default=None, min_length=8, max_length=64)
+    exclude_from_budget: bool | None = Field(default=None, description="Default: decided by rules")
+    tags: list[Tag] | None = Field(default=None, max_length=10)
 
 
 class TransactionUpdate(BaseModel):
     category_id: UUID | None = None
     merchant_normalized: str | None = Field(default=None, max_length=160)
     notes: str | None = Field(default=None, max_length=2000)
-    # When the category is set, remember it as "always categorise this merchant as X".
-    remember_merchant: bool = True
+    exclude_from_budget: bool | None = None
+    tags: list[Tag] | None = Field(default=None, max_length=10)
+    # Opt in to saving "always categorise this merchant as X" right away. By default nothing is saved:
+    # the response carries a `suggested_rule` the app can offer ("Always do this?") and POST to /v1/rules.
+    remember_merchant: bool = False
     apply_to_existing: bool = Field(
         default=False, description="Also re-categorise past transactions of this merchant"
     )
@@ -44,3 +49,6 @@ class TransactionOut(Timestamps):
     notes: str | None
     posted_at: datetime
     source: TxnSource
+    exclude_from_budget: bool
+    tags: list[str]
+    applied_rule_id: UUID | None

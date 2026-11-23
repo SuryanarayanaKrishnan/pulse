@@ -161,11 +161,53 @@ def _budgets_down() -> None:
     op.drop_column('budgets', 'rollover')
 
 
+# --------------------------------------------------------------------------------------------
+# Classification rules: merchant_rules grows into general AND-ed condition rules
+# --------------------------------------------------------------------------------------------
+def _rules_up() -> None:
+    op.add_column('merchant_rules', sa.Column('name', sa.String(length=120), nullable=True))
+    op.add_column('merchant_rules', sa.Column('priority', sa.Integer(), server_default=sa.text('100'), nullable=False))
+    op.add_column('merchant_rules', sa.Column('is_active', sa.Boolean(), server_default=sa.text('true'), nullable=False))
+    op.add_column('merchant_rules', sa.Column('conditions', postgresql.JSONB(astext_type=sa.Text()), server_default=sa.text("'[]'::jsonb"), nullable=False))
+    op.add_column('merchant_rules', sa.Column('rename_merchant', sa.String(length=160), nullable=True))
+    op.add_column('merchant_rules', sa.Column('mark_transfer', sa.Boolean(), server_default=sa.text('false'), nullable=False))
+    op.add_column('merchant_rules', sa.Column('exclude_from_budget', sa.Boolean(), server_default=sa.text('false'), nullable=False))
+    op.add_column('merchant_rules', sa.Column('tags', postgresql.ARRAY(sa.String(length=40)), server_default=sa.text("'{}'::varchar[]"), nullable=False))
+    op.alter_column('merchant_rules', 'merchant_key', existing_type=sa.String(length=160), nullable=True)
+    op.alter_column('merchant_rules', 'category_id', existing_type=sa.UUID(), nullable=True)
+    op.create_index('ix_merchant_rules_user_id_priority', 'merchant_rules', ['user_id', 'priority'], unique=False)
+    # Existing "always categorise merchant X as Y" rows become merchant-equals rules, behind authored ones.
+    op.execute(
+        "UPDATE merchant_rules SET priority = 1000, "
+        "conditions = jsonb_build_array(jsonb_build_object('field', 'merchant', 'op', 'equals', 'value', merchant_key))"
+    )
+    op.add_column('transactions', sa.Column('exclude_from_budget', sa.Boolean(), server_default=sa.text('false'), nullable=False))
+    op.add_column('transactions', sa.Column('tags', postgresql.ARRAY(sa.String(length=40)), server_default=sa.text("'{}'::varchar[]"), nullable=False))
+    op.add_column('transactions', sa.Column('applied_rule_id', sa.UUID(), nullable=True))
+    op.create_foreign_key(op.f('fk_transactions_applied_rule_id_merchant_rules'), 'transactions', 'merchant_rules', ['applied_rule_id'], ['id'], ondelete='SET NULL')
+
+
+def _rules_down() -> None:
+    op.drop_constraint(op.f('fk_transactions_applied_rule_id_merchant_rules'), 'transactions', type_='foreignkey')
+    op.drop_column('transactions', 'applied_rule_id')
+    op.drop_column('transactions', 'tags')
+    op.drop_column('transactions', 'exclude_from_budget')
+    # Rules that are not plain merchant->category shortcuts cannot be represented by the old shape.
+    op.execute("DELETE FROM merchant_rules WHERE merchant_key IS NULL OR category_id IS NULL")
+    op.drop_index('ix_merchant_rules_user_id_priority', table_name='merchant_rules')
+    op.alter_column('merchant_rules', 'category_id', existing_type=sa.UUID(), nullable=False)
+    op.alter_column('merchant_rules', 'merchant_key', existing_type=sa.String(length=160), nullable=False)
+    for col in ('tags', 'exclude_from_budget', 'mark_transfer', 'rename_merchant', 'conditions', 'is_active', 'priority', 'name'):
+        op.drop_column('merchant_rules', col)
+
+
 def upgrade() -> None:
     _categories_up()
     _budgets_up()
+    _rules_up()
 
 
 def downgrade() -> None:
+    _rules_down()
     _budgets_down()
     _categories_down()

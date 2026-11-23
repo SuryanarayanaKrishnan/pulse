@@ -194,7 +194,11 @@ async def process_raw_ingest(
         await session.commit()
         return row.parse_status
     enriched = (await CategoryResolver.load(session, row.user_id)).enrich(
-        parsed.merchant_raw, parsed.direction
+        parsed.merchant_raw,
+        parsed.direction,
+        account_id=account_id,
+        amount_minor=parsed.amount_minor,
+        source=row.channel,
     )
     txn = Transaction(
         user_id=row.user_id,
@@ -205,6 +209,9 @@ async def process_raw_ingest(
         merchant_raw=parsed.merchant_raw,
         merchant_normalized=enriched.merchant_normalized,
         category_id=enriched.category_id,
+        exclude_from_budget=enriched.exclude_from_budget,
+        tags=list(enriched.tags),
+        applied_rule_id=enriched.rule_id,
         posted_at=posted_at,
         source=row.channel,
         external_hash=row.external_hash,
