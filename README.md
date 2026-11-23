@@ -128,17 +128,112 @@ statements (see "Known limitations"). To adapt a bank: edit its module (`Layout`
 | me | `GET/PATCH/DELETE /me` |
 | accounts | `GET/POST /accounts`, `GET/PATCH/DELETE /accounts/{id}` |
 | transactions | `GET /transactions` (filters: account, category, direction, source, date range, amount range, `q`; `cursor`, `limit`), `POST`, `GET/PATCH/DELETE /{id}` |
-| budgets | `GET/POST /categories`, `GET/POST /budgets`, `PATCH/DELETE /budgets/{id}` (returns spent/remaining) |
+| budgets | `GET/POST/PUT /budgets`, `GET /budgets/overview`, `PATCH/DELETE /budgets/{id}` |
 | assets | `/assets`, `/liabilities` CRUD, `GET /net-worth?usd_rate=` |
-| splits | `/splits/groups` (+ `/members`, `/expenses`, `/settlements`, `GET /balances`) |
+| splits | `/splits/groups` (+ `/members`, `/expenses`, `/settlements`, `GET /balances`), Aani: `POST /splits/groups/{id}/settlements/aani-request`, `POST .../settlements/{sid}/mark-paid`, `POST .../settlements/{sid}/confirm`, `DELETE .../settlements/{sid}`, `GET /splits/settlements/awaiting-confirmation` |
 | ingest | `POST /ingest/sms`, `/ingest/notification`, `/ingest/apple-shortcut` |
 | statements | `POST /statements/upload`, `GET /statements`, `GET/DELETE /statements/{id}`, `POST /statements/{id}/reprocess`, `GET /statements/{id}/reconciliation` |
 | statement passwords | `POST/PUT/GET /statement-passwords`, `DELETE /statement-passwords/{institution}` (password never returned) |
 | email connections | `POST /email-connections/gmail/start`, `GET /email-connections/gmail/callback`, `GET /email-connections`, `POST /email-connections/{id}/sync`, `DELETE /email-connections/{id}` |
-| categorisation | `GET/POST /merchant-rules`, `DELETE /merchant-rules/{id}` |
+| categorisation | `GET/POST /merchant-rules`, `DELETE /merchant-rules/{id}` (the learnt "this merchant" shortcut; see Rules) |
+| categories | `GET/POST /categories`, `PATCH/DELETE /categories/{id}` |
+| rules | `GET/POST /rules`, `GET/PATCH/DELETE /rules/{id}`, `POST /rules/preview`, `POST /rules/reorder`, `POST /rules/{id}/apply` |
+| salary | `GET /salary`, `POST /salary/detect`, `DELETE /salary/records/{id}` |
+| contacts | `POST /contacts/match` |
 | ops | `GET /health` (liveness), `GET /ready` (DB + Redis) |
 
 OpenAPI docs are at `/docs` (disabled when `APP_ENV=production`).
+
+## Budgeting, rules, salary, contacts and Aani (migration 0003)
+
+All bodies are JSON, amounts are integer fils, errors use the standard envelope. Auth is the usual bearer JWT.
+
+### Categories
+The default set is shared by every user (`user_id: null`, `is_default: true`) and has stable `slug`s:
+`salary, other_income (income)`, `groceries, dining ("Dining & Delivery"), transport ("Transport & Fuel"), car_loan,
+home_loan, rent ("Rent & Housing"), utilities, telecom, fixed_expenses, education ("Education Fees"), health,
+shopping, travel, entertainment, family ("Family & Remittances"), savings, fees, other (expense)`,
+`cc_payment ("Credit Card Payments"), transfer (transfer; excluded from spend)`. Each has `kind`, `is_fixed`
+(fixed vs variable), `icon` and `color` keys (the app maps them to glyphs/palette) and `sort_order`.
+The migration renamed the 17 matching legacy defaults in place (ids and all FK data kept) and merged the old
+"Fuel" into "Transport & Fuel" (transactions, rules and budgets re-pointed; same-month budgets summed).
+
+- `GET /categories?include_hidden=false&kind=` returns defaults + the user's own; `name` is the effective name,
+  `default_name` the original; sub-categories carry `parent_id`.
+- `POST /categories {name, kind?, parent_id?, icon?, color?, is_fixed?}`: custom category; one sub-level only
+  (`category_depth_exceeded`); a sub-category inherits its parent's kind; names unique case-insensitively (409).
+- `PATCH /categories/{id}`: customs take any field; defaults only `name` (null resets) and `is_hidden`
+  (`default_category_locked` otherwise). Stored per user in `category_preferences`.
+- `DELETE /categories/{id}?reassign_to=<id>`: own categories only; refuses while it has sub-categories.
+
+### Budgets
+`PUT /budgets {category_id, month, limit_minor, rollover}` upserts (what a budget screen calls); `POST` creates (409 on
+duplicates); `PATCH /budgets/{id} {limit_minor?, rollover?}`. Responses add `rollover`, `rollover_in_minor`
+(unspent carried in from last month, never negative, chained through consecutive rollover months),
+`available_minor = limit + rollover_in`, `spent_minor`, `remaining_minor`. A parent category's spend includes its
+sub-categories; transactions with `exclude_from_budget` never count. `GET /budgets/overview?month=&currency=` returns
+every visible expense category with its budget (or null) and spend: this is the "default set seeded for every budget".
+
+### Rules ("automations")
+A rule = conditions (all must match, AND) + actions, `priority` (lower runs first), `is_active`.
+
+```json
+{"name": "Gift cards", "priority": 50,
+ "conditions": [{"field":"merchant","op":"contains","value":"carrefour"},
+                {"field":"amount","op":"between","min_minor":10000,"max_minor":20000},
+                {"field":"direction","value":"debit"},
+                {"field":"account","account_id":"<uuid>"},
+                {"field":"source","value":"sms"},
+                {"field":"description","op":"regex","value":"gift\\s*card"}],
+ "category_id":"<uuid>", "rename_merchant":"Weekly shop", "mark_transfer":false,
+ "exclude_from_budget":false, "tags":["home"], "apply_to_existing": false}
+```
+`merchant`/`description` ops: `contains|equals|regex` (case-insensitive; `merchant` checks the normalised name and
+the raw descriptor, `description` the raw line and notes). `amount` ops: `equals|between|gte|lte` (fils). Regexes
+are length-capped and nested quantifiers are rejected (`(a+)+`). Across matching rules the first one to set a field
+wins; tags accumulate. `mark_transfer` = Transfer category (unless one is set) + excluded from budget. User rules
+are evaluated before the merchant dictionary on every path (SMS/notification/shortcut, statement lines, manual).
+
+- `GET/POST /rules`, `GET/PATCH/DELETE /rules/{id}`; `POST /rules/reorder {ids:[...]}` (all ids, highest priority first).
+- `POST /rules/preview {conditions, category_id?, ..., only_uncategorised?, date_from?, limit?}` returns
+  `{matched_count, scanned_count, truncated, items:[{transaction, category_would_change}]}`; changes nothing.
+- `POST /rules/{id}/apply {only_uncategorised?, date_from?}` returns `{matched, updated}`.
+- `merchant_rules` was extended, not duplicated: old rows became merchant-equals rules (priority 1000, behind authored
+  ones); `/merchant-rules` still manages that shortcut and `PATCH /rules/{id}` with new conditions detaches it.
+- **"Always do this?"**: `PATCH /transactions/{id} {category_id}` now returns the transaction plus `suggested_rule`
+  (a ready `POST /rules` body with `matching_count`, or null when nothing useful to offer). Nothing is saved unless
+  the app posts it (optionally with `apply_to_existing: true`). **Behaviour change:** `remember_merchant` now defaults
+  to `false`; send `true` to save the merchant shortcut immediately. Transactions also expose `exclude_from_budget`,
+  `tags`, `applied_rule_id` (editable: `exclude_from_budget`, `tags`).
+
+### Salary
+Credits whose descriptor or SMS says SALARY / PAYROLL / WPS (Wage Protection) / SAL CR, at least AED 500, and not an
+advance/loan/reversal/refund/fee, create one `salary_records` row per transaction (idempotent; SMS-only credits are
+filed under Salary). `GET /salary?months=12` returns `detected, currency, is_recurring` (2+ months), `latest`,
+`latest_month_minor`, `previous_month_minor`, `change_minor`, `average_monthly_minor` (last 3 months), `typical_day`,
+`next_expected_on`, `monthly`, `employers`, `records`. `POST /salary/detect` rescans history;
+`DELETE /salary/records/{id}` dismisses a false positive for good.
+
+### Phones, contacts and Aani
+- `PATCH /me {phone, aani_phone, phone_discoverable}`: UAE shorthand is normalised to E.164 (`050 123 4567`,
+  `0501234567`, `971501234567`, `00971...`, `+971 (0) 50...` all become `+971501234567`; other countries need `+cc`).
+  `aani_phone` must be a UAE mobile and is where payees receive Aani; it falls back to `phone`. null/"" clears.
+  One live account per number (409 `phone_in_use`; numbers are not OTP-verified yet).
+- **Hash contract for the app:** normalise to E.164 *with* `+`, SHA-256 the UTF-8 string, lower-case hex.
+  `POST /contacts/match {hashes:[<=1000 hex64>]}` returns `{matches:[{phone_hash, user_id, display_name}]}` for
+  discoverable users (never yourself). Hashes are not stored or logged; raw contact books never reach the server.
+  Phone numbers have little entropy, so hashing is not strong anonymity.
+- Split members accept `phone` (stored E.164 + hash); a discoverable Pulse user with that number is linked
+  automatically. Members return `phone`.
+- **Settlements** have `method` (`aani|cash|bank_transfer|other`, default `other`) and `status` (`pending|confirmed`).
+  Only confirmed settlements count in `GET .../balances`. `cash`/`bank_transfer`/`other` are recorded as confirmed;
+  `aani` starts pending. Flow (Aani has no public API): `POST /splits/groups/{id}/settlements/aani-request
+  {to_member_id, amount_minor, from_member_id?, note?}` -> `{settlement, amount_minor, amount_display, payee_display_name,
+  payee_phone, share_text, instructions}` (422 `payee_phone_missing` / `aani_requires_aed`); the payer pays in the bank
+  app's "pay by mobile number", then `POST .../settlements/{sid}/mark-paid` (idempotent); the payee
+  `POST .../confirm` -> confirmed. `DELETE .../{sid}` cancels while pending. Settlement objects carry
+  `can_mark_paid`, `can_confirm`, `can_cancel` for the caller; `GET /splits/settlements/awaiting-confirmation` lists what
+  the caller must confirm. A member without an account is acted for by the settlement's creator.
 
 ## Running locally
 
@@ -230,6 +325,6 @@ Losing the key makes stored tokens/passwords unrecoverable; back it up.
 
 ## Not built yet
 
-Card catalog/suggestion endpoints, salary records and loans endpoints (tables exist), Outlook/IMAP mail
+Card catalog/suggestion endpoints and loans endpoints (tables exist), Outlook/IMAP mail
 connections, OCR for scanned statements, FX rates (net worth takes a manual `usd_rate`), a sweeper to
 re-enqueue ingests/statements stuck in `pending`, rate limiting.
