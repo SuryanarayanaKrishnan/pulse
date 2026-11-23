@@ -36,7 +36,7 @@ def today_dubai() -> date:
     return to_dubai_date(datetime.now(UTC))
 
 
-def _day_start(d: date) -> datetime:
+def day_start(d: date) -> datetime:
     return datetime(d.year, d.month, d.day, tzinfo=DUBAI)
 
 
@@ -71,7 +71,7 @@ async def load_txns(session: AsyncSession, user_id: UUID, since: date) -> list[T
             Transaction.user_id == user_id,
             Transaction.deleted_at.is_(None),
             Transaction.currency == "AED",
-            Transaction.posted_at >= _day_start(since),
+            Transaction.posted_at >= day_start(since),
         )
         .order_by(Transaction.posted_at)
     )
@@ -196,7 +196,7 @@ async def card_dues(
         paid = 0
         if st and st.statement_date:
             paid = await _credits_between(
-                session, user_id, acc.id, _day_start(st.statement_date) + timedelta(days=1), None
+                session, user_id, acc.id, day_start(st.statement_date) + timedelta(days=1), None
             )
         out.append(
             dues.card_due(
@@ -474,7 +474,7 @@ async def health_score(session: AsyncSession, user_id: UUID, today: date) -> hea
             continue
         paid = await _credits_between(
             session, user_id, st.account_id,
-            _day_start(st.statement_date) + timedelta(days=1), _day_start(st.due_date) + timedelta(days=1),
+            day_start(st.statement_date) + timedelta(days=1), day_start(st.due_date) + timedelta(days=1),
         )  # fmt: skip
         total += 1
         on_time += 1 if paid >= need else 0

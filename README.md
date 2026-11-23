@@ -129,7 +129,7 @@ statements (see "Known limitations"). To adapt a bank: edit its module (`Layout`
 | accounts | `GET/POST /accounts`, `GET/PATCH/DELETE /accounts/{id}` |
 | transactions | `GET /transactions` (filters: account, category, direction, source, date range, amount range, `q`; `cursor`, `limit`), `POST`, `GET/PATCH/DELETE /{id}` |
 | budgets | `GET/POST/PUT /budgets`, `GET /budgets/overview`, `PATCH/DELETE /budgets/{id}` |
-| assets | `/assets`, `/liabilities` CRUD, `GET /net-worth?usd_rate=` |
+| assets | `/assets`, `/liabilities` CRUD, `GET /net-worth` (optional `?usd_rate=`) |
 | splits | `/splits/groups` (+ `/members`, `/expenses`, `/settlements`, `GET /balances`), Aani: `POST /splits/groups/{id}/settlements/aani-request`, `POST .../settlements/{sid}/mark-paid`, `POST .../settlements/{sid}/confirm`, `DELETE .../settlements/{sid}`, `GET /splits/settlements/awaiting-confirmation` |
 | ingest | `POST /ingest/sms`, `/ingest/notification`, `/ingest/apple-shortcut` |
 | statements | `POST /statements/upload`, `GET /statements`, `GET/DELETE /statements/{id}`, `POST /statements/{id}/reprocess`, `GET /statements/{id}/reconciliation` |
@@ -140,6 +140,11 @@ statements (see "Known limitations"). To adapt a bank: edit its module (`Layout`
 | rules | `GET/POST /rules`, `GET/PATCH/DELETE /rules/{id}`, `POST /rules/preview`, `POST /rules/reorder`, `POST /rules/{id}/apply` |
 | salary | `GET /salary`, `POST /salary/detect`, `DELETE /salary/records/{id}` |
 | contacts | `POST /contacts/match` |
+| wallet / rewards | `POST /ingest/token`, `/ingest/google-pay`, `/ingest/samsung-wallet`; `GET /cards/catalog`, `GET/POST /cards`, `DELETE /cards/{id}`, `GET /rewards/summary`, `POST /rewards/best-card` |
+| insights | `GET /insights/cashflow`, `/insights/spend-trends`, `/insights/net-worth-history`, `/insights/safe-to-spend`, `/insights/health-score`, `GET /cards/due-dates` |
+| recurring / goals | `GET /recurring`, `/recurring/upcoming`, `PUT/DELETE /recurring/{key}/review`; `/goals` CRUD |
+| market | `GET /market/quotes` |
+| family | `/households` and children (see Family) |
 | ops | `GET /health` (liveness), `GET /ready` (DB + Redis) |
 
 OpenAPI docs are at `/docs` (disabled when `APP_ENV=production`).
@@ -325,6 +330,61 @@ requests only read it.
 * `GET /v1/net-worth` now converts foreign currencies with the cached FX rates (USD at the peg when none is
   cached); an explicit `?usd_rate=` still wins. The response lists `fx_rates` used and `fx_last_updated`.
 
+## Family: households (migration 0004)
+
+Tables `households` and `household_members` (role `owner|adult|dependent`; status `invited|active|declined|removed`;
+`share_level` `nothing|totals|categories|full`; invite by phone or email). One active owner per household is
+enforced by a partial unique index.
+
+**Privacy model.** Sharing is controlled by the person being shared, never by the viewer:
+
+* New members (and re-invited ones) start at `nothing`; only the member can change their own level
+  (`PATCH /v1/households/{id}/members/me/sharing`) and it takes effect immediately.
+* `totals`: the month's income, spend, net and net worth. `categories`: plus spend by top-level category.
+  `full`: plus transactions (no notes, tags or account details). You always see yourself in full.
+* A `dependent` sees only their own data. The owner and adults see others at the level those members chose.
+* Household totals include only members whose level is at least `totals`; the response says how many members
+  were not included, and never reveals numbers of members who share nothing. Category totals need `categories`.
+* Reading another member's transactions is audited (`household.view_transactions`).
+* Invites: the response never reveals whether the invitee has an account; invitees see pending invites by their
+  account, their phone hash or their email and must accept explicitly. Removing a member resets their level.
+
+| Endpoint | Purpose |
+|---|---|
+| `POST/GET /v1/households`, `GET/PATCH/DELETE /v1/households/{id}` | Create (you become owner), list, view, rename, delete (owner) |
+| `POST /v1/households/{id}/invitations` | Owner or adult invites an adult or dependent by `phone` or `email` |
+| `GET /v1/households/invitations`, `POST .../{id}/invitations/accept|decline` | The invitee's side |
+| `PATCH /v1/households/{id}/members/{member_id}` | Owner changes a role (adult/dependent) |
+| `DELETE /v1/households/{id}/members/{member_id}` | Owner removes anyone; a member can leave; the owner cannot |
+| `GET /v1/households/{id}/overview?month=YYYY-MM` | Per-member view as permitted plus household totals |
+| `GET /v1/households/{id}/members/{member_id}/transactions` | Only for members sharing `full` (or yourself) |
+
+Limits: AED only, every member needs their own account (a child without a login is not modelled), and the
+owner role cannot be transferred yet.
+
+### Nominee / legacy vault (design only, nothing is built or migrated)
+
+Goal: let a person name trusted nominees who can find out what exists and where, if the person dies or is
+incapacitated, without the app ever holding anything that lets it move money.
+
+Planned schema (not created):
+
+* `legacy_nominees(id, user_id, display_name, relationship, phone_hash, email, status invited|accepted|revoked,
+  access_trigger, created_at)`
+* `legacy_vault_items(id, user_id, kind account|policy|property|liability|document|instruction|digital_account,
+  title, institution, reference_hint, location_note, encrypted_payload bytea, created_at, updated_at)` with the
+  payload encrypted client-side or with a per-user Fernet key from `FERNET_KEYS`; the API never logs it.
+* `legacy_item_access(item_id, nominee_id)`, so nominees see only what was granted to them.
+* `legacy_access_requests(id, nominee_id, requested_at, status pending|cancelled|released|denied, release_at,
+  evidence_ref, decided_by)` and an append-only audit trail.
+
+Key decisions to settle with legal advice before building: release uses a dead-man's-switch (the owner is
+asked to check in; nominees can request access; release only after a configurable waiting period, e.g. 30
+days, during which the owner can cancel by any sign of life) rather than automatic release on a single
+claim; the vault stores locations and instructions, never credentials or card numbers; nominee access is
+read-only; UAE succession rules (Sharia or the DIFC wills registry, depending on the person) are not something
+the app can interpret, and the app must say that it is not a will.
+
 ## Running locally
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
@@ -401,6 +461,10 @@ Losing the key makes stored tokens/passwords unrecoverable; back it up.
 
 ## Known limitations
 
+- The seeded UAE card rewards and the gold/FX HTTP sources are unverified (see the rewards and valuations
+  sections); the app labels them as such.
+- Insights depend on known balances: accounts with no anchor balance and no parsed statement are left out and
+  reported, not guessed.
 - **No real statements or SMS were available.** The 12 institution parsers (SMS templates and statement
   layouts), sender domains and subject terms are best-effort, based on documented generic layouts and typical
   wording; expect to adjust them per bank once real samples exist. Reconciliation is the safety net: a wrong
@@ -415,6 +479,6 @@ Losing the key makes stored tokens/passwords unrecoverable; back it up.
 
 ## Not built yet
 
-Card catalog/suggestion endpoints and loans endpoints (tables exist), Outlook/IMAP mail
-connections, OCR for scanned statements, FX rates (net worth takes a manual `usd_rate`), a sweeper to
-re-enqueue ingests/statements stuck in `pending`, rate limiting.
+Outlook/IMAP mail connections, OCR for scanned statements, a sweeper to re-enqueue
+ingests/statements stuck in `pending`, rate limiting, real push delivery (FCM is a stub), a live property-price
+feed, owner transfer for households, and the nominee/legacy vault (design only, see Family).

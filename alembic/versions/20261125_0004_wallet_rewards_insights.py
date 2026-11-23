@@ -238,9 +238,57 @@ def _valuations_down() -> None:
     op.drop_table('market_quotes')
 
 
+def _family_up() -> None:
+    op.create_table('households',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=False),
+    sa.Column('created_by', sa.UUID(), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('deleted_at', sa.DateTime(timezone=True), nullable=True),
+    sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_households_created_by_users'), ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_households'))
+    )
+    op.create_table('household_members',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('household_id', sa.UUID(), nullable=False),
+    sa.Column('user_id', sa.UUID(), nullable=True),
+    sa.Column('display_name', sa.String(length=120), nullable=False),
+    sa.Column('role', sa.Enum('owner', 'adult', 'dependent', name='household_role', native_enum=False, create_constraint=True, length=32), nullable=False),
+    sa.Column('status', sa.Enum('invited', 'active', 'declined', 'removed', name='household_member_status', native_enum=False, create_constraint=True, length=32), server_default='invited', nullable=False),
+    sa.Column('share_level', sa.Enum('nothing', 'totals', 'categories', 'full', name='household_share_level', native_enum=False, create_constraint=True, length=32), server_default='nothing', nullable=False),
+    sa.Column('invite_phone_e164', sa.String(length=16), nullable=True),
+    sa.Column('invite_phone_hash', sa.String(length=64), nullable=True),
+    sa.Column('invite_email', sa.String(length=320), nullable=True),
+    sa.Column('invited_by', sa.UUID(), nullable=True),
+    sa.Column('joined_at', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.ForeignKeyConstraint(['household_id'], ['households.id'], name=op.f('fk_household_members_household_id_households'), ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['invited_by'], ['users.id'], name=op.f('fk_household_members_invited_by_users'), ondelete='SET NULL'),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_household_members_user_id_users'), ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_household_members')),
+    sa.UniqueConstraint('household_id', 'user_id', name='uq_household_members_household_user')
+    )
+    op.create_index('ix_household_members_invite_phone_hash', 'household_members', ['invite_phone_hash'], unique=False)
+    op.create_index('ix_household_members_user_id', 'household_members', ['user_id'], unique=False)
+    op.create_index('uq_household_members_one_owner', 'household_members', ['household_id'], unique=True, postgresql_where=sa.text("role = 'owner' AND status IN ('invited', 'active')"))
+    op.execute("ALTER TABLE households ENABLE ROW LEVEL SECURITY")
+    op.execute("ALTER TABLE household_members ENABLE ROW LEVEL SECURITY")
+
+
+def _family_down() -> None:
+    op.drop_index('uq_household_members_one_owner', table_name='household_members', postgresql_where=sa.text("role = 'owner' AND status IN ('invited', 'active')"))
+    op.drop_index('ix_household_members_user_id', table_name='household_members')
+    op.drop_index('ix_household_members_invite_phone_hash', table_name='household_members')
+    op.drop_table('household_members')
+    op.drop_table('households')
+
+
 def upgrade() -> None:
     _ingest_up()
     _rewards_up()
+    _family_up()
     _valuations_up()
     _insights_up()
 
@@ -248,5 +296,6 @@ def upgrade() -> None:
 def downgrade() -> None:
     _insights_down()
     _valuations_down()
+    _family_down()
     _rewards_down()
     _ingest_down()
