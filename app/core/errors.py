@@ -1,6 +1,6 @@
 """Consistent error envelope:
 
-    {"error": {"code": "not_found", "message": "...", "details": [...], "request_id": "..."}}
+{"error": {"code": "not_found", "message": "...", "details": [...], "request_id": "..."}}
 """
 
 from typing import Any
@@ -63,7 +63,11 @@ class DomainValidationError(AppError):
 
 
 def error_response(
-    request: Request, status: int, code: str, message: str, details: list[Any] | None = None,
+    request: Request,
+    status: int,
+    code: str,
+    message: str,
+    details: list[Any] | None = None,
     headers: dict[str, str] | None = None,
 ) -> JSONResponse:
     body = {
@@ -92,8 +96,7 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(RequestValidationError)
     async def _validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:
         details = [
-            {"loc": [str(p) for p in e["loc"]], "msg": e["msg"], "type": e["type"]}
-            for e in exc.errors()
+            {"loc": [str(p) for p in e["loc"]], "msg": e["msg"], "type": e["type"]} for e in exc.errors()
         ]
         return error_response(request, 422, "validation_error", "Request validation failed", details)
 

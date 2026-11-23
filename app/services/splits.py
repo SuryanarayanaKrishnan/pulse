@@ -98,24 +98,21 @@ def simplify_debts(balances: Mapping[UUID, int]) -> list[Transfer]:
     if sum(balances.values()) != 0:
         raise ValueError("Balances must sum to zero")
 
-    creditors = sorted(((m, b) for m, b in balances.items() if b > 0), key=lambda x: (-x[1], str(x[0])))
-    debtors = sorted(((m, -b) for m, b in balances.items() if b < 0), key=lambda x: (-x[1], str(x[0])))
-    cred = [list(c) for c in creditors]
-    debt = [list(d) for d in debtors]
+    cred = {m: b for m, b in balances.items() if b > 0}
+    debt = {m: -b for m, b in balances.items() if b < 0}
 
     transfers: list[Transfer] = []
     while cred and debt:
-        cred.sort(key=lambda x: (-x[1], str(x[0])))
-        debt.sort(key=lambda x: (-x[1], str(x[0])))
-        c, d = cred[0], debt[0]
-        amount = min(c[1], d[1])
-        transfers.append(Transfer(from_member=d[0], to_member=c[0], amount_minor=amount))
-        c[1] -= amount
-        d[1] -= amount
-        if c[1] == 0:
-            cred.pop(0)
-        if d[1] == 0:
-            debt.pop(0)
+        c = min(cred, key=lambda m: (-cred[m], str(m)))
+        d = min(debt, key=lambda m: (-debt[m], str(m)))
+        amount = min(cred[c], debt[d])
+        transfers.append(Transfer(from_member=d, to_member=c, amount_minor=amount))
+        cred[c] -= amount
+        debt[d] -= amount
+        if cred[c] == 0:
+            del cred[c]
+        if debt[d] == 0:
+            del debt[d]
     return transfers
 
 

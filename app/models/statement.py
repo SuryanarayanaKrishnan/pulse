@@ -29,9 +29,7 @@ class Statement(Base, TimestampMixin, SoftDeleteMixin):
     __table_args__ = (Index("ix_statements_user_id_period_end", "user_id", "period_end"),)
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     account_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("accounts.id", ondelete="CASCADE")
     )

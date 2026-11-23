@@ -54,9 +54,7 @@ class Transaction(Base, TimestampMixin, SoftDeleteMixin):
     )
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     account_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("accounts.id", ondelete="CASCADE")
     )
@@ -87,9 +85,7 @@ class RawIngest(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     channel: Mapped[TxnSource] = mapped_column(str_enum(TxnSource, "ingest_channel"))
     external_hash: Mapped[str] = mapped_column(String(64))
     payload: Mapped[JSONDict] = mapped_column(JSONType)

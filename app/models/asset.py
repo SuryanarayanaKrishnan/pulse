@@ -49,9 +49,7 @@ class Asset(Base, TimestampMixin, SoftDeleteMixin):
     __table_args__ = (Index("ix_assets_user_id", "user_id"),)
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     kind: Mapped[AssetKind] = mapped_column(str_enum(AssetKind, "asset_kind"))
     name: Mapped[str] = mapped_column(String(160))
     quantity: Mapped[Decimal | None] = mapped_column(Numeric(24, 8))
@@ -73,9 +71,7 @@ class Liability(Base, TimestampMixin, SoftDeleteMixin):
     __table_args__ = (Index("ix_liabilities_user_id", "user_id"),)
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     account_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("accounts.id", ondelete="SET NULL")
     )

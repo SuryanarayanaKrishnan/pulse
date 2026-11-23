@@ -13,7 +13,8 @@ _AMOUNT = re.compile(
 )
 _LAST4 = re.compile(r"(?:card|a/c|acct|account)[^\d]{0,20}(?:x+|\*+)?(\d{4})\b", re.IGNORECASE)
 _MERCHANT = re.compile(
-    r"\b(?:at|to|from)\s+(?!your\b)(?P<m>[A-Za-z0-9&'.\-* ]{2,40}?)(?=\s+(?:on|using|via|with|ref|avl|available)\b|[.,;]|$)",
+    r"\b(?:at|to|from)\s+(?!your\b)(?P<m>[A-Za-z0-9&'.\-* ]{2,40}?)"
+    r"(?=\s+(?:on|using|via|with|ref|avl|available)\b|[.,;]|$)",
     re.IGNORECASE,
 )
 _DEBIT = re.compile(r"\b(purchase|spent|debited|withdrawn|paid|payment of|charged)\b", re.IGNORECASE)
@@ -37,7 +38,9 @@ class GenericParser:
         if not credit and not debit:
             return None
         # Whichever keyword appears first wins ("Purchase ... refund policy" -> debit).
-        direction = Direction.credit if credit and (not debit or credit.start() < debit.start()) else Direction.debit
+        direction = (
+            Direction.credit if credit and (not debit or credit.start() < debit.start()) else Direction.debit
+        )
 
         currency = amount_m.group("cur").upper()
         currency = "AED" if currency.startswith("DH") else currency

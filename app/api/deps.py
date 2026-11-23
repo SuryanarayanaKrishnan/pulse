@@ -29,9 +29,7 @@ async def get_claims(
     return await verify_token(creds.credentials, settings)
 
 
-async def get_current_user(
-    claims: Annotated[TokenClaims, Depends(get_claims)], session: SessionDep
-) -> User:
+async def get_current_user(claims: Annotated[TokenClaims, Depends(get_claims)], session: SessionDep) -> User:
     """Resolve the Supabase user to our row, provisioning it on first sight."""
     user = await session.get(User, claims.sub)
     if user is None or user.deleted_at is not None:

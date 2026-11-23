@@ -13,8 +13,9 @@ CURRENCY_LEN = 3
 
 
 def pk_uuid() -> Mapped[uuid.UUID]:
-    return mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4,
-                         server_default=text("gen_random_uuid()"))
+    return mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=text("gen_random_uuid()")
+    )
 
 
 def str_enum(enum_cls: type[enum.Enum], name: str) -> Enum:

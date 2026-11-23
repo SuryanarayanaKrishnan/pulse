@@ -2,7 +2,12 @@ from collections.abc import AsyncIterator
 from uuid import uuid4
 
 from sqlalchemy import MetaData
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 from sqlalchemy.orm import DeclarativeBase
 
 from app.core.config import Settings, get_settings
@@ -32,7 +37,7 @@ def create_engine(settings: Settings) -> AsyncEngine:
         }
     kwargs["pool_size"] = settings.db_pool_size
     kwargs["max_overflow"] = settings.db_max_overflow
-    return create_async_engine(settings.database_url, connect_args=connect_args, **kwargs)  # type: ignore[arg-type]
+    return create_async_engine(settings.database_url, connect_args=connect_args, **kwargs)
 
 
 _engine: AsyncEngine | None = None

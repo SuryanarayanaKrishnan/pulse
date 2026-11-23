@@ -33,9 +33,7 @@ class UserCard(Base, TimestampMixin, SoftDeleteMixin):
     __table_args__ = (Index("ix_user_cards_user_id", "user_id"),)
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     catalog_card_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("cards_catalog.id", ondelete="RESTRICT")
     )

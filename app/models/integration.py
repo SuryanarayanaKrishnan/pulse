@@ -16,9 +16,7 @@ class EmailConnection(Base, TimestampMixin, SoftDeleteMixin):
     __table_args__ = (Index("ix_email_connections_user_id", "user_id"),)
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     provider: Mapped[str] = mapped_column(String(32))  # gmail | outlook | imap
     email: Mapped[str] = mapped_column(String(320))
     encrypted_refresh_token: Mapped[str] = mapped_column(Text)
@@ -35,8 +33,6 @@ class StatementPassword(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = pk_uuid()
-    user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
-    )
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     institution: Mapped[str] = mapped_column(String(80))
     encrypted_password: Mapped[str] = mapped_column(Text)
