@@ -22,6 +22,7 @@ from app.services.merchants import clean_descriptor
 from app.services.parsers.dates import DUBAI, at_date, to_dubai_date
 from app.services.parsers.statement_base import ParsedStatement
 from app.services.parsers.statements import parse_document
+from app.services.salary import record_salary
 from app.services.statements.documents import (
     DocumentError,
     PasswordInvalid,
@@ -306,6 +307,7 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
                 async with session.begin_nested():
                     session.add(txn)
                     await session.flush()
+                    await record_salary(session, txn)
             except IntegrityError:
                 txn = (
                     await session.execute(

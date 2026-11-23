@@ -20,6 +20,7 @@ from app.services.categorisation import CategoryResolver
 from app.services.institutions import institutions
 from app.services.parsers import ParsedTransaction, ParserRegistry
 from app.services.parsers import registry as default_registry
+from app.services.salary import record_salary
 from app.services.statements.processing import find_statement_transaction
 
 log = structlog.get_logger(__name__)
@@ -227,6 +228,8 @@ async def process_raw_ingest(
         row.parse_result = {"reason": "duplicate_transaction"}
         await session.commit()
         return row.parse_status
+    sms_text = " ".join(filter(None, [payload.get("title"), payload.get("raw_text")])) or None
+    await record_salary(session, txn, sms_text)
     row.transaction_id = txn.id
     row.parse_status = ParseStatus.parsed
     await session.commit()

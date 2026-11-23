@@ -41,7 +41,10 @@ class Budget(Base, TimestampMixin):
 
 class SalaryRecord(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "salary_records"
-    __table_args__ = (Index("ix_salary_records_user_id_received_on", "user_id", "received_on"),)
+    __table_args__ = (
+        Index("ix_salary_records_user_id_received_on", "user_id", "received_on"),
+        UniqueConstraint("transaction_id", name="uq_salary_records_transaction_id"),
+    )
 
     id: Mapped[uuid.UUID] = pk_uuid()
     user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
@@ -52,3 +55,9 @@ class SalaryRecord(Base, TimestampMixin, SoftDeleteMixin):
     amount_minor: Mapped[int] = mapped_column(BigInteger)
     currency: Mapped[str] = currency_col()
     received_on: Mapped[date] = mapped_column(Date)
+    # The credit this was detected from (one record per transaction; a dismissed record keeps the link
+    # so a re-scan does not resurrect it).
+    transaction_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("transactions.id", ondelete="CASCADE")
+    )
+    matched_by: Mapped[str | None] = mapped_column(String(20))  # which pattern fired: salary | payroll | wps

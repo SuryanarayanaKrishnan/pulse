@@ -201,13 +201,32 @@ def _rules_down() -> None:
         op.drop_column('merchant_rules', col)
 
 
+# --------------------------------------------------------------------------------------------
+# Salary detection
+# --------------------------------------------------------------------------------------------
+def _salary_up() -> None:
+    op.add_column('salary_records', sa.Column('transaction_id', sa.UUID(), nullable=True))
+    op.add_column('salary_records', sa.Column('matched_by', sa.String(length=20), nullable=True))
+    op.create_foreign_key(op.f('fk_salary_records_transaction_id_transactions'), 'salary_records', 'transactions', ['transaction_id'], ['id'], ondelete='CASCADE')
+    op.create_unique_constraint('uq_salary_records_transaction_id', 'salary_records', ['transaction_id'])
+
+
+def _salary_down() -> None:
+    op.drop_constraint('uq_salary_records_transaction_id', 'salary_records', type_='unique')
+    op.drop_constraint(op.f('fk_salary_records_transaction_id_transactions'), 'salary_records', type_='foreignkey')
+    op.drop_column('salary_records', 'matched_by')
+    op.drop_column('salary_records', 'transaction_id')
+
+
 def upgrade() -> None:
     _categories_up()
     _budgets_up()
     _rules_up()
+    _salary_up()
 
 
 def downgrade() -> None:
+    _salary_down()
     _rules_down()
     _budgets_down()
     _categories_down()

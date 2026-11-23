@@ -23,6 +23,7 @@ from app.services.categorisation import (
 )
 from app.services.pagination import decode_cursor, encode_cursor
 from app.services.rules import suggest_rule
+from app.services.salary import record_salary
 
 router = APIRouter(prefix="/transactions", tags=["transactions"])
 
@@ -112,6 +113,8 @@ async def create_transaction(
         txn.external_hash = hashlib.sha256(f"manual:{txn.external_hash}".encode()).hexdigest()
     session.add(txn)
     try:
+        await session.flush()
+        await record_salary(session, txn)
         await session.commit()
     except IntegrityError as exc:
         await session.rollback()
