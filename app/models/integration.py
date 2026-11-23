@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, Index, String, Text, UniqueConstraint
+from sqlalchemy import DateTime, ForeignKey, Index, String, Text, UniqueConstraint, text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -13,7 +13,17 @@ class EmailConnection(Base, TimestampMixin, SoftDeleteMixin):
     """Mailbox link used later to pull bank statements. Tokens are Fernet-encrypted."""
 
     __tablename__ = "email_connections"
-    __table_args__ = (Index("ix_email_connections_user_id", "user_id"),)
+    __table_args__ = (
+        Index("ix_email_connections_user_id", "user_id"),
+        Index(
+            "uq_email_connections_user_provider_email",
+            "user_id",
+            "provider",
+            "email",
+            unique=True,
+            postgresql_where=text("deleted_at IS NULL"),
+        ),
+    )
 
     id: Mapped[uuid.UUID] = pk_uuid()
     user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
@@ -22,6 +32,8 @@ class EmailConnection(Base, TimestampMixin, SoftDeleteMixin):
     encrypted_refresh_token: Mapped[str] = mapped_column(Text)
     scopes: Mapped[str | None] = mapped_column(Text)
     last_synced_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    status: Mapped[str] = mapped_column(String(16), server_default="active")  # active | needs_reauth
+    last_error: Mapped[str | None] = mapped_column(Text)
 
 
 class StatementPassword(Base, TimestampMixin):

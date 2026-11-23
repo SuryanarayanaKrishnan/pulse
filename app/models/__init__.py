@@ -5,6 +5,7 @@ from app.models.budget import Budget, SalaryRecord
 from app.models.card import CatalogCard, UserCard
 from app.models.category import Category, CategoryKind
 from app.models.integration import EmailConnection, StatementPassword
+from app.models.merchant_rule import MerchantRule
 from app.models.split import (
     Settlement,
     SplitExpense,
@@ -13,7 +14,7 @@ from app.models.split import (
     SplitShare,
     SplitType,
 )
-from app.models.statement import ParseStatus, ReconciliationStatus, Statement
+from app.models.statement import ParseStatus, ReconciliationStatus, Statement, StatementLine
 from app.models.transaction import Direction, RawIngest, Transaction, TxnSource
 from app.models.user import User
 
@@ -31,6 +32,7 @@ __all__ = [
     "EmailConnection",
     "Liability",
     "LiabilityKind",
+    "MerchantRule",
     "ParseStatus",
     "RawIngest",
     "ReconciliationStatus",
@@ -42,6 +44,7 @@ __all__ = [
     "SplitShare",
     "SplitType",
     "Statement",
+    "StatementLine",
     "StatementPassword",
     "Transaction",
     "TxnSource",
