@@ -235,6 +235,36 @@ filed under Salary). `GET /salary?months=12` returns `detected, currency, is_rec
   `can_mark_paid`, `can_confirm`, `can_cancel` for the caller; `GET /splits/settlements/awaiting-confirmation` lists what
   the caller must confirm. A member without an account is acted for by the settlement's creator.
 
+## Wallet capture and card rewards (migration 0004)
+
+### Wallet taps (Apple Pay / Google Pay / Samsung Wallet)
+`POST /v1/ingest/token` mints a per-user `pls_...` token (stored hashed; rotate by re-POSTing, `DELETE` revokes).
+A Shortcut / Tasker / Samsung routine then posts to `/v1/ingest/apple-shortcut`, `/google-pay` or
+`/samsung-wallet` with `Authorization: Bearer pls_...` (or `?token=`). The token only reaches ingest endpoints.
+Wallet taps are processed inline and the response carries the transaction and any rewards `nudge`.
+The same purchase seen by SMS, a wallet tap and the statement is stored once: a different-channel match within
+60 minutes and a compatible merchant is merged (`transactions.sources`), and a statement line locks the row.
+
+### Rewards engine
+`cards_catalog.reward_structure` is JSON: `unit` (cashback AED or points), `point_value_aed`, `base_rate`,
+`rules` (category and/or merchant match, `rate`, `monthly_cap_units`), `excluded_categories`,
+`min_monthly_spend_minor`, `fee_waiver_spend_minor`. A merchant rule beats a category rule beats the base rate;
+caps are per rule per statement cycle (cycle from the linked account's `statement_day`, else calendar month).
+The maths is pure and deterministic (`app/services/rewards.py`).
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /v1/cards/catalog` | Reference cards with `verified_on`, `source`, `data_status` |
+| `GET/POST /v1/cards`, `DELETE /v1/cards/{id}` | The user's cards, linked to a credit-card account |
+| `GET /v1/rewards/summary` | Per card: earned, cap used/remaining, min-spend and fee-waiver progress, cycle dates |
+| `POST /v1/rewards/best-card` | Rank the user's cards for a category/merchant and amount, cap headroom included |
+
+The seeded catalog (14 UAE cards) is illustrative and ships **unverified** (`verified_at` NULL, no source):
+treat figures as best-effort until someone checks them against the issuer and sets `verified_at` and
+`source_url`; the API reports `data_status: "unverified"` until then. The nudge (`near_cap` at 80%, `capped`
+at 100%) suggests another of the user's cards only when it earns more. Push delivery is a stub
+(`app/services/push.py`: `LoggingPush`; `FcmPush` is not implemented).
+
 ## Running locally
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).

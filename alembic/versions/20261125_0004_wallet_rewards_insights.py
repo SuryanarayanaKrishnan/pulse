@@ -62,9 +62,99 @@ def _ingest_down() -> None:
     op.drop_table('ingest_tokens')
 
 
+# --------------------------------------------------------------------------------------------
+# Rewards: seeded UAE card catalog. Figures are ILLUSTRATIVE, taken from memory of public product
+# pages, and ship UNVERIFIED (verified_at NULL) until someone checks them against the issuer's
+# current terms and sets verified_at + source_url. The API exposes data_status accordingly.
+# --------------------------------------------------------------------------------------------
+EXCL = ["fees", "cc_payment", "transfer", "rent", "education", "utilities"]
+
+
+def _card(issuer, name, network, fee, salary, unit, value, base, rules, **extra):
+    structure = {"unit": unit, "point_value_aed": value, "base_rate": base, "rules": rules,
+                 "excluded_categories": extra.pop("excluded", EXCL)}
+    structure.update(extra)
+    return {"issuer": issuer, "name": name, "network": network, "annual_fee_minor": fee,
+            "min_salary_minor": salary, "reward_structure": structure, "source_url": extra.get("url")}
+
+
+def _r(name, rate, categories=None, merchants=None, cap=None):
+    rule = {"name": name, "rate": rate}
+    if categories:
+        rule["categories"] = categories
+    if merchants:
+        rule["merchants"] = merchants
+    if cap is not None:
+        rule["monthly_cap_units"] = cap
+    return rule
+
+
+UAE_CARDS = [
+    _card("Emirates NBD", "Skywards Infinite", "visa", 0, 3000000, "points", 0.0357, 1.5,
+          [_r("Travel and Emirates", 3, ["travel"], ["emirates"]), _r("Dining", 2, ["dining"])]),
+    _card("Emirates NBD", "Go4it", "mastercard", 0, 500000, "points", 0.01, 1,
+          [_r("Online shopping", 2, ["shopping"], cap=2000)]),
+    _card("ADCB", "Lulu Platinum", "visa", 0, 500000, "points", 0.01, 1,
+          [_r("Lulu", 5, None, ["lulu"], cap=1000), _r("Groceries", 2, ["groceries"], cap=1000)]),
+    _card("ADCB", "Touchpoints Platinum", "visa", 0, 1000000, "points", 0.01, 1.5,
+          [_r("Dining", 3, ["dining"], cap=3000), _r("Fuel", 2, ["transport"], cap=1500)]),
+    _card("First Abu Dhabi Bank", "Cashback Card", "mastercard", 0, 800000, "cashback", 1, 0.01,
+          [_r("Groceries", 0.05, ["groceries"], cap=100), _r("Dining", 0.03, ["dining"], cap=100)]),
+    _card("Mashreq", "Cashback Credit Card", "visa", 0, 400000, "cashback", 1, 0.005,
+          [_r("Dining", 0.05, ["dining"], cap=300), _r("Entertainment", 0.05, ["entertainment"], cap=300)]),
+    _card("Mashreq", "Solitaire", "visa", 120000, 2500000, "points", 0.025, 1,
+          [_r("Dining and travel", 2, ["dining", "travel"])], fee_waiver_spend_minor=12000000),
+    _card("Mashreq", "Noon Card", "visa", 0, 500000, "cashback", 1, 0.005,
+          [_r("Noon", 0.06, None, ["noon"], cap=250)]),
+    _card("Dubai Islamic Bank", "Cashback Card", "visa", 0, 500000, "cashback", 1, 0.005,
+          [_r("Groceries", 0.03, ["groceries"], cap=150), _r("Fuel", 0.02, ["transport"], cap=100)]),
+    _card("RAKBANK", "Titanium Credit Card", "mastercard", 0, 500000, "cashback", 1, 0.01,
+          [_r("Dining", 0.05, ["dining"], cap=150), _r("Groceries", 0.03, ["groceries"], cap=150)],
+          min_monthly_spend_minor=200000),
+    _card("HSBC", "Cashback Credit Card", "visa", 0, 800000, "cashback", 1, 0.01,
+          [_r("Dining", 0.05, ["dining"], cap=100), _r("Groceries", 0.03, ["groceries"], cap=100)]),
+    _card("Emirates Islamic", "Skywards Platinum", "visa", 0, 1500000, "points", 0.0357, 1,
+          [_r("Dining", 2, ["dining"]), _r("Travel", 2, ["travel"])]),
+    _card("Liv", "Liv Credit Card", "visa", 0, 0, "cashback", 1, 0.005,
+          [_r("Dining", 0.03, ["dining"], cap=100), _r("Entertainment", 0.03, ["entertainment"], cap=100)]),
+    _card("Standard Chartered", "Manhattan Rewards", "visa", 0, 1000000, "points", 0.01, 1,
+          [_r("Dining", 2, ["dining"], cap=2000), _r("Groceries", 2, ["groceries"], cap=2000)]),
+]
+
+
+def _rewards_up() -> None:
+    import json
+
+    bind = op.get_bind()
+    for card in UAE_CARDS:
+        bind.execute(
+            sa.text(
+                "INSERT INTO cards_catalog (issuer, name, network, annual_fee_minor, min_salary_minor, "
+                "reward_structure, perks, source_url, verified_at) VALUES (:issuer, :name, :network, "
+                ":fee, :salary, CAST(:rs AS jsonb), '{}'::jsonb, NULL, NULL) "
+                "ON CONFLICT (issuer, name) DO NOTHING"
+            ),
+            {"issuer": card["issuer"], "name": card["name"], "network": card["network"],
+             "fee": card["annual_fee_minor"], "salary": card["min_salary_minor"],
+             "rs": json.dumps({k: v for k, v in card["reward_structure"].items() if k != "url"})},
+        )
+
+
+def _rewards_down() -> None:
+    bind = op.get_bind()
+    for card in UAE_CARDS:
+        bind.execute(
+            sa.text("DELETE FROM cards_catalog WHERE issuer = :i AND name = :n AND verified_at IS NULL "
+                    "AND id NOT IN (SELECT catalog_card_id FROM user_cards)"),
+            {"i": card["issuer"], "n": card["name"]},
+        )
+
+
 def upgrade() -> None:
     _ingest_up()
+    _rewards_up()
 
 
 def downgrade() -> None:
+    _rewards_down()
     _ingest_down()

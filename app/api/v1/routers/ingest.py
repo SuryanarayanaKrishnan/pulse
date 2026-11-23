@@ -13,7 +13,8 @@ from app.models.transaction import RawIngest, Transaction, TxnSource
 from app.schemas.ingest import IngestOut, IngestRequest, WalletIngestOut, WalletTap
 from app.services.ingest import process_raw_ingest, store_raw
 from app.services.ingest_tokens import rotate_token
-from app.services.rewards_nudge import nudge_for_transaction
+from app.services.push import get_push_sender
+from app.services.rewards_service import nudge_for_transaction
 
 router = APIRouter(prefix="/ingest", tags=["ingest"])
 log = structlog.get_logger(__name__)
@@ -71,6 +72,8 @@ async def _wallet(
     row = fresh
     txn = await session.get(Transaction, row.transaction_id) if row.transaction_id else None
     nudge = await nudge_for_transaction(session, user.id, txn) if txn is not None else None
+    if nudge is not None:
+        await get_push_sender().send(user.id, "Card tip", nudge["message"], {"type": "rewards_nudge"})
     return WalletIngestOut(
         id=row.id,
         duplicate=False,
