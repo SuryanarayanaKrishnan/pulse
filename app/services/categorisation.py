@@ -15,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.category import Category
 from app.models.merchant_rule import MerchantRule
 from app.models.transaction import Direction, Transaction
-from app.services.merchants import guess_category_name, match_entry, merchant_key, normalize_merchant
+from app.services.merchants import guess_category_slug, match_entry, merchant_key, normalize_merchant
 
 
 @dataclass(frozen=True, slots=True)
@@ -36,10 +36,10 @@ class CategoryResolver:
             select(MerchantRule.merchant_key, MerchantRule.category_id).where(MerchantRule.user_id == user_id)
         )
         system_rows = await session.execute(
-            select(Category.name, Category.id).where(Category.user_id.is_(None))
+            select(Category.slug, Category.id).where(Category.user_id.is_(None), Category.slug.is_not(None))
         )
         rules = {key: cat_id for key, cat_id in rule_rows}
-        system = {name: cat_id for name, cat_id in system_rows}
+        system = {slug: cat_id for slug, cat_id in system_rows if slug}
         return cls(rules, system)
 
     def enrich(self, merchant_raw: str | None, direction: Direction | None = None) -> Enrichment:
@@ -47,9 +47,9 @@ class CategoryResolver:
         key = merchant_key(normalized)
         if key and key in self.rules:
             return Enrichment(normalized, self.rules[key], "rule")
-        name = guess_category_name(merchant_raw, direction)
-        if name and name in self.system_categories:
-            return Enrichment(normalized, self.system_categories[name], "dictionary")
+        slug = guess_category_slug(merchant_raw, direction)
+        if slug and slug in self.system_categories:
+            return Enrichment(normalized, self.system_categories[slug], "dictionary")
         return Enrichment(normalized, None, None)
 
 

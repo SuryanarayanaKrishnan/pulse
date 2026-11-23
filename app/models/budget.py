@@ -3,12 +3,14 @@ from datetime import date
 
 from sqlalchemy import (
     BigInteger,
+    Boolean,
     CheckConstraint,
     Date,
     ForeignKey,
     Index,
     String,
     UniqueConstraint,
+    text,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -33,6 +35,8 @@ class Budget(Base, TimestampMixin):
     month: Mapped[date] = mapped_column(Date)  # first day of the month
     limit_minor: Mapped[int] = mapped_column(BigInteger)
     currency: Mapped[str] = currency_col()
+    # Carry last month's unspent amount into this month's available amount.
+    rollover: Mapped[bool] = mapped_column(Boolean, server_default=text("false"))
 
 
 class SalaryRecord(Base, TimestampMixin, SoftDeleteMixin):

@@ -30,7 +30,7 @@ async def test_manual_txn_is_categorised_by_dictionary(new_user):
     acc = await mk_account(api)
     t = await _create_txn(api, acc["id"], "TALABAT DUBAI AE")
     assert t["merchant_normalized"] == "Talabat"
-    assert t["category_id"] == await _category_id(api, "Dining")
+    assert t["category_id"] == await _category_id(api, "Dining & Delivery")
     explicit = await _create_txn(
         api,
         acc["id"],
