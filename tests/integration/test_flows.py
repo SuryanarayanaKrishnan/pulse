@@ -304,7 +304,7 @@ async def test_ingest_dedupe_enqueue_and_processing(new_user, queue, sessionmake
         "sms",
         acc["id"],
     )
-    assert t["merchant_normalized"] == "Carrefour Moe"
+    assert t["merchant_normalized"] == "Carrefour"
 
     # OTPs are skipped; unknown card goes to needs_review (no transaction).
     otp = (await api.post("/v1/ingest/notification", {"raw_text": "Your OTP is 123456"})).json()

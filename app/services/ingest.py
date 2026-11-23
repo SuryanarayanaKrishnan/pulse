@@ -16,7 +16,7 @@ from app.models.account import Account
 from app.models.statement import ParseStatus
 from app.models.transaction import Direction, RawIngest, Transaction, TxnSource
 from app.schemas.ingest import IngestRequest
-from app.services.merchants import normalize_merchant
+from app.services.categorisation import CategoryResolver
 from app.services.parsers import ParsedTransaction, ParserRegistry
 from app.services.parsers import registry as default_registry
 
@@ -156,6 +156,9 @@ async def process_raw_ingest(
         await session.commit()
         return row.parse_status
 
+    enriched = (await CategoryResolver.load(session, row.user_id)).enrich(
+        parsed.merchant_raw, parsed.direction
+    )
     txn = Transaction(
         user_id=row.user_id,
         account_id=account_id,
@@ -163,7 +166,8 @@ async def process_raw_ingest(
         currency=parsed.currency,
         direction=parsed.direction,
         merchant_raw=parsed.merchant_raw,
-        merchant_normalized=normalize_merchant(parsed.merchant_raw),
+        merchant_normalized=enriched.merchant_normalized,
+        category_id=enriched.category_id,
         posted_at=parsed.posted_at or received_at or row.created_at,
         source=row.channel,
         external_hash=row.external_hash,

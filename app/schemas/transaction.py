@@ -24,6 +24,11 @@ class TransactionUpdate(BaseModel):
     category_id: UUID | None = None
     merchant_normalized: str | None = Field(default=None, max_length=160)
     notes: str | None = Field(default=None, max_length=2000)
+    # When the category is set, remember it as "always categorise this merchant as X".
+    remember_merchant: bool = True
+    apply_to_existing: bool = Field(
+        default=False, description="Also re-categorise past transactions of this merchant"
+    )
 
 
 class TransactionOut(Timestamps):
