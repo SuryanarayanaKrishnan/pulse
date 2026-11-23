@@ -10,6 +10,7 @@ from app.services.storage import get_storage
 from app.workers.tasks import (
     process_ingest,
     process_statement,
+    refresh_valuations,
     snapshot_net_worth,
     sync_all_gmail_connections,
     sync_gmail_connection,
@@ -36,6 +37,8 @@ class WorkerSettings:
         cron(sync_all_gmail_connections, hour={0, 6, 12, 18}, minute={5}, run_at_startup=False),
         # 20:30 UTC = 00:30 Dubai: close the day's net-worth snapshot.
         cron(snapshot_net_worth, hour={20}, minute={30}, run_at_startup=False),
+        # Gold / FX / property index every 6 hours, offset from the Gmail sync.
+        cron(refresh_valuations, hour={1, 7, 13, 19}, minute={20}, run_at_startup=False),
     ]
     on_startup = startup
     on_shutdown = shutdown

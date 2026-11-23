@@ -161,12 +161,12 @@ async def test_assets_liabilities_net_worth(new_user):
     )
     await api.post("/v1/liabilities", {"kind": "personal_loan", "name": "Loan", "outstanding_minor": 500_000})
     nw = (await api.get("/v1/net-worth")).json()
-    assert nw["total_assets_minor"] == 3_400_000 and nw["net_worth_minor"] == 2_900_000
-    assert nw["unconverted_currencies"] == ["USD"]
-    nw = (await api.get("/v1/net-worth?usd_rate=3.6725")).json()
+    # USD is converted at the fixed AED peg when no live rate has been cached
     assert nw["total_assets_minor"] == 3_400_000 + 367_250 and nw["unconverted_currencies"] == []
+    nw = (await api.get("/v1/net-worth?usd_rate=4")).json()  # an explicit rate wins
+    assert nw["total_assets_minor"] == 3_400_000 + 400_000
     await api.delete(f"/v1/assets/{a2['id']}")
-    assert (await api.get("/v1/net-worth")).json()["total_assets_minor"] == 2_400_000
+    assert (await api.get("/v1/net-worth")).json()["total_assets_minor"] == 2_400_000 + 367_250
     assert (await api.get("/v1/assets")).json()[0]["meta"] == {"purity": "24k"}
 
 

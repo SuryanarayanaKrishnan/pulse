@@ -6,6 +6,7 @@ from app.models.card import CatalogCard, UserCard
 from app.models.category import Category, CategoryKind, CategoryPreference
 from app.models.insights import NetWorthSnapshot, RecurringReview, SavingsGoal
 from app.models.integration import EmailConnection, IngestToken, StatementPassword
+from app.models.market import MarketQuote
 from app.models.merchant_rule import MerchantRule
 from app.models.split import (
     Settlement,
@@ -37,6 +38,7 @@ __all__ = [
     "IngestToken",
     "Liability",
     "LiabilityKind",
+    "MarketQuote",
     "MerchantRule",
     "NetWorthSnapshot",
     "RecurringReview",

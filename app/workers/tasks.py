@@ -112,3 +112,21 @@ async def snapshot_net_worth(ctx: dict[str, Any]) -> dict[str, int]:
             log.exception("net_worth_snapshot_failed", user_id=str(uid))
             failed += 1
     return {"snapshotted": done, "failed": failed}
+
+
+async def refresh_valuations(ctx: dict[str, Any]) -> dict[str, Any]:
+    """arq cron: refresh gold, FX and property-index quotes, then revalue automatically valued assets.
+    Source failures keep the previous quotes; assets then fall back to their manual value once stale."""
+    from app.services.valuations.providers import get_providers
+    from app.services.valuations.service import refresh_all
+
+    settings = get_settings()
+    async with httpx.AsyncClient(timeout=httpx.Timeout(settings.valuation_timeout_seconds)) as client:
+        providers = ctx.get("valuation_providers") or get_providers(client)
+        async with ctx["session_factory"]() as session:
+            rep = await refresh_all(session, providers)
+    log.info("valuations_refreshed", gold=rep.gold, fx=rep.fx, property_index=rep.property_index)
+    return {
+        "gold": rep.gold, "fx": rep.fx, "property_index": rep.property_index,
+        "assets_revalued": rep.assets_revalued, "assets_unvalued": rep.assets_unvalued, "errors": rep.errors,
+    }  # fmt: skip

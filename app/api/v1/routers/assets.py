@@ -20,13 +20,28 @@ from app.schemas.asset import (
     LiabilityUpdate,
     NetWorthOut,
 )
-from app.services.networth import AssetInput, LiabilityInput, compute_net_worth
+from app.services.networth import LiabilityInput, compute_net_worth
+from app.services.valuations.service import (
+    asset_inputs,
+    effective,
+    fx_rates_for,
+    load_quote_book,
+    revalue_asset,
+)
 
 router = APIRouter(tags=["assets"])
 
 
 def _out(asset: Asset) -> AssetOut:
-    return AssetOut.model_validate(asset)
+    eff = effective(asset)
+    return AssetOut.model_validate(asset).model_copy(
+        update={
+            "current_value_minor": eff.value_minor,
+            "value_basis": eff.basis,
+            "last_updated": eff.last_updated,
+            "valuation_note": eff.note,
+        }
+    )
 
 
 @router.get("/assets", response_model=list[AssetOut])
@@ -43,6 +58,7 @@ async def create_asset(payload: AssetCreate, user: CurrentUser, session: Session
     if asset.manual_value_minor is not None:
         asset.valued_at = datetime.now(UTC)
     session.add(asset)
+    revalue_asset(asset, await load_quote_book(session))  # from cached quotes: no network on the request path
     await session.commit()
     await session.refresh(asset)
     return _out(asset)
@@ -64,6 +80,7 @@ async def update_asset(
     apply_updates(asset, data)
     if "manual_value_minor" in data:
         asset.valued_at = datetime.now(UTC)
+    revalue_asset(asset, await load_quote_book(session))
     await session.commit()
     await session.refresh(asset)
     return _out(asset)
@@ -130,24 +147,32 @@ async def net_worth(
     user: CurrentUser,
     session: SessionDep,
     usd_rate: Annotated[
-        Decimal | None, Query(gt=0, description="AED per 1 USD; omit to exclude USD items")
+        Decimal | None, Query(gt=0, description="AED per 1 USD; omit to use the cached rate (AED peg 3.6725)")
     ] = None,
 ) -> NetWorthOut:
-    assets = (
-        await session.execute(select(Asset).where(Asset.user_id == user.id, Asset.deleted_at.is_(None)))
-    ).scalars()
+    assets = list(
+        (
+            await session.execute(select(Asset).where(Asset.user_id == user.id, Asset.deleted_at.is_(None)))
+        ).scalars()
+    )
     liabilities = (
         await session.execute(
             select(Liability).where(Liability.user_id == user.id, Liability.deleted_at.is_(None))
         )
     ).scalars()
     base = user.default_currency
+    book = await load_quote_book(session)
     result = compute_net_worth(
-        [AssetInput(a.kind.value, a.currency, a.manual_value_minor, a.cost_basis_minor) for a in assets],
+        asset_inputs(assets),
         [LiabilityInput(x.kind.value, x.currency, x.outstanding_minor) for x in liabilities],
         base_currency=base,
-        fx_rates={"USD": usd_rate} if usd_rate and base != "USD" else None,
+        fx_rates=fx_rates_for(base, book, usd_rate),
     )
+    used = {
+        c: book.fx[c]
+        for c in book.fx
+        if c in {a.currency for a in assets} | {x.currency for x in liabilities}
+    }
     return NetWorthOut(
         base_currency=result.base_currency,
         total_assets_minor=result.total_assets_minor,
@@ -156,4 +181,6 @@ async def net_worth(
         assets_by_kind=result.assets_by_kind,
         liabilities_by_kind=result.liabilities_by_kind,
         unconverted_currencies=result.unconverted_currencies,
+        fx_rates={c: str(v[0]) for c, v in used.items()},
+        fx_last_updated=max((v[1] for v in used.values()), default=None),
     )

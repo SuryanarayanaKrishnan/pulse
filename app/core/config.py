@@ -55,6 +55,13 @@ class Settings(BaseSettings):
     gmail_sync_overlap_days: int = 3
     gmail_max_messages_per_sync: int = 100
 
+    # --- live valuations (gold, FX, property index); failures always fall back to the manual value ---
+    gold_provider: Literal["goldapi", "none"] = "goldapi"
+    fx_provider: Literal["open_er_api", "peg", "none"] = "open_er_api"
+    # JSON: {"dubai_apartments": {"2022-01-01": 100, "2026-01-01": 148.5}}. No free property API is wired in.
+    property_index_json: str = ""
+    valuation_timeout_seconds: float = 10.0
+
     @field_validator("cors_origins", "fernet_keys", mode="before")
     @classmethod
     def _split_csv(cls, v: object) -> object:

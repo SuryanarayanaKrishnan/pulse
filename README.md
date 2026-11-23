@@ -300,6 +300,31 @@ variable. Flags: `price_increase` (latest charge at least 3% and AED 1 above a s
 long passed). A loan with an EMI and due date replaces the matching series. Limitations: AED only; merchant
 grouping relies on normalised names; "forgotten" is a prompt to review, not a claim of non-use.
 
+## Live valuations (migration 0004)
+
+Gold, FX and a property index feed asset values; every source can fail and the app then shows the user's own
+manual value. Nothing on the request path calls the network: a cron refreshes a `market_quotes` cache and
+requests only read it.
+
+* **Sources behind interfaces** (`app/services/valuations/providers.py`): `GoldProvider` (gold-api.com, USD per
+  troy ounce), `FxProvider` (open.er-api.com, or the fixed AED/USD peg 3.6725 for USD only),
+  `PropertyIndexProvider` (index levels from `PROPERTY_INDEX_JSON`; no free property API is wired in). The two
+  HTTP endpoints are key-less free services written from their public docs and are **not exercised by the tests**
+  (fakes and a mock transport are): confirm them against the live services before relying on them. Choose with
+  `GOLD_PROVIDER` (`goldapi|none`), `FX_PROVIDER` (`open_er_api|peg|none`).
+* **Cron** `refresh_valuations` (arq, 01/07/13/19:20 UTC): fetch quotes (one source failing never blocks the
+  others, old quotes are kept), then revalue assets. `snapshot_net_worth` runs daily at 20:30 UTC.
+* **Assets** opt in with `valuation_source`: `market` for gold (needs `quantity`, `unit` g/kg/oz/tola and
+  `meta.purity` such as `22k` or `916`) and `estimate` for real estate (`meta.index`, plus `meta.base_value_minor`
+  and `meta.base_date` or `cost_basis_minor` and `acquired_on`; value = base x latest index / index at base date).
+  Gold is a **spot** value without making charges or dealer spread; property is an index estimate, not a valuation.
+* Asset responses add `current_value_minor`, `value_basis` (`market|estimate|manual|cost_basis|unknown`),
+  `last_updated` (age of the data behind the value) and `valuation_note` (how it was derived, or why it fell back).
+  Automatic values older than 3 days fall back to the manual value (kept in `manual_value_minor`).
+* `GET /v1/market/quotes`: gold per gram by purity, FX rates and property indices with `live|stale|unavailable`.
+* `GET /v1/net-worth` now converts foreign currencies with the cached FX rates (USD at the peg when none is
+  cached); an explicit `?usd_rate=` still wins. The response lists `fx_rates` used and `fx_last_updated`.
+
 ## Running locally
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).

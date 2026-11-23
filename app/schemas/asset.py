@@ -38,6 +38,17 @@ class AssetUpdate(BaseModel):
 
 class AssetOut(AssetBase, Timestamps):
     valued_at: datetime | None = None
+    current_value_minor: int | None = Field(default=None, description="Value used for net worth")
+    value_basis: str = Field(
+        default="unknown", description="market | estimate | manual | cost_basis | unknown"
+    )
+    last_updated: datetime | None = Field(
+        default=None,
+        description="When the value in use was last refreshed (market data time, or manual entry)",
+    )
+    valuation_note: str | None = Field(
+        default=None, description="How the value was derived, or why it fell back to the manual value"
+    )
 
 
 class LiabilityBase(BaseModel):
@@ -78,5 +89,9 @@ class NetWorthOut(BaseModel):
     total_liabilities_minor: int
     net_worth_minor: int
     assets_by_kind: dict[str, int]
+    fx_rates: dict[str, str] = Field(
+        default_factory=dict, description="AED per unit of each foreign currency used"
+    )
+    fx_last_updated: datetime | None = None
     liabilities_by_kind: dict[str, int]
     unconverted_currencies: list[str]

@@ -21,12 +21,13 @@ from app.services import goals as goal_math
 from app.services import safe_to_spend as sts
 from app.services.balances import Balance, account_balances
 from app.services.merchants import merchant_key
-from app.services.networth import AssetInput, LiabilityInput, compute_net_worth
+from app.services.networth import LiabilityInput, compute_net_worth
 from app.services.parsers.dates import DUBAI, to_dubai_date
 from app.services.recurring import add_months
 from app.services.recurring_service import detect_for_user, upcoming_items
 from app.services.rewards_service import category_slugs
 from app.services.salary import Payment, summarise, user_records
+from app.services.valuations.service import asset_inputs, fx_rates_for, load_quote_book
 
 LIQUID_TYPES = (AccountType.bank, AccountType.cash, AccountType.wallet)
 
@@ -382,9 +383,11 @@ async def snapshot_values(session: AsyncSession, user_id: UUID) -> tuple[int, in
         .scalars()
         .all()
     )
+    book = await load_quote_book(session)
     nw = compute_net_worth(
-        [AssetInput(a.kind.value, a.currency, a.manual_value_minor, a.cost_basis_minor) for a in assets],
+        asset_inputs(list(assets)),
         [LiabilityInput(x.kind.value, x.currency, x.outstanding_minor) for x in liabilities],
+        fx_rates=fx_rates_for("AED", book),
     )
     balances = await account_balances(session, user_id)
     accounts_minor = liquid_total(balances).total_minor or 0

@@ -62,6 +62,10 @@ class Asset(Base, TimestampMixin, SoftDeleteMixin):
     )
     valued_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     acquired_on: Mapped[date | None] = mapped_column(Date)
+    # Latest automatic valuation (gold spot, indexed property). The manual value stays as the fallback.
+    market_value_minor: Mapped[int | None] = mapped_column(BigInteger)
+    market_valued_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))  # age of the data used
+    valuation_note: Mapped[str | None] = mapped_column(String(240))
     # kind-specific data: {"ticker": "EMAAR"}, {"purity": "22k"}, {"maturity_date": ...}
     meta: Mapped[JSONDict] = mapped_column("metadata", JSONType, server_default="{}")
 

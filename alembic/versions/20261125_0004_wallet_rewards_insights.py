@@ -212,13 +212,41 @@ def _insights_down() -> None:
     op.drop_table('net_worth_snapshots')
 
 
+def _valuations_up() -> None:
+    op.create_table('market_quotes',
+    sa.Column('id', sa.UUID(), server_default=sa.text('gen_random_uuid()'), nullable=False),
+    sa.Column('symbol', sa.String(length=60), nullable=False),
+    sa.Column('quote_date', sa.Date(), nullable=False),
+    sa.Column('value', sa.Numeric(precision=24, scale=8), nullable=False),
+    sa.Column('source', sa.String(length=40), nullable=False),
+    sa.Column('fetched_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_market_quotes')),
+    sa.UniqueConstraint('symbol', 'quote_date', name='uq_market_quotes_symbol_date')
+    )
+    op.create_index('ix_market_quotes_symbol', 'market_quotes', ['symbol'], unique=False)
+    op.add_column('assets', sa.Column('market_value_minor', sa.BigInteger(), nullable=True))
+    op.add_column('assets', sa.Column('market_valued_at', sa.DateTime(timezone=True), nullable=True))
+    op.add_column('assets', sa.Column('valuation_note', sa.String(length=240), nullable=True))
+    op.execute("ALTER TABLE market_quotes ENABLE ROW LEVEL SECURITY")
+
+
+def _valuations_down() -> None:
+    op.drop_column('assets', 'valuation_note')
+    op.drop_column('assets', 'market_valued_at')
+    op.drop_column('assets', 'market_value_minor')
+    op.drop_index('ix_market_quotes_symbol', table_name='market_quotes')
+    op.drop_table('market_quotes')
+
+
 def upgrade() -> None:
     _ingest_up()
     _rewards_up()
+    _valuations_up()
     _insights_up()
 
 
 def downgrade() -> None:
     _insights_down()
+    _valuations_down()
     _rewards_down()
     _ingest_down()
