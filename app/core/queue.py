@@ -4,6 +4,7 @@ from typing import Any, Protocol
 from arq import create_pool
 from arq.connections import ArqRedis, RedisSettings
 
+from app.core.cloudtasks import CloudTasksQueue
 from app.core.config import get_settings
 
 
@@ -12,7 +13,7 @@ class QueuePool(Protocol):
     async def ping(self) -> Any: ...
 
 
-_pool: ArqRedis | None = None
+_pool: ArqRedis | CloudTasksQueue | None = None
 
 
 def redis_settings() -> RedisSettings:
@@ -22,7 +23,11 @@ def redis_settings() -> RedisSettings:
 async def get_queue() -> QueuePool:
     global _pool
     if _pool is None:
-        _pool = await create_pool(redis_settings())
+        settings = get_settings()
+        if settings.queue_backend == "cloudtasks":
+            _pool = CloudTasksQueue(settings)
+        else:
+            _pool = await create_pool(redis_settings())
     return _pool  # type: ignore[return-value]
 
 
