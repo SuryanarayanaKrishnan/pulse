@@ -4,6 +4,7 @@ from app.api.v1.routers import (
     accounts,
     assets,
     budgets,
+    email_connections,
     ingest,
     me,
     merchant_rules,
@@ -19,11 +20,13 @@ for module in (
     accounts,
     transactions,
     budgets,
+    email_connections,
     assets,
     splits,
     ingest,
     merchant_rules,
     statements,
     statement_passwords,
+    email_connections,
 ):
     api_router.include_router(module.router)

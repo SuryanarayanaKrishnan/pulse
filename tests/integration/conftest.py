@@ -17,12 +17,15 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
+from app.api.v1.routers.email_connections import get_http_client
+from app.core.config import get_settings
 from app.core.crypto import Encryptor, generate_key, get_encryptor
 from app.core.db import get_session
 from app.core.queue import get_queue, get_queue_or_none
 from app.main import create_app
 from app.services.storage import LocalStorage, get_storage
 from tests.conftest import FakeQueue
+from tests.fake_google import FakeGoogle
 
 TEST_DB = os.environ.get("TEST_DATABASE_URL")
 
@@ -63,6 +66,11 @@ def storage(tmp_path: Path) -> LocalStorage:
 
 
 @pytest.fixture
+def google() -> FakeGoogle:
+    return FakeGoogle()
+
+
+@pytest.fixture
 def encryptor() -> Encryptor:
     return Encryptor([generate_key()])
 
@@ -81,6 +89,10 @@ class Api:
 
     async def patch(self, url: str, json: Any = None):
         return await self.c.patch(url, json=json, headers=self.h)
+
+    async def raw_get(self, url: str, **kw: Any):
+        """Unauthenticated GET (OAuth callback)."""
+        return await self.c.get(url, **kw)
 
     async def put(self, url: str, json: Any = None):
         return await self.c.put(url, json=json, headers=self.h)
@@ -104,6 +116,7 @@ async def new_user(
     make_token: Callable[..., str],
     storage: LocalStorage,
     encryptor: Encryptor,
+    google: FakeGoogle,
 ) -> AsyncIterator[Callable[[], Api]]:
     app = create_app()
 
@@ -119,6 +132,20 @@ async def new_user(
     app.dependency_overrides[get_queue_or_none] = _queue
     app.dependency_overrides[get_storage] = lambda: storage
     app.dependency_overrides[get_encryptor] = lambda: encryptor
+    gmail_settings = get_settings().model_copy(
+        update={
+            "google_client_id": "cid.apps.googleusercontent.com",
+            "google_client_secret": "csecret",
+            "google_redirect_uri": "https://api.example.com/v1/email-connections/gmail/callback",
+            "oauth_state_secret": "t" * 40,
+        }
+    )
+    app.dependency_overrides[get_settings] = lambda: gmail_settings
+
+    async def _http() -> AsyncIterator[AsyncClient]:
+        yield google.client()
+
+    app.dependency_overrides[get_http_client] = _http
     client = AsyncClient(transport=ASGITransport(app=app), base_url="http://test")
 
     def _new() -> Api:
