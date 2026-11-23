@@ -30,6 +30,31 @@ class Settings(BaseSettings):
 
     fernet_keys: Annotated[list[str], NoDecode] = []
 
+    # --- file storage (statement PDFs) ---
+    storage_backend: Literal["local", "s3"] = "local"
+    storage_local_dir: str = "./var/storage"
+    # Supabase Storage exposes an S3-compatible endpoint:
+    #   https://<ref>.supabase.co/storage/v1/s3  (region e.g. eu-central-1)
+    s3_endpoint_url: str = ""
+    s3_bucket: str = "statements"
+    s3_region: str = "us-east-1"
+    s3_access_key_id: str = ""
+    s3_secret_access_key: str = ""
+    max_upload_bytes: int = 15 * 1024 * 1024
+
+    # --- Gmail OAuth (statement ingestion) ---
+    google_client_id: str = ""
+    google_client_secret: str = ""
+    # Must be registered in the Google Cloud console, e.g. https://api.example.com/v1/email-connections/gmail/callback
+    google_redirect_uri: str = ""
+    # Where to send the browser after the callback (app deep link / web page). Empty => JSON response.
+    oauth_success_redirect: str = ""
+    # HMAC key for the OAuth `state` parameter; falls back to the first Fernet key.
+    oauth_state_secret: str = ""
+    gmail_initial_lookback_days: int = 180
+    gmail_sync_overlap_days: int = 3
+    gmail_max_messages_per_sync: int = 100
+
     @field_validator("cors_origins", "fernet_keys", mode="before")
     @classmethod
     def _split_csv(cls, v: object) -> object:
@@ -45,6 +70,10 @@ class Settings(BaseSettings):
             if v.startswith(prefix):
                 return "postgresql+asyncpg://" + v[len(prefix) :]
         return v
+
+    @property
+    def state_secret(self) -> str:
+        return self.oauth_state_secret or (self.fernet_keys[0] if self.fernet_keys else "")
 
     @property
     def is_production(self) -> bool:
