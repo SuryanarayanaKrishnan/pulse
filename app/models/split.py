@@ -27,6 +27,18 @@ class SplitType(enum.StrEnum):
     percent = "percent"
 
 
+class SettlementMethod(enum.StrEnum):
+    aani = "aani"
+    cash = "cash"
+    bank_transfer = "bank_transfer"
+    other = "other"
+
+
+class SettlementStatus(enum.StrEnum):
+    pending = "pending"  # waiting for the payee to confirm the money arrived
+    confirmed = "confirmed"  # counts towards balances
+
+
 class SplitGroup(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "split_groups"
 
@@ -45,6 +57,7 @@ class SplitMember(Base, TimestampMixin):
     __table_args__ = (
         UniqueConstraint("group_id", "user_id", name="uq_split_members_group_id_user_id"),
         Index("ix_split_members_user_id", "user_id"),
+        Index("ix_split_members_phone_hash", "phone_hash"),
     )
 
     id: Mapped[uuid.UUID] = pk_uuid()
@@ -56,6 +69,8 @@ class SplitMember(Base, TimestampMixin):
     )
     display_name: Mapped[str] = mapped_column(String(120))
     email: Mapped[str | None] = mapped_column(String(320))
+    phone_e164: Mapped[str | None] = mapped_column(String(16))
+    phone_hash: Mapped[str | None] = mapped_column(String(64))
 
 
 class SplitExpense(Base, TimestampMixin, SoftDeleteMixin):
@@ -126,3 +141,18 @@ class Settlement(Base, TimestampMixin, SoftDeleteMixin):
     currency: Mapped[str] = currency_col()
     settled_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     note: Mapped[str | None] = mapped_column(String(200))
+    method: Mapped[SettlementMethod] = mapped_column(
+        str_enum(SettlementMethod, "settlement_method"), server_default="other"
+    )
+    status: Mapped[SettlementStatus] = mapped_column(
+        str_enum(SettlementStatus, "settlement_status"), server_default="confirmed"
+    )
+    # Payer says "I paid" (Aani happens in the bank app, outside Pulse); the payee confirms receipt.
+    marked_paid_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    marked_paid_by: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL")
+    )
+    confirmed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    confirmed_by: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL")
+    )

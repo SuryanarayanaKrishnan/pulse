@@ -6,9 +6,11 @@ from sqlalchemy import exists, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import CurrentUser, SessionDep
-from app.core.errors import DomainValidationError, NotFoundError
+from app.core.errors import DomainValidationError, ForbiddenError, NotFoundError
 from app.models.split import (
     Settlement,
+    SettlementMethod,
+    SettlementStatus,
     SplitExpense,
     SplitGroup,
     SplitMember,
@@ -17,6 +19,8 @@ from app.models.split import (
 )
 from app.models.user import User
 from app.schemas.split import (
+    AaniRequestIn,
+    AaniRequestOut,
     BalanceOut,
     ExpenseCreate,
     ExpenseOut,
@@ -31,6 +35,17 @@ from app.schemas.split import (
     TransferOut,
 )
 from app.services import splits as split_math
+from app.services.phone import InvalidPhoneError, normalise_phone, phone_hash
+from app.services.settlements import (
+    Parties,
+    allowed_actions,
+    confirm,
+    format_amount,
+    initial_status,
+    mark_paid,
+    may_cancel,
+    share_text,
+)
 
 router = APIRouter(prefix="/splits", tags=["splits"])
 
@@ -58,6 +73,35 @@ async def _members(session: AsyncSession, group_id: UUID) -> list[SplitMember]:
 
 
 async def _add_member(session: AsyncSession, group_id: UUID, m: MemberIn) -> SplitMember:
+    e164 = p_hash = None
+    if m.phone and m.phone.strip():
+        try:
+            e164 = normalise_phone(m.phone)
+        except InvalidPhoneError as exc:
+            raise DomainValidationError(str(exc), code="invalid_phone") from exc
+        p_hash = phone_hash(e164)
+        dup_phone = await session.execute(
+            select(SplitMember.id).where(SplitMember.group_id == group_id, SplitMember.phone_hash == p_hash)
+        )
+        if dup_phone.scalar_one_or_none() is not None:
+            raise DomainValidationError("This number is already in the group", code="duplicate_member")
+    user_id = m.user_id
+    if user_id is None and p_hash is not None:
+        # Link to a registered, discoverable Pulse user holding this number (unless already a member).
+        found = (
+            await session.execute(
+                select(User.id).where(
+                    User.phone_hash == p_hash, User.phone_discoverable.is_(True), User.deleted_at.is_(None)
+                )
+            )
+        ).scalar_one_or_none()
+        if found is not None:
+            already = await session.execute(
+                select(SplitMember.id).where(SplitMember.group_id == group_id, SplitMember.user_id == found)
+            )
+            if already.scalar_one_or_none() is not None:
+                raise DomainValidationError("This person is already in the group", code="duplicate_member")
+            user_id = found
     if m.user_id is not None:
         if await session.get(User, m.user_id) is None:
             raise DomainValidationError("Unknown user_id", code="invalid_member")
@@ -66,7 +110,14 @@ async def _add_member(session: AsyncSession, group_id: UUID, m: MemberIn) -> Spl
         )
         if dup.scalar_one_or_none() is not None:
             raise DomainValidationError("User is already a member", code="duplicate_member")
-    member = SplitMember(group_id=group_id, **m.model_dump())
+    member = SplitMember(
+        group_id=group_id,
+        display_name=m.display_name,
+        email=m.email,
+        user_id=user_id,
+        phone_e164=e164,
+        phone_hash=p_hash,
+    )
     session.add(member)
     return member
 
@@ -255,14 +306,48 @@ async def delete_expense(
     return Response(status_code=204)
 
 
+def _parties(s: Settlement, members: dict[UUID, SplitMember]) -> Parties:
+    return Parties(members[s.from_member_id].user_id, members[s.to_member_id].user_id, s.created_by)
+
+
+def _settlement_out(s: Settlement, members: dict[UUID, SplitMember], user: User) -> SettlementOut:
+    out = SettlementOut.model_validate(s)
+    for k, v in allowed_actions(s, _parties(s, members), user.id).items():
+        setattr(out, k, v)
+    return out
+
+
+async def _member_map(session: AsyncSession, group_id: UUID) -> dict[UUID, SplitMember]:
+    return {m.id: m for m in await _members(session, group_id)}
+
+
+async def _load_settlement(session: AsyncSession, group_id: UUID, settlement_id: UUID) -> Settlement:
+    s = (
+        await session.execute(
+            select(Settlement).where(
+                Settlement.id == settlement_id,
+                Settlement.group_id == group_id,
+                Settlement.deleted_at.is_(None),
+            )
+        )
+    ).scalar_one_or_none()
+    if s is None:
+        raise NotFoundError("Settlement not found")
+    return s
+
+
 @router.post("/groups/{group_id}/settlements", response_model=SettlementOut, status_code=201)
 async def create_settlement(
     group_id: UUID, payload: SettlementCreate, user: CurrentUser, session: SessionDep
-) -> Settlement:
+) -> SettlementOut:
     group = await _load_group(session, group_id, user)
-    member_ids = {m.id for m in await _members(session, group.id)}
-    if payload.from_member_id not in member_ids or payload.to_member_id not in member_ids:
+    members = await _member_map(session, group.id)
+    if payload.from_member_id not in members or payload.to_member_id not in members:
         raise DomainValidationError("Settlement members must belong to the group", code="invalid_member")
+    if payload.method is SettlementMethod.aani and group.currency != "AED":
+        raise DomainValidationError("Aani settles in AED only", code="aani_requires_aed")
+    now = datetime.now(UTC)
+    status = initial_status(payload.method)
     settlement = Settlement(
         group_id=group.id,
         created_by=user.id,
@@ -270,24 +355,158 @@ async def create_settlement(
         to_member_id=payload.to_member_id,
         amount_minor=payload.amount_minor,
         currency=group.currency,
-        settled_at=payload.settled_at or datetime.now(UTC),
+        settled_at=payload.settled_at or now,
         note=payload.note,
+        method=payload.method,
+        status=status,
+        confirmed_at=now if status is SettlementStatus.confirmed else None,
+        confirmed_by=user.id if status is SettlementStatus.confirmed else None,
     )
     session.add(settlement)
     await session.commit()
     await session.refresh(settlement)
-    return settlement
+    return _settlement_out(settlement, members, user)
+
+
+@router.post("/groups/{group_id}/settlements/aani-request", response_model=AaniRequestOut, status_code=201)
+async def create_aani_request(
+    group_id: UUID, payload: AaniRequestIn, user: CurrentUser, session: SessionDep
+) -> AaniRequestOut:
+    """Start an Aani settlement: returns what the payer needs to pay in their bank app (amount, payee name,
+    payee mobile, share text) and creates a *pending* settlement. Aani has no public API, so after paying
+    the payer calls `mark-paid`, and the payee calls `confirm`."""
+    group = await _load_group(session, group_id, user)
+    if group.currency != "AED":
+        raise DomainValidationError("Aani settles in AED only", code="aani_requires_aed")
+    members = await _member_map(session, group.id)
+    me = next((m for m in members.values() if m.user_id == user.id), None)
+    from_id = payload.from_member_id or (me.id if me else None)
+    if from_id is None or from_id not in members or payload.to_member_id not in members:
+        raise DomainValidationError("Settlement members must belong to the group", code="invalid_member")
+    if from_id == payload.to_member_id:
+        raise DomainValidationError("Payer and payee must differ", code="invalid_member")
+    payee = members[payload.to_member_id]
+    parties = Parties(members[from_id].user_id, payee.user_id, user.id)
+    if not parties.payer_acts(user.id):
+        raise ForbiddenError("You can only request an Aani payment you are making", code="not_payer")
+    phone = payee.phone_e164
+    if payee.user_id is not None:
+        payee_user = await session.get(User, payee.user_id)
+        if payee_user is not None:
+            phone = payee_user.aani_phone_e164 or payee_user.phone_e164 or phone
+    if not phone:
+        raise DomainValidationError(
+            f"No mobile number for {payee.display_name}: add one to the member, or ask them to set their "
+            "Aani mobile in their profile",
+            code="payee_phone_missing",
+        )
+    now = datetime.now(UTC)
+    settlement = Settlement(
+        group_id=group.id,
+        created_by=user.id,
+        from_member_id=from_id,
+        to_member_id=payee.id,
+        amount_minor=payload.amount_minor,
+        currency=group.currency,
+        settled_at=now,
+        note=payload.note,
+        method=SettlementMethod.aani,
+        status=SettlementStatus.pending,
+    )
+    session.add(settlement)
+    await session.commit()
+    await session.refresh(settlement)
+    amount = format_amount(payload.amount_minor, group.currency)
+    return AaniRequestOut(
+        settlement=_settlement_out(settlement, members, user),
+        amount_minor=payload.amount_minor,
+        currency=group.currency,
+        amount_display=amount,
+        payee_display_name=payee.display_name,
+        payee_phone=phone,
+        share_text=share_text(payee.display_name, payload.amount_minor, group.currency, group.name, phone),
+        instructions=[
+            "Open your bank app and choose Aani / pay by mobile number.",
+            f"Send {amount} to {phone} ({payee.display_name}).",
+            "Come back to Pulse and tap 'I've paid'. The payee then confirms.",
+        ],
+    )
+
+
+@router.post("/groups/{group_id}/settlements/{settlement_id}/mark-paid", response_model=SettlementOut)
+async def mark_settlement_paid(
+    group_id: UUID, settlement_id: UUID, user: CurrentUser, session: SessionDep
+) -> SettlementOut:
+    """Payer: 'I paid' (idempotent). The settlement stays pending until the payee confirms."""
+    group = await _load_group(session, group_id, user)
+    members = await _member_map(session, group.id)
+    s = await _load_settlement(session, group.id, settlement_id)
+    mark_paid(s, _parties(s, members), user.id, datetime.now(UTC))
+    await session.commit()
+    await session.refresh(s)
+    return _settlement_out(s, members, user)
+
+
+@router.post("/groups/{group_id}/settlements/{settlement_id}/confirm", response_model=SettlementOut)
+async def confirm_settlement(
+    group_id: UUID, settlement_id: UUID, user: CurrentUser, session: SessionDep
+) -> SettlementOut:
+    """Payee: the money arrived. The settlement now counts towards balances."""
+    group = await _load_group(session, group_id, user)
+    members = await _member_map(session, group.id)
+    s = await _load_settlement(session, group.id, settlement_id)
+    confirm(s, _parties(s, members), user.id, datetime.now(UTC))
+    await session.commit()
+    await session.refresh(s)
+    return _settlement_out(s, members, user)
+
+
+@router.delete("/groups/{group_id}/settlements/{settlement_id}", status_code=204)
+async def cancel_settlement(
+    group_id: UUID, settlement_id: UUID, user: CurrentUser, session: SessionDep
+) -> Response:
+    """Cancel a settlement that is still pending (payer, payee or creator)."""
+    group = await _load_group(session, group_id, user)
+    members = await _member_map(session, group.id)
+    s = await _load_settlement(session, group.id, settlement_id)
+    may_cancel(s, _parties(s, members), user.id)
+    s.deleted_at = datetime.now(UTC)
+    await session.commit()
+    return Response(status_code=204)
 
 
 @router.get("/groups/{group_id}/settlements", response_model=list[SettlementOut])
-async def list_settlements(group_id: UUID, user: CurrentUser, session: SessionDep) -> list[Settlement]:
+async def list_settlements(
+    group_id: UUID, user: CurrentUser, session: SessionDep, status: SettlementStatus | None = None
+) -> list[SettlementOut]:
     group = await _load_group(session, group_id, user)
+    members = await _member_map(session, group.id)
+    stmt = select(Settlement).where(Settlement.group_id == group.id, Settlement.deleted_at.is_(None))
+    if status:
+        stmt = stmt.where(Settlement.status == status)
+    rows = await session.execute(stmt.order_by(Settlement.settled_at.desc()))
+    return [_settlement_out(s, members, user) for s in rows.scalars()]
+
+
+@router.get("/settlements/awaiting-confirmation", response_model=list[SettlementOut])
+async def settlements_awaiting_my_confirmation(user: CurrentUser, session: SessionDep) -> list[SettlementOut]:
+    """Pending settlements, across all groups, that the current user can confirm as the payee."""
     rows = await session.execute(
         select(Settlement)
-        .where(Settlement.group_id == group.id, Settlement.deleted_at.is_(None))
-        .order_by(Settlement.settled_at.desc())
+        .where(
+            Settlement.deleted_at.is_(None),
+            Settlement.status == SettlementStatus.pending,
+            exists().where(SplitMember.group_id == Settlement.group_id, SplitMember.user_id == user.id),
+        )
+        .order_by(Settlement.created_at.desc())
     )
-    return list(rows.scalars())
+    out: list[SettlementOut] = []
+    cache: dict[UUID, dict[UUID, SplitMember]] = {}
+    for s in rows.scalars():
+        members = cache.setdefault(s.group_id, await _member_map(session, s.group_id))
+        if _parties(s, members).payee_acts(user.id):
+            out.append(_settlement_out(s, members, user))
+    return out
 
 
 @router.get("/groups/{group_id}/balances", response_model=GroupBalancesOut)
@@ -313,7 +532,11 @@ async def group_balances(group_id: UUID, user: CurrentUser, session: SessionDep)
             shares_by_expense[s.expense_id][s.member_id] = s.share_minor
     settlements = (
         await session.execute(
-            select(Settlement).where(Settlement.group_id == group.id, Settlement.deleted_at.is_(None))
+            select(Settlement).where(
+                Settlement.group_id == group.id,
+                Settlement.deleted_at.is_(None),
+                Settlement.status == SettlementStatus.confirmed,
+            )
         )
     ).scalars()
 

@@ -8,6 +8,8 @@ from app.models.integration import EmailConnection, StatementPassword
 from app.models.merchant_rule import MerchantRule
 from app.models.split import (
     Settlement,
+    SettlementMethod,
+    SettlementStatus,
     SplitExpense,
     SplitGroup,
     SplitMember,
@@ -39,6 +41,8 @@ __all__ = [
     "ReconciliationStatus",
     "SalaryRecord",
     "Settlement",
+    "SettlementMethod",
+    "SettlementStatus",
     "SplitExpense",
     "SplitGroup",
     "SplitMember",

@@ -218,14 +218,55 @@ def _salary_down() -> None:
     op.drop_column('salary_records', 'transaction_id')
 
 
+# --------------------------------------------------------------------------------------------
+# Contacts (phone hashes) and Aani settlements
+# --------------------------------------------------------------------------------------------
+def _splits_up() -> None:
+    op.add_column('users', sa.Column('phone_e164', sa.String(length=16), nullable=True))
+    op.add_column('users', sa.Column('phone_hash', sa.String(length=64), nullable=True))
+    op.add_column('users', sa.Column('aani_phone_e164', sa.String(length=16), nullable=True))
+    op.add_column('users', sa.Column('phone_discoverable', sa.Boolean(), server_default=sa.text('true'), nullable=False))
+    op.create_index('uq_users_phone_hash', 'users', ['phone_hash'], unique=True, postgresql_where=sa.text('phone_hash IS NOT NULL AND deleted_at IS NULL'))
+    op.add_column('split_members', sa.Column('phone_e164', sa.String(length=16), nullable=True))
+    op.add_column('split_members', sa.Column('phone_hash', sa.String(length=64), nullable=True))
+    op.create_index('ix_split_members_phone_hash', 'split_members', ['phone_hash'], unique=False)
+    op.add_column('settlements', sa.Column('method', sa.Enum('aani', 'cash', 'bank_transfer', 'other', name='settlement_method', native_enum=False, create_constraint=True, length=32), server_default='other', nullable=False))
+    op.add_column('settlements', sa.Column('status', sa.Enum('pending', 'confirmed', name='settlement_status', native_enum=False, create_constraint=True, length=32), server_default='confirmed', nullable=False))
+    op.add_column('settlements', sa.Column('marked_paid_at', sa.DateTime(timezone=True), nullable=True))
+    op.add_column('settlements', sa.Column('marked_paid_by', sa.UUID(), nullable=True))
+    op.add_column('settlements', sa.Column('confirmed_at', sa.DateTime(timezone=True), nullable=True))
+    op.add_column('settlements', sa.Column('confirmed_by', sa.UUID(), nullable=True))
+    op.create_foreign_key(op.f('fk_settlements_marked_paid_by_users'), 'settlements', 'users', ['marked_paid_by'], ['id'], ondelete='SET NULL')
+    op.create_foreign_key(op.f('fk_settlements_confirmed_by_users'), 'settlements', 'users', ['confirmed_by'], ['id'], ondelete='SET NULL')
+    # Settlements recorded before this migration were counted immediately: they are confirmed.
+    op.execute("UPDATE settlements SET confirmed_at = created_at, confirmed_by = created_by")
+
+
+def _splits_down() -> None:
+    op.drop_constraint(op.f('fk_settlements_confirmed_by_users'), 'settlements', type_='foreignkey')
+    op.drop_constraint(op.f('fk_settlements_marked_paid_by_users'), 'settlements', type_='foreignkey')
+    # Unconfirmed settlements were never counted; do not let them start counting after a downgrade.
+    op.execute("DELETE FROM settlements WHERE status = 'pending'")
+    for col in ('confirmed_by', 'confirmed_at', 'marked_paid_by', 'marked_paid_at', 'status', 'method'):
+        op.drop_column('settlements', col)
+    op.drop_index('ix_split_members_phone_hash', table_name='split_members')
+    op.drop_column('split_members', 'phone_hash')
+    op.drop_column('split_members', 'phone_e164')
+    op.drop_index('uq_users_phone_hash', table_name='users', postgresql_where=sa.text('phone_hash IS NOT NULL AND deleted_at IS NULL'))
+    for col in ('phone_discoverable', 'aani_phone_e164', 'phone_hash', 'phone_e164'):
+        op.drop_column('users', col)
+
+
 def upgrade() -> None:
     _categories_up()
     _budgets_up()
     _rules_up()
     _salary_up()
+    _splits_up()
 
 
 def downgrade() -> None:
+    _splits_down()
     _salary_down()
     _rules_down()
     _budgets_down()

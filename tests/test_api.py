@@ -79,6 +79,9 @@ async def test_me_with_valid_hs256_token(make_client, make_token):
         "email": "tester@example.com",
         "display_name": "T",
         "default_currency": "AED",
+        "phone": None,
+        "aani_phone": None,
+        "phone_discoverable": True,
     }
 
 
