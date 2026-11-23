@@ -4,7 +4,7 @@ from app.models.audit import AuditLog
 from app.models.budget import Budget, SalaryRecord
 from app.models.card import CatalogCard, UserCard
 from app.models.category import Category, CategoryKind, CategoryPreference
-from app.models.integration import EmailConnection, StatementPassword
+from app.models.integration import EmailConnection, IngestToken, StatementPassword
 from app.models.merchant_rule import MerchantRule
 from app.models.split import (
     Settlement,
@@ -33,6 +33,7 @@ __all__ = [
     "CategoryPreference",
     "Direction",
     "EmailConnection",
+    "IngestToken",
     "Liability",
     "LiabilityKind",
     "MerchantRule",

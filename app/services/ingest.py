@@ -2,12 +2,12 @@
 
 import hashlib
 import re
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID
 
 import structlog
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,6 +21,7 @@ from app.services.institutions import institutions
 from app.services.parsers import ParsedTransaction, ParserRegistry
 from app.services.parsers import registry as default_registry
 from app.services.salary import record_salary
+from app.services.statements.matching import merchant_score
 from app.services.statements.processing import find_statement_transaction
 
 log = structlog.get_logger(__name__)
@@ -100,6 +101,19 @@ async def _resolve_account(
             )
         )
         return acc.scalar_one_or_none()
+    if not parsed.last4 and (card_name := (payload.get("fields") or {}).get("card_name")):
+        by_name = list(
+            (
+                await session.execute(
+                    select(Account).where(
+                        Account.user_id == user_id,
+                        Account.deleted_at.is_(None),
+                        func.lower(Account.name) == card_name.strip().lower(),
+                    )
+                )
+            ).scalars()
+        )
+        return by_name[0].id if len(by_name) == 1 else None
     if parsed.last4:
         accounts = list(
             (
@@ -128,6 +142,54 @@ async def _resolve_account(
         if len(accounts) == 1:
             return accounts[0].id
     return None
+
+
+CAPTURE_WINDOW = timedelta(minutes=60)  # a tap and its SMS arrive within minutes of each other
+
+
+def add_source(txn: Transaction, channel: str) -> None:
+    if channel not in (txn.sources or []):
+        txn.sources = [*(txn.sources or []), channel]
+
+
+async def find_capture_duplicate(
+    session: AsyncSession,
+    user_id: UUID,
+    account_id: UUID,
+    channel: TxnSource,
+    parsed: ParsedTransaction,
+    posted_at: datetime,
+) -> Transaction | None:
+    """The same purchase already captured through a *different* channel (SMS vs wallet tap, ...).
+
+    Deliberately tight (same account, amount, direction, within an hour, merchant compatible): two real
+    coffees at the same price on the same day must stay two transactions.
+    """
+    rows = (
+        await session.execute(
+            select(Transaction).where(
+                Transaction.user_id == user_id,
+                Transaction.account_id == account_id,
+                Transaction.deleted_at.is_(None),
+                Transaction.source != TxnSource.statement,
+                Transaction.amount_minor == parsed.amount_minor,
+                Transaction.currency == parsed.currency,
+                Transaction.direction == parsed.direction,
+                Transaction.posted_at >= posted_at - CAPTURE_WINDOW,
+                Transaction.posted_at <= posted_at + CAPTURE_WINDOW,
+            )
+        )
+    ).scalars()
+    best: tuple[int, Transaction] | None = None
+    for txn in rows:
+        if channel.value in (txn.sources or [txn.source.value]):
+            continue  # same channel twice = two purchases (or an exact resend, caught by the hash)
+        score = merchant_score(parsed.merchant_raw, txn.merchant_normalized or txn.merchant_raw)
+        if score is not None and score < 60:
+            continue
+        if best is None or (score or 0) > best[0]:
+            best = (score or 0, txn)
+    return best[1] if best else None
 
 
 async def process_raw_ingest(
@@ -189,9 +251,20 @@ async def process_raw_ingest(
         posted_at=posted_at,
     )
     if from_statement is not None:
+        add_source(from_statement, row.channel.value)
         row.transaction_id = from_statement.id
         row.parse_status = ParseStatus.parsed
         row.parse_result = {**(row.parse_result or {}), "linked_to_statement_transaction": True}
+        await session.commit()
+        return row.parse_status
+    earlier = await find_capture_duplicate(session, row.user_id, account_id, row.channel, parsed, posted_at)
+    if earlier is not None:
+        add_source(earlier, row.channel.value)
+        if not earlier.merchant_raw and parsed.merchant_raw:
+            earlier.merchant_raw = parsed.merchant_raw
+        row.transaction_id = earlier.id
+        row.parse_status = ParseStatus.parsed
+        row.parse_result = {**(row.parse_result or {}), "merged_with_existing_transaction": True}
         await session.commit()
         return row.parse_status
     enriched = (await CategoryResolver.load(session, row.user_id)).enrich(
@@ -214,6 +287,7 @@ async def process_raw_ingest(
         tags=list(enriched.tags),
         applied_rule_id=enriched.rule_id,
         posted_at=posted_at,
+        sources=[row.channel.value],
         source=row.channel,
         external_hash=row.external_hash,
     )

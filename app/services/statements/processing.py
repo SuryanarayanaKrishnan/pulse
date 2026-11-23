@@ -245,7 +245,7 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
     for i, line in enumerate(lines):
         if (m := matched.get(i)) is not None:
             captured = candidates[m.txn_index]
-            captured.statement_id = stmt.id
+            lock_to_statement(captured, line, stmt.id)
             if captured.category_id is None:
                 apply_enrichment(
                     captured,
@@ -290,6 +290,8 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
                 user_id=stmt.user_id,
                 account_id=stmt.account_id,
                 statement_id=stmt.id,
+                sources=["statement"],
+                statement_locked=True,
                 category_id=enriched.category_id,
                 exclude_from_budget=enriched.exclude_from_budget,
                 tags=list(enriched.tags),
@@ -322,6 +324,20 @@ async def link_and_create(session: AsyncSession, stmt: Statement, lines: list[St
                 txn.statement_id = stmt.id
         line.transaction_id, line.match_status, line.match_score = txn.id, "created", None
     await session.flush()
+
+
+def lock_to_statement(txn: Transaction, line: StatementLine, statement_id: UUID) -> None:
+    """A statement line confirms a captured transaction: the bank's amount, currency and date win and the
+    row is final (``statement_locked``). Everything captured about it (merchant, tags, category) is kept."""
+    txn.statement_id = statement_id
+    txn.statement_locked = True
+    if txn.amount_minor != line.amount_minor or txn.currency != line.currency:
+        txn.amount_minor, txn.currency = line.amount_minor, line.currency
+    txn.posted_at = at_date(line.posted_on, near=txn.posted_at)
+    if not txn.merchant_raw:
+        txn.merchant_raw = line.description
+    if "statement" not in (txn.sources or []):
+        txn.sources = [*(txn.sources or []), "statement"]
 
 
 async def find_statement_transaction(

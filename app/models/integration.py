@@ -48,3 +48,20 @@ class StatementPassword(Base, TimestampMixin):
     user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     institution: Mapped[str] = mapped_column(String(80))
     encrypted_password: Mapped[str] = mapped_column(Text)
+
+
+class IngestToken(Base, TimestampMixin):
+    """Per-user token for unattended capture (iOS Shortcuts, Google Pay / Samsung Wallet automations).
+
+    Only the SHA-256 of the token is stored; the plaintext is shown once at creation/rotation.
+    One active token per user: rotating replaces it.
+    """
+
+    __tablename__ = "ingest_tokens"
+    __table_args__ = (UniqueConstraint("user_id", name="uq_ingest_tokens_user_id"),)
+
+    id: Mapped[uuid.UUID] = pk_uuid()
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    prefix: Mapped[str] = mapped_column(String(12))
+    last_used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

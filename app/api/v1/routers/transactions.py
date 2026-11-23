@@ -107,6 +107,7 @@ async def create_transaction(
     if data["tags"] is None:
         data["tags"] = list(enriched.tags)
     data["applied_rule_id"] = enriched.rule_id
+    data["sources"] = ["manual"]
     txn = Transaction(user_id=user.id, source=TxnSource.manual, **data)
     if txn.external_hash:
         # Clients may supply their own dedupe key; scope it so it can't collide with ingest hashes.

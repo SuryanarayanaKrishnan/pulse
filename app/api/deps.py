@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import Depends
+from fastapi import Depends, Query
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -13,6 +13,7 @@ from app.core.errors import UnauthorizedError
 from app.core.queue import QueuePool, get_queue
 from app.core.security import TokenClaims, verify_token
 from app.models.user import User
+from app.services.ingest_tokens import TOKEN_PREFIX, user_for_ingest_token
 from app.services.storage import Storage, get_storage
 
 _bearer = HTTPBearer(auto_error=False)
@@ -33,7 +34,7 @@ async def get_claims(
     return await verify_token(creds.credentials, settings)
 
 
-async def get_current_user(claims: Annotated[TokenClaims, Depends(get_claims)], session: SessionDep) -> User:
+async def _user_for_claims(claims: TokenClaims, session: AsyncSession) -> User:
     """Resolve the Supabase user to our row, provisioning it on first sight."""
     user = await session.get(User, claims.sub)
     if user is None or user.deleted_at is not None:
@@ -50,4 +51,28 @@ async def get_current_user(claims: Annotated[TokenClaims, Depends(get_claims)], 
     return user
 
 
+async def get_current_user(claims: Annotated[TokenClaims, Depends(get_claims)], session: SessionDep) -> User:
+    return await _user_for_claims(claims, session)
+
+
+async def get_ingest_user(
+    creds: Annotated[HTTPAuthorizationCredentials | None, Depends(_bearer)],
+    settings: SettingsDep,
+    session: SessionDep,
+    token: Annotated[
+        str | None, Query(description="Ingest token (alternative to the Authorization header)")
+    ] = None,
+) -> User:
+    """Capture endpoints accept a Supabase JWT *or* the user's ingest token (``pls_...``), the latter via
+    ``Authorization: Bearer`` or ``?token=`` so unattended automations (iOS Shortcuts) can post."""
+    raw = creds.credentials if creds is not None and creds.credentials.startswith(TOKEN_PREFIX) else token
+    if raw:
+        user = await user_for_ingest_token(session, raw)
+        if user is None:
+            raise UnauthorizedError("Invalid or revoked ingest token", code="invalid_ingest_token")
+        return user
+    return await _user_for_claims(await get_claims(creds, settings), session)
+
+
 CurrentUser = Annotated[User, Depends(get_current_user)]
+IngestUser = Annotated[User, Depends(get_ingest_user)]

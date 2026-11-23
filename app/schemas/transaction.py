@@ -52,3 +52,5 @@ class TransactionOut(Timestamps):
     exclude_from_budget: bool
     tags: list[str]
     applied_rule_id: UUID | None
+    sources: list[str]
+    statement_locked: bool

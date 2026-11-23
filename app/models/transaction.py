@@ -40,6 +40,8 @@ class TxnSource(enum.StrEnum):
     sms = "sms"
     notification = "notification"
     apple_shortcut = "apple_shortcut"
+    google_wallet = "google_wallet"
+    samsung_wallet = "samsung_wallet"
     manual = "manual"
 
 
@@ -78,6 +80,10 @@ class Transaction(Base, TimestampMixin, SoftDeleteMixin):
     # Set by classification rules (or by hand): kept out of budget/spend totals, free-form labels.
     exclude_from_budget: Mapped[bool] = mapped_column(Boolean, server_default=text("false"))
     tags: Mapped[list[str]] = mapped_column(ARRAY(String(40)), server_default=text("'{}'::varchar[]"))
+    # Every capture channel that saw this purchase (sms, apple_shortcut, statement...): one purchase, one row.
+    sources: Mapped[list[str]] = mapped_column(ARRAY(String(20)), server_default=text("'{}'::varchar[]"))
+    # True once a statement line confirmed it: amount/date/currency are then the bank's, final.
+    statement_locked: Mapped[bool] = mapped_column(Boolean, server_default=text("false"))
     applied_rule_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("merchant_rules.id", ondelete="SET NULL")
     )
