@@ -118,3 +118,40 @@ def test_every_dictionary_slug_is_a_seeded_default():
     spec.loader.exec_module(mod)
     seeded = {d[0] for d in mod.DEFAULTS}
     assert {e.category for e in DICTIONARY} <= seeded
+
+
+@pytest.mark.parametrize(
+    ("raw", "direction", "name", "slug"),
+    [
+        (
+            "IPP TRANSFER 000000000000400000XXXXXX0001 - Jane - /REF/ Credit card payment",
+            DEBIT,
+            "Credit Card Payment",
+            "cc_payment",
+        ),
+        ("VALUE DATE: 01-07-2026 Interest 000000000002", Direction.credit, "Interest Income", "other_income"),
+        (
+            "Inward Remittance SAMPLE SENDER NAME EXAMPLE BANK LIMITED",
+            Direction.credit,
+            "Inward Remittance",
+            "other_income",
+        ),
+        (
+            "QuickRemit 000000000009 to A/C 900000000001 - Jane Sample With Transaction Ref#MQXX1",
+            DEBIT,
+            "Remittance",
+            "family",
+        ),
+        ("Cardless Cash withdrawal 1000000000000000000000001 TESTATM1", DEBIT, "ATM Withdrawal", "other"),
+        ("WALLET TOP UP EXAMPLEPAY", DEBIT, "Wallet Top-up", "transfer"),
+        ("Account to Account Transfer FROM ACCOUNT No:019000000001 TO", DEBIT, "Transfer", "transfer"),
+    ],
+)
+def test_account_statement_vocabulary(raw, direction, name, slug):
+    assert normalize_merchant(raw, direction) == name
+    assert guess_category_slug(raw, direction) == slug
+
+
+def test_interest_charges_stay_fees_and_credit_interest_is_income():
+    assert guess_category_slug("INTEREST CHARGE", DEBIT) == "fees"
+    assert guess_category_slug("INTEREST", Direction.credit) == "other_income"
