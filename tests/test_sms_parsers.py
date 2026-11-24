@@ -294,3 +294,84 @@ def test_generic_fallback_reads_common_wording_without_sender():
 )
 def test_parse_date(s, d):
     assert parse_date(s) == d
+
+
+# Wordings taken from real UAE bank alert emails (names, card numbers and amounts replaced).
+EMAIL_ALERTS = [
+    (
+        "MashreqAlerts@mashreq.com",
+        "Dear Customer, Thank you for banking with Mashreq Bank. Please note the details of a recent "
+        "transaction on your Mashreq Card. Your Mashreq Cashback Card ending with 1234 was used for a "
+        "purchase of AED 42.00 at EXAMPLE SHOP SHARJAH AE on 03-OCT-2026 05:08 PM. Available limit is "
+        "AED 32,556.00 This is a system generated alert.",
+        "mashreq",
+        4200,
+        DEBIT,
+        "EXAMPLE SHOP SHARJAH AE",
+        "1234",
+        date(2026, 10, 3),
+    ),
+    (
+        "alert@emiratesnbd.com",
+        "Emirates NBD Purchase amount has been refunded to your card account CIF:XXX00XXX Dear Customer, "
+        "Amount of AED 38.67 from NOON has been credited to your card ending 1234. Available Limit is "
+        "AED 18,638.42",
+        "enbd",
+        3867,
+        CREDIT,
+        "NOON",
+        "1234",
+        None,
+    ),
+    (
+        "CardPayment@emiratesnbd.com",
+        "Emirates NBD Your Credit Card payment CIF: XXX00XXX Dear CUSTOMER, Payment of AED 3609.00 towards "
+        "your Credit Card ending 1234 on 16/11/2026 was received through Online Banking. Your available "
+        "limit is AED 19,247.56",
+        "enbd",
+        360900,
+        CREDIT,
+        None,
+        "1234",
+        date(2026, 11, 16),
+    ),
+    (
+        "donotreply@crm.bankfab.com",
+        "Ref: Card activity on your Dubai First Credit Card Dear Customer, Please see the below details of "
+        "your recent Dubai First Credit Card transaction. Card Transaction Card ending with:\xa01234 "
+        "Amount:\xa0AED\xa010.00 At:\xa0EXAMPLE RESTAURANT Date:\xa011-09-2026 Available Balance: "
+        "AED\xa04,990.00 If you do not recognize this transaction, please contact us immediately",
+        "fab",
+        1000,
+        DEBIT,
+        "EXAMPLE RESTAURANT",
+        "1234",
+        date(2026, 9, 11),
+    ),
+]
+
+
+@pytest.mark.parametrize(
+    ("sender", "text", "inst", "amount", "direction", "merchant", "last4", "on"), EMAIL_ALERTS
+)
+def test_bank_alert_emails(sender, text, inst, amount, direction, merchant, last4, on):
+    r = registry.parse(text, sender=sender)
+    assert r is not None
+    assert (r.institution, r.amount_minor, r.direction, r.merchant_raw, r.last4) == (
+        inst,
+        amount,
+        direction,
+        merchant,
+        last4,
+    )
+    assert r.confidence >= 0.85  # read by the bank template, not the generic fallback
+    assert (to_dubai_date(r.posted_at) if r.posted_at and on else None) == on
+
+
+def test_dubai_first_alert_without_amount_is_not_guessed():
+    # Foreign-currency alerts sometimes arrive with the amount blank; never invent one.
+    text = (
+        "Ref: Card activity on your Dubai First Credit Card Card Transaction Card ending with:\xa01234 "
+        "Amount:\xa0USD\xa0 At:\xa0Example Lounge Date:\xa015-10-2026 Available Balance: AED\xa05,000.00"
+    )
+    assert registry.parse(text, sender="donotreply@crm.bankfab.com") is None
