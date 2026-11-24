@@ -1,16 +1,18 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Query, Response
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import CurrentUser, SessionDep
 from app.api.utils import apply_updates, get_owned
 from app.core.errors import DomainValidationError, NotFoundError
 from app.models.account import Account
 from app.models.asset import Asset, Liability
+from app.models.portfolio import AssetValuation
 from app.schemas.asset import (
     AssetCreate,
     AssetOut,
@@ -20,8 +22,14 @@ from app.schemas.asset import (
     LiabilityUpdate,
     NetWorthOut,
 )
+from app.schemas.funds import HoldingOut
+from app.schemas.jewellery import ValuationHistoryOut, ValuationPointOut
+from app.services.funds import asset_inputs as fund_asset_inputs
+from app.services.funds import holding_out as fund_out
+from app.services.funds import user_holdings
 from app.services.networth import LiabilityInput, compute_net_worth
 from app.services.valuations.service import (
+    QuoteBook,
     asset_inputs,
     effective,
     fx_rates_for,
@@ -30,6 +38,10 @@ from app.services.valuations.service import (
 )
 
 router = APIRouter(tags=["assets"])
+
+
+async def _fund_outs(session: AsyncSession, user_id: UUID, book: QuoteBook) -> list[HoldingOut]:
+    return [fund_out(h, book) for h in await user_holdings(session, user_id)]
 
 
 def _out(asset: Asset) -> AssetOut:
@@ -84,6 +96,28 @@ async def update_asset(
     await session.commit()
     await session.refresh(asset)
     return _out(asset)
+
+
+@router.get("/assets/{asset_id}/valuation-history", response_model=ValuationHistoryOut)
+async def valuation_history(
+    asset_id: UUID, user: CurrentUser, session: SessionDep, days: Annotated[int, Query(ge=1, le=3650)] = 365
+) -> ValuationHistoryOut:
+    """One automatic valuation per day since the asset was first valued live."""
+    await get_owned(session, Asset, asset_id, user.id)
+    since = datetime.now(UTC).date() - timedelta(days=days)
+    rows = (
+        await session.execute(
+            select(AssetValuation)
+            .where(AssetValuation.asset_id == asset_id, AssetValuation.valued_on >= since)
+            .order_by(AssetValuation.valued_on)
+        )
+    ).scalars()
+    pts = [ValuationPointOut(date=r.valued_on, value_minor=r.value_minor, basis=r.basis) for r in rows]
+    return ValuationHistoryOut(
+        asset_id=asset_id,
+        points=pts,
+        change_minor=pts[-1].value_minor - pts[0].value_minor if len(pts) > 1 else None,
+    )
 
 
 @router.delete("/assets/{asset_id}", status_code=204)
@@ -162,8 +196,9 @@ async def net_worth(
     ).scalars()
     base = user.default_currency
     book = await load_quote_book(session)
+    funds = await _fund_outs(session, user.id, book)
     result = compute_net_worth(
-        asset_inputs(assets),
+        asset_inputs(assets) + fund_asset_inputs(funds),
         [LiabilityInput(x.kind.value, x.currency, x.outstanding_minor) for x in liabilities],
         base_currency=base,
         fx_rates=fx_rates_for(base, book, usd_rate),

@@ -384,8 +384,11 @@ async def snapshot_values(session: AsyncSession, user_id: UUID) -> tuple[int, in
         .all()
     )
     book = await load_quote_book(session)
+    from app.services import funds as fund_svc
+
+    fund_outs = [fund_svc.holding_out(h, book) for h in await fund_svc.user_holdings(session, user_id)]
     nw = compute_net_worth(
-        asset_inputs(list(assets)),
+        asset_inputs(list(assets)) + fund_svc.asset_inputs(fund_outs),
         [LiabilityInput(x.kind.value, x.currency, x.outstanding_minor) for x in liabilities],
         fx_rates=fx_rates_for("AED", book),
     )
@@ -553,3 +556,58 @@ async def spend_trends(
             {"merchant": r[0], "total_minor": r[1], "count": r[2], "last_on": r[3]} for r in top_merchants
         ],
     }
+
+
+# ---------------------------------------------------------------------------------------------
+# Upcoming document / asset due dates
+# ---------------------------------------------------------------------------------------------
+async def due_items(session: AsyncSession, user_id: UUID, today: date, days: int) -> list[Any]:
+    from app.models.asset import AssetKind
+    from app.models.portfolio import Document, DocumentReminder
+    from app.schemas.documents import DueItemOut
+
+    horizon = today + timedelta(days=days)
+
+    def status(due: date, lead: int) -> str:
+        left = (due - today).days
+        return "overdue" if left < 0 else ("due_soon" if left <= lead else "upcoming")
+
+    items: list[DueItemOut] = []
+    rows = await session.execute(
+        select(DocumentReminder, Document)
+        .join(Document, Document.id == DocumentReminder.document_id)
+        .where(
+            DocumentReminder.user_id == user_id,
+            DocumentReminder.done_at.is_(None),
+            Document.deleted_at.is_(None),
+            DocumentReminder.due_on <= horizon,
+        )
+    )
+    for r, d in rows:
+        items.append(
+            DueItemOut(
+                source="document", id=d.id, title=r.label or d.title, kind=r.kind, due_on=r.due_on,
+                days_left=(r.due_on - today).days, status=status(r.due_on, r.remind_days_before),
+                reminder_id=r.id,
+            )
+        )  # fmt: skip
+    seen_docs = {i.id for i in items}
+    fds = await session.execute(
+        select(Asset).where(Asset.user_id == user_id, Asset.deleted_at.is_(None), Asset.kind == AssetKind.fd)
+    )
+    for a in fds.scalars():
+        raw = (a.meta or {}).get("maturity_date")
+        try:
+            due = date.fromisoformat(raw) if raw else None
+        except (TypeError, ValueError):
+            due = None
+        if due is None or due > horizon or a.id in seen_docs:
+            continue
+        items.append(
+            DueItemOut(
+                source="asset", id=a.id, title=f"{a.name} matures", kind="maturity", due_on=due,
+                days_left=(due - today).days, status=status(due, 30),
+            )
+        )  # fmt: skip
+    items.sort(key=lambda i: (i.due_on, i.title))
+    return items
