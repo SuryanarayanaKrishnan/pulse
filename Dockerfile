@@ -7,6 +7,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 COPY app ./app
 COPY alembic ./alembic
+COPY data/cards/catalog.json ./data/cards/catalog.json
 COPY alembic.ini ./
 RUN uv sync --frozen --no-dev
 
