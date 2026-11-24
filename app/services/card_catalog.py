@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_PATH = ROOT / "data" / "cards" / "catalog.json"
 OFFICIAL = {"bank_page", "kfs", "tc_pdf"}
 PERK_KEYS = (
+    "art",
     "tier",
     "kind",
     "islamic",

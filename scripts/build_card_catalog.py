@@ -14,10 +14,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from app.services.card_art import validate_art  # noqa: E402
 from app.services.rewards import parse_structure  # noqa: E402
 
 BANKS = ROOT / "data" / "cards" / "banks"
 OUT = ROOT / "data" / "cards" / "catalog.json"
+ART = ROOT / "data" / "cards" / "art.json"
 NETWORKS = {None, "visa", "mastercard", "amex", "unionpay"}
 STATUS = {"active", "closed_to_new", "discontinued", "unverified"}
 CONF = {"high", "medium", "low"}
@@ -64,6 +66,7 @@ def validate(card: dict, issuer: str) -> list[str]:
 def build() -> tuple[dict, list[str]]:
     cards: list[dict] = []
     errs: list[str] = []
+    art = json.loads(ART.read_text()) if ART.exists() else {}
     seen: set[str] = set()
     for f in sorted(BANKS.glob("*.json")):
         data = json.loads(f.read_text())
@@ -72,6 +75,10 @@ def build() -> tuple[dict, list[str]]:
             if c.get("id") in seen:
                 errs.append(f"{c.get('id')}: duplicate id")
             seen.add(c.get("id"))
+            c.pop("art", None)
+            errs += validate_art(art.get(c.get("id")), c)
+            if c.get("id") in art:
+                c["art"] = art[c["id"]]
             cards.append(c)
     cards.sort(key=lambda c: c["id"])
     newest = max((s["verified_on"] for c in cards for s in c.get("sources", [])), default=str(date.today()))
