@@ -144,6 +144,46 @@ async def process_statement(
         )
 
     stmt.institution = stmt.institution or outcome.institution
+    extras = [x for x in outcome.sections if x is not parsed and (x.lines or x.opening_minor is not None)]
+    status, error = await _apply_parsed(session, stmt, parsed)
+    for n, extra in enumerate(extras, start=1):
+        sibling = await _section_statement(session, stmt, n)
+        await _apply_parsed(session, sibling, extra)
+        await session.commit()
+    return await finish(status, error)
+
+
+async def _section_statement(session: AsyncSession, parent: Statement, n: int) -> Statement:
+    """A consolidated PDF holds several accounts: each extra section gets its own statement row
+    (same file, no sha so the dedupe index ignores it), found again on reprocess via its external_id."""
+    ext = f"{parent.id}:section:{n}"
+    existing = (
+        await session.execute(
+            select(Statement).where(Statement.user_id == parent.user_id, Statement.external_id == ext)
+        )
+    ).scalar_one_or_none()
+    if existing is not None:
+        existing.deleted_at = None
+        return existing
+    sibling = Statement(
+        user_id=parent.user_id,
+        institution=parent.institution,
+        source=parent.source,
+        file_storage_key=parent.file_storage_key,
+        email_connection_id=parent.email_connection_id,
+        external_id=ext,
+        original_filename=parent.original_filename,
+        content_type=parent.content_type,
+        parse_status=ParseStatus.pending,
+    )
+    session.add(sibling)
+    await session.flush()
+    return sibling
+
+
+async def _apply_parsed(
+    session: AsyncSession, stmt: Statement, parsed: ParsedStatement
+) -> tuple[ParseStatus, str | None]:
     stmt.kind = parsed.kind
     stmt.currency = parsed.currency
     stmt.period_start, stmt.period_end = parsed.period_start, parsed.period_end
@@ -180,13 +220,16 @@ async def process_statement(
         )
     if stmt.account_id is None:
         await session.flush()
-        return await finish(
-            ParseStatus.needs_review, "Could not tell which account this statement belongs to"
+        stmt.parse_status, stmt.parse_error = (
+            ParseStatus.needs_review,
+            "Could not tell which account this statement belongs to",
         )
+        return stmt.parse_status, stmt.parse_error
 
     await session.flush()
     await link_and_create(session, stmt, line_rows)
-    return await finish(ParseStatus.parsed)
+    stmt.parse_status, stmt.parse_error = ParseStatus.parsed, None
+    return stmt.parse_status, None
 
 
 def _hash(user_id: UUID, account_id: UUID, line: StatementLine, occurrence: int) -> str:

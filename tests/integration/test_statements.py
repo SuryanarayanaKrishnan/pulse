@@ -366,3 +366,34 @@ async def test_overlapping_statements_do_not_duplicate_transactions(
         await run_pipeline(sessionmaker_, storage, encryptor, r.json()["id"])
     txns = (await api.get("/v1/transactions?limit=100")).json()["items"]
     assert sorted(t["amount_minor"] for t in txns) == [8525, 12050, 15000]
+
+
+async def test_consolidated_statement_creates_one_statement_per_account(
+    new_user, storage, encryptor, sessionmaker_
+):
+    from tests.neo_fixture import scenario_a
+
+    api = new_user()
+    neo = scenario_a()
+    cur = await mk_account(api, institution="Mashreq", last4="0001", name="NEO current")
+    sav = await mk_account(api, institution="Mashreq", last4="0002", name="NEO savings")
+    r = await api.upload("/v1/statements/upload", neo.pdf, "neo.pdf", {})
+    assert r.status_code == 202, r.text
+    sid = r.json()["id"]
+    assert await run_pipeline(sessionmaker_, storage, encryptor, sid) == "parsed"
+
+    def sections():
+        return api.get("/v1/statements")
+
+    rows = (await sections()).json()
+    assert len(rows) == 2 and {x["reconciliation_status"] for x in rows} == {"matched"}
+    assert {x["parse_status"] for x in rows} == {"parsed"} and {x["institution"] for x in rows} == {"mashreq"}
+    assert {x["account_id"] for x in rows} == {cur["id"], sav["id"]}
+    counts = sorted(len(a.entries) for a in neo.accounts)
+    txns = (await api.get("/v1/transactions?limit=100")).json()["items"]
+    assert len(txns) == sum(counts)
+
+    # reprocessing neither duplicates statements nor transactions
+    assert await run_pipeline(sessionmaker_, storage, encryptor, sid) == "parsed"
+    assert len((await sections()).json()) == 2
+    assert len((await api.get("/v1/transactions?limit=100")).json()["items"]) == sum(counts)
