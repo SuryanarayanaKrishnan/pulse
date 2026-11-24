@@ -27,7 +27,7 @@ def purity_fraction(raw: Any) -> Decimal | None:
     if m := re.fullmatch(r"(\d{1,2})\s*k(?:t|arat)?", text):
         k = int(m.group(1))
         return Decimal(k) / 24 if 1 <= k <= 24 else None
-    if m := re.fullmatch(r"(?:0?\.\d{2,4}|\d{3,4})", text):
+    if m := re.fullmatch(r"(?:1(?:\.0+)?|0?\.\d{2,4}|\d{3,4})", text):
         v = Decimal(text)
         v = v / 1000 if v > 1 else v
         return v if Decimal("0.1") <= v <= 1 else None
@@ -145,3 +145,22 @@ def effective_value(
             cost_basis_minor, "cost_basis", None, "No value entered; showing the purchase price"
         )
     return EffectiveValue(None, "unknown", None, "No value entered")
+
+
+def value_priced(
+    quantity: Decimal | None,
+    key: str,
+    hint: str,
+    quote: tuple[Decimal, datetime, str] | None,
+    aed_per_usd: Decimal,
+) -> tuple[Valued | None, str]:
+    """quantity x USD price x AED/USD for a crypto coin or a US stock."""
+    if not key:
+        return None, f"Set {hint} to value this live"
+    if quantity is None or quantity <= 0:
+        return None, "Add a quantity to value this live"
+    if quote is None:
+        return None, f"No price cached yet for '{key}'"
+    price, at, source = quote
+    value = to_minor(quantity * price * aed_per_usd)
+    return Valued(value, at, f"{quantity:f} x USD {price:f} ({source}) at {aed_per_usd:f} AED/USD"), ""

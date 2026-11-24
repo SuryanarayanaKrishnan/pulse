@@ -9,6 +9,16 @@ from app.models.insights import NetWorthSnapshot, RecurringReview, SavingsGoal
 from app.models.integration import EmailConnection, IngestToken, StatementPassword
 from app.models.market import MarketQuote
 from app.models.merchant_rule import MerchantRule
+from app.models.portfolio import (
+    AssetValuation,
+    Document,
+    DocumentReminder,
+    FundHolding,
+    FundKind,
+    FundTransaction,
+    FundTxnKind,
+    JewelleryItem,
+)
 from app.models.split import (
     Settlement,
     SettlementMethod,
@@ -28,7 +38,15 @@ __all__ = [
     "AccountType",
     "Asset",
     "AssetKind",
+    "AssetValuation",
     "AuditLog",
+    "Document",
+    "DocumentReminder",
+    "FundHolding",
+    "FundKind",
+    "FundTransaction",
+    "FundTxnKind",
+    "JewelleryItem",
     "Budget",
     "CatalogCard",
     "Category",

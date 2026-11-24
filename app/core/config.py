@@ -61,6 +61,13 @@ class Settings(BaseSettings):
     # JSON: {"dubai_apartments": {"2022-01-01": 100, "2026-01-01": 148.5}}. No free property API is wired in.
     property_index_json: str = ""
     valuation_timeout_seconds: float = 10.0
+    crypto_provider: Literal["coingecko", "none"] = "coingecko"
+    stock_provider: Literal["stooq", "none"] = "stooq"
+    fund_provider: Literal["mfapi", "none"] = "mfapi"
+    price_ttl_seconds: int = (
+        900  # snapshot data older than this is refreshed on request (stale kept on error)
+    )
+    prices_refresh_on_request: bool = True
 
     @field_validator("cors_origins", "fernet_keys", mode="before")
     @classmethod
