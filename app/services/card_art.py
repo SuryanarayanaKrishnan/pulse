@@ -270,6 +270,9 @@ OVERRIDES: dict[str, dict[str, Any]] = {
     "enbd-duo": {"stops": ["#0A4A7A", "#1280B8", "#0A3A62"], "accent": "#BFE3F7"},
     # Titanium cards keep a brushed grey body with the bank's accent.
     "rakbank-titanium": {"accent": "#E53935"},
+    # Go4it: bright orange into magenta.
+    "enbd-go4it-gold": {"stops": ["#C23A18", "#E0561F", "#8E1F63"], "accent": "#FFC857", "motif": "dots"},
+    "enbd-go4it-platinum": {"stops": ["#C23A18", "#E0561F", "#8E1F63"], "accent": "#FFC857", "motif": "dots"},
     # Co-brands.
     "mashreq-aura": {"stops": ["#14213D", "#2D2A55", "#14213D"], "accent": "#9D8CFF", "motif": "arcs"},
     "mashreq-aura-world": {"stops": ["#14213D", "#2D2A55", "#14213D"], "accent": "#9D8CFF", "motif": "arcs"},
