@@ -1,0 +1,82 @@
+{
+ "issuer": "Al Hilal Bank",
+ "cards": [
+  {
+   "id": "al-hilal-cashback",
+   "issuer": "Al Hilal Bank",
+   "name": "Cashback Card",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining (if chosen)",
+      "rate": 0.05,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 250,
+      "conditions": "choose 2 of dining, grocery, fuel, international, education; tiered 1%/3%/5% by combined monthly spend of the two, total cap AED 500"
+     },
+     {
+      "name": "Grocery (if chosen)",
+      "rate": 0.05,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 250
+     },
+     {
+      "name": "Fuel (if chosen)",
+      "rate": 0.05,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 250
+     },
+     {
+      "name": "Education (if chosen)",
+      "rate": 0.05,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 250
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "utilities"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Up to 4 shared lounge or dining offers a year via Mastercard"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/al-hilal-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Rates tier with spend (1% first AED 3,000, 3% to 8,000, 5% above) in the two chosen categories; modelled at the top tier for all four, so only two apply. Utility and government payments through Al Hilal app earn nothing. Free for life."
+  }
+ ]
+}

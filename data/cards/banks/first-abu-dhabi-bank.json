@@ -1,0 +1,1628 @@
+{
+ "issuer": "First Abu Dhabi Bank",
+ "cards": [
+  {
+   "id": "fab-cashback",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Cashback",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining",
+      "rate": 0.05,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "AED spend only; fast food earns only 0.15%"
+     },
+     {
+      "name": "Fashion",
+      "rate": 0.05,
+      "categories": [
+       "shopping"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "fashion/apparel merchants only; other shopping earns the 1% base"
+     },
+     {
+      "name": "Supermarkets",
+      "rate": 0.05,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 150
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "utilities",
+       "education",
+       "transport"
+      ],
+      "conditions": "also government, insurance, fast food, charity at 0.15%; quasi-cash earns nothing"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000,
+    "international_rate": 0.03,
+    "monthly_total_cap_units": 1000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass: 8 visits/yr plus 6 guest visits, after a USD 1 card purchase",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "Up to 4 tickets/month at AED 20 each (Reel, Cine Royal, Star)",
+     "conditions": "AED 3,000 spend that month; full price billed if missed",
+     "count_per_year": 48
+    },
+    "dining": {
+     "text": "Talabat 40% off (bank page); Carrefour online AED 40 off"
+    },
+    "valet": {
+     "text": "One Careem airport ride per year (Hala taxis excluded)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Amazon gift card worth AED 1,000 for AED 10,000 spend within 60 days of issue",
+    "value_aed_est": 1000,
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "valid_until": "2026-11-30",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/cashback-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 300 + 5% VAT = 315 (bank quotes ex-VAT). NO cashback at all in a month unless the previous calendar month had AED 3,000+ eligible spend (supplementary cards count). 5% rates capped AED 150 per category per month; AED 1,000 total monthly cap. 3% on non-AED spend is not modelled in rules (see international_rate). Cashback is paid as FAB Rewards points redeemable in the app. Fuel, utilities, education, government, insurance, fast food earn only 0.15%; the 1% base applies to everything else eligible. Welcome gift card offer applies 1-30 Nov 2026, digital applications only. International fee 2.61%."
+  },
+  {
+   "id": "fab-islamic-cashback",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Islamic Cashback",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining",
+      "rate": 0.05,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "UAE nationals cap AED 200"
+     },
+     {
+      "name": "Groceries",
+      "rate": 0.05,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "UAE nationals cap AED 200"
+     },
+     {
+      "name": "Fuel",
+      "rate": 0.05,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "fuel only; other transport (taxi, Salik, parking) earns 0.15%; UAE nationals cap AED 200"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "utilities",
+       "education",
+       "rent"
+      ],
+      "conditions": "also government, books, flowers, laundry, charity at 0.15%; quasi-cash earns nothing"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000,
+    "international_rate": 0.03,
+    "monthly_total_cap_units": 1000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Lounge access for cardholder plus one guest (aggregator says unlimited, 850+ lounges); network pass unverified"
+    },
+    "valet": {
+     "text": "Two complimentary airport transfers per year; 20% off Careem chauffeur for three rides a month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-islamic-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator cites FAB's Oct 2025 Islamic KFS; official page not read. Needs AED 3,000 spend in the previous calendar month for any cashback. Caps AED 150 per 5% category and AED 1,000 total for expats (AED 200/1,500 for UAE nationals). Network not stated by source. Joining fee free; supplementary cards free."
+  },
+  {
+   "id": "fab-share-platinum",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "SHARE Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.075,
+    "rules": [
+     {
+      "name": "Carrefour, MAF malls and MAF experiences",
+      "rate": 0.4,
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "vox cinemas",
+       "ski dubai",
+       "magic planet",
+       "dreamscape",
+       "ifly dubai"
+      ],
+      "monthly_cap_units": 25000,
+      "conditions": "Carrefour (store and online), Mall of the Emirates, all City Centres, VOX, Ski Dubai, Magic Planet etc.; combined cap across all earn"
+     },
+     {
+      "name": "Reduced",
+      "rate": 0.015,
+      "categories": [
+       "utilities",
+       "transport",
+       "groceries"
+      ],
+      "monthly_cap_units": 25000,
+      "conditions": "utilities, fuel and non-Carrefour supermarkets 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.1,
+    "monthly_total_cap_units": 25000
+   },
+   "perks": {
+    "cinema": {
+     "text": "2-for-1 VOX standard ticket once a month, online/app only",
+     "count_per_year": 12
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-share-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-share-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "SHARE points: 10 points = AED 1 at SHARE partners. Fees and perks from aggregator; earn rates, caps and salary match the bank page. Monthly cap is on total points (25000) across all categories. International spend earns 1.0% (0.1 points per AED, not modelled in rules; 2.61% international fee eats much of it). Free card: no annual fee, no joining fee."
+  },
+  {
+   "id": "fab-share-signature",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "SHARE Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.1,
+    "rules": [
+     {
+      "name": "Carrefour, MAF malls and MAF experiences",
+      "rate": 0.6,
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "vox cinemas",
+       "ski dubai",
+       "magic planet",
+       "dreamscape",
+       "ifly dubai"
+      ],
+      "monthly_cap_units": 50000,
+      "conditions": "Carrefour (store and online), Mall of the Emirates, all City Centres, VOX, Ski Dubai, Magic Planet etc.; combined cap across all earn"
+     },
+     {
+      "name": "Reduced",
+      "rate": 0.015,
+      "categories": [
+       "utilities",
+       "transport",
+       "groceries"
+      ],
+      "monthly_cap_units": 50000,
+      "conditions": "utilities, fuel and non-Carrefour supermarkets 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.15,
+    "monthly_total_cap_units": 50000
+   },
+   "perks": {
+    "cinema": {
+     "text": "2-for-1 VOX up to 3 times a month, online/app only",
+     "count_per_year": 36
+    }
+   },
+   "welcome_offer": {
+    "text": "5,000 SHARE points (about AED 500) on card activation",
+    "value_aed_est": 500,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-share-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-share-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "SHARE points: 10 points = AED 1 at SHARE partners. Fees and perks from aggregator; earn rates, caps and salary match the bank page. Monthly cap is on total points (50000) across all categories. International spend earns 1.5% (0.15 points per AED, not modelled in rules; 2.61% international fee eats much of it). Welcome bonus is credited on activation per aggregator; bank page says up to 10,000 points on selected cards."
+  },
+  {
+   "id": "fab-share-infinite",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "SHARE Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Carrefour, MAF malls and MAF experiences",
+      "rate": 0.8,
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "vox cinemas",
+       "ski dubai",
+       "magic planet",
+       "dreamscape",
+       "ifly dubai"
+      ],
+      "monthly_cap_units": 100000,
+      "conditions": "Carrefour (store and online), Mall of the Emirates, all City Centres, VOX, Ski Dubai, Magic Planet etc.; combined cap across all earn"
+     },
+     {
+      "name": "Reduced",
+      "rate": 0.015,
+      "categories": [
+       "utilities",
+       "transport",
+       "groceries"
+      ],
+      "monthly_cap_units": 100000,
+      "conditions": "utilities, fuel and non-Carrefour supermarkets 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.2,
+    "monthly_total_cap_units": 100000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited Visa Airport Companion lounge visits for cardholder plus one guest (1,300+ lounges)"
+    },
+    "cinema": {
+     "text": "2-for-1 VOX up to 4 times a month, online/app only",
+     "count_per_year": 48
+    }
+   },
+   "welcome_offer": {
+    "text": "10,000 SHARE points (about AED 1,000) on card activation",
+    "value_aed_est": 1000,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-share-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-share-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "SHARE points: 10 points = AED 1 at SHARE partners. Fees and perks from aggregator; earn rates, caps and salary match the bank page. Monthly cap is on total points (100000) across all categories. International spend earns 2.0% (0.2 points per AED, not modelled in rules; 2.61% international fee eats much of it). Welcome bonus is credited on activation per aggregator."
+  },
+  {
+   "id": "fab-gems-world",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "GEMS World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 41895,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 2400000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Waived with AED 24,000 of non-education spend in the previous year"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 3.5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "transport",
+       "utilities",
+       "education"
+      ],
+      "conditions": "supermarkets, fuel, government, education tuition, car rental, insurance etc. earn 0.5 pt per AED"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 6.5,
+    "monthly_total_cap_units": 334000,
+    "school_merchant_rate": 33.5,
+    "school_merchant_monthly_cap_units": 83500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass 8 visits/yr for cardholder and one guest after USD 1 purchase",
+     "count_per_year": 8
+    },
+    "insurance": {
+     "text": "Optional Education Protection Plan from AED 28/month per child (separate paid product)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/gems-world",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-gems-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 399 + VAT = 418.95; waived with AED 24,000+ non-education spend in the prior year. The headline 33.5 points per AED applies ONLY to school bus, canteen, uniform and MCC 8299 extracurricular spend; tuition and generic education earn just 0.5 pt, so do not map education to the boost. 1 FAB Reward valued at about AED 0.003 (implied by FAB cashback rates). GEMS tuition discount up to 1.65% for remaining 2026-27 terms; 0% plan for GEMS fees of AED 1,000+."
+  },
+  {
+   "id": "fab-etihad-guest-infinite",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Etihad Guest Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 262500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.35,
+    "rules": [
+     {
+      "name": "Etihad Airways and partners",
+      "rate": 0.7,
+      "categories": [
+       "travel"
+      ],
+      "merchants": [
+       "etihad"
+      ],
+      "conditions": "direct Etihad bookings and Etihad partners"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.15,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education"
+      ],
+      "conditions": "supermarkets, utilities, fuel, transport, education, government earn 1.5 miles per AED 10"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.6,
+    "monthly_total_cap_units": 55000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited Visa Airport Companion lounge visits, cardholder plus one guest per visit (1,000+ lounges)"
+    },
+    "valet": {
+     "text": "6 discounted airport transfers/yr from AED 40 in-city / AED 100 inter-city"
+    },
+    "golf": {
+     "text": "Discounts at selected courses, no free rounds"
+    }
+   },
+   "welcome_offer": {
+    "text": "55,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "value_aed_est": 1650,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-etihad-guest-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only for earn/fees. Mile value set at AED 0.03 (conservative; Etihad miles are worth roughly 3-4 fils). Miles rate quoted per AED 10 spent (7 = 0.7/AED). Monthly cap 55,000 miles. Annual fee AED 2,625 incl VAT. Welcome offer may have been revised by FAB's Oct 2026 Etihad Guest promo terms (PDF not readable here)."
+  },
+  {
+   "id": "fab-etihad-guest-signature",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Etihad Guest Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.275,
+    "rules": [
+     {
+      "name": "Etihad Airways and partners",
+      "rate": 0.55,
+      "categories": [
+       "travel"
+      ],
+      "merchants": [
+       "etihad"
+      ],
+      "conditions": "direct Etihad bookings and Etihad partners"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.15,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education"
+      ],
+      "conditions": "supermarkets, utilities, fuel, transport, education, government earn 1.5 miles per AED 10"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.45,
+    "monthly_total_cap_units": 30000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Complimentary worldwide lounge access via Visa Airport Companion for cardholder (limits unclear)"
+    },
+    "valet": {
+     "text": "2 discounted intra-city airport transfers/yr from AED 40"
+    },
+    "golf": {
+     "text": "Discounts at selected courses"
+    },
+    "cinema": {
+     "text": "Up to 4 cinema tickets a month per aggregator header; terms not confirmed"
+    }
+   },
+   "welcome_offer": {
+    "text": "35,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "value_aed_est": 1050,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-etihad-guest-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only. Mile value AED 0.03 conservative. Monthly cap 30,000 miles. Fast-track to Etihad Guest Silver per aggregator."
+  },
+  {
+   "id": "fab-etihad-guest-platinum",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Etihad Guest Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Etihad Airways and partners",
+      "rate": 0,
+      "categories": [
+       "travel"
+      ],
+      "merchants": [
+       "etihad"
+      ],
+      "conditions": "direct Etihad bookings and Etihad partners"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education"
+      ],
+      "conditions": "supermarkets, utilities, fuel, transport, education, government earn 1.5 miles per AED 10"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0,
+    "monthly_total_cap_units": null
+   },
+   "perks": {
+    "valet": {
+     "text": "Discounted airport transfers"
+    },
+    "cinema": {
+     "text": "Discounted cinema tickets"
+    },
+    "golf": {
+     "text": "Golf discounts"
+    }
+   },
+   "welcome_offer": {
+    "text": "20,000 joining miles plus 20,000 bonus miles when AED 25,000 is spent within 3 months (bank page offer valid to 30 Nov 2026); Emiratis get first-year fee waived",
+    "value_aed_est": 1200,
+    "min_spend_minor": 2500000,
+    "window_days": 90,
+    "valid_until": "2026-11-30",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Only the bank marketing page was readable: annual fee AED 500 + VAT = 525, min salary AED 8,000, 'up to 5.5 Etihad Guest miles per AED 10'. Base and category earn rates were NOT found, so rates are set to 0 (unknown). Do not use for reward maths until verified. Optional paid Miles Accelerator programme exists."
+  },
+  {
+   "id": "fab-blue-platinum",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Blue Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Al-Futtaim retail brands",
+      "rate": 0.05,
+      "merchants": [
+       "marks & spencer",
+       "ikea",
+       "ace",
+       "toys r us"
+      ],
+      "conditions": "Marks & Spencer, IKEA, ACE, Toys R Us and similar"
+     },
+     {
+      "name": "Al-Futtaim specialty brands",
+      "rate": 0.02,
+      "merchants": [
+       "volvo",
+       "honda",
+       "jeep",
+       "lexus"
+      ],
+      "conditions": "Al-Futtaim schools and car brands (Volvo, Honda, Jeep, Lexus etc.)"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "groceries",
+       "transport",
+       "utilities",
+       "education",
+       "rent"
+      ],
+      "conditions": "also fuel, government, insurance, charity, fast food at 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 2000
+   },
+   "perks": {
+    "cinema": {
+     "text": "4 tickets/month at AED 20 after AED 3,000 monthly spend"
+    },
+    "valet": {
+     "text": "Discounted airport transfers (AED 40 intra-city) if flight bought with the card"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-blue-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 2000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+  },
+  {
+   "id": "fab-blue-signature",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Blue Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Al-Futtaim retail brands",
+      "rate": 0.06,
+      "merchants": [
+       "marks & spencer",
+       "ikea",
+       "ace",
+       "toys r us"
+      ],
+      "conditions": "Marks & Spencer, IKEA, ACE, Toys R Us and similar"
+     },
+     {
+      "name": "Al-Futtaim specialty brands",
+      "rate": 0.03,
+      "merchants": [
+       "volvo",
+       "honda",
+       "jeep",
+       "lexus"
+      ],
+      "conditions": "Al-Futtaim schools and car brands (Volvo, Honda, Jeep, Lexus etc.)"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "groceries",
+       "transport",
+       "utilities",
+       "education",
+       "rent"
+      ],
+      "conditions": "also fuel, government, insurance, charity, fast food at 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 3000
+   },
+   "perks": {
+    "cinema": {
+     "text": "4 tickets/month at AED 20 after AED 4,000 monthly spend"
+    },
+    "valet": {
+     "text": "Discounted airport transfers (AED 40 intra-city) if flight bought with the card"
+    },
+    "lounge": {
+     "text": "Up to 8 Visa Airport Companion visits/yr (1 free, 7 more unlocked by an international purchase 10+ days before)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/blue-fab-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 3000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+  },
+  {
+   "id": "fab-blue-infinite",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Blue Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 4000000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Al-Futtaim retail brands",
+      "rate": 0.08,
+      "merchants": [
+       "marks & spencer",
+       "ikea",
+       "ace",
+       "toys r us"
+      ],
+      "conditions": "Marks & Spencer, IKEA, ACE, Toys R Us and similar"
+     },
+     {
+      "name": "Al-Futtaim specialty brands",
+      "rate": 0.04,
+      "merchants": [
+       "volvo",
+       "honda",
+       "jeep",
+       "lexus"
+      ],
+      "conditions": "Al-Futtaim schools and car brands (Volvo, Honda, Jeep, Lexus etc.)"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "groceries",
+       "transport",
+       "utilities",
+       "education",
+       "rent"
+      ],
+      "conditions": "also fuel, government, insurance, charity, fast food at 0.15%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 4000
+   },
+   "perks": {
+    "cinema": {
+     "text": "6 tickets/month at AED 20 after AED 6,000 monthly spend"
+    },
+    "valet": {
+     "text": "Discounted airport transfers (AED 40 intra-city) if flight bought with the card"
+    },
+    "lounge": {
+     "text": "Up to 12 Visa Airport Companion visits/yr incl guests (2 free, 10 more unlocked)"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 5,000 Al-Futtaim FAB Rewards for UAE nationals after AED 12,000 spend in each of first three 30-day cycles; applications 24 Sep-23 Nov 2026 (ended)",
+    "value_aed_est": 5000,
+    "min_spend_minor": 3600000,
+    "window_days": 90,
+    "valid_until": "2026-11-23",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-blue-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 4000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+  },
+  {
+   "id": "fab-emirati-islamic",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Emirati Islamic",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 63000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "telecom",
+       "transport",
+       "education",
+       "utilities",
+       "rent"
+      ],
+      "conditions": "supermarkets, telecom, fuel, education, government, charity, rent, insurance, utilities"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 10,
+    "beauty_rate": 15,
+    "beauty_monthly_cap_units": 200000,
+    "monthly_total_cap_units": 500000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited Mastercard Travel Pass lounge access (1,200+ lounges); one guest up to 6 times a year"
+    },
+    "valet": {
+     "text": "Up to 5 valet visits/month; AED 100 per visit if monthly spend under AED 10,000 or allowance exceeded",
+     "conditions": "AED 10,000 monthly spend"
+    },
+    "dining": {
+     "text": "Up to 20% off at 150+ Emirati-preferred restaurants"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/fab-emirati-islamic-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "UAE nationals only. Aggregator-only (cites FAB Oct 2025 Islamic KFS). Tier assumed world_elite is NOT confirmed (tier is a guess). Gym and padel access needs AED 10,000 monthly spend (AED 300 charged otherwise). 2 free Careem airport transfers/yr. Rewards are FAB Islamic Rewards valued ~AED 0.003."
+  },
+  {
+   "id": "fab-du-titanium",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "du Titanium",
+   "network": null,
+   "tier": "titanium",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.003,
+    "rules": [
+     {
+      "name": "du bills and devices",
+      "rate": 0.1,
+      "categories": [
+       "telecom"
+      ],
+      "merchants": [
+       "du"
+      ],
+      "conditions": "du bill payments, recharges, home services, devices; needs AED 1,250 spend in previous month. Aggregator quotes 10%, bank page says 15% - 10% used"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0015,
+      "categories": [
+       "groceries",
+       "transport",
+       "education",
+       "utilities",
+       "rent"
+      ],
+      "conditions": "0.5 FAB Reward per AED"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 150
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited access to 10+ Middle East airport lounges on presenting the card"
+    },
+    "dining": {
+     "text": "20% off one Talabat order a month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/du-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-du-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Free for life. DISCREPANCY: bank page advertises 15% saving on du spend, aggregator (citing KFS) says 10% cashback after AED 1,250 prior-month spend; used 10%. Everything else earns 1 FAB Reward per AED (~0.3%), 50,000 point monthly cap on non-du. Interest 3.5%/month (lower than other FAB cards). Network not stated."
+  },
+  {
+   "id": "fab-elite",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 126000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 4000000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "groceries",
+       "transport",
+       "rent"
+      ],
+      "conditions": "government, charity, insurance, fuel, supermarkets also 0.5"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "luxury_rate": 20,
+    "luxury_monthly_cap_units": 200000,
+    "eco_rate": 10,
+    "monthly_total_cap_units": 500000
+   },
+   "perks": {
+    "lounge": {
+     "text": "14 Mastercard Travel Pass visits/yr incl guests; USD 1 international purchase every 3 months keeps it active",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "Mastercard Golf programme: 30% off or one complimentary guest at selected courses"
+    },
+    "valet": {
+     "text": "Up to 5 free 1-hour valet sessions a month at premium UAE sites",
+     "conditions": "AED 10,000 monthly spend, else AED 100 fee"
+    },
+    "dining": {
+     "text": "Up to 40% off at 100+ UAE restaurants via ADV+"
+    },
+    "insurance": {
+     "text": "Travel medical to USD 500,000; rental car CDW to USD 50,000; concierge"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-elite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 1,200 + VAT = 1,260 per bank page; aggregator also shows a joining fee of AED 1,260, which the bank page does not mention (joining set null). 20 points/AED only at named luxury brands (Hermes, Cartier etc.), 10 at named eco merchants; everything else 5 points (about 1.5%). 500,000-point monthly cap. 3 airport fast-track uses and 4 Careem rides a year."
+  },
+  {
+   "id": "fab-rewards-indulge",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Rewards Indulge",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "selected low-interchange categories 0.5 pt"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "online_rate": 5,
+    "online_monthly_cap_units": 50000,
+    "monthly_spend_bonus_units": 20000,
+    "monthly_spend_bonus_threshold_minor": 1000000
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 lounge visits a year subject to minimum spend"
+    },
+    "cinema": {
+     "text": "Up to 4 tickets/month at AED 20 after AED 3,000 monthly spend",
+     "count_per_year": 48
+    },
+    "dining": {
+     "text": "Up to 20% off at 150+ UAE restaurants (up to 7 diners)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-rewards-indulge-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-rewards-indulge-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free. Online (Mastercard e-commerce) spend earns 5 points/AED (about 1.5%) - modelled via extra key online_rate because the rule engine has no channel field; base rate 1 pt/AED (0.3%). Bonus 20,000 FAB Rewards (about AED 60) in months with AED 10,000+ spend. 50,000-point monthly cap on spend rewards. Namshi 20% off up to AED 100 per order."
+  },
+  {
+   "id": "fab-adnoc-rewards",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "ADNOC Rewards",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 4800000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Waived from the second year with AED 48,000 eligible retail spend in the prior 12 months"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.001,
+    "base_rate": 10,
+    "rules": [
+     {
+      "name": "ADNOC stations incl fuel",
+      "rate": 150,
+      "categories": [
+       "transport"
+      ],
+      "merchants": [
+       "adnoc"
+      ],
+      "monthly_cap_units": 150000,
+      "conditions": "15% back only at ADNOC; needs AED 3,000 spend in previous calendar month"
+     },
+     {
+      "name": "Salik, DARB, Mawaqif",
+      "rate": 30,
+      "categories": [
+       "transport"
+      ],
+      "merchants": [
+       "salik",
+       "darb",
+       "mawaqif"
+      ],
+      "monthly_cap_units": 100000,
+      "conditions": "needs AED 3,000 prior-month spend"
+     },
+     {
+      "name": "Groceries",
+      "rate": 10,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 100000,
+      "conditions": "1%; needs AED 3,000 prior-month spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 1.5,
+      "categories": [
+       "utilities",
+       "education",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "government, utilities, insurance, education etc. 0.15%; charity/cash-like earn nothing"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 20,
+    "monthly_total_cap_units": 1000000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge access (1,300+ lounges) after USD 1 spend; visit count not stated"
+    },
+    "cinema": {
+     "text": "2 tickets/month at AED 20 after AED 3,000 monthly spend",
+     "count_per_year": 24
+    }
+   },
+   "welcome_offer": {
+    "text": "300,000 ADNOC Rewards points (AED 300) after annual fee paid and second statement issued; cards issued 18 Dec 2025 to 17 Dec 2026",
+    "value_aed_est": 300,
+    "window_days": null,
+    "valid_until": "2026-12-17",
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-adnoc-rewards-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-adnoc-rewards-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "1,000 ADNOC points = AED 1. 15% at ADNOC capped at AED 150 per month (about AED 1,000 of ADNOC spend); Salik/DARB/Mawaqif 3% capped AED 100. All the 15%/3%/groceries tiers need AED 3,000 card spend in the PREVIOUS month, else ADNOC spend falls to the 1% base. Fuel at non-ADNOC stations is transport at the 1% base. Annual fee AED 300 + VAT = 315, waived from year 2 with AED 48,000 eligible spend in 12 months."
+  },
+  {
+   "id": "fab-rewards-active",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Rewards Active",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.61,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 2,
+    "rules": [
+     {
+      "name": "Sports",
+      "rate": 5,
+      "categories": [
+       "entertainment"
+      ],
+      "merchants": [
+       "sun & sand sports"
+      ],
+      "conditions": "sports merchants/clubs/gear only; categories approximated"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "selected low-interchange categories"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 50000,
+    "steps_points_per_1000": 25
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 complimentary visits/yr via Mastercard Travel Pass",
+     "count_per_year": 4
+    },
+    "dining": {
+     "text": "Free fitness-ring, ADV+ gym access (25+ gyms) needing AED 3,000 monthly spend else AED 100 per visit"
+    }
+   },
+   "welcome_offer": {
+    "text": "3 months free TOD streaming after AED 3,000 spend in first 30 days",
+    "min_spend_minor": 300000,
+    "window_days": 30,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-rewards-active-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-rewards-active-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Bank page: annual fee AED 300 (+VAT = 315). Aggregator shows an extra joining fee of AED 315, not on the bank page (joining null). 2 points/AED general (0.6%), 5 on sports (1.5%), 0.5 on reduced categories. Steps reward: 25 points per 1,000 steps from 6,000/day (max 10,000 steps counted). Total monthly cap 50,000 points. Sports merchant list not confirmed."
+  },
+  {
+   "id": "fab-travel",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Travel",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": 0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 3,
+    "rules": [
+     {
+      "name": "Flights and hotels",
+      "rate": 41,
+      "categories": [
+       "travel"
+      ],
+      "monthly_cap_units": 562500,
+      "conditions": "12% only if previous calendar month spend was AED 5,000+, else 3 pts; max about AED 1,800/month"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "supermarkets, telecom, fuel, education, government, insurance"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_total_cap_units": 562500
+   },
+   "perks": {
+    "lounge": {
+     "text": "14 visits/yr shared by cardholder and first guest after USD 1 international spend (3-month activation); second guest 6 visits after AED 5,000 monthly spend",
+     "count_per_year": 14
+    },
+    "valet": {
+     "text": "4 Careem airport rides/yr up to USD 23 each; 3 fast-track uses/yr"
+    },
+    "insurance": {
+     "text": "Travel medical and inconvenience insurance; rental CDW"
+    }
+   },
+   "welcome_offer": {
+    "text": "Free economy return flight voucher to one of ~22 destinations, issued within 45 days of activation (annual fee must be paid); repeats yearly after AED 300,000 spend in prior calendar year",
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-travel-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/fab-travel-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 1,500 + VAT = 1,575. No FX markup or scheme fee. 12% back on flights/hotels is paid in FAB Rewards and needs AED 5,000 spend in the previous month; non-flight foreign spend earns nothing unless flights/hotels. The flight voucher: Mastercard partner picks routes; code expires 30 days after SMS. Tier is a guess."
+  },
+  {
+   "id": "fab-z-card",
+   "issuer": "First Abu Dhabi Bank",
+   "name": "Z Card",
+   "network": null,
+   "tier": "other",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": null,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.003,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "dining": {
+     "text": "20% off Talabat; 20% off Netflix, Spotify, PlayStation etc."
+    },
+    "lounge": {
+     "text": "Free airport lounge access (details not shown)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Free Careem Plus and Noon One memberships for one year; no annual fee for first year",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-z-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Only the marketing page was read: min salary AED 5,000, first-year annual fee waived (later fee unknown), 1.99% monthly interest, no FX fees abroad, FAB Rewards on spend (rates not stated). Earn rates and annual fee unknown so rewards set empty. No kredit.ae detail page exists."
+  }
+ ]
+}

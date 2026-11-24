@@ -1,0 +1,57 @@
+{
+ "issuer": "American Express",
+ "cards": [
+  {
+   "id": "amex-platinum-uae",
+   "issuer": "American Express",
+   "name": "Platinum Credit Card",
+   "network": "amex",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2125000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.02,
+    "base_rate": 0.5,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "12 Priority Pass visits a year, 8 for one supplementary",
+     "count_per_year": 12
+    },
+    "dining": {
+     "text": "10% back up to AED 50/month after AED 4,000 monthly spend"
+    }
+   },
+   "welcome_offer": {
+    "text": "30,000 Membership Rewards points for USD 5,500 within 90 days",
+    "value_aed_est": 600,
+    "min_spend_minor": 2020000,
+    "window_days": 90,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/american-express-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "2 Membership Rewards per AED 4 = 0.5 pt/AED; point value 0.02 AED placeholder (about 1%). Points never expire; transferable to airline/hotel partners. Welcome 30,000 MR for USD 5,500 in 90 days via Amex digital channels, offer runs through 31 Dec 2026. Fee waiver trick on kredit: AED 10,000 spend in first three months (truncated, verify)."
+  }
+ ]
+}

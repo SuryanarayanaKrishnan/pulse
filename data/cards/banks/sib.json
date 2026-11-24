@@ -1,0 +1,234 @@
+{
+ "issuer": "SIB",
+ "cards": [
+  {
+   "id": "sib-cashback",
+   "issuer": "SIB",
+   "name": "Cashback Credit Card",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 19900,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 1000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "From year two waived with AED 10,000 retail spend; first year free"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.5,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Online and wallet spend",
+      "rate": 0.1,
+      "categories": [
+       "shopping",
+       "entertainment",
+       "travel",
+       "dining",
+       "health",
+       "transport"
+      ],
+      "monthly_cap_units": 300,
+      "conditions": "10% on saved-card online payments and Apple Pay/Samsung Wallet; cap AED 300 per month shared by all such spend; utilities, telecom, government, supermarkets, education excluded; the engine cannot tell channel, so in-store spend in these categories is over-credited here (in-store earns 1%)",
+      "channel": "online"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.005,
+      "categories": [
+       "groceries",
+       "utilities",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "conditions": "0.5% on utilities, telecom, government, supermarkets/hypermarkets, education; kredit also lists fuel, real estate, QSR, insurance, auto dealers, transit/Salik, charity at 0.5%",
+      "mcc_exclusions": [
+       "4900",
+       "4813",
+       "4814",
+       "9399",
+       "9402",
+       "8299",
+       "8220",
+       "8211",
+       "5411"
+      ]
+     },
+     {
+      "name": "International retail",
+      "rate": 0.02,
+      "categories": [
+       "travel"
+      ],
+      "conditions": "2% on foreign-currency retail outside UAE (EEA merchants 0.3%); applies when not online-wallet 10% category",
+      "channel": "international"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Free unlimited access to 10+ regional lounges via Mastercard Travel Pass; 1,300+ global lounges if flight delayed 1h+ (register 24h ahead)"
+    },
+    "dining": {
+     "text": "Mastercard concierge"
+    }
+   },
+   "welcome_offer": {
+    "text": "No cashback bonus; annual fee free for first year",
+    "value_aed_est": 199
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/sib-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://sib.ae/en/cashback-card-faqs",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://sib.ae/en/Cashback-TCs",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/blog/sib-tabby-cashback.md",
+     "kind": "community",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [
+    {
+     "text": "Tabby repayments reportedly post under MCC 5999 and earn 0.5% rather than 10%, even via Apple Pay; past 10% results do not guarantee future ones",
+     "source": "https://kredit.ae/blog/sib-tabby-cashback.md",
+     "as_of": "2026-11-24"
+    }
+   ],
+   "notes": "Official terms: 10% online/wallet capped AED 300 per calendar month; no minimum spend; cashback expires after 36 months, redeem min AED 100, cannot pay card bill with it; utility bills paid via bank's own online/mobile banking earn nothing. Supermarket MCC 5411, utility/telecom 4900/4813/4814, government 9399/9402, education 8299/8220/8211 are low-rate. MCC 5999 reportedly earns only 0.5% (see community). Annual fee AED 199 per aggregator (official page does not state amount); waived by AED 10,000 retail spend in the year; first year free. FX admin fee 2.5%. Profit 3.49%/month on official page. No welcome bonus on official page."
+  },
+  {
+   "id": "sib-smiles-titanium",
+   "issuer": "SIB",
+   "name": "Smiles Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "points",
+   "islamic": true,
+   "status": "unverified",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.25,
+      "categories": [
+       "education",
+       "utilities",
+       "groceries"
+      ],
+      "conditions": "education, government, utilities, supermarkets earn 0.5 Smiles per AED 2"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://sib.ae/en/Smiles-TCs",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.sib.ae/en/personal-banking/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn 1 Smile per AED 2 domestic (0.5/AED), 2 per AED 2 international. SIB states no AED value per Smile; point_value_aed 0.01 is our placeholder, treat value as unknown. Smiles expire after 36 months. Free for life per T&C. Min salary, welcome, profit rate not found. Not on kredit.ae; may be closed to new applicants (SIB page dated 2020)."
+  },
+  {
+   "id": "sib-smiles-world",
+   "issuer": "SIB",
+   "name": "Smiles World Mastercard",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": true,
+   "status": "unverified",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.75,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.375,
+      "categories": [
+       "education",
+       "utilities",
+       "groceries"
+      ],
+      "conditions": "0.75 Smiles per AED 2"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "50,000 Smiles for AED 20,000 spend within 90 days",
+    "min_spend_minor": 2000000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://sib.ae/en/Smiles-TCs",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn 1.5 Smiles per AED 2 domestic (0.75/AED), 3 per AED 2 international. Welcome 50,000 Smiles for AED 20,000 in 90 days. Fee AED 525 is an inference from an ambiguous T&C table. Point value unknown (placeholder 0.01). May be closed to new applicants."
+  }
+ ]
+}

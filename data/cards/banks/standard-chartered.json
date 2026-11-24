@@ -1,0 +1,309 @@
+{
+ "issuer": "Standard Chartered",
+ "cards": [
+  {
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 15000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year waived with AED 10,000 spend within 60 days of opening; later years waived with AED 150,000 spend in previous 12 months"
+   },
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Lounge access via Visa Airport Companion; first 2 visits each year free, further access needs a USD 1 international purchase, USD 32 per visit otherwise",
+     "count_per_year": 2
+    },
+    "golf": {
+     "text": "1 complimentary golf round per billing cycle via SpikesOn (2 during a May 2026 to May 2027 campaign needing AED 12,000 spend)",
+     "conditions": "AED 10,000 spend, else AED 525 fee"
+    },
+    "dining": {
+     "text": "Warehouse Gym up to 30 visits per cycle; 4 Careem airport transfers a year (up to AED 100 off each); 10% duty-free cashback capped at AED 100 per statement until 31 Jan 2027"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 1,000 cashback when AED 10,000 is spent within 60 days of opening; terms published quarterly, latest to Dec 2026",
+    "value_aed_est": 1000,
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "valid_until": "2026-12-31"
+   },
+   "community_notes": [],
+   "notes": "360 Rewards: 2 points per USD locally and 4 per USD internationally (international not modelled by category). Stored per AED by dividing by 3.6725. Bank page conflicts on point value (125 points = AED 1 in one place, a worked example implies a different figure); 0.008 AED per point used (125 per AED). Airline-booking cashback conversion of 2% of points balance exists. Existing Visa Infinite cards are renamed Journey on renewal. Needs existing SC account, minimum limit AED 20,000. Reduced-earn categories for this card were not found on the page. Single official source; KFS not opened.",
+   "id": "scb-journey",
+   "name": "Journey",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 0.5446,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.sc.com/ae/credit-cards/journey/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.sc.com/ae/credit-cards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Standard Chartered"
+  },
+  {
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "closed_to_new",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 900000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; later waived with AED 9,000 spend in previous 12 months"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "Buy one get one free at VOX and Reel"
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Bank page says the card is not available for new clients (still shown on the card comparison page). 2% on international/non-AED spend and on airline spend booked directly with the airline (MCC 3000-3301) is not modelled by category. No cashback cap, earns within credit limit only, minimum redemption AED 100, cashback expires after 12 months. Min salary AED 8,000 from the card comparison page. Single official source; KFS not opened.",
+   "id": "scb-simply-cash",
+   "name": "Simply Cash",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Government, insurance, rent, auto dealers",
+      "categories": [
+       "rent"
+      ],
+      "rate": 0.002,
+      "conditions": "Government fees, insurance fees, rental housing fees, auto dealership fees (specific MCCs)"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.sc.com/ae/credit-cards/simply-cash/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.sc.com/ae/credit-cards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Standard Chartered"
+  },
+  {
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "closed_to_new",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; later waiver threshold not stated"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
+     "count_per_year": 8
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Cashback applies to online AED spend and bill payments, foreign-currency spend (online and in-store) and AED mobile-wallet in-store spend, tiered by total monthly spend: nothing below AED 2,500; 3% from 2,500 (cap AED 100 a month per bucket); 5% from 15,000 (cap AED 200); 10% from 30,000 (cap AED 400 online/FX, AED 200 wallet). Spend outside those channels appears to earn nothing, and channel-based rules cannot be expressed as categories, so reward_structure has base 0 and no rules; use notes. Bank page says not available for new clients. Salary AED 8,000 from the comparison page.",
+   "id": "scb-x-card",
+   "name": "X Card",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "min_monthly_spend_minor": 250000,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.sc.com/ae/credit-cards/x-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Standard Chartered"
+  },
+  {
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "closed_to_new",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free for new clients"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "Buy one get one free at VOX and Reel (comparison page)"
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Bank page says not available for new clients. 1 point per USD (stored per AED /3.6725). Point value 0.008 AED assumes 125 points per AED as stated for the 360 Rewards programme on the Journey page; not confirmed on this page. The older 'Manhattan Platinum' page shows the same fee and earn rates and a AED 5,000 salary; likely the same card family, merged here. No caps stated.",
+   "id": "scb-manhattan-rewards-plus",
+   "name": "Manhattan Rewards+",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Reduced categories (UAE)",
+      "categories": [
+       "education",
+       "groceries",
+       "transport",
+       "rent"
+      ],
+      "rate": 0.0272,
+      "conditions": "Education, government, supermarket, petrol, insurance, quick-service restaurants, rental housing, auto dealers; 0.1 points per USD"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.sc.com/ae/credit-cards/manhattan-rewards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.sc.com/ae/credit-cards/manhattan/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Standard Chartered"
+  },
+  {
+   "network": "visa",
+   "tier": "other",
+   "kind": "points",
+   "islamic": true,
+   "status": "closed_to_new",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 200000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; waived later with AED 2,000 spend in the previous 12 months"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "Buy one get one free at VOX and Reel"
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Shariah-compliant Murabaha card, not available to new clients per bank page. Zero late, over-limit and cash-advance fees. Earn rates per USD were not published on the page, so base_rate 0 is a placeholder, not a fact. Min salary AED 8,000 from comparison page.",
+   "id": "scb-smart-saadiq",
+   "name": "Smart Saadiq",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.sc.com/ae/credit-cards/smart-saadiq/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.sc.com/ae/credit-cards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "Standard Chartered"
+  }
+ ]
+}

@@ -1,0 +1,1094 @@
+{
+ "issuer": "ADCB",
+ "cards": [
+  {
+   "id": "adcb-365-cashback",
+   "issuer": "ADCB",
+   "name": "365 Cashback",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 38325,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "No annual fee for the first year; AED 383.25 incl VAT from year two"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining",
+      "rate": 0.06,
+      "categories": [
+       "dining"
+      ],
+      "conditions": "includes online food orders; fast food is not separated"
+     },
+     {
+      "name": "Fuel and Salik",
+      "rate": 0.05,
+      "categories": [
+       "transport"
+      ],
+      "conditions": "fuel and Salik only; other transport earns 0.5%"
+     },
+     {
+      "name": "Groceries",
+      "rate": 0.03,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Streaming and AI subscriptions",
+      "rate": 0.05,
+      "merchants": [
+       "netflix",
+       "amazon prime",
+       "disney+",
+       "chatgpt",
+       "openai",
+       "copilot",
+       "gemini"
+      ],
+      "conditions": "named home digital entertainment (Netflix, Prime, Disney+) and AI app subscriptions"
+     },
+     {
+      "name": "Select categories",
+      "rate": 0.005,
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "conditions": "also charity, government, auto dealers, insurance, EU merchants at 0.5%"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 500000,
+    "monthly_total_cap_units": 1000
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy-1-get-1 up to 4 tickets a month, 25% off F&B",
+     "count_per_year": 48
+    },
+    "insurance": {
+     "text": "Complimentary Credit Shield life cover"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 365 cashback for AED 5,000 spend in the first 45 days; credited within 90 days of issue",
+    "value_aed_est": 365,
+    "min_spend_minor": 500000,
+    "window_days": 45,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/365-cashback-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-365-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "New structure from 1 Jul 2026. NO cashback at all in a calendar month with under AED 5,000 total card spend (supplementary spend counts). Cap AED 1,000/month. No lounge. Annual fee AED 383.25 incl VAT, free in year one only. Bank page title text mentions an 'AED 1365' bonus but body says AED 365; body used. Spends via ADCB channels (bill payments, school fees) are not eligible on some ADCB cards - check T&C."
+  },
+  {
+   "id": "adcb-essential-cashback",
+   "issuer": "ADCB",
+   "name": "Essential Cashback",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Select categories",
+      "rate": 0.0075,
+      "categories": [
+       "groceries",
+       "transport",
+       "utilities",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "conditions": "supermarkets, charity, fuel, utilities, government, telecom, Salik, transport, auto dealers, insurance, real estate, EU merchants - by MCC"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 100000,
+    "base_rate_high_tier": 0.0125,
+    "high_tier_spend_minor": 500000,
+    "monthly_total_cap_units": 1000
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 Mastercard Travel Pass visits/yr; first visit free, USD 1 non-AED spend keeps it active; extra guests USD 32",
+     "count_per_year": 4
+    },
+    "cinema": {
+     "text": "Reel buy-1-get-1 up to 2 free tickets/month until 31 Dec 2026; 20% off F&B"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to AED 250 welcome bonus on select digital channels (bank page title says up to AED 350); spend conditions not captured",
+    "value_aed_est": 250,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/essential-cashback-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-essential-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. From 1 Jul 2026: 1% when monthly spend is AED 1,000-4,999, 1.25% at AED 5,000+ (all non-select spend that month), 0.75% on select categories at any tier, nothing below AED 1,000. Base 1% modelled; 1.25% tier in extra key. Bill payments, school fees and anything paid through ADCB channels earn no cashback. Max AED 1,000/month. Earns on AED and foreign spend."
+  },
+  {
+   "id": "adcb-talabat",
+   "issuer": "ADCB",
+   "name": "Talabat",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.0125,
+    "rules": [
+     {
+      "name": "talabat orders",
+      "rate": 0.35,
+      "categories": [
+       "dining"
+      ],
+      "merchants": [
+       "talabat"
+      ],
+      "monthly_cap_units": 350,
+      "conditions": "35% as talabat credit on first 10 orders a month (AED 35 per order) only if card spend that month is AED 2,500+; otherwise 1.25%"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0035,
+      "categories": [
+       "groceries",
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport, supermarkets, auto dealers, insurance, UK/EEA"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 Mastercard Travel Pass visits/yr; extra guests USD 32",
+     "count_per_year": 4
+    },
+    "dining": {
+     "text": "Unlimited free delivery on talabat Pro orders (min AED 50 food / AED 100 grocery)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to AED 750 talabat credit (AED 200 for existing ADCB cardholders) after AED 5,000 spend in 45 days; digital applications only",
+    "value_aed_est": 750,
+    "min_spend_minor": 500000,
+    "window_days": 45,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/talabat-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-talabat-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. Rewards are talabat credit, not cash: only useful if you order on talabat. Cap AED 350/month on the 35% tier. Supermarket spend (even at talabat mart outside the cap) earns only 0.35% when not on talabat."
+  },
+  {
+   "id": "adcb-lulu-titanium",
+   "issuer": "ADCB",
+   "name": "LuLu Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "LuLu stores",
+      "rate": 3.5,
+      "categories": [
+       "groceries"
+      ],
+      "merchants": [
+       "lulu"
+      ],
+      "conditions": "purchases at LuLu are exempt from the reduced supermarket rate"
+     },
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food 0.4 pt per AED"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport 0.2 pt"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "dining": {
+     "text": "20% off one talabat order a month, capped AED 14"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/adcb-lulu-titanium-gold-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-lulu-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. 5,000 LuLu Points = AED 50 voucher (1 point = AED 0.01). 3.5 pts/AED at LuLu stores, 1 pt elsewhere, 0.4 or 0.2 on low-yield categories, 0.4 in UK/EEA. Points redeem only at LuLu."
+  },
+  {
+   "id": "adcb-lulu-platinum",
+   "issuer": "ADCB",
+   "name": "LuLu Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1.25,
+    "rules": [
+     {
+      "name": "LuLu stores",
+      "rate": 8,
+      "categories": [
+       "groceries"
+      ],
+      "merchants": [
+       "lulu"
+      ],
+      "conditions": "purchases at LuLu are exempt from the reduced supermarket rate"
+     },
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food 0.4 pt per AED"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport 0.2 pt"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 Mastercard Travel Pass visits/yr; first visit free then USD 1 non-AED spend each 3 months; guests USD 32",
+     "count_per_year": 4
+    },
+    "cinema": {
+     "text": "Reel buy-1-get-1 up to 2 tickets/month until 31 Dec 2026"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/adcb-lulu-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-lulu-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. 8 pts/AED at LuLu (8%), up to 1.25 elsewhere, no minimum spend; 5,000 points = AED 50 at LuLu only. Salary requirement AED 8,000 per aggregator."
+  },
+  {
+   "id": "adcb-touchpoints-titanium-gold",
+   "issuer": "ADCB",
+   "name": "TouchPoints Titanium/Gold",
+   "network": null,
+   "tier": "titanium",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 0.5,
+    "rules": [
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_spend_bonus_units": 5000,
+    "monthly_spend_bonus_threshold_minor": 500000
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy-1-get-1 up to 2 tickets/month"
+    },
+    "dining": {
+     "text": "20% off one talabat order a month, capped AED 14"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-tg-cc.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Two variants sold (Visa Gold and Mastercard Titanium), no annual fee, min salary AED 5,000 (or AED 3,000 limit). Earn up to 0.5 TouchPoint/AED, +5,000 bonus points in months with AED 5,000 spend. 100,000 points = about AED 500. No kredit.ae page; earn base read from the bank page only."
+  },
+  {
+   "id": "adcb-touchpoints-platinum",
+   "issuer": "ADCB",
+   "name": "TouchPoints Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 63000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "No annual fee in year one; AED 630 from year two"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_spend_bonus_units": 10000,
+    "monthly_spend_bonus_threshold_minor": 1000000
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 visits/yr via Mastercard Travel Pass, shared with supplementary cards; extra visits USD 32",
+     "count_per_year": 4
+    },
+    "golf": {
+     "text": "Free golf at Arabian Ranches and Abu Dhabi Golf Club with AED 5,000 monthly spend"
+    },
+    "cinema": {
+     "text": "VOX buy-1-get-1 up to 4 tickets/month, no minimum spend",
+     "count_per_year": 48
+    },
+    "dining": {
+     "text": "20% off up to 2 talabat orders a month, max AED 20 each"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-platinum-cc.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-touchpoints-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 630 incl VAT, free in year 1 for new customers. 200,000 TouchPoints = about AED 1,000 (AED 0.005/pt; aggregator implies 0.006). 1 pt/AED base, +10,000 bonus points in months with AED 10,000 spend."
+  },
+  {
+   "id": "adcb-touchpoints-infinite",
+   "issuer": "ADCB",
+   "name": "TouchPoints Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 1.5,
+    "rules": [
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_spend_bonus_units": 15000,
+    "monthly_spend_bonus_threshold_minor": 1500000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited Visa Airport Companion lounge visits, cardholder plus one guest (1,200+ lounges)"
+    },
+    "golf": {
+     "text": "Free golf at Arabian Ranches and Abu Dhabi Golf Club with AED 5,000 monthly spend"
+    },
+    "cinema": {
+     "text": "VOX buy-1-get-1 up to 4 tickets/month plus 25% F&B",
+     "count_per_year": 48
+    },
+    "dining": {
+     "text": "20% off up to 4 talabat orders a month, max AED 20 each"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 1,200 Expedia.ae 2-night hotel voucher after first-year annual fee is paid (issued within 60 days, valid 6 months); excludes major chains",
+    "value_aed_est": 1200,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-ic.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-touchpoints-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 1,050 per aggregator (bank page excerpt did not state it). 200,000 TouchPoints = about AED 1,000. 1.5 pts/AED base (0.75%), +15,000 bonus points in months with AED 15,000 spend. Reduced categories earn 0.4 / 0.2 pt."
+  },
+  {
+   "id": "adcb-betaqti",
+   "issuer": "ADCB",
+   "name": "Betaqti",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 210000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 3,
+    "rules": [
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.4,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.2,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "anniversary_bonus_units": {
+     "250000": 250000,
+     "350000": 500000,
+     "500000": 750000
+    }
+   },
+   "perks": {
+    "lounge": {
+     "text": "Complimentary access to 1,000+ lounges worldwide (counts not captured)"
+    },
+    "cinema": {
+     "text": "VOX buy-1-get-1 including THEATRE/GOLD/KIDS; 25% off F&B"
+    },
+    "dining": {
+     "text": "Caribou Coffee buy-1-get-1 unlimited; UFC Gym complimentary access"
+    },
+    "insurance": {
+     "text": "World Elite concierge desk"
+    }
+   },
+   "welcome_offer": {
+    "text": "300,000 TouchPoints (about AED 1,500) as welcome gift",
+    "value_aed_est": 1500,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/betaqti-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Emiratis only (metal card). Annual fee AED 2,100 incl VAT (stated on bank page). Min salary AED 10,000 or AED 20,000 limit. Earns 'up to 3' TouchPoints/AED (base modelled as 3); 0.7 at supermarkets/auto/insurance/fast food, 0.35 at fuel/education/government/telecom/transport, 0.4 in EEA. 200,000 points = about AED 1,000. Anniversary bonus: 250,000 pts at AED 250k annual spend, 500,000 at 350k, 750,000 at 500k. Premium perk details not fully read; no aggregator page."
+  },
+  {
+   "id": "adcb-private-world-elite",
+   "issuer": "ADCB",
+   "name": "Private World Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 787500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 4,
+    "rules": [
+     {
+      "name": "Supermarkets etc",
+      "rate": 0.7,
+      "categories": [
+       "groceries"
+      ],
+      "conditions": "supermarkets, auto dealers, insurance, fast food"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.35,
+      "categories": [
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "14 visits/yr shared across primary and supplementary cards, one guest per visit (1,200+ lounges)",
+     "count_per_year": 14
+    },
+    "valet": {
+     "text": "Complimentary valet at participating UAE malls and hotels; 4 Careem airport rides/yr"
+    },
+    "insurance": {
+     "text": "Multi-trip travel insurance for family; 24/7 concierge"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-private-world-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Aggregator-only; invitation/private-banking tier, minimum salary not published. Annual fee AED 7,875, supplementary AED 1,575, retail finance rate 1.99%/month. 4 TouchPoints/AED base, 0.7 supermarkets/auto/insurance, 0.35 fuel/education etc. TouchPoint value assumed AED 0.005 (same programme as other ADCB cards)."
+  },
+  {
+   "id": "adcb-shukran",
+   "issuer": "ADCB",
+   "name": "Shukran",
+   "network": null,
+   "tier": "other",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 26250,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Free in year one for residents; UAE nationals never pay"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Landmark Group brands",
+      "rate": 0.1,
+      "categories": [
+       "shopping"
+      ],
+      "merchants": [
+       "babyshop",
+       "centrepoint",
+       "emax",
+       "homebox",
+       "home centre",
+       "lifestyle",
+       "max",
+       "shoemart",
+       "splash",
+       "styli"
+      ],
+      "conditions": "Babyshop, Centrepoint, Emax, Homebox, Home Centre, Lifestyle, Max, Shoemart, Splash, Styli"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.005,
+      "categories": [
+       "groceries",
+       "transport",
+       "education",
+       "utilities",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "fuel, education, government, real estate, telecom, charity, transport, supermarkets, auto dealers, insurance"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "cinema": {
+     "text": "Reel buy-1-get-1 up to 2 tickets/month; 20% off F&B at counter (min AED 20)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Shukrans worth up to AED 1,200 (UAE nationals) / AED 1,000 (residents) / AED 200 (existing ADCB cardholders) after AED 8,000 spend within 60 days of issue; credited within 120 days",
+    "value_aed_est": 1000,
+    "min_spend_minor": 800000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/shukran-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-shukran-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Rewards are Shukran points (treated ~1% = AED 0.01 per point). Annual fee AED 250 + VAT = 262.50; free for first year for residents and permanently for UAE nationals. 1.5% general, 0.5% on reduced categories, 10% at listed Landmark brands. Fast-tracked to Shukran Platinum tier."
+  },
+  {
+   "id": "adcb-traveller",
+   "issuer": "ADCB",
+   "name": "Traveller",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": 0,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Flights and hotels",
+      "rate": 0.1,
+      "categories": [
+       "travel"
+      ],
+      "conditions": "any airline/hotel brand, AED and foreign spend"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 500000,
+    "monthly_total_cap_units": 1500,
+    "international_non_travel_rate": 0
+   },
+   "perks": {
+    "lounge": {
+     "text": "14 Mastercard Travel Pass visits/yr plus 1 free guest per visit; extra guests USD 32",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "Free golf at Arabian Ranches and Abu Dhabi Golf Club with AED 5,000 monthly spend"
+    },
+    "valet": {
+     "text": "4 Careem airport rides/yr"
+    },
+    "insurance": {
+     "text": "Travel medical, inconvenience and rental CDW"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 2,000 Expedia.ae hotel voucher after paying annual fee and spending AED 15,000 within 60 days of issue",
+    "value_aed_est": 2000,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://www.adcb.com/en/personal/cards/credit-cards/traveller-credit-card.aspx",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-traveller-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Annual fee AED 1,575 incl VAT (aggregator also lists a joining fee of AED 1,575; not on bank page so joining set null). Zero FX markup. Cashback needs AED 5,000 retail spend in the month, max AED 1,500. International retail purchases other than flights and hotels earn NOTHING. 1.5% applies to AED domestic spend only. Expedia voucher excludes major hotel chains.",
+   "deals": [
+    {
+     "name": "Online movie tickets",
+     "conditions": "online AED cinema tickets only",
+     "raw_rate": 0.5,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  },
+  {
+   "id": "adcb-islamic-emirati",
+   "issuer": "ADCB",
+   "name": "Islamic Emirati",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 94500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Annual fee waived for the first year"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining",
+      "rate": 0.07,
+      "categories": [
+       "dining"
+      ]
+     },
+     {
+      "name": "Fuel",
+      "rate": 0.07,
+      "categories": [
+       "transport"
+      ],
+      "conditions": "fuel only"
+     },
+     {
+      "name": "Hotels and travel",
+      "rate": 0.07,
+      "categories": [
+       "travel"
+      ]
+     },
+     {
+      "name": "Fitness",
+      "rate": 0.07,
+      "categories": [
+       "health"
+      ],
+      "conditions": "gyms and spas"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 700000,
+    "monthly_total_cap_units": 1500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited worldwide lounge access for cardholder plus one guest (1,000+ lounges); extra USD 32"
+    },
+    "dining": {
+     "text": "Caribou Coffee BOGO unlimited; ENTERTAINER 2-for-1"
+    },
+    "insurance": {
+     "text": "Travel insurance for family; Visa Infinite concierge; Takaful Credit Shield"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adcb-islamic-emirati-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "UAE nationals only, Shariah-compliant. Aggregator-only. NO cashback unless total card spend that month is AED 7,000+; then 7% on dining, fuel, hotels, travel, fitness, spas, jewellery (jewellery not modelled), 50% on online cinema tickets, 1% elsewhere; AED 1,500 monthly cap. Annual fee AED 945 incl VAT, waived in year one. Salary AED 8,000 or AED 15,000 limit.",
+   "deals": [
+    {
+     "name": "Online movie tickets",
+     "conditions": "online cinema tickets",
+     "raw_rate": 0.5,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  }
+ ]
+}

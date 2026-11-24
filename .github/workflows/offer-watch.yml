@@ -1,0 +1,38 @@
+name: offer-watch
+# Free: public-page fetches on a GitHub-hosted runner (well inside the free minutes for a private repo).
+on:
+  schedule:
+    - cron: "17 3 * * *"   # daily 07:17 UAE time
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  issues: write
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Build catalog (validates data)
+        run: python scripts/build_card_catalog.py
+      - name: Watch official card pages
+        id: watch
+        run: |
+          python scripts/offer_watch.py | tee watch.md
+          echo "changes=$(python -c "import json;print(len(json.load(open('data/cards/offers_feed.json'))['changes']))")" >> "$GITHUB_OUTPUT"
+      - name: Commit snapshots and feed
+        run: |
+          git config user.name "pulse-offer-watch"
+          git config user.email "offer-watch@users.noreply.github.com"
+          git add data/cards/snapshots data/cards/offers_feed.json data/cards/catalog.json
+          git diff --cached --quiet || (git commit -m "chore(offers): daily snapshot" && git push)
+      - name: Open an issue when something changed
+        if: steps.watch.outputs.changes != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Card offers changed $(date -u +%F)" --label offers --body-file watch.md || \
+          gh issue create --title "Card offers changed $(date -u +%F)" --body-file watch.md

@@ -1,0 +1,752 @@
+{
+ "issuer": "Mashreq",
+ "cards": [
+  {
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "cinema": {
+     "text": "50% off Cinepolis Deluxe-Plus seats, up to 8 tickets a month, valid until 31 Dec 2026"
+    },
+    "dining": {
+     "text": "DragonFly and Dine app discounts; Visa Offers MENA 2-for-1 deals"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 500 for customers with no Mashreq card in the past 6 months (AED 100 for existing/recent cardholders) after AED 5,000 spend in the first 2 months; credited by end of month 3. Plus 20% cashback for first 4 months at selected merchants (Careem, Talabat, Netflix, noon etc.), max AED 50 per merchant per month, wallet payments excluded per aggregator.",
+    "value_aed_est": 500,
+    "min_spend_minor": 500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Free for life incl. supplementary. No monthly cap stated; cashback only earned within the card's credit limit per cycle. Bill payments made via Mashreq Online/App and cash advances earn nothing. Redeem from AED 100 balance; cashback expires after 36 months. Official page says 'up to 0.5%' on other local spend; international non-dining 4% not modelled by category. Statement date 15th. Official KFS/T&C PDFs not opened.",
+   "id": "mashreq-24x7-cashback",
+   "name": "24X7 Cashback",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "Dining and streaming",
+      "categories": [
+       "dining",
+       "entertainment"
+      ],
+      "rate": 0.07,
+      "conditions": "Restaurants and food delivery, local and abroad; streaming subscriptions (Netflix, Prime Video, Disney+ etc.)"
+     },
+     {
+      "name": "Travel",
+      "categories": [
+       "travel"
+      ],
+      "rate": 0.04,
+      "conditions": "Also 4% on all international (non-AED) spend outside dining, which cannot be expressed as a category here",
+      "channel": "international"
+     },
+     {
+      "name": "Supermarket and fuel",
+      "categories": [
+       "groceries",
+       "transport"
+      ],
+      "rate": 0.02,
+      "conditions": "UAE supermarkets and fuel only; 'transport' here is meant for fuel, other transport MCCs may not qualify"
+     },
+     {
+      "name": "Government, utilities, education, rent, telecom, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.0015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/24x7-cashback/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-24x7-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "cinema": {
+     "text": "50% off Cinepolis Deluxe-Plus seats, up to 8 tickets a month, valid until 31 Dec 2026"
+    },
+    "dining": {
+     "text": "DragonFly and Dine app discounts"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 500 for new Mashreq card customers (AED 100 for recent cardholders) after AED 5,000 spend in first 2 months. 20% cashback on Netflix, Talabat, Careem etc. for first 4 months, max AED 50 per merchant per month.",
+    "value_aed_est": 500,
+    "min_spend_minor": 500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Free for life. 1% on international non-dining and 1% on local (official says 'up to 1%'). Earns only within assigned credit limit per cycle. Mashreq-channel bill payments earn nothing. Visa card-linked 'Everyday Cashback' offers up to 20% via app. Two KFS versions exist (before/after 13 Jun 2026); PDFs not opened.",
+   "id": "mashreq-cashback",
+   "name": "Cashback",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.05,
+      "conditions": "Restaurants and food delivery, local and international, no cap stated"
+     },
+     {
+      "name": "Government, utilities, education, rent, telecom, fuel, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.0015,
+      "conditions": "Fuel is also 0.15% but is not mapped (transport category would wrongly include other transport)"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/cashback-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "insurance": {
+     "text": "Free unlimited next-day noon Express delivery"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 500 for new Mashreq card customers (AED 100 for existing) after AED 5,000 spend in first 2 months.",
+    "value_aed_est": 500,
+    "min_spend_minor": 500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Cashback is paid as noon credits (expire after 12 months per aggregator), so real value is below 1 AED per credit if you shop little at noon; modelled at 1.0 anyway. Until 6 Mar 2027 earning is limited to spend within credit limit; from 7 Mar 2027 total cashback is capped at AED 1,000 per statement cycle (not in rule caps as it is future). From 23 Jan 2027 low-reward categories go from 0.33% to 0.15%. Bill payments through Mashreq channels earn nothing.",
+   "id": "mashreq-noon",
+   "name": "noon",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "noon family",
+      "categories": [],
+      "merchants": [
+       "noon",
+       "noon food",
+       "noon minutes",
+       "noon supermall",
+       "nownow",
+       "namshi",
+       "sivvi",
+       "noon home services"
+      ],
+      "rate": 0.05,
+      "conditions": "Paid out as noon credits (spendable on noon, noon Food, noon Minutes only)"
+     },
+     {
+      "name": "Government, utilities, education, charity, fuel, rent, telecom",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.0033,
+      "conditions": "Drops to 0.15% from 23 Jan 2027 per bank page"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/noon-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-noon-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "lounge": {
+     "text": "Complimentary worldwide lounge access via Mastercard Travel Pass app",
+     "count_per_year": 4,
+     "conditions": "count from aggregator"
+    },
+    "dining": {
+     "text": "Instant discount at Aura brands (H&M, Starbucks etc.), percentage depends on card"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 500 as Aura Points for new Mashreq card customers (AED 100 for existing) after AED 5,000 spend in first 2 months.",
+    "value_aed_est": 500,
+    "min_spend_minor": 500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Rewards are Aura Points (Alshaya loyalty currency, spendable at Aura brands), modelled 1 point = 1 AED-equivalent as the bank quotes rates as percent back; true value is lower if you do not shop those brands. Rates are card-level base; Aura tier bonus is extra. Earned only within credit limit per cycle. Mashreq-channel bill payments earn nothing. Lounge counts come from the aggregator only; bank page says lounge access without a number. KFS not opened.",
+   "id": "mashreq-aura",
+   "name": "Aura",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.0075,
+    "rules": [
+     {
+      "name": "Aura brands",
+      "categories": [],
+      "merchants": [
+       "h&m",
+       "american eagle",
+       "victoria's secret",
+       "bath & body works",
+       "shake shack",
+       "starbucks"
+      ],
+      "rate": 0.04,
+      "conditions": "Card-level rate on participating Alshaya/Aura brands in UAE (list longer than shown); extra Aura-tier cashback on top is not included (bank advertises up to 8%)"
+     },
+     {
+      "name": "Grocery",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.03,
+      "conditions": "AED grocery spend in UAE (supermarkets, bakeries, convenience, department stores)"
+     },
+     {
+      "name": "Government, utilities, education, charity, fuel, rent, telecom",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "conditions": "'transport' stands in for fuel"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/aura-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-aura-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "lounge": {
+     "text": "Complimentary worldwide lounge access",
+     "count_per_year": 8,
+     "conditions": "count from aggregator"
+    },
+    "dining": {
+     "text": "Instant discount at Aura brands (H&M, Starbucks etc.), percentage depends on card"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 1,000 as Aura Points for new Mashreq card customers (AED 200 for existing) after AED 10,000 spend in first 2 months.",
+    "value_aed_est": 1000,
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Rewards are Aura Points (Alshaya loyalty currency, spendable at Aura brands), modelled 1 point = 1 AED-equivalent as the bank quotes rates as percent back; true value is lower if you do not shop those brands. Rates are card-level base; Aura tier bonus is extra. Earned only within credit limit per cycle. Mashreq-channel bill payments earn nothing. Lounge counts come from the aggregator only; bank page says lounge access without a number. KFS not opened.",
+   "id": "mashreq-aura-world",
+   "name": "Aura World",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Aura brands",
+      "categories": [],
+      "merchants": [
+       "h&m",
+       "american eagle",
+       "victoria's secret",
+       "bath & body works",
+       "shake shack",
+       "starbucks"
+      ],
+      "rate": 0.06,
+      "conditions": "Card-level rate on participating Alshaya/Aura brands in UAE (list longer than shown); extra Aura-tier cashback on top is not included (bank advertises up to 10%)"
+     },
+     {
+      "name": "Grocery",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.04,
+      "conditions": "AED grocery spend in UAE (supermarkets, bakeries, convenience, department stores)"
+     },
+     {
+      "name": "Government, utilities, education, charity, fuel, rent, telecom",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "conditions": "'transport' stands in for fuel"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/aura-world-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-aura-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "lounge": {
+     "text": "Complimentary worldwide lounge access",
+     "count_per_year": 14,
+     "conditions": "count from aggregator"
+    },
+    "dining": {
+     "text": "Instant discount at Aura brands (H&M, Starbucks etc.), percentage depends on card"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 2,500 as Aura Points for new Mashreq card customers (AED 500 for existing) after AED 15,000 spend in first 2 months.",
+    "value_aed_est": 2500,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Rewards are Aura Points (Alshaya loyalty currency, spendable at Aura brands), modelled 1 point = 1 AED-equivalent as the bank quotes rates as percent back; true value is lower if you do not shop those brands. Rates are card-level base; Aura tier bonus is extra. Earned only within credit limit per cycle. Mashreq-channel bill payments earn nothing. Lounge counts come from the aggregator only; bank page says lounge access without a number. KFS not opened.",
+   "id": "mashreq-aura-world-elite",
+   "name": "Aura World Elite",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.0125,
+    "rules": [
+     {
+      "name": "Aura brands",
+      "categories": [],
+      "merchants": [
+       "h&m",
+       "american eagle",
+       "victoria's secret",
+       "bath & body works",
+       "shake shack",
+       "starbucks"
+      ],
+      "rate": 0.08,
+      "conditions": "Card-level rate on participating Alshaya/Aura brands in UAE (list longer than shown); extra Aura-tier cashback on top is not included (bank advertises up to 12%)"
+     },
+     {
+      "name": "Grocery",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.05,
+      "conditions": "AED grocery spend in UAE (supermarkets, bakeries, convenience, department stores)"
+     },
+     {
+      "name": "Government, utilities, education, charity, fuel, rent, telecom",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "conditions": "'transport' stands in for fuel"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/aura-elite-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-aura-world-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "lounge": {
+     "text": "Lounge access worldwide for primary and supplementary holders plus a guest",
+     "count_per_year": 12,
+     "conditions": "Needs one international transaction over USD 1 per calendar year"
+    },
+    "cinema": {
+     "text": "50% off up to 8 tickets a month at VOX, Reel, Novo and Cinepolis (Cinepolis until 31 Dec 2026)",
+     "count_per_year": 96
+    },
+    "golf": {
+     "text": "Complimentary rounds at partner UAE clubs; max 2 weekend games per cycle",
+     "conditions": "Previous-cycle spend of AED 10,000"
+    },
+    "valet": {
+     "text": "2 free valets per billing cycle in Dubai and Abu Dhabi",
+     "conditions": "Previous-cycle spend of AED 10,000"
+    },
+    "dining": {
+     "text": "Unlimited Fitness First visits (AED 10,000 prior-cycle spend; AED 5 hold reversed; AED 50 per visit otherwise); 6 airport transfers per year, 6 Marhaba meet and greets"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 2,500 for new Mashreq card customers (AED 500 for existing) after AED 9,000 spend in first 2 months.",
+    "value_aed_est": 2500,
+    "min_spend_minor": 900000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Annual AED 1,500 + 5% VAT (supplementary AED 600 + VAT). Vantage point value 0.0034 AED derived from aggregator (2 pts = 0.69%) not an official redemption table. Most perks need AED 10,000 spend in the previous statement cycle. Medium confidence because the 0.5-point low-category rate and point value could not be confirmed on the bank page.",
+   "id": "mashreq-solitaire",
+   "name": "Solitaire",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0034,
+    "base_rate": 2,
+    "rules": [
+     {
+      "name": "Travel",
+      "categories": [
+       "travel"
+      ],
+      "rate": 4,
+      "conditions": "Airlines, hotels and other travel bookings; 6 points per AED applies to all spend outside UAE (not modelled by category)",
+      "channel": "international"
+     },
+     {
+      "name": "Government, utilities, education, rent, telecom, fuel, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.5,
+      "conditions": "Local only. Bank page text is ambiguous (mentions 1 point for 'other local'); aggregator quoting KFS says 0.5"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/solitaire-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-solitaire-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": null,
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31395,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.89,
+   "perks": {
+    "lounge": {
+     "text": "4 complimentary lounge visits per calendar year, one guest per visit",
+     "count_per_year": 4,
+     "conditions": "Previous statement cycle retail spend of AED 7,000 or more"
+    },
+    "cinema": {
+     "text": "50% off 4 tickets a month at VOX, Reel, Novo; Cinepolis 8 a month until 31 Dec 2026",
+     "conditions": "Same AED 7,000 spend condition"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 750 for new Mashreq card customers (AED 200 for existing) after AED 5,000 spend in first 2 months.",
+    "value_aed_est": 750,
+    "min_spend_minor": 500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Annual AED 299 + 5% VAT charged at activation; supplementary free. Network not stated in text we read. Point value 0.0034 AED is derived from aggregator (2 pts = 0.69%), not an official table.",
+   "id": "mashreq-platinum-plus",
+   "name": "Platinum Plus",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0034,
+    "base_rate": 2,
+    "rules": [
+     {
+      "name": "Supermarket, fuel and dining",
+      "categories": [
+       "groceries",
+       "transport",
+       "dining"
+      ],
+      "rate": 10,
+      "conditions": "'transport' stands in for fuel"
+     },
+     {
+      "name": "Government, utilities, education, rent, telecom, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.5,
+      "conditions": "Local"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/platinum-plus-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/mashreq-platinum-plus-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "Mashreq"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "points",
+   "islamic": false,
+   "status": "closed_to_new",
+   "annual_fee_minor": 525000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Unlimited airport transfers and valet per aggregator listing"
+    }
+   },
+   "welcome_offer": {
+    "text": "Hotel stay or 3 million Vantage points per aggregator listing"
+   },
+   "community_notes": [],
+   "notes": "Invitation-only card; only the kredit.ae bank listing was seen (fee AED 5,250, 5 Vantage points per AED). Not on Mashreq's public card menu. Value of the welcome offer unknown. Treat as unverified.",
+   "id": "mashreq-io",
+   "name": "IO",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0034,
+    "base_rate": 5,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/banks/mashreq",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "Mashreq"
+  }
+ ]
+}

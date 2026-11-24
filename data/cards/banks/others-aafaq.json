@@ -1,0 +1,166 @@
+{
+ "issuer": "Aafaq Islamic Finance",
+ "cards": [
+  {
+   "id": "aafaq-platinum",
+   "issuer": "Aafaq Islamic Finance",
+   "name": "Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "Groceries, Salik, parking",
+      "rate": 0.5,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Fuel, education, rent",
+      "rate": 0.25,
+      "categories": [
+       "transport",
+       "education",
+       "rent"
+      ]
+     },
+     {
+      "name": "Utilities, government, taxi",
+      "rate": 0.15,
+      "categories": [
+       "utilities"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "cinema": {
+     "text": "4 VOX BOGO a month",
+     "count_per_month": 4
+    },
+    "valet": {
+     "text": "2 a month"
+    },
+    "dining": {
+     "text": "2 airport transfers a year"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/aafaq-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "AIF Rewards value not stated: 0.005 AED per point is our placeholder (kredit implies about 0.75% on other spend at 1 point/AED). International 2 pts/AED. Cap 50,000 pts a month. Profit 3.99%/month. Joining bonus expired 31 Dec 2025."
+  },
+  {
+   "id": "aafaq-world-elite",
+   "issuer": "Aafaq Islamic Finance",
+   "name": "World Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 10000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Year one free; later waived with AED 100,000 spend"
+   },
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "Online retail",
+      "rate": 5,
+      "categories": [
+       "shopping"
+      ],
+      "monthly_cap_units": 10000
+     },
+     {
+      "name": "Dining",
+      "rate": 5,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 10000
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.15,
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "groceries"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "World Elite lounge access with guest"
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "6 per month"
+    },
+    "cinema": {
+     "text": "6 VOX BOGO per month",
+     "count_per_month": 6
+    }
+   },
+   "welcome_offer": {
+    "text": "20% cashback on Amazon, noon, Careem, Talabat for 90 days, AED 50 per merchant/month, AED 600 total",
+    "value_aed_est": 600,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/aafaq-world-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "AIF Rewards value placeholder 0.005. International 3 pts/AED (cap 20,000/month), combined monthly cap 60,000. Year one fee waived; later waived at AED 100,000 spend."
+  }
+ ]
+}

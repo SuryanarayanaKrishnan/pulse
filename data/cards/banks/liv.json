@@ -1,0 +1,324 @@
+{
+ "issuer": "Liv",
+ "cards": [
+  {
+   "id": "liv-cashback",
+   "issuer": "Liv",
+   "name": "Cashback",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.0075,
+    "rules": [
+     {
+      "name": "Government, utilities and bill payments",
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.001,
+      "conditions": "Low-merchant tier"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_total_units": 750,
+    "tiered_base": {
+     "monthly_spend_under_5000": 0.0075,
+     "5000_to_9999": 0.015,
+     "10000_plus": 0.02
+    }
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge visits or dining offers",
+     "count_per_year": 4,
+     "conditions": "USD 1 cross-border transaction activates 3 months of eligibility"
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 2 a month, plus 25% off one F&B item at AED 40+"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/liv-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.liv.me/en/liv-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Cashback rate depends on total monthly card spend: 0.75% under AED 5,000, 1.5% from AED 5,000, 2% from AED 10,000, applied to ALL transactions once the tier is reached; base_rate stores the lowest tier. Monthly cap AED 750 (may be lower with a small credit limit). Can be redeemed as Skywards Miles instead, capped at 5,000 miles a month, with a 500-point minimum balance. Government, utility and bill payments earn only 0.1%. 1.99% FX fee plus about 1.15% Mastercard fee. Interest 3.49% a month."
+  },
+  {
+   "id": "liv-cashback-plus",
+   "issuer": "Liv",
+   "name": "Cashback Plus",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "First-year fee reversed for Liv Max subscribers"
+   },
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Government, utilities and bill payments",
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.001,
+      "conditions": "Low-merchant tier"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_total_units": 1500,
+    "tiered_base": {
+     "monthly_spend_under_7000": 0.01,
+     "7000_to_14999": 0.02,
+     "15000_plus": 0.04
+    }
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge visits or dining offers",
+     "count_per_year": 8,
+     "conditions": "USD 1 cross-border transaction activates 3 months of eligibility"
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 a month, plus 25% off one F&B item at AED 40+"
+    },
+    "insurance": {
+     "text": "Travel medical insurance up to USD 500,000"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/liv-cashback-plus-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.liv.me/en/liv-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Cashback tiers by total monthly spend: 1% under AED 7,000, 2% from AED 7,000, 4% from AED 15,000, applied to all transactions; base_rate stores the lowest tier. Monthly cap AED 1,500 (may be lower with a small limit). Skywards Miles redemption mode capped at 10,000 miles a month. Government, utility and bill payments earn only 0.1%. For Liv Max subscribers the first-year AED 735 fee is reversed. Interest 3.25% a month."
+  },
+  {
+   "id": "liv-tamayaz-platinum",
+   "issuer": "Liv",
+   "name": "Tamayaz Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Union Coop",
+      "categories": [],
+      "rate": 0.06,
+      "merchants": [
+       "union coop"
+      ],
+      "conditions": "In-store and online at Union Coop; paid as Tamayaz Points"
+     },
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.02,
+      "conditions": "Domestic dining, cafes and takeaway"
+     },
+     {
+      "name": "Fuel",
+      "categories": [],
+      "rate": 0.02,
+      "merchants": [
+       "adnoc",
+       "enoc",
+       "eppco",
+       "emarat"
+      ],
+      "conditions": "Fuel stations"
+     },
+     {
+      "name": "Transport, government, utilities, telecom, education, rent",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.001,
+      "conditions": "Reduced tier; fuel station merchants are matched at 2% first"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_total_units": 750
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy one get one, up to 2 a month"
+    },
+    "lounge": {
+     "text": "Lounge access listed as included by aggregator"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/liv-tamayaz-platinum-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.liv.me/en/liv-tamayaz-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Rewards paid as Tamayaz Points valued as cashback; total monthly cap AED 750. Aggregator says 1% on all other spend including international. Free for life. Interest 3.49% a month."
+  },
+  {
+   "id": "liv-tamayaz-world",
+   "issuer": "Liv",
+   "name": "Tamayaz World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Union Coop",
+      "categories": [],
+      "rate": 0.1,
+      "merchants": [
+       "union coop"
+      ],
+      "conditions": "In-store and online at Union Coop; paid as Tamayaz Points"
+     },
+     {
+      "name": "Transport, government, utilities, telecom, education, rent",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.001,
+      "conditions": "Reduced tier"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_total_units": 1500
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 a month plus 25% off F&B"
+    },
+    "lounge": {
+     "text": "Lounge access listed as included by aggregator"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 1,000 cashback-equivalent bonus when you spend AED 40,000 within 60 days of activation",
+    "value_aed_est": 1000,
+    "min_spend_minor": 4000000,
+    "window_days": 60
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/liv-tamayaz-world-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.liv.me/en/liv-tamayaz-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "10% Union Coop; 3% on international spend (not modelled, no channel in engine); 1% domestic dining, fuel and other retail; monthly cap AED 1,500. Interest 3.25% a month. Aggregator shows AED 735 joining and AED 735 annual with no waiver stated."
+  }
+ ]
+}

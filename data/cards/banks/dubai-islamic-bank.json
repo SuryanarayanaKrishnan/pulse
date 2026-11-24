@@ -1,0 +1,501 @@
+{
+ "issuer": "Dubai Islamic Bank",
+ "cards": [
+  {
+   "id": "dib-skywards-signature",
+   "issuer": "Dubai Islamic Bank",
+   "name": "Emirates Skywards Signature Covered Card",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2042,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.4084,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "conditions": "direct airline spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0545,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "groceries, utilities, education, fuel, rent, transit, telecom and similar earn the reduced rate; government capped/low"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 visits a year via Visa Airport Companion; first visit free each year, later ones need USD 1 foreign spend 15 days before else USD 32",
+     "count_per_year": 8
+    },
+    "valet": {
+     "text": "2 per month at 18 UAE sites, needs AED 5,000 monthly retail spend",
+     "count_per_month": 2
+    },
+    "insurance": {
+     "text": "Travel and medical cover up to USD 500,000 for trips up to 90 days"
+    }
+   },
+   "welcome_offer": {
+    "text": "15,000 Skywards Miles on activation and paying fee; extra 15,000 for balance transfer of AED 30,000 held 6 months",
+    "value_aed_est": 450,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-skywards-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1 mile/USD (0.27/AED) on eligible international spend, 0.5/USD in EEA. Year-one fee is AED 1,575, year two onward AED 735 per DIB's schedule of charges (per aggregator). Government earns miles only on first AED 25,000 per statement; DIB-platform utility/government bill payments earn nothing. Profit rate up to 3.69%/month.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile."
+  },
+  {
+   "id": "dib-skywards-infinite",
+   "issuer": "Dubai Islamic Bank",
+   "name": "Emirates Skywards Infinite Covered Card",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.5446,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "conditions": "direct airline spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "groceries, utilities, education, fuel, rent, transit, telecom and similar earn the reduced rate; government capped/low"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits plus a guest; first visit free each year, later ones need USD 1 foreign spend 15 days earlier else USD 32"
+    },
+    "valet": {
+     "text": "4 per month, needs AED 8,000 monthly retail spend",
+     "count_per_month": 4
+    },
+    "insurance": {
+     "text": "Travel and medical up to USD 500,000, 90-day trips"
+    },
+    "dining": {
+     "text": "Airport transfers: 4 per year DXB T3 to Abu Dhabi, needs AED 8,000 monthly spend and Emirates ticket bought with card"
+    }
+   },
+   "welcome_offer": {
+    "text": "25,000 Skywards Miles on activation, +25,000 for AED 50,000 balance transfer held 6 months, +25,000 for USD 20,000 spend in first four statements",
+    "value_aed_est": 750,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-skywards-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.5 miles/USD (0.41/AED) on eligible international spend, 0.75/USD in EEA. Year-one fee AED 2,625, then AED 1,575. Profit rate up to 3.69%/month.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile."
+  },
+  {
+   "id": "dib-skywards-platinum",
+   "issuer": "Dubai Islamic Bank",
+   "name": "Emirates Skywards Platinum Covered Card",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.1361,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.2723,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "conditions": "direct airline spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0408,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "groceries, utilities, education, fuel, rent, transit, telecom and similar earn the reduced rate; government capped/low"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "insurance": {
+     "text": "Travel and medical up to USD 100,000 for cardholder, spouse, 4 children"
+    }
+   },
+   "welcome_offer": {
+    "text": "5,000 Skywards Miles after activation; paying the AED 525 fee",
+    "value_aed_est": 150,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-skywards-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 0.75 miles/USD (0.20/AED) international. Profit rate up to 3.69%/month. No lounge on this tier per aggregator.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile."
+  },
+  {
+   "id": "dib-shams-infinite",
+   "issuer": "Dubai Islamic Bank",
+   "name": "SHAMS Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 73395,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 6000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Annual fee AED 733.95 waived from year two with AED 60,000 annual spend; first year free for cards approved by 31 Dec 2026"
+   },
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 3.5,
+    "rules": [
+     {
+      "name": "Dining, flights and hotels",
+      "rate": 10,
+      "categories": [
+       "dining",
+       "travel"
+      ],
+      "monthly_cap_units": 20000,
+      "conditions": "cap 20,000 points per category per month"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.6,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "specified reduced-rate categories and EEA spend earn 0.6"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "fee_waiver_spend_minor": 6000000
+   },
+   "perks": {
+    "lounge": {
+     "text": "12 visits a year plus one guest via Visa Airport Companion",
+     "count_per_year": 12
+    },
+    "golf": {
+     "text": "4 rounds a month at 6 UAE courses, needs AED 8,000 monthly spend",
+     "count_per_month": 4
+    },
+    "valet": {
+     "text": "4 sessions a month, needs AED 8,000 monthly spend",
+     "count_per_month": 4
+    },
+    "dining": {
+     "text": "Costa BOGO; Fitness First up to 31 visits/month after AED 8,000 spend; 4 airport transfers a year"
+    },
+    "insurance": {
+     "text": "Travel and medical up to USD 500,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "200,000 Wala'a Rewards (about AED 1,000) for USD 15,000 spend within 90 days, cards issued by 31 Dec 2026; also 20% cashback at Amazon, Deliveroo, Dubai Now, noon, Talabat for 3 months (AED 25 per merchant, AED 150 total per month)",
+    "value_aed_est": 1000,
+    "min_spend_minor": 5508750,
+    "window_days": 90,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-shams-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Wala'a Rewards valued at AED 0.005 each (200,000 points = AED 1,000 per bank). Domestic 3.5, non-EEA international 4 per AED. Annual fee AED 733.95 incl VAT from year two; first year free for cards approved by 31 Dec 2026. Profit 3.69%/month."
+  },
+  {
+   "id": "dib-consumer-cashback-platinum",
+   "issuer": "Dubai Islamic Bank",
+   "name": "Consumer Cashback Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 26145,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Supermarkets and school fees",
+      "rate": 0.04,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 300,
+      "conditions": "AED 300 per month each for supermarket/hypermarket and school fees (cap was 400 before 10 Oct 2026)"
+     },
+     {
+      "name": "School fees",
+      "rate": 0.04,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "Fuel, Salik and nol",
+      "rate": 0.04,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "fuel cap 150, Salik/nol cap 50 per month; auto servicing (cap 400) has no matching category and is not modelled"
+     },
+     {
+      "name": "Telecom (e& and du)",
+      "rate": 0.04,
+      "categories": [
+       "telecom"
+      ],
+      "monthly_cap_units": 150
+     },
+     {
+      "name": "Utility bills",
+      "rate": 0.04,
+      "categories": [
+       "utilities"
+      ],
+      "monthly_cap_units": 150
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 400000
+   },
+   "perks": {
+    "insurance": {
+     "text": "Watania travel medical up to USD 100,000 when flights booked with the card"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-consumer-cashback-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://dib.ae/personal/cards/consumer-platinum-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Cashback only after AED 4,000 retail spend in the statement cycle. Total cap AED 1,000 per billing cycle (not modelled). Everything outside the listed categories earns nothing. Annual fee AED 249 + 5% VAT per DIB page. Salam structure; profit up to 3.69%/month."
+  },
+  {
+   "id": "dib-consumer-cashback-reward",
+   "issuer": "Dubai Islamic Bank",
+   "name": "Consumer Cashback Reward",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 21000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Supermarkets",
+      "rate": 0.03,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "cap AED 200/month from 10 Oct 2026 (was 300)"
+     },
+     {
+      "name": "School fees",
+      "rate": 0.03,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 200
+     },
+     {
+      "name": "Fuel, Salik and nol",
+      "rate": 0.03,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 125,
+      "conditions": "fuel cap 100 + Salik/nol cap 25; auto servicing (cap 300) not modelled"
+     },
+     {
+      "name": "Telecom",
+      "rate": 0.03,
+      "categories": [
+       "telecom"
+      ],
+      "monthly_cap_units": 100
+     },
+     {
+      "name": "Utility bills",
+      "rate": 0.03,
+      "categories": [
+       "utilities"
+      ],
+      "monthly_cap_units": 100
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dib-consumer-cashback-reward-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://dib.ae/personal/cards/consumer-reward-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Cashback only after AED 3,000 retail spend in the cycle; total cap AED 1,000 per cycle. DIB page meta says up to 4% but the table says 3%. Annual fee AED 200 + VAT. Network not confirmed."
+  }
+ ]
+}

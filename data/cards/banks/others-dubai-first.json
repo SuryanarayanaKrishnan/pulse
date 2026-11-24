@@ -1,0 +1,73 @@
+{
+ "issuer": "Dubai First",
+ "cards": [
+  {
+   "id": "dubai-first-cashback",
+   "issuer": "Dubai First",
+   "name": "Cashback Credit Card",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 41895,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "Supermarkets",
+      "rate": 0.05,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 150
+     },
+     {
+      "name": "Dining",
+      "rate": 0.05,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 150
+     },
+     {
+      "name": "Fuel",
+      "rate": 0.05,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 150,
+      "conditions": "UAE dirham purchases only"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "cinema": {
+     "text": "Up to 4 VOX tickets a month from AED 20"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/dubai-first-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Total cashback cap AED 1,000 per statement cycle. 0.5% on other retail; 0.15% on special categories. Dubai First is not Islamic. Network not stated."
+  }
+ ]
+}

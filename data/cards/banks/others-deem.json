@@ -1,0 +1,113 @@
+{
+ "issuer": "Deem Finance",
+ "cards": [
+  {
+   "id": "deem-titanium",
+   "issuer": "Deem Finance",
+   "name": "Titanium Mastercard",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 21000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 0.13,
+    "rules": [
+     {
+      "name": "Travel/Lifestyle mode",
+      "rate": 2,
+      "categories": [
+       "dining",
+       "travel",
+       "entertainment",
+       "groceries"
+      ],
+      "conditions": "2 Joy Points/AED in chosen mode after AED 3,000 monthly spend"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "First year fee free"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/deem-titanium-mastercard-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Joy Points value not found: placeholder 0.005. Monthly cap 50,000 points. Alternative WIN draw option. Year one free. Interest 3.99%/month. Not Islamic per aggregator."
+  },
+  {
+   "id": "deem-world",
+   "issuer": "Deem Finance",
+   "name": "World Mastercard",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 0.5,
+    "rules": [
+     {
+      "name": "Travel/Lifestyle mode",
+      "rate": 5,
+      "categories": [
+       "dining",
+       "travel",
+       "entertainment",
+       "groceries"
+      ],
+      "conditions": "5 Joy Points/AED in chosen mode after AED 7,500 monthly spend"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX/Reel BOGO"
+    }
+   },
+   "welcome_offer": {
+    "text": "First year fee free"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/deem-world-mastercard-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Joy Points placeholder 0.005. Monthly cap 100,000. Lounge access listed. Year one free."
+  }
+ ]
+}
