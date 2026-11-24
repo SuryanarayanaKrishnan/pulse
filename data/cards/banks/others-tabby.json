@@ -1,0 +1,43 @@
+{
+ "issuer": "Tabby",
+ "cards": [
+  {
+   "id": "tabby-card",
+   "issuer": "Tabby",
+   "name": "Tabby Card",
+   "network": "visa",
+   "tier": "other",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "unverified",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/tabby-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Virtual BNPL-linked Visa, not a conventional credit card. Tabby+ (AED 59/month) gives 5% cashback on 3 selected categories, cap AED 200 a month; categories rotate in-app so not modelled. Up to 40 days to pay statement free; rolling over may cost up to 12%. Collection charges up to AED 200 late."
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "issuer": "Ruya Bank",
+ "cards": [
+  {
+   "id": "ruya-cashback",
+   "issuer": "Ruya Bank",
+   "name": "Cashback",
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 31395,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 3000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Free in year one; from year two waived at AED 30,000 spend"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "utilities",
+     "telecom"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/ruya-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "2% cashback online and in-store, cap AED 500 per billing cycle; no minimum spend. Government, utilities, telecom, installment plans, cash withdrawals excluded. Fee free year 1, waived from year 2 with AED 30,000 spend. Murabaha profit 3.5%/month."
+  }
+ ]
+}

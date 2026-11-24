@@ -1,0 +1,331 @@
+{
+ "issuer": "HSBC",
+ "cards": [
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31395,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year fee-free per bank page; later waiver terms not seen"
+   },
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.1,
+   "perks": {
+    "lounge": {
+     "text": "Airport lounge access, about 12 visits a year (aggregator)",
+     "count_per_year": 12
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 600 cashback after AED 6,000 spend within 60 days, plus AED 100 for first mobile-wallet payment and AED 100 for first supplementary card; for people with no HSBC primary card in the prior 6 months; apply by 31 Dec 2026",
+    "value_aed_est": 800,
+    "min_spend_minor": 600000,
+    "window_days": 60,
+    "valid_until": "2026-12-31"
+   },
+   "community_notes": [],
+   "notes": "Category cashback (6/5/2/2%) only applies when total spend in the statement cycle reaches AED 3,000; below that everything earns 0.5%. Each category capped at AED 200 per cycle. Bank page confirms rates, caps and threshold; annual fee AED 313.95 from aggregator, consistent with the KFS PDF row for the older-named 'Cashback' card (AED 313.95, 10k salary), which looks like the same product. KFS foreign-currency fee 2% plus VAT = 2.1%. Network not stated in sources read.",
+   "id": "hsbc-live-plus",
+   "name": "Live+",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.06,
+      "monthly_cap_units": 200,
+      "conditions": "Needs AED 3,000 total spend in the statement cycle, otherwise 0.5%"
+     },
+     {
+      "name": "Fuel",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.05,
+      "monthly_cap_units": 200,
+      "conditions": "Fuel only; needs AED 3,000 total cycle spend"
+     },
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.02,
+      "monthly_cap_units": 200,
+      "conditions": "Needs AED 3,000 total cycle spend"
+     },
+     {
+      "name": "Entertainment",
+      "categories": [
+       "entertainment"
+      ],
+      "rate": 0.02,
+      "monthly_cap_units": 200,
+      "conditions": "Needs AED 3,000 total cycle spend"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/credit-cards/cashback-calculator/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.hsbc.ae/content/dam/hsbc/ae/docs/en/cards/kfs-credit-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/hsbc-live-plus-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "HSBC"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 2400000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; from year two waived when annual card spend reaches AED 24,000 (aggregator)"
+   },
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 2.1,
+   "perks": {
+    "lounge": {
+     "text": "Lounge access listed as unlimited by aggregator, unverified"
+    },
+    "insurance": {
+     "text": "Careem Plus subscription included per index listing"
+    }
+   },
+   "welcome_offer": {
+    "text": "No annual fee in the first year",
+    "value_aed_est": 1050
+   },
+   "community_notes": [],
+   "notes": "Flat 1% daily cashback, uncapped, no minimum spend. Extra 10% bonus on earned cashback each month (needs AED 5,000 monthly spend), quarter (AED 25,000) and year (AED 125,000); these stack, so effective rate is up to about 1.33% for heavy spenders (not modelled). Cash advances, balance transfers and fees excluded. KFS confirms AED 1,050 fee and AED 30,000 salary. The PDF may be dated.",
+   "id": "hsbc-cash-plus",
+   "name": "Cash+",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/content/dam/hsbc/ae/docs/en/cards/kfs-credit-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.hsbc.ae/credit-cards/cashback-calculator/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/hsbc-cash-plus-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "HSBC"
+  },
+  {
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.1,
+   "perks": {
+    "lounge": {
+     "text": "12 lounge visits a year across 1,200+ lounges for cardholder and additional cardholders",
+     "count_per_year": 12,
+     "conditions": "One international USD 1 purchase per calendar year"
+    },
+    "cinema": {
+     "text": "Buy one get one free cinema tickets each month plus 20% off food and drink"
+    }
+   },
+   "welcome_offer": {
+    "text": "10,000 Skywards Miles on paying the annual fee, plus 15,000 miles after AED 20,000 spend within 60 days (also Silver tier fast track); applications 1 Nov 2026 to 31 Mar 2027",
+    "value_aed_est": 750.0,
+    "valid_until": "2027-03-31"
+   },
+   "community_notes": [],
+   "notes": "Skywards Miles quoted per USD of spend; stored per AED by dividing by 3.6725. Non-AED spend earns 1 miles per USD (not modelled by category). One Skywards mile valued at 0.03 AED (conservative; aggregator implies about 0.044). Lounge needs at least one international purchase of USD 1 each calendar year. Welcome miles require paying the annual fee; offer window 1 Nov 2026 to 31 Mar 2027. The bank page headline mentions USD equivalent; the page summary was not explicit per category, so per-USD basis is from the aggregator.",
+   "id": "hsbc-skywards-signature",
+   "name": "Emirates Skywards Signature",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2042,
+    "rules": [
+     {
+      "name": "Emirates and flydubai",
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "categories": [],
+      "rate": 0.4765,
+      "conditions": "Direct bookings in AED; quoted per USD equivalent, converted at 3.6725"
+     },
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "rent",
+       "transport",
+       "telecom"
+      ],
+      "rate": 0.0272,
+      "conditions": "Government, groceries, utilities, education, fuel, real estate, public transport, insurance, car dealers (AED transactions)"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/credit-cards/products/skywards-signature/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/hsbc-skywards-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "HSBC"
+  },
+  {
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 262500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 2.1,
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge access to 1,200+ lounges for cardholder and a guest",
+     "conditions": "One international USD 1 purchase per calendar year, made 15 days before travel"
+    },
+    "cinema": {
+     "text": "Buy one get one free cinema tickets each month plus 20% off food and drink; aggregator says up to 4 a month"
+    },
+    "dining": {
+     "text": "Gym and fitness access up to 3 a month per aggregator, not on bank page"
+    }
+   },
+   "welcome_offer": {
+    "text": "20,000 Skywards Miles on paying the annual fee, plus 30,000 miles after AED 50,000 spend within 60 days; applications 1 Nov 2026 to 31 Mar 2027",
+    "value_aed_est": 1500.0,
+    "valid_until": "2027-03-31"
+   },
+   "community_notes": [],
+   "notes": "Skywards Miles quoted per USD of spend; stored per AED by dividing by 3.6725. Non-AED spend earns 1.5 miles per USD (not modelled by category). One Skywards mile valued at 0.03 AED (conservative; aggregator implies about 0.044). Lounge needs at least one international purchase of USD 1 each calendar year. Welcome miles require paying the annual fee; offer window 1 Nov 2026 to 31 Mar 2027. The bank page headline mentions USD equivalent; the page summary was not explicit per category, so per-USD basis is from the aggregator.",
+   "id": "hsbc-skywards-infinite",
+   "name": "Emirates Skywards Infinite",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Emirates and flydubai",
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "categories": [],
+      "rate": 0.7488,
+      "conditions": "Direct bookings in AED; quoted per USD equivalent, converted at 3.6725"
+     },
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "rent",
+       "transport",
+       "telecom"
+      ],
+      "rate": 0.0681,
+      "conditions": "Government, groceries, utilities, education, fuel, real estate, public transport, insurance, car dealers (AED transactions)"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/credit-cards/products/skywards-infinite/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/hsbc-skywards-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "issuer": "HSBC"
+  }
+ ]
+}

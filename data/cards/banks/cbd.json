@@ -1,0 +1,546 @@
+{
+ "issuer": "CBD",
+ "cards": [
+  {
+   "id": "cbd-visa-infinite",
+   "issuer": "CBD",
+   "name": "Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 78750,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 10000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; later years reversed with AED 100,000 prior-12-month spend"
+   },
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 2.5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education"
+      ],
+      "conditions": "supermarkets, groceries, government, utilities, fuel, car rental, auto dealers, insurance, fast food, education: 0.5 pt local, 0.75 abroad"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 3
+   },
+   "perks": {
+    "golf": {
+     "text": "4 free rounds a month at The Track Meydan and Arabian Ranches",
+     "conditions": "AED 10,000 retail spend in the calendar month"
+    },
+    "cinema": {
+     "text": "50% off up to 6 VOX tickets a month",
+     "count_per_year": 72
+    },
+    "lounge": {
+     "text": "Visa Airport Companion: up to 12 visits/yr (first 2 free, more after a USD 1 international purchase); else USD 32",
+     "count_per_year": 12
+    },
+    "valet": {
+     "text": "3 Valtrans valet visits/month",
+     "conditions": "AED 10,000 monthly spend"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 750 cashback after AED 15,000 spend (income AED 15,000-29,999) or AED 1,000 after AED 20,000 (income AED 30,000+); needs 10 digital-wallet purchases within 60 days; apply by 31 Dec 2026",
+    "value_aed_est": 750,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "valid_until": "2026-12-31",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-infinite",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/cbd-visa-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "First-year annual fee waived; AED 787.50 from year two but reversed when prior-12-month spend reaches AED 100,000. CBD Rewards point value is not published on the pages read; AED 0.005/pt is a conservative assumption (aggregator implies about 0.0065). 2.5 pts/AED local, 3 abroad, 0.5/0.75 on low-yield categories. Welcome offer spend must be on a digital wallet (Apple/Google/Samsung Pay)."
+  },
+  {
+   "id": "cbd-super-saver",
+   "issuer": "CBD",
+   "name": "Super Saver",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 42000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; AED 420 from year two"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.5,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Bills (utilities)",
+      "rate": 0.03,
+      "categories": [
+       "utilities"
+      ],
+      "monthly_cap_units": 75,
+      "conditions": "3% tier; tiers rise with total monthly card spend"
+     },
+     {
+      "name": "Education",
+      "rate": 0.03,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 75
+     },
+     {
+      "name": "Supermarkets",
+      "rate": 0.03,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 75
+     },
+     {
+      "name": "Fuel",
+      "rate": 0.03,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 75,
+      "conditions": "fuel only"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000,
+    "spend_tiers": {
+     "300000": {
+      "rate": 0.03,
+      "cap_per_category": 75,
+      "cap_total": 300
+     },
+     "1000000": {
+      "rate": 0.05,
+      "cap_per_category": 100,
+      "cap_total": 400
+     },
+     "2000000": {
+      "rate": 0.1,
+      "cap_per_category": 150,
+      "cap_total": 600
+     }
+    }
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 Visa Airport Companion visits/yr",
+     "count_per_year": 8
+    },
+    "insurance": {
+     "text": "Multi-trip travel insurance to USD 500,000 (90 days/trip); purchase protection; extended warranty"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 300 (income 8,000-9,999, AED 6,000 spend), AED 500 (income 10,000-19,999, AED 10,000 spend) or AED 600 (income 20,000+, AED 12,000 spend); 10 wallet purchases within 60 days; apply by 31 Dec 2026. Bank page advertises up to AED 1,000 combined with Visa Infinite",
+    "value_aed_est": 300,
+    "valid_until": "2026-12-31",
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/super-saver",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/cbd-super-saver-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Cashback rate depends on TOTAL monthly card spend: below AED 3,000 nothing; 3% from 3,000 (AED 75 cap per category, AED 300 total); 5% from 10,000 (AED 100/400); 10% from 20,000 (AED 150/600). Rules model the lowest tier conservatively; full ladder in spend_tiers. Only bills, education, supermarkets and fuel earn; everything else appears to earn nothing. International fee 3.5%. First year fee free, AED 420 after."
+  },
+  {
+   "id": "cbd-one",
+   "issuer": "CBD",
+   "name": "One",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 500000
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 Visa Airport Companion visits/yr (1,000+ lounges)",
+     "count_per_year": 8
+    },
+    "insurance": {
+     "text": "Multi-trip travel insurance to USD 500,000; purchase protection; doubled warranty"
+    }
+   },
+   "welcome_offer": {
+    "text": "0% interest on 6/12-month balance transfer or cash-on-call if requested within 30 days of issue (1.99%/2.99% processing fee); valid to 31 Dec 2026",
+    "valid_until": "2026-12-31",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/cbd-one",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/cbd-one-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. Cashback is 100% of spend at listed merchants, capped AED 135/month, and only if total monthly spend is AED 5,000+; credited the following month. Everything else earns nothing. 'Signature' tier from aggregator's Visa Signature cover mention.",
+   "deals": [
+    {
+     "name": "Partner merchants",
+     "conditions": "cashback equals spend at noon, Amazon, Careem, Uber, Booking.com, Talabat, Deliveroo and cinemas, up to AED 135/month; needs AED 5,000 total card spend that month",
+     "raw_rate": 1.0,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  },
+  {
+   "id": "cbd-yes-rewards",
+   "issuer": "CBD",
+   "name": "Yes Rewards",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 1200000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; later years waived with AED 12,000 annual spend"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.5,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "ENOC and EPPCO fuel",
+      "rate": 3,
+      "categories": [
+       "transport"
+      ],
+      "merchants": [
+       "enoc",
+       "eppco"
+      ],
+      "monthly_cap_units": 7500,
+      "conditions": "3% (below AED 2,500 monthly spend); rises to 10% (cap AED 125) at AED 2,500+ and 15% (cap AED 175) at AED 10,000+"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "utilities",
+     "education",
+     "groceries",
+     "rent"
+    ],
+    "fuel_spend_tiers": {
+     "250000": {
+      "rate": 0.1,
+      "cap_aed": 125
+     },
+     "1000000": {
+      "rate": 0.15,
+      "cap_aed": 175
+     }
+    }
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 Visa Airport Companion visits/yr",
+     "count_per_year": 8
+    }
+   },
+   "welcome_offer": {
+    "text": "20,000 Yes Rewards (AED 200) after any AED 1 spend within 90 days of issue",
+    "value_aed_est": 200,
+    "min_spend_minor": 100,
+    "window_days": 90,
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/cbd-yes-rewards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/cbd-yes-rewards-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "100 Yes Rewards = AED 1. Fuel tiers depend on TOTAL monthly spend; rules model the lowest (3%, AED 75 cap). Government, bills, education, groceries, fuel outside ENOC/EPPCO, auto, rent, real estate and fast food earn nothing. First year free, AED 208.95 after, waived with AED 12,000 yearly spend. Cinema/golf/valet perks on old copy no longer apply per aggregator."
+  },
+  {
+   "id": "cbd-smiles-visa-signature",
+   "issuer": "CBD",
+   "name": "Smiles Visa Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 2400000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; later years waived with AED 24,000 annual spend (aggregator)"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 2,
+    "rules": [
+     {
+      "name": "e&, Smiles app and elGrocer",
+      "rate": 10,
+      "categories": [
+       "telecom"
+      ],
+      "merchants": [
+       "etisalat",
+       "e&",
+       "smiles",
+       "elgrocer"
+      ],
+      "monthly_cap_units": 25000,
+      "conditions": "Etisalat (e&) channels, Smiles app, elGrocer"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 3,
+    "quarterly_bonus_units": 5000,
+    "quarterly_bonus_threshold_minor": 1000000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Up to 8 visits per calendar year per cardholder; first free then USD 1 intl spend",
+     "count_per_year": 8
+    },
+    "insurance": {
+     "text": "Multi-trip travel insurance to USD 500,000; 24/7 concierge; purchase protection"
+    }
+   },
+   "welcome_offer": {
+    "text": "First year annual fee waived; 90-day Smiles Unlimited; AED 200 extra Unravel hotel discount voucher",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/smiles-signature",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/cbd-smiles-visa-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Official: annual fee AED 500 + VAT = 525, first year free; aggregator says waived from year two with AED 24,000 annual spend. Smiles point value is not stated on pages read: AED 0.01 assumed (unverified). 10 pts/AED on e&/Smiles/elGrocer (25,000 pts/month cap), 2 domestic, up to 3 abroad, 5,000 pts bonus each quarter after AED 10,000 spend the previous quarter."
+  },
+  {
+   "id": "cbd-smiles-visa-platinum",
+   "issuer": "CBD",
+   "name": "Smiles Visa Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1.5,
+    "rules": [
+     {
+      "name": "e&, Smiles app and elGrocer",
+      "rate": 5,
+      "categories": [
+       "telecom"
+      ],
+      "merchants": [
+       "etisalat",
+       "e&",
+       "smiles",
+       "elgrocer"
+      ],
+      "monthly_cap_units": 10000,
+      "conditions": "cap 10,000 Smiles points/month"
+     },
+     {
+      "name": "Low-yield categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education"
+      ],
+      "conditions": "supermarkets, government, fuel, education, auto, rental, insurance"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 2,
+    "quarterly_bonus_units": 7500,
+    "quarterly_bonus_threshold_minor": 2750000
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "First year annual fee waived; AED 200 extra Unravel hotel discount",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/smiles-platinum",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Bank page only: annual fee AED 199 + VAT assumed 208.95, free in year one; salary requirement not read; Smiles point value (AED 0.01) is an unverified assumption. 'Up to' 1.5 pts domestic, 2 abroad, 5 pts on e&/Smiles/elGrocer (cap 10,000/month); 7,500 bonus pts per quarter at AED 27,500 spend."
+  },
+  {
+   "id": "cbd-visa-platinum",
+   "issuer": "CBD",
+   "name": "Visa Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "0% interest on balance transfer and quick cash for 6 or 12 months if requested within 30 days of issue",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-platinum",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Bank page only: no annual fee ever, up to 1.5 CBD Rewards points per AED, up to 5 free supplementary cards. Exact category rates and salary not found, so base rate left 0 (unknown). Possibly legacy/migrated product."
+  }
+ ]
+}

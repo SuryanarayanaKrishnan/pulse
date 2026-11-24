@@ -1,0 +1,1324 @@
+{
+ "issuer": "Emirates Islamic",
+ "cards": [
+  {
+   "id": "ei-skywards-signature",
+   "issuer": "Emirates Islamic",
+   "name": "Skywards Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2042,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.4084,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ]
+     },
+     {
+      "name": "Groceries",
+      "rate": 0.1021,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0509,
+      "categories": [
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "fuel, telecom, real estate, fast food, insurance, government, utilities, charity etc."
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits plus one guest via Visa Airport Companion"
+    },
+    "golf": {
+     "text": "2 rounds a month at participating UAE clubs",
+     "count_per_month": 2
+    },
+    "valet": {
+     "text": "1 per month, spend condition applies",
+     "count_per_month": 1
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-skywards-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.1 miles/USD (0.30/AED) non-AED outside EEA/UK.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-skywards-infinite",
+   "issuer": "Emirates Islamic",
+   "name": "Skywards Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 210000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.5446,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ]
+     },
+     {
+      "name": "Groceries",
+      "rate": 0.1361,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0681,
+      "categories": [
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "fuel, telecom, real estate, fast food, insurance, government, utilities, charity etc."
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "2 visits a year with a guest",
+     "count_per_year": 2
+    },
+    "golf": {
+     "text": "Unlimited rounds at participating UAE clubs"
+    },
+    "valet": {
+     "text": "2 per month, needs AED 7,500 monthly spend",
+     "count_per_month": 2
+    },
+    "cinema": {
+     "text": "Up to 3 BOGO tickets a month at Reel, needs AED 5,000 monthly spend",
+     "count_per_month": 3
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-skywards-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.5 miles/USD (0.41/AED) international.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-skywards-black",
+   "issuer": "Emirates Islamic",
+   "name": "Skywards Black",
+   "network": "visa",
+   "tier": "other",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 210000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.953,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "2 visits a year with a guest",
+     "count_per_year": 2
+    },
+    "cinema": {
+     "text": "4 BOGO tickets a month at VOX, needs AED 5,000 monthly spend",
+     "count_per_month": 4
+    },
+    "golf": {
+     "text": "Unlimited rounds, needs AED 10,000 monthly retail spend"
+    },
+    "valet": {
+     "text": "Up to 3 per month, needs AED 7,500 monthly spend",
+     "count_per_month": 3
+    },
+    "dining": {
+     "text": "4 airport transfers per year"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-skywards-black-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 2 miles/USD (0.54/AED) international.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Fee shown by aggregator as AED 5,775 first-year including optional Skywards Gold fast track AED 3,675; base maintenance fee AED 2,100 used here. Profit 3.25%/month. Gold fast track optional per aggregator, verify."
+  },
+  {
+   "id": "ei-switch-cashback",
+   "issuer": "Emirates Islamic",
+   "name": "Switch Cashback",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 31395,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 3000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Waived first year; later waived above AED 30,000 retail spend in last 12 months"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Domestic fuel",
+      "rate": 0.08,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "Lifestyle mode; domestic fuel only"
+     },
+     {
+      "name": "Supermarkets",
+      "rate": 0.04,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "Lifestyle mode, domestic only"
+     },
+     {
+      "name": "Dining",
+      "rate": 0.04,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "Lifestyle and Travel modes"
+     },
+     {
+      "name": "Education",
+      "rate": 0.04,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "Lifestyle mode"
+     },
+     {
+      "name": "Airlines and hotels",
+      "rate": 0.04,
+      "categories": [
+       "travel"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "Travel mode only, each of airlines and hotels capped AED 200; engine models Lifestyle mode, so this rule is Travel-mode only"
+     },
+     {
+      "name": "Telecom, utilities, rent, government",
+      "rate": 0.005,
+      "categories": [
+       "telecom",
+       "utilities",
+       "rent"
+      ],
+      "conditions": "no cap, both modes"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 250000
+   },
+   "perks": {
+    "lounge": {
+     "text": "1,200+ lounges via Visa Airport Companion, first visit free then USD 1 foreign spend rule"
+    },
+    "golf": {
+     "text": "2 rounds a month at 5 UAE clubs",
+     "count_per_month": 2
+    },
+    "cinema": {
+     "text": "Up to 2 BOGO tickets a month at Vox or Reel",
+     "count_per_month": 2
+    },
+    "valet": {
+     "text": "1 per month at 25+ sites",
+     "count_per_month": 1
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 500 cashback points for AED 15,000 spend within 60 days, apply by 31 Dec 2026; first-year fee waived",
+    "value_aed_est": 500,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-switch-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/switch-cashback-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Pick Lifestyle or Travel mode in the EI+ app; the mode active at month end counts. Needs AED 2,500 posted spend per month; from 10 Jan 2027 the requirement becomes AED 4,000 per statement cycle (official page). Annual fee AED 299 + VAT from year two. Travel mode has airline/hotel/dining 4% caps AED 200 each, no fuel. Profit 3.69%/month. Min salary from aggregator only."
+  },
+  {
+   "id": "ei-cashback",
+   "issuer": "Emirates Islamic",
+   "name": "Cashback Credit Card",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 36750,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Telecom",
+      "rate": 0.05,
+      "categories": [
+       "telecom"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "includes e& and du bills"
+     },
+     {
+      "name": "Electronics",
+      "rate": 0.05,
+      "categories": [
+       "shopping"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "eligible electronics retailers only; the engine cannot isolate electronics so this over-credits general shopping",
+      "merchants_note": true
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-cashback-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "5% on telecom and electronics (AED 100 monthly cap each), 1% elsewhere. Government and charity earn nothing; bill payments via Emirates Islamic channels excluded. Official EI page errored in this session."
+  },
+  {
+   "id": "ei-cashback-plus",
+   "issuer": "Emirates Islamic",
+   "name": "Cashback Plus",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 31395,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Supermarkets",
+      "rate": 0.03,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 200,
+      "conditions": "rate set by TOTAL monthly card spend: 3% from AED 3,000, 5% from 10,000, 10% from 17,500; modelled at lowest tier",
+      "tiers": [
+       {
+        "min_monthly_spend_minor": 300000,
+        "rate": 0.03
+       },
+       {
+        "min_monthly_spend_minor": 1000000,
+        "rate": 0.05
+       },
+       {
+        "min_monthly_spend_minor": 1750000,
+        "rate": 0.1
+       }
+      ]
+     },
+     {
+      "name": "Education",
+      "rate": 0.03,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 200
+     },
+     {
+      "name": "Dining",
+      "rate": 0.03,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 200
+     },
+     {
+      "name": "Telecom",
+      "rate": 0.03,
+      "categories": [
+       "telecom"
+      ],
+      "monthly_cap_units": 200
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge access (1,000+ lounges)"
+    },
+    "golf": {
+     "text": "2 rounds a month",
+     "count_per_month": 2
+    },
+    "valet": {
+     "text": "1 per month, spend condition",
+     "count_per_month": 1
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-cashback-plus-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/cashback-plus-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Only supermarkets, education, dining and telecom earn; everything else 0. Cap AED 200 per category per month. Official page confirms tiers and annual fee AED 299 + VAT, but also has a conflicting no-annual-fee heading; min salary from aggregator. Points expire after 2 years."
+  },
+  {
+   "id": "ei-barca-cashback",
+   "issuer": "Emirates Islamic",
+   "name": "Barca Cashback (FC Barcelona)",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cobrand",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Supermarkets and fuel",
+      "rate": 0.04,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "UAE supermarkets"
+     },
+     {
+      "name": "Fuel",
+      "rate": 0.04,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "UAE fuel"
+     },
+     {
+      "name": "Dining",
+      "rate": 0.04,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "outside EEA/UK"
+     },
+     {
+      "name": "Sports and entertainment",
+      "rate": 0.04,
+      "categories": [
+       "entertainment"
+      ],
+      "monthly_cap_units": 100,
+      "conditions": "sports spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0025,
+      "categories": [
+       "education",
+       "telecom",
+       "utilities",
+       "rent"
+      ],
+      "conditions": "also automobiles, insurance"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 100000
+   },
+   "perks": {
+    "lounge": {
+     "text": "1,200+ lounges via Visa Airport Companion with one guest"
+    },
+    "cinema": {
+     "text": "2 Reel BOGO tickets/month; 50% cinema cashback up to AED 100/month"
+    },
+    "valet": {
+     "text": "2 per month",
+     "count_per_month": 2
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-fc-barcelona-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Free for life. International 2% (EEA/UK 0.25%), other domestic 1%. Needs AED 1,000 monthly spend. 50% cashback on cinema tickets up to AED 100/month after spend condition. Not cross-checked officially."
+  },
+  {
+   "id": "ei-etihad-saqer",
+   "issuer": "Emirates Islamic",
+   "name": "Etihad Guest Saqer",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 94395,
+   "joining_fee_minor": 94395,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Etihad direct",
+      "rate": 0.8169,
+      "merchants": [
+       "etihad"
+      ]
+     },
+     {
+      "name": "Selected categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits, first free then foreign-spend condition"
+    },
+    "golf": {
+     "text": "2 rounds a month after AED 5,000 monthly spend",
+     "count_per_month": 2
+    }
+   },
+   "welcome_offer": {
+    "text": "30,000 Etihad Guest Miles after fee payment",
+    "value_aed_est": 900,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-etihad-guest-saqer-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Etihad Guest miles per USD converted at 3.6725; point_value_aed 0.03 conservative. International rate 2/USD not expressible. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-etihad-platinum",
+   "issuer": "Emirates Islamic",
+   "name": "Etihad Guest Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": 20895,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Etihad direct",
+      "rate": 0.5446,
+      "merchants": [
+       "etihad"
+      ]
+     },
+     {
+      "name": "Selected categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "insurance": {
+     "text": "2 inflight Wi-Fi vouchers and 10% Etihad redemption discount voucher a year"
+    }
+   },
+   "welcome_offer": {
+    "text": "5,000 Etihad Guest Miles after fee payment",
+    "value_aed_est": 150,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-etihad-guest-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Etihad Guest miles per USD converted at 3.6725; point_value_aed 0.03 conservative. International rate 1.5/USD not expressible. No lounge or golf. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-etihad-premium",
+   "issuer": "Emirates Islamic",
+   "name": "Etihad Guest Premium",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 262500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.5446,
+    "rules": [
+     {
+      "name": "Etihad direct",
+      "rate": 0.953,
+      "merchants": [
+       "etihad"
+      ]
+     },
+     {
+      "name": "Selected categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion with one guest"
+    },
+    "golf": {
+     "text": "2 rounds/month at AED 5,000 spend, unlimited at AED 10,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 55,000 Etihad Guest Miles",
+    "value_aed_est": 1650,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-etihad-guest-premium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Etihad Guest miles per USD converted at 3.6725; point_value_aed 0.03 conservative. International rate 3/USD not expressible. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-etihad-ameera",
+   "issuer": "Emirates Islamic",
+   "name": "Etihad Guest Ameera",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 73395,
+   "joining_fee_minor": 73395,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Etihad direct",
+      "rate": 0.8169,
+      "merchants": [
+       "etihad"
+      ]
+     },
+     {
+      "name": "Selected categories",
+      "rate": 0.0817,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited Visa Airport Companion visits"
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "1 per month after AED 3,000 spend",
+     "count_per_month": 1
+    },
+    "dining": {
+     "text": "2 airport transfers a year"
+    },
+    "insurance": {
+     "text": "Travel takaful on trips up to 90 days"
+    }
+   },
+   "welcome_offer": {
+    "text": "20,000 Etihad Guest Miles after fee payment",
+    "value_aed_est": 600,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-etihad-guest-ameera-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Etihad Guest miles per USD converted at 3.6725; point_value_aed 0.03 conservative. International rate 2/USD not expressible. Profit rate 3.69%/month. Ameera is the women-focused variant. "
+  },
+  {
+   "id": "ei-flex",
+   "issuer": "Emirates Islamic",
+   "name": "Flex",
+   "network": null,
+   "tier": "other",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1.25,
+    "rules": [
+     {
+      "name": "Groceries",
+      "rate": 1,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Reduced bills",
+      "rate": 0.12,
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "cinema": {
+     "text": "2 Reel BOGO tickets per month",
+     "count_per_month": 2
+    }
+   },
+   "welcome_offer": {
+    "text": "10,000 EI SmartMiles on approval"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-flex-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "EI SmartMiles value is not published in what I could read; point_value_aed 0.01 is a placeholder-conservative guess, treat as low reliability. 1.25 SmartMiles/AED domestic, 2.25 international (EEA/UK 0.33). Free card. Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-flex-elite",
+   "issuer": "Emirates Islamic",
+   "name": "Flex Elite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 2.5,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "telecom",
+       "education",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "golf": {
+     "text": "Unlimited rounds at 5 clubs with AED 10,000 monthly spend"
+    },
+    "lounge": {
+     "text": "Unlimited with guest after USD 1 foreign spend"
+    },
+    "valet": {
+     "text": "2 per month at AED 7,500 spend",
+     "count_per_month": 2
+    },
+    "cinema": {
+     "text": "3 Reel BOGO tickets per month",
+     "count_per_month": 3
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 175,000 EI SmartMiles: 75,000 after fee, 100,000 after AED 20,000 within 60 days",
+    "min_spend_minor": 2000000,
+    "window_days": 60,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-flex-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "EI SmartMiles value is not published in what I could read; point_value_aed 0.01 is a placeholder-conservative guess, treat as low reliability. 2.5 SmartMiles/AED domestic, 3.75 international. Kredit lists up to 175,000 welcome SmartMiles (75,000 after fee, 100,000 after AED 20,000 in 60 days). Profit rate 3.69%/month. "
+  },
+  {
+   "id": "ei-rta",
+   "issuer": "Emirates Islamic",
+   "name": "RTA Card",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.0125,
+    "rules": [
+     {
+      "name": "RTA transport",
+      "rate": 0.1,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 75,
+      "conditions": "RTA ticket offices, vending machines, agents; RTA app nol/Salik top-ups do not qualify; fuel also 10% cap AED 75 after AED 1,000 cycle spend"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 100000
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-rta-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "10% on RTA transport and on fuel (separate AED 75 monthly caps, not both modelled); domestic 1.25% and international 2.25% are paid as cashback value. Needs AED 1,000 spend per statement cycle. Free card."
+  },
+  {
+   "id": "ei-emarati",
+   "issuer": "Emirates Islamic",
+   "name": "Emarati Card",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 2.5,
+    "rules": [
+     {
+      "name": "Groceries",
+      "rate": 1,
+      "categories": [
+       "groceries"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.12,
+      "categories": [
+       "utilities",
+       "telecom",
+       "education",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge visits"
+    },
+    "cinema": {
+     "text": "2 Roxy BOGO tickets a month"
+    },
+    "valet": {
+     "text": "2 per month"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 1,000 cashback for AED 15,000 spend within 60 days (new-to-bank, sourced 1 Sep-31 Dec 2026)",
+    "value_aed_est": 1000,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-emarati-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "EI SmartMiles value is not published in what I could read; point_value_aed 0.01 is a placeholder-conservative guess, treat as low reliability. For UAE nationals only. 3.75 SmartMiles/AED international, 2.5 domestic. Profit 3.59%/month. Free for life."
+  },
+  {
+   "id": "ei-amazon-world",
+   "issuer": "Emirates Islamic",
+   "name": "Amazon World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cobrand",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Amazon.ae",
+      "rate": 0.03,
+      "merchants": [
+       "amazon"
+      ],
+      "conditions": "6% for Prime members, 3% non-Prime; modelled at non-Prime. Points valid 5 years"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0025,
+      "categories": [
+       "utilities",
+       "telecom",
+       "groceries",
+       "education",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 visits a year at 1,300+ lounges via Mastercard Travel Pass",
+     "count_per_year": 8
+    },
+    "golf": {
+     "text": "2 rounds per month"
+    },
+    "cinema": {
+     "text": "2 Reel BOGO tickets a month with AED 3,000 spend",
+     "count_per_month": 2
+    },
+    "valet": {
+     "text": "1 per month at AED 5,000 spend"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to AED 500 (Prime) or AED 200: AED 250 after AED 10,000 retail and AED 250 after AED 2,500 non-AED within 60 days; cards issued 1 Nov-31 Dec 2026",
+    "value_aed_est": 500,
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-amazon-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Prime members get 6% Amazon, 2% other domestic, 2.5% international (non-Prime 3%, 1%, 1%); modelled at non-Prime. Amazon Ultra-Fast Grocery/gift cards 2% (1%). Government, utilities, groceries, education, insurance, fuel etc. 0.25%."
+  },
+  {
+   "id": "ei-amazon-platinum",
+   "issuer": "Emirates Islamic",
+   "name": "Amazon Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Amazon.ae",
+      "rate": 0.03,
+      "merchants": [
+       "amazon"
+      ],
+      "conditions": "6% for Prime members, 3% non-Prime; modelled at non-Prime. Points valid 5 years"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0025,
+      "categories": [
+       "utilities",
+       "telecom",
+       "groceries",
+       "education",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 DragonPass visits a year",
+     "count_per_year": 4
+    },
+    "cinema": {
+     "text": "2 Reel BOGO tickets a month"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to AED 500 (Prime) or AED 200",
+    "value_aed_est": 500,
+    "valid_until": "2026-12-31"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/emirates-islamic-amazon-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Same earn as Amazon World, modelled at non-Prime; Prime gets 6% on Amazon.ae."
+  }
+ ]
+}

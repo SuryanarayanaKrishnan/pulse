@@ -1,0 +1,119 @@
+{
+ "issuer": "Commercial Bank International",
+ "cards": [
+  {
+   "id": "cbi-titanium",
+   "issuer": "Commercial Bank International",
+   "name": "Mastercard Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "basic",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/cbi-mastercard-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Does not earn points. Edge/CBI First customers get up to 100% back on cinema, streaming, valet (AED 75/150/300 a month at AED 4k/8k/12k spend, to 31 Dec 2026). Profit/interest 3.45%/month. Intl fee 2.99%."
+  },
+  {
+   "id": "cbi-rewards-platinum",
+   "issuer": "Commercial Bank International",
+   "name": "Rewards Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.007,
+    "base_rate": 0.5,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/cbi-rewards-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "0.5 CBI Rewards points/AED UAE, 1 abroad; optional AED 525/year Accelerator doubles to 1 UAE and 1.5-2 abroad. Point value not found (placeholder 0.007 gives about 0.35% as aggregator shows). Intl fee 2.99%."
+  },
+  {
+   "id": "cbi-rewards-world",
+   "issuer": "Commercial Bank International",
+   "name": "Rewards World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 84000,
+   "joining_fee_minor": 84000,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.007,
+    "base_rate": 1,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/cbi-rewards-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "1 point/AED UAE (1.75 on single UAE transaction of AED 2,000+), 2.5 abroad. Aggregator implies 0.7% at 1 pt/AED, so point value 0.007. Intl fee 2.99%."
+  }
+ ]
+}

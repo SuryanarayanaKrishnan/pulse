@@ -1,0 +1,53 @@
+{
+ "issuer": "Wio",
+ "cards": [
+  {
+   "id": "wio-credit",
+   "issuer": "Wio",
+   "name": "Credit Card",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 700000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Government, real estate, utilities",
+      "rate": 0.005,
+      "categories": [
+       "utilities",
+       "rent",
+       "telecom"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/wio-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "2% on spend; 0.5% on government, real estate, utilities/telecom; 0.5% for paying other-bank card bills via Wio (needs AED 5,000 other eligible spend; Plus plan only). Wio Credit and My Money share AED 2,500 monthly cashback cap. Wallet top-ups, cash advances excluded. Interest 3.25%/month Standard/Plus; Plus plan AED 49/month waived at AED 35,000 balance."
+  }
+ ]
+}

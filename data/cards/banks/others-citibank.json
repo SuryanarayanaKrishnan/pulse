@@ -1,0 +1,412 @@
+{
+ "issuer": "Citibank",
+ "cards": [
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "8 lounge visits a year (aggregator)",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "1 cinema offer a month (aggregator)"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 300 statement credit after AED 6,000 spend within 60 days",
+    "value_aed_est": 300,
+    "min_spend_minor": 600000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. Fee waived in year 1; from year 2 waived at AED 9,000 annual spend (bank page).",
+   "id": "citi-rewards",
+   "name": "Rewards",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.4084,
+      "conditions": "AED spend"
+     },
+     {
+      "name": "Government, utilities, telecom, education, insurance, rent, transport",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0681,
+      "conditions": "AED spend; 25% of the standard earn per aggregator"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/citi-rewards-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Citibank"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 78750,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "14 lounge visits a year (aggregator)",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "1 golf round a month (aggregator)"
+    },
+    "cinema": {
+     "text": "4 cinema tickets a month (aggregator)"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 750 statement credit after AED 10,000 spend within 60 days",
+    "value_aed_est": 750,
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. The 3x category covers dining, fuel and grocery; 'transport' is used for fuel, so the reduced-category rule on transport may override it for non-fuel transport.",
+   "id": "citi-premier",
+   "name": "Premier",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Dining, fuel and groceries",
+      "categories": [
+       "groceries",
+       "dining",
+       "transport"
+      ],
+      "rate": 0.8169,
+      "conditions": "AED spend"
+     },
+     {
+      "name": "Government, utilities, telecom, education, insurance, rent, transport",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0681,
+      "conditions": "AED spend; 25% of the standard earn per aggregator"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/citi-premier-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Citibank"
+  },
+  {
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "14 lounge visits a year via Mastercard Travel Pass (aggregator)",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "2 golf rounds a month (aggregator)"
+    },
+    "valet": {
+     "text": "2 valet uses a month (aggregator)"
+    },
+    "cinema": {
+     "text": "6 cinema tickets a month (aggregator)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Bank page: AED 1,000 cashback after AED 15,000 spend within 60 days; aggregator also lists 10,000 ThankYou points each year after paying the fee",
+    "value_aed_est": 1000,
+    "min_spend_minor": 1500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. ",
+   "id": "citi-prestige",
+   "name": "Prestige",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.5446,
+    "rules": [
+     {
+      "name": "Government, utilities, telecom, education, insurance, rent, transport",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.1361,
+      "conditions": "AED spend; 25% of the standard earn per aggregator"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/citi-prestige-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Citibank"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 315000,
+   "joining_fee_minor": 315000,
+   "fee_waiver": null,
+   "min_salary_minor": 3675000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "14 lounge visits a year (aggregator)",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "2 golf rounds a month (aggregator)"
+    },
+    "valet": {
+     "text": "2 valet uses a month (aggregator)"
+    },
+    "cinema": {
+     "text": "6 cinema tickets a month (aggregator)"
+    }
+   },
+   "welcome_offer": {
+    "text": "Bank page: AED 1,500 statement credit after AED 25,000 spend within 60 days; aggregator lists 30,000 bonus miles each year after paying the fee",
+    "value_aed_est": 1500,
+    "min_spend_minor": 2500000,
+    "window_days": 60,
+    "requires_fee_payment": false
+   },
+   "community_notes": [],
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. Joining fee AED 3,150 is from the aggregator only; the bank page lists just the annual fee (AED 3,000 ex-VAT). Invitation-style premium card with the highest salary bar (AED 36,750).",
+   "id": "citi-ultima",
+   "name": "Ultima",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.6807,
+    "rules": [
+     {
+      "name": "Government, utilities, telecom, education, insurance, rent, transport",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.2723,
+      "conditions": "AED spend; 25% of the standard earn per aggregator"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/citi-ultima-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Citibank"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": null,
+   "fee_waiver": {
+    "spend_minor": 900000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Year 1 free; from year 2 waived at AED 9,000 annual spend"
+   },
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {},
+   "welcome_offer": {
+    "text": "AED 300 statement credit after AED 6,000 spend within 60 days",
+    "value_aed_est": 300,
+    "min_spend_minor": 600000,
+    "window_days": 60
+   },
+   "community_notes": [],
+   "notes": "From the bank's card comparison page only: 3% on non-AED spend (not modelled by category), 2% grocery, 1% other, automatic cashback. Caps, exclusions and reduced categories were not seen; individual product page returned an error. Not listed on the aggregator.",
+   "id": "citi-cashback",
+   "name": "Cash Back",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.02
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "Citibank"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "basic",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "perks": {},
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Bank comparison page lists AED 5,000 minimum salary and no annual fee ever; no rewards information found, so base_rate 0 is a placeholder. Likely a low-cost, rewards-light product (not verified).",
+   "id": "citi-simplicity",
+   "name": "Simplicity",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "Citibank"
+  }
+ ]
+}
