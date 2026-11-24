@@ -68,7 +68,7 @@ def test_page_break_uses_carry_rows_and_keeps_every_line():
 
 def test_three_decimal_amounts_become_two_decimal_minor_units():
     assert parse_money3("6,000.000") == 600000
-    assert parse_money3("138.100") == 13810
+    assert parse_money3("7.250") == 725
     assert parse_money3("0.000") == 0
     assert parse_money3("12.34") is None and parse_money3("1,2.000") is None
 
