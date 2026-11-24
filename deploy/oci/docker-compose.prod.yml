@@ -1,0 +1,71 @@
+# Production stack for a single Oracle Cloud Always Free ARM VM.
+# Run from /opt/pulse/deploy/oci:  docker compose -f docker-compose.prod.yml --env-file /opt/pulse/.env up -d --build
+name: pulse
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?set API_DOMAIN in /opt/pulse/.env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [api]
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "yes", "--maxmemory", "128mb"]
+    volumes: [redis_data:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  migrate:
+    build: {context: ../.., dockerfile: Dockerfile}
+    command: ["alembic", "upgrade", "head"]
+    env_file: /opt/pulse/.env
+    environment:
+      # Migrations need a session-mode connection (Supabase session pooler, port 5432).
+      DATABASE_URL: ${MIGRATIONS_DATABASE_URL:-${DATABASE_URL}}
+      DB_PGBOUNCER: "false"
+    restart: "no"
+
+  api:
+    build: {context: ../.., dockerfile: Dockerfile}
+    restart: unless-stopped
+    env_file: /opt/pulse/.env
+    environment: &env
+      APP_ENV: production
+      LOG_JSON: "true"
+      QUEUE_BACKEND: arq
+      REDIS_URL: redis://redis:6379/0
+      STORAGE_BACKEND: ${STORAGE_BACKEND:-local}
+      STORAGE_LOCAL_DIR: /data/storage
+    volumes: [storage:/data/storage]
+    mem_limit: 1g
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  worker:
+    build: {context: ../.., dockerfile: Dockerfile}
+    restart: unless-stopped
+    command: ["arq", "app.workers.settings.WorkerSettings"]
+    env_file: /opt/pulse/.env
+    environment: *env
+    volumes: [storage:/data/storage]
+    mem_limit: 1g
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+volumes:
+  caddy_data:
+  caddy_config:
+  redis_data:
+  storage:

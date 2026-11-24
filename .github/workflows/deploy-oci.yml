@@ -1,0 +1,26 @@
+name: Deploy (Oracle Cloud VM)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**.md"]
+
+concurrency: deploy-oci
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Skips quietly until the VM is configured (see docs/HOSTING.md).
+    if: vars.OCI_HOST != ''
+    steps:
+      - name: Set up SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.OCI_SSH_KEY }}" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "${{ vars.OCI_HOST }}" >> ~/.ssh/known_hosts
+      - name: Deploy
+        run: ssh -i ~/.ssh/id_deploy "${{ vars.OCI_USER || 'ubuntu' }}@${{ vars.OCI_HOST }}" 'bash /opt/pulse/deploy/oci/deploy.sh'
+      - name: Smoke test
+        run: curl -fsS --retry 6 --retry-delay 5 "https://${{ vars.API_DOMAIN }}/ready"
