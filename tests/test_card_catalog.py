@@ -43,3 +43,25 @@ def test_catalog_rows_map_verification_honestly():
         perks = json.loads(r["perks"])
         assert (r["verified_at"] is not None) == (by_conf[perks["catalog_id"]]["confidence"] == "high")
         assert r["source_url"].startswith("https://")
+
+
+def test_every_card_has_readable_art():
+    from app.services.card_art import MIN_CONTRAST, contrast, validate_art
+
+    cat = json.loads((ROOT / "data" / "cards" / "catalog.json").read_text())
+    for c in cat["cards"]:
+        assert validate_art(c.get("art"), c) == [], c["id"]
+        for s in c["art"]["stops"]:
+            assert contrast(c["art"]["text"], s) >= MIN_CONTRAST, (c["id"], s)
+
+
+def test_generated_art_is_deterministic_and_maps_to_perks():
+    from app.services.card_art import generate
+    from app.services.card_catalog import catalog_rows, load_catalog
+
+    cat = load_catalog()
+    for c in cat["cards"][:20]:
+        plain = {k: v for k, v in c.items() if k != "art"}
+        assert generate(plain) == generate(plain)
+    for r in catalog_rows(cat):
+        assert "art" in json.loads(r["perks"])
