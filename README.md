@@ -117,7 +117,8 @@ revoked token marks the connection `needs_reauth`; partial failures leave `last_
 the bucket must be private.
 
 **Adjusting parsers.** Statement layouts and SMS wording were written against documented generic layouts, not real
-statements (see "Known limitations"). To adapt a bank: edit its module (`Layout` flags such as `use_second_date`,
+statements (see "Known limitations"), except the Mashreq NEO account statement, which is verified against real
+files (`docs/STATEMENT_LAYOUTS.md` describes the layouts for the on-device port). To adapt a bank: edit its module (`Layout` flags such as `use_second_date`,
 `foreign_before_local`, `summary_table`, label regexes) or add an SMS template, and add the sample to the tests.
 - Product analytics are not stored here (PostHog); `audit_log` is for security-relevant actions.
 

@@ -15,6 +15,7 @@ from datetime import date
 from typing import Literal, Protocol, runtime_checkable
 
 from app.models.transaction import Direction
+from app.services.parsers.counterparty import Counterparty
 
 StatementKind = Literal["credit_card", "bank_account"]
 Table = list[list[str | None]]
@@ -30,6 +31,8 @@ class StatementLineData:
     foreign_amount_minor: int | None = None
     foreign_currency: str | None = None
     balance_minor: int | None = None  # running balance after the line, when the layout has one
+    reference: str | None = None  # bank's transaction reference column, when the layout has one
+    counterparty: Counterparty | None = None  # person-to-person transfers only
 
 
 @dataclass(slots=True)
@@ -47,6 +50,8 @@ class ParsedStatement:
     total_payments_minor: int | None = None  # card summary: payments/credits for the period
     total_purchases_minor: int | None = None  # card summary: purchases/charges for the period
     last4: str | None = None
+    product: str | None = None  # product name printed in the account summary (e.g. a savings plan)
+    holder_name: str | None = None  # never persisted; only used to tell own-account moves from transfers
     lines: list[StatementLineData] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     parser: str = ""

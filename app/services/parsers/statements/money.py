@@ -8,6 +8,9 @@ AMOUNT_RE = r"-?\(?\d{1,3}(?:,\d{3})*(?:\.\d{2})\)?(?:\s?(?:CR|DR|Cr|Dr|cr|dr))?
 _TOKEN = re.compile(
     r"^(?P<neg>-)?(?P<paren>\()?(?P<num>[\d,]+\.\d{2})\)?(?:\s?(?P<mark>CR|DR))?$", re.IGNORECASE
 )
+# Three-decimal amounts ("6,000.000"): some banks print AED with a mills digit that is always 0.
+AMOUNT3_RE = r"\d{1,3}(?:,\d{3})*\.\d{3}(?!\d)|\d+\.\d{3}(?!\d)"
+_TOKEN3 = re.compile(rf"^(?P<num>{AMOUNT3_RE})$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,3 +36,11 @@ def parse_money(token: str) -> Money | None:
 def to_minor(token: str) -> int | None:
     m = parse_money(token)
     return m.minor if m else None
+
+
+def parse_money3(token: str) -> int | None:
+    """'6,000.000' -> 600000 minor units (the third decimal is rounded away; banks print it as 0)."""
+    m = _TOKEN3.match(token.strip())
+    if not m:
+        return None
+    return int((Decimal(m["num"].replace(",", "")) * 100).to_integral_value())
