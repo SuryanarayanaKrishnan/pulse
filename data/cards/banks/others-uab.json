@@ -42,6 +42,11 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.uab.ae/-/media/project/uab/pdf/2026/key-fact-statements/rb-89--kfs-credit-card--islamic-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/uab-titanium-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -49,7 +54,7 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived.",
+   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived. UAB Islamic KFS (read, text garbled) shows a card at AED 1,000 annual fee waived with AED 60,000 spend, min salary AED 5,000, FX 2.5% to 3.15%, cash advance 3.15% or AED 105, donation-commitment late charge AED 241.50; could not map to individual tiers, so numbers here are unchanged aggregator figures.",
    "deals": [
     {
      "name": "Video streaming",
@@ -105,6 +110,11 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.uab.ae/-/media/project/uab/pdf/2026/key-fact-statements/rb-89--kfs-credit-card--islamic-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/uab-platinum-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -112,7 +122,7 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived.",
+   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived. UAB Islamic KFS (read, text garbled) shows a card at AED 1,000 annual fee waived with AED 60,000 spend, min salary AED 5,000, FX 2.5% to 3.15%, cash advance 3.15% or AED 105, donation-commitment late charge AED 241.50; could not map to individual tiers, so numbers here are unchanged aggregator figures.",
    "deals": [
     {
      "name": "Video streaming",
@@ -168,6 +178,11 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.uab.ae/-/media/project/uab/pdf/2026/key-fact-statements/rb-89--kfs-credit-card--islamic-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/uab-world-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -175,7 +190,7 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "Min salary AED 5,000 per aggregator looks too low for World; verify. Rate depends on total monthly spend; modelled at top tier. First-year fee free, later waived at AED 60,000.",
+   "notes": "Min salary AED 5,000 per aggregator looks too low for World; verify. Rate depends on total monthly spend; modelled at top tier. First-year fee free, later waived at AED 60,000. UAB Islamic KFS (read, text garbled) shows a card at AED 1,000 annual fee waived with AED 60,000 spend, min salary AED 5,000, FX 2.5% to 3.15%, cash advance 3.15% or AED 105, donation-commitment late charge AED 241.50; could not map to individual tiers, so numbers here are unchanged aggregator figures.",
    "deals": []
   }
  ]

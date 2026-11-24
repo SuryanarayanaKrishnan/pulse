@@ -16,7 +16,7 @@
     "text": "First year waived with AED 10,000 spend within 60 days of opening; later years waived with AED 150,000 spend in previous 12 months"
    },
    "min_salary_minor": 3000000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "Lounge access via Visa Airport Companion; first 2 visits each year free, further access needs a USD 1 international purchase, USD 32 per visit otherwise",
@@ -31,14 +31,13 @@
     }
    },
    "welcome_offer": {
-    "text": "AED 1,000 cashback when AED 10,000 is spent within 60 days of opening; terms published quarterly, latest to Dec 2026",
+    "text": "AED 1,000 cashback for AED 10,000 spend within 60 days of opening (Oct-Dec 2026 promo terms)",
     "value_aed_est": 1000,
     "min_spend_minor": 1000000,
-    "window_days": 60,
-    "valid_until": "2026-12-31"
+    "window_days": 60
    },
    "community_notes": [],
-   "notes": "360 Rewards: 2 points per USD locally and 4 per USD internationally (international not modelled by category). Stored per AED by dividing by 3.6725. Bank page conflicts on point value (125 points = AED 1 in one place, a worked example implies a different figure); 0.008 AED per point used (125 per AED). Airline-booking cashback conversion of 2% of points balance exists. Existing Visa Infinite cards are renamed Journey on renewal. Needs existing SC account, minimum limit AED 20,000. Reduced-earn categories for this card were not found on the page. Single official source; KFS not opened.",
+   "notes": "360 Rewards: 2 points per USD locally and 4 per USD internationally (international not modelled by category). Stored per AED by dividing by 3.6725. Bank page conflicts on point value (125 points = AED 1 in one place, a worked example implies a different figure); 0.008 AED per point used (125 per AED). Airline-booking cashback conversion of 2% of points balance exists. Existing Visa Infinite cards are renamed Journey on renewal. Needs existing SC account, minimum limit AED 20,000. Reduced-earn categories for this card were not found on the page. Single official source; KFS not opened. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site. Bank page: golf 1 round per cycle, 2 lounge visits a year then unlimited with USD 1 international spend; 4 Careem airport rides a year.",
    "id": "scb-journey",
    "name": "Journey",
    "reward_structure": {
@@ -62,6 +61,11 @@
      "url": "https://www.sc.com/ae/credit-cards/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
@@ -82,7 +86,7 @@
     "text": "First year free; later waived with AED 9,000 spend in previous 12 months"
    },
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
@@ -94,7 +98,7 @@
    },
    "welcome_offer": null,
    "community_notes": [],
-   "notes": "Bank page says the card is not available for new clients (still shown on the card comparison page). 2% on international/non-AED spend and on airline spend booked directly with the airline (MCC 3000-3301) is not modelled by category. No cashback cap, earns within credit limit only, minimum redemption AED 100, cashback expires after 12 months. Min salary AED 8,000 from the card comparison page. Single official source; KFS not opened.",
+   "notes": "Bank page says the card is not available for new clients (still shown on the card comparison page). 2% on international/non-AED spend and on airline spend booked directly with the airline (MCC 3000-3301) is not modelled by category. No cashback cap, earns within credit limit only, minimum redemption AED 100, cashback expires after 12 months. Min salary AED 8,000 from the card comparison page. Single official source; KFS not opened. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site.",
    "id": "scb-simply-cash",
    "name": "Simply Cash",
    "reward_structure": {
@@ -127,6 +131,11 @@
      "url": "https://www.sc.com/ae/credit-cards/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
@@ -147,7 +156,7 @@
     "text": "First year free; later waiver threshold not stated"
    },
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
@@ -156,7 +165,7 @@
    },
    "welcome_offer": null,
    "community_notes": [],
-   "notes": "Cashback applies to online AED spend and bill payments, foreign-currency spend (online and in-store) and AED mobile-wallet in-store spend, tiered by total monthly spend: nothing below AED 2,500; 3% from 2,500 (cap AED 100 a month per bucket); 5% from 15,000 (cap AED 200); 10% from 30,000 (cap AED 400 online/FX, AED 200 wallet). Spend outside those channels appears to earn nothing, and channel-based rules cannot be expressed as categories, so reward_structure has base 0 and no rules; use notes. Bank page says not available for new clients. Salary AED 8,000 from the comparison page.",
+   "notes": "Cashback applies to online AED spend and bill payments, foreign-currency spend (online and in-store) and AED mobile-wallet in-store spend, tiered by total monthly spend: nothing below AED 2,500; 3% from 2,500 (cap AED 100 a month per bucket); 5% from 15,000 (cap AED 200); 10% from 30,000 (cap AED 400 online/FX, AED 200 wallet). Spend outside those channels appears to earn nothing, and channel-based rules cannot be expressed as categories, so reward_structure has base 0 and no rules; use notes. Bank page says not available for new clients. Salary AED 8,000 from the comparison page. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site. Bank page confirms the ladder, caps (page inconsistent on the top wallet cap), 12-month expiry, AED 100 min redemption, and exclusions: balance transfers, payment plans, cash advances, cheques, finance charges, fees, reversed items.",
    "id": "scb-x-card",
    "name": "X Card",
    "reward_structure": {
@@ -169,6 +178,24 @@
      "fees",
      "cc_payment",
      "transfer"
+    ],
+    "tier_ladder": [
+     {
+      "min_monthly_spend_aed": 2500,
+      "rate": 0.03,
+      "cap_aed": 100
+     },
+     {
+      "min_monthly_spend_aed": 15000,
+      "rate": 0.05,
+      "cap_aed": 200
+     },
+     {
+      "min_monthly_spend_aed": 30000,
+      "rate": 0.1,
+      "cap_aed": 400,
+      "note": "wallet bucket cap 200 per one table; page inconsistent"
+     }
     ]
    },
    "sources": [
@@ -176,9 +203,19 @@
      "url": "https://www.sc.com/ae/credit-cards/x-card/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/tccc.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Standard Chartered"
   },
   {
@@ -196,7 +233,7 @@
     "text": "First year free for new clients"
    },
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase, USD 32 otherwise",
@@ -208,7 +245,7 @@
    },
    "welcome_offer": null,
    "community_notes": [],
-   "notes": "Bank page says not available for new clients. 1 point per USD (stored per AED /3.6725). Point value 0.008 AED assumes 125 points per AED as stated for the 360 Rewards programme on the Journey page; not confirmed on this page. The older 'Manhattan Platinum' page shows the same fee and earn rates and a AED 5,000 salary; likely the same card family, merged here. No caps stated.",
+   "notes": "Bank page says not available for new clients. 1 point per USD (stored per AED /3.6725). Point value 0.008 AED assumes 125 points per AED as stated for the 360 Rewards programme on the Journey page; not confirmed on this page. The older 'Manhattan Platinum' page shows the same fee and earn rates and a AED 5,000 salary; likely the same card family, merged here. No caps stated. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site.",
    "id": "scb-manhattan-rewards-plus",
    "name": "Manhattan Rewards+",
    "reward_structure": {
@@ -244,6 +281,11 @@
      "url": "https://www.sc.com/ae/credit-cards/manhattan/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
@@ -264,7 +306,7 @@
     "text": "First year free; waived later with AED 2,000 spend in the previous 12 months"
    },
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "Up to 8 lounge visits a year; first free, rest need a USD 1 international purchase",
@@ -276,7 +318,7 @@
    },
    "welcome_offer": null,
    "community_notes": [],
-   "notes": "Shariah-compliant Murabaha card, not available to new clients per bank page. Zero late, over-limit and cash-advance fees. Earn rates per USD were not published on the page, so base_rate 0 is a placeholder, not a fact. Min salary AED 8,000 from comparison page.",
+   "notes": "Shariah-compliant Murabaha card, not available to new clients per bank page. Zero late, over-limit and cash-advance fees. Earn rates per USD were not published on the page, so base_rate 0 is a placeholder, not a fact. Min salary AED 8,000 from comparison page. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site.",
    "id": "scb-smart-saadiq",
    "name": "Smart Saadiq",
    "reward_structure": {
@@ -299,6 +341,11 @@
     {
      "url": "https://www.sc.com/ae/credit-cards/",
      "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+     "kind": "tc_pdf",
      "verified_on": "2026-11-24"
     }
    ],

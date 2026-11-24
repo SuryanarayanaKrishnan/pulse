@@ -10,11 +10,16 @@
    "kind": "points",
    "islamic": false,
    "status": "active",
-   "annual_fee_minor": null,
+   "annual_fee_minor": 0,
    "joining_fee_minor": null,
-   "fee_waiver": null,
-   "min_salary_minor": null,
-   "fx_markup_pct": null,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "KFS says lifetime free; the schedule of charges shows AED 250 waived while segment eligibility holds"
+   },
+   "min_salary_minor": 900000,
+   "fx_markup_pct": 2.5,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.0035,
@@ -54,11 +59,21 @@
      "url": "https://nbf.ae/personal/personal-cards/platinum-exclusive-credit-card/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/wp-content/uploads/2025/04/KFS_NBF-Platinum_Credit-Card_Apr-2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/wp-content/uploads/2025/07/NBF-Personal-Banking-SOC_July-2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Earn: 2.5 pts per AED in the UAE (about 0.88%), 3.5 pts on non-AED spend, 1 pt in special categories; cap 999,999 pts/month. Merchant category is whatever the merchant registered, so mis-categorised spend cannot be disputed. Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+   "notes": "Earn: 2.5 pts per AED in the UAE (about 0.88%), 3.5 pts on non-AED spend, 1 pt in special categories; cap 999,999 pts/month. Merchant category is whatever the merchant registered, so mis-categorised spend cannot be disputed. Official figures from NBF's Platinum KFS (Apr 2025): annual fee lifetime free, minimum salary AED 9,000, 2.5% foreign-currency processing fee, 2.99%/month interest, late fee AED 230, cash advance 4% or AED 50, 2 free supplementary cards. CONFLICT: the July 2025 Personal Banking Schedule of Charges lists AED 250 for the Exclusive card (waived while segment eligibility holds); the KFS is the card-specific document so lifetime free is used. The KFS names only 'cashback' without rates, while the rewards page describes points; the points structure is kept. Joining fee not stated in any document."
   },
   {
    "id": "nbf-infinite",
@@ -69,11 +84,16 @@
    "kind": "points",
    "islamic": false,
    "status": "active",
-   "annual_fee_minor": null,
+   "annual_fee_minor": 0,
    "joining_fee_minor": null,
-   "fee_waiver": null,
-   "min_salary_minor": null,
-   "fx_markup_pct": null,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "KFS says lifetime free; the schedule of charges shows AED 750 waived while segment eligibility holds"
+   },
+   "min_salary_minor": 4000000,
+   "fx_markup_pct": 2.5,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.0035,
@@ -119,26 +139,31 @@
      "url": "https://nbf.ae/personal/personal-cards/infinite-credit-card/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/wp-content/uploads/2025/02/Consumer_Protection_Regulation-Key_Facts_Statement-NBF_Infinite_Credit_Card___Key_Facts_Statement.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Earn rate depends on banking segment: NBF Al Samy customers 4 pts/AED local and 6 abroad; NBF Priority customers 3.5 local and 5 abroad (used as base, the conservative figure); rate for customers outside those segments is not stated. 1 pt in special categories. Cap 999,999 pts/month. Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+   "notes": "Earn rate depends on banking segment: NBF Al Samy customers 4 pts/AED local and 6 abroad; NBF Priority customers 3.5 local and 5 abroad (used as base, the conservative figure); rate for customers outside those segments is not stated. 1 pt in special categories. Cap 999,999 pts/month. Official figures from NBF's Infinite KFS (undated, hosted under 2025/02 uploads): annual fee lifetime free, minimum salary AED 40,000 or NBF Priority segment, 2.5% foreign-currency processing fee, 2.49%/month interest, late fee AED 230, cash advance 4% or AED 50, 3 free supplementary cards (AED 250 from the fourth). CONFLICT: the July 2025 Schedule of Charges shows AED 750 waived while segment eligibility holds. The KFS describes a spend-tiered cashback (1% to 2% domestic, 2% to 3% abroad, by monthly spend band, expiring after 2 years) which differs from the points programme on the rewards page; points structure kept pending clarification."
   },
   {
    "id": "nbf-classic",
    "issuer": "NBF",
    "name": "Classic",
-   "network": null,
+   "network": "visa",
    "tier": "classic",
    "kind": "basic",
    "islamic": false,
-   "status": "unverified",
-   "annual_fee_minor": null,
+   "status": "active",
+   "annual_fee_minor": 0,
    "joining_fee_minor": null,
    "fee_waiver": null,
-   "min_salary_minor": null,
-   "fx_markup_pct": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.5,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.0035,
@@ -157,11 +182,16 @@
      "url": "https://nbf.ae/personal/personal-cards/classic-credit-card/",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/wp-content/uploads/2025/06/KFS_Classic_Credit_Card-2.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "community_notes": [],
-   "notes": "Listed on NBF's site but the page was not read in detail and the rewards page gives no earn rates for it; all numbers unknown (base rate set to 0 = unknown). Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+   "notes": "Verified from NBF's Classic KFS (June 2025 upload): annual fee lifetime free, minimum salary AED 5,000, Visa, 2.5% foreign-currency processing fee, 2.99%/month interest, late fee AED 230, cash advance 4% or AED 50, 2 free supplementary cards (AED 100 from third). No points programme described; cashback only on special offers. CONFLICT: July 2025 Schedule of Charges lists AED 100 for Classic (and also 'life-time free' in a shared column); KFS used. Joining fee not stated."
   }
  ]
 }

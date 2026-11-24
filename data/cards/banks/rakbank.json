@@ -23,7 +23,7 @@
     "valid_until": "2026-11-15"
    },
    "community_notes": [],
-   "notes": "Tiered by total monthly card spend: nothing under AED 1,000, 1% from AED 1,000, 1.5% from AED 3,000 (modelled at 1%, so understates high spenders). Total cashback capped at AED 300 per month. Bank page confirms free for life and 'up to 1.5%' but tier thresholds/caps are from the aggregator only; KFS not opened. Free international cash advance up to 80% of limit is not relevant to rewards.",
+   "notes": "Tiered by total monthly card spend: nothing under AED 1,000, 1% from AED 1,000, 1.5% from AED 3,000 (modelled at 1%, so understates high spenders). Total cashback capped at AED 300 per month. Bank page confirms free for life and 'up to 1.5%' but tier thresholds/caps are from the aggregator only; KFS not opened. Free international cash advance up to 80% of limit is not relevant to rewards. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
    "id": "rakbank-red",
    "name": "RED",
    "reward_structure": {
@@ -49,6 +49,21 @@
      "fees",
      "cc_payment",
      "transfer"
+    ],
+    "tier_ladder": [
+     {
+      "min_monthly_spend_aed": 0,
+      "rate": 0.0
+     },
+     {
+      "min_monthly_spend_aed": 1000,
+      "rate": 0.01
+     },
+     {
+      "min_monthly_spend_aed": 3000,
+      "rate": 0.015,
+      "note": "monthly cap AED 300 total"
+     }
     ]
    },
    "sources": [
@@ -84,7 +99,7 @@
     "valid_until": "2026-12-31"
    },
    "community_notes": [],
-   "notes": "Nothing earned in a month with under AED 2,000 total spend. Other retail 1% (capped AED 100 a month), eligible wallet retail 2% (capped AED 100) not modelled; effective max is low because each bucket is capped. Bank page confirms headline rates (up to 5%, 50% cinema, up to 2%); caps and thresholds from aggregator only.",
+   "notes": "Nothing earned in a month with under AED 2,000 total spend. Other retail 1% (capped AED 100 a month), eligible wallet retail 2% (capped AED 100) not modelled; effective max is low because each bucket is capped. Bank page confirms headline rates (up to 5%, 50% cinema, up to 2%); caps and thresholds from aggregator only. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
    "id": "rakbank-titanium",
    "name": "Titanium",
    "reward_structure": {
@@ -129,6 +144,17 @@
      "fees",
      "cc_payment",
      "transfer"
+    ],
+    "tier_ladder": [
+     {
+      "min_monthly_spend_aed": 0,
+      "rate": 0.0
+     },
+     {
+      "min_monthly_spend_aed": 2000,
+      "rate": 0.01,
+      "note": "other retail, cap AED 100; wallet 2% cap AED 100; dining/grocery 5% cap AED 100 each"
+     }
     ]
    },
    "sources": [
@@ -184,7 +210,7 @@
     "valid_until": "2026-12-31"
    },
    "community_notes": [],
-   "notes": "No cashback at all in a month where total retail spend is under AED 10,000. Standard 1% (cap AED 100) and 3% wallet (cap AED 150, combined max AED 250) not fully modelled. Self-employed alternative and security cheque requirements exist. Annual AED 997.50 incl. VAT. Bank page confirms 10% categories, up to 3% retail, Careem Plus; caps from aggregator only.",
+   "notes": "No cashback at all in a month where total retail spend is under AED 10,000. Standard 1% (cap AED 100) and 3% wallet (cap AED 150, combined max AED 250) not fully modelled. Self-employed alternative and security cheque requirements exist. Annual AED 997.50 incl. VAT. Bank page confirms 10% categories, up to 3% retail, Careem Plus; caps from aggregator only. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
    "id": "rakbank-world",
    "name": "World",
    "reward_structure": {
@@ -236,6 +262,17 @@
      "fees",
      "cc_payment",
      "transfer"
+    ],
+    "tier_ladder": [
+     {
+      "min_monthly_spend_aed": 0,
+      "rate": 0.0
+     },
+     {
+      "min_monthly_spend_aed": 10000,
+      "rate": 0.01,
+      "note": "standard cap AED 100; wallet 3% cap AED 150; category 10% caps per rules; combined max AED 1,000 for travel/supermarket/dining"
+     }
     ]
    },
    "sources": [

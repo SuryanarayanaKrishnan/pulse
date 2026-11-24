@@ -1,0 +1,76 @@
+{
+ "schema_version": 1,
+ "as_of": "2026-11-24",
+ "note": "Merchant plays: a card (and sometimes an app or BNPL offer) that pays best at one merchant. Rates are headline rates from the sources named, usually capped; always re-check card terms. Items flagged community are unverified user reports. Nothing here is advice.",
+ "merchants": [
+  {
+   "id": "noon",
+   "name": "noon (noon.com, noon Food, NowNow, Namshi)",
+   "merchant_keys": ["noon", "noon food", "nownow", "namshi", "sivvi"],
+   "plays": [
+    {"type": "card", "card_id": "enbd-noon-one", "rate": 0.20, "applies_to": "noon Food; 5% on other noon, 10% NowNow", "paid_as": "noon credits (spendable only at noon)", "conditions": "Free for life, AED 500 gift card after AED 5,000 spend in two months (check current offer). The 2025 article lists an AED 2,000 monthly reward cap that newer pages omit.", "confidence": "medium"},
+    {"type": "card", "card_id": "mashreq-noon", "rate": 0.05, "applies_to": "noon, Namshi, NowNow, noon Food", "paid_as": "noon credits", "conditions": "Free for life; AED 500 welcome after AED 5,000 spend; free noon Express delivery. Noon-credit rate drops from 23 Jan 2027 and a monthly cap arrives 7 Mar 2027 per the card notes.", "confidence": "medium"},
+    {"type": "card", "card_id": "sib-cashback", "rate": 0.10, "applies_to": "online and wallet spend at noon", "paid_as": "cash statement credit, AED 300 monthly cap", "conditions": "Cash beats platform credits if you spend elsewhere too.", "confidence": "high"}
+   ],
+   "play": "A platform card wins only if roughly 60 to 70 percent or more of your online spend is at noon; below that a flat or cash card usually returns more. Noon credits cannot be moved to a bank account.",
+   "gotchas": ["Noon credits are locked to noon.", "Platform cards pay 1% or less elsewhere."],
+   "sources": [{"url": "https://kredit.ae/credit-cards/noon", "kind": "aggregator", "as_of": "2026-11-22"}, {"url": "https://kredit.ae/blog/best-credit-cards-for-online-shopping-uae-2025.md", "kind": "aggregator", "as_of": "2025-11-11"}]
+  },
+  {
+   "id": "talabat",
+   "name": "Talabat",
+   "merchant_keys": ["talabat", "talabat mart"],
+   "plays": [
+    {"type": "card", "card_id": "adcb-talabat", "rate": 0.35, "applies_to": "first 10 Talabat orders a month, up to AED 35 each", "paid_as": "Talabat Pro credits", "conditions": "Needs AED 2,500 monthly card spend. 1.25% on most retail, 0.35% on groceries, fuel, government, education, telecom.", "confidence": "high"},
+    {"type": "card", "card_id": "mashreq-24x7-cashback", "rate": 0.07, "applies_to": "dining including delivery apps", "paid_as": "cashback", "conditions": "Subject to merchant category coding.", "confidence": "high"},
+    {"type": "card", "card_id": "mashreq-cashback", "rate": 0.05, "applies_to": "dining including delivery apps", "paid_as": "statement cashback", "conditions": "Uncapped per the 2026 summary; depends on how the app codes the merchant.", "confidence": "high"}
+   ],
+   "play": "Use the ADCB Talabat card for the first ten orders each month (about AED 35 a time) and a dining cashback card for the rest. Check the Talabat transaction's category in your first statement.",
+   "gotchas": ["Delivery apps sometimes post under a generic code, so dining rates may not apply (community and blog reports).", "Talabat and noon rates do not cover Deliveroo."],
+   "sources": [{"url": "https://kredit.ae/credit-cards/food-delivery", "kind": "aggregator", "as_of": "2026-11-22"}]
+  },
+  {
+   "id": "amazon",
+   "name": "Amazon.ae",
+   "merchant_keys": ["amazon", "amazon.ae", "amzn"],
+   "plays": [
+    {"type": "card", "card_id": "ei-amazon-world", "rate": 0.06, "applies_to": "Amazon.ae for Prime members; 3% without Prime", "paid_as": "Amazon reward points", "conditions": "Emirates Islamic Amazon cards launched Oct 2025 (Mastercard press release). Welcome points on spend within 60 days.", "confidence": "medium"},
+    {"type": "card", "card_id": "sib-cashback", "rate": 0.10, "applies_to": "Amazon online spend", "paid_as": "cash, AED 300 monthly cap", "conditions": "Online and wallet 10%; confirm Amazon is not coded in a reduced category.", "confidence": "medium"}
+   ],
+   "play": "Prime members get the most from the Amazon co-brand; others may do better with a 10% online card until its cap.",
+   "gotchas": ["One blog says no Amazon co-brand exists; the Mastercard announcement of Oct 2025 shows the Emirates Islamic Amazon card does."],
+   "sources": [{"url": "https://www.mastercard.com/news/eemea/en/newsroom/press-releases/en/2025-1/october/amazon-emirates-islamic-and-mastercard-to-introduce-region-s-first-amazon-credit-card-with-exclusive-savings-and-lifestyle-benefits-for-uae-customers", "kind": "bank_page", "as_of": "2025-10-01"}, {"url": "https://kredit.ae/blog/best-credit-cards-for-online-shopping-uae-2025.md", "kind": "aggregator", "as_of": "2025-11-11"}]
+  },
+  {
+   "id": "careem",
+   "name": "Careem",
+   "merchant_keys": ["careem", "careem food", "careem quik"],
+   "plays": [],
+   "play": "No card-specific terms found in sources read so far (2025 or later). Treat as a data gap: check Careem's own offers page and the Mawarid and Liv terms (Mawarid World cards list Careem airport transfers as a perk) before suggesting anything.",
+   "gotchas": ["Careem ride payments may be coded as transport or generic; verify the posted category before relying on dining or transport rates."],
+   "sources": []
+  },
+  {
+   "id": "tabby",
+   "name": "Tabby repayments (BNPL)",
+   "merchant_keys": ["tabby"],
+   "plays": [
+    {"type": "bnpl", "card_id": "sib-cashback", "rate": 0.005, "applies_to": "Tabby repayment by SIB card", "paid_as": "cash", "conditions": "Reported to post as MCC 5999 and earn 0.5%, not 10%. Tabby may charge up to about 1% to repay by credit card, so the net can be negative.", "confidence": "low", "community": true}
+   ],
+   "play": "Do not assume the 10% rate on Tabby repayments. Wait for the repayment to post, ask the bank which MCC was applied, and compare cashback with the repayment fee.",
+   "gotchas": ["Tamara: no per-bank data found."],
+   "sources": [{"url": "https://kredit.ae/blog/sib-tabby-cashback.md", "kind": "aggregator", "as_of": "2026-10-30"}]
+  },
+  {
+   "id": "wio-bill-pairing",
+   "name": "Paying other cards' bills with Wio",
+   "merchant_keys": ["wio card bill"],
+   "plays": [
+    {"type": "card", "card_id": "wio-credit", "rate": 0.005, "applies_to": "paying other UAE banks' card bills", "paid_as": "cashback", "conditions": "Needs AED 5,000 of Wio retail spend that cycle, not on the Standard plan, capped at 0.5% of the Wio credit limit a month, total Wio cashback cap AED 2,500 a month.", "confidence": "low"}
+   ],
+   "play": "A small stacking trick for heavy spenders; check Wio's current key facts first, the figures in sources disagree.",
+   "gotchas": ["Wio's fees and salary requirement differ between a 2025 article and 2026 pages."],
+   "sources": [{"url": "https://kredit.ae/blog/how-to-get-extra-cashback-pairing-uae-credit-cards.md", "kind": "aggregator", "as_of": "2025-07-07"}]
+  }
+ ]
+}

@@ -11,7 +11,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "8 lounge visits a year (aggregator)",
@@ -29,7 +29,7 @@
     "requires_fee_payment": false
    },
    "community_notes": [],
-   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. Fee waived in year 1; from year 2 waived at AED 9,000 annual spend (bank page).",
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates now confirmed by the official KFS; the bank page lists none. Fee waived in year 1; from year 2 waived at AED 9,000 annual spend (bank page). [2026-11 official check] KFS confirms earn rates per USD, 2.99% foreign-currency processing margin, no earn caps, no earn on spend above the credit limit, nothing earned on utility bills paid through Citibank channels, EEA-currency spend earns half. Bank page shows the consumer card range is still on sale (no exit notice seen). Late fee AED 230 (+VAT). KFS lists fees ex-VAT; stored fees include 5% VAT.",
    "id": "citi-rewards",
    "name": "Rewards",
    "reward_structure": {
@@ -74,9 +74,19 @@
      "url": "https://kredit.ae/credit-cards/citi-rewards-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Citibank"
   },
   {
@@ -89,7 +99,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 1500000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "14 lounge visits a year (aggregator)",
@@ -110,7 +120,7 @@
     "requires_fee_payment": false
    },
    "community_notes": [],
-   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. The 3x category covers dining, fuel and grocery; 'transport' is used for fuel, so the reduced-category rule on transport may override it for non-fuel transport.",
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates now confirmed by the official KFS; the bank page lists none. The 3x category covers dining, fuel and grocery; 'transport' is used for fuel, so the reduced-category rule on transport may override it for non-fuel transport. [2026-11 official check] KFS confirms earn rates per USD, 2.99% foreign-currency processing margin, no earn caps, no earn on spend above the credit limit, nothing earned on utility bills paid through Citibank channels, EEA-currency spend earns half. Bank page shows the consumer card range is still on sale (no exit notice seen). Late fee AED 230 (+VAT). KFS lists fees ex-VAT; stored fees include 5% VAT.",
    "id": "citi-premier",
    "name": "Premier",
    "reward_structure": {
@@ -157,9 +167,19 @@
      "url": "https://kredit.ae/credit-cards/citi-premier-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Citibank"
   },
   {
@@ -172,7 +192,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 3000000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "14 lounge visits a year via Mastercard Travel Pass (aggregator)",
@@ -196,7 +216,7 @@
     "requires_fee_payment": false
    },
    "community_notes": [],
-   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. ",
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates now confirmed by the official KFS; the bank page lists none.  [2026-11 official check] KFS confirms earn rates per USD, 2.99% foreign-currency processing margin, no earn caps, no earn on spend above the credit limit, nothing earned on utility bills paid through Citibank channels, EEA-currency spend earns half. Bank page shows the consumer card range is still on sale (no exit notice seen). Late fee AED 230 (+VAT). KFS lists fees ex-VAT; stored fees include 5% VAT. Changed reduced-category rate 0.1361 to 0.2178 (40% of 0.5446): KFS applies 40% to miles cards (Prestige, Ultima) and 25% to points cards.",
    "id": "citi-prestige",
    "name": "Prestige",
    "reward_structure": {
@@ -213,8 +233,8 @@
        "telecom",
        "transport"
       ],
-      "rate": 0.1361,
-      "conditions": "AED spend; 25% of the standard earn per aggregator"
+      "rate": 0.2178,
+      "conditions": "AED spend on government, utilities, telecom, education, insurance, real estate, transit; miles cards earn 40% of standard per KFS (was 25%)"
      }
     ],
     "excluded_categories": [
@@ -233,9 +253,19 @@
      "url": "https://kredit.ae/credit-cards/citi-prestige-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Citibank"
   },
   {
@@ -245,10 +275,10 @@
    "islamic": false,
    "status": "active",
    "annual_fee_minor": 315000,
-   "joining_fee_minor": 315000,
+   "joining_fee_minor": null,
    "fee_waiver": null,
    "min_salary_minor": 3675000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {
     "lounge": {
      "text": "14 lounge visits a year (aggregator)",
@@ -272,7 +302,7 @@
     "requires_fee_payment": false
    },
    "community_notes": [],
-   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates are from the aggregator only; the bank page lists none. Joining fee AED 3,150 is from the aggregator only; the bank page lists just the annual fee (AED 3,000 ex-VAT). Invitation-style premium card with the highest salary bar (AED 36,750).",
+   "notes": "Citi miles/ThankYou points are quoted per USD; stored per AED by dividing by 3.6725. International spend earns more (not modelled by category) and EEA-currency spend half of that. Point value 0.025 AED is conservative; aggregator-implied values range 0.025 to 0.05 across tiers. Welcome offers apply to direct citibank.ae applications only (aggregator). Annual fee on the bank page is quoted ex-VAT and matches the aggregator figure with 5% VAT added. Earn rates now confirmed by the official KFS; the bank page lists none. Joining fee AED 3,150 is from the aggregator only; the bank page lists just the annual fee (AED 3,000 ex-VAT). Invitation-style premium card with the highest salary bar (AED 36,750). [2026-11 official check] KFS confirms earn rates per USD, 2.99% foreign-currency processing margin, no earn caps, no earn on spend above the credit limit, nothing earned on utility bills paid through Citibank channels, EEA-currency spend earns half. Bank page shows the consumer card range is still on sale (no exit notice seen). Late fee AED 230 (+VAT). KFS lists fees ex-VAT; stored fees include 5% VAT. Joining fee: old file said AED 3,150; neither the bank page nor KFS shows a joining fee (the AED 1,500 figure is a welcome statement credit), so set to unknown.",
    "id": "citi-ultima",
    "name": "Ultima",
    "reward_structure": {
@@ -290,7 +320,7 @@
        "transport"
       ],
       "rate": 0.2723,
-      "conditions": "AED spend; 25% of the standard earn per aggregator"
+      "conditions": "AED spend on government, utilities, telecom, education, insurance, real estate, transit; miles cards earn 40% of standard per KFS"
      }
     ],
     "excluded_categories": [
@@ -309,9 +339,19 @@
      "url": "https://kredit.ae/credit-cards/citi-ultima-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Citibank"
   },
   {
@@ -321,7 +361,7 @@
    "islamic": false,
    "status": "active",
    "annual_fee_minor": 31500,
-   "joining_fee_minor": null,
+   "joining_fee_minor": 0,
    "fee_waiver": {
     "spend_minor": 900000,
     "period": "year",
@@ -329,7 +369,7 @@
     "text": "Year 1 free; from year 2 waived at AED 9,000 annual spend"
    },
    "min_salary_minor": 800000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {},
    "welcome_offer": {
     "text": "AED 300 statement credit after AED 6,000 spend within 60 days",
@@ -338,7 +378,7 @@
     "window_days": 60
    },
    "community_notes": [],
-   "notes": "From the bank's card comparison page only: 3% on non-AED spend (not modelled by category), 2% grocery, 1% other, automatic cashback. Caps, exclusions and reduced categories were not seen; individual product page returned an error. Not listed on the aggregator.",
+   "notes": "From the bank's card comparison page only: 3% on non-AED spend (not modelled by category), 2% grocery, 1% other, automatic cashback. Caps, exclusions and reduced categories were not seen; individual product page returned an error. Not listed on the aggregator. [2026-11 official check] KFS confirms earn rates per USD, 2.99% foreign-currency processing margin, no earn caps, no earn on spend above the credit limit, nothing earned on utility bills paid through Citibank channels, EEA-currency spend earns half. Bank page shows the consumer card range is still on sale (no exit notice seen). Late fee AED 230 (+VAT). KFS lists fees ex-VAT; stored fees include 5% VAT. Bank page: no caps, no minimum spend, no excluded retail purchases; 3% non-AED, 2% grocery, 1% other.",
    "id": "citi-cashback",
    "name": "Cash Back",
    "reward_structure": {
@@ -365,9 +405,19 @@
      "url": "https://www.citibank.ae/credit-cards",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Citibank"
   },
   {
@@ -380,11 +430,11 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 500000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "perks": {},
    "welcome_offer": null,
    "community_notes": [],
-   "notes": "Bank comparison page lists AED 5,000 minimum salary and no annual fee ever; no rewards information found, so base_rate 0 is a placeholder. Likely a low-cost, rewards-light product (not verified).",
+   "notes": "No annual fee. KFS and bank pages list no rewards for this card, so base_rate 0 is a fact, not a placeholder. Salary AED 5,000 per bank page (KFS table layout garbled, which suggests 8,000; unresolved).",
    "id": "citi-simplicity",
    "name": "Simplicity",
    "reward_structure": {
@@ -403,9 +453,67 @@
      "url": "https://www.citibank.ae/credit-cards",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards/compare",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "low",
+   "confidence": "high",
+   "issuer": "Citibank"
+  },
+  {
+   "network": null,
+   "tier": "titanium",
+   "kind": "basic",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "No fee in year 1; bank page says the AED 300 fee is waived from year 2 without conditions"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 2.99,
+   "perks": {},
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Credit-line product with no rewards. Cash-access loans from 15% p.a. for new customers on the first loan booked within a month of approval; limit up to 6x monthly income or AED 175,000. KFS APR 39% (monthly 3.25%), lower than the other cards. Salary AED 5,000 per KFS, bank page filter shows 8,000 (conflict).",
+   "id": "citi-ready-credit",
+   "name": "Ready Credit",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.citibank.ae/content/dam/cgcpc/ae/prelogin/www-citibank-ae/doc/pdf/kfs-cards.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.citibank.ae/credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
    "issuer": "Citibank"
   }
  ]
