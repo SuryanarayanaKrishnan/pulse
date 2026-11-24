@@ -22,7 +22,7 @@ async def ready(
     session: AsyncSession = Depends(get_session),
     queue: QueuePool | None = Depends(get_queue_or_none),
 ) -> dict[str, object]:
-    """Readiness: database and Redis reachable."""
+    """Readiness: database and the job queue backend reachable."""
     checks: dict[str, str] = {}
     try:
         await asyncio.wait_for(session.execute(text("SELECT 1")), timeout=3)
