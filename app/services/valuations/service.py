@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.account import Account
 from app.models.asset import Asset, AssetKind, Liability, ValuationSource
 from app.models.market import MarketQuote
+from app.models.portfolio import AssetValuation, FundHolding
 from app.services.networth import AssetInput
 from app.services.valuations import pricing
 from app.services.valuations.providers import ProviderError, Providers
@@ -20,6 +21,21 @@ from app.services.valuations.providers import ProviderError, Providers
 log = structlog.get_logger(__name__)
 
 GOLD = "XAU_USD_OZ"
+SILVER = "XAG_USD_OZ"
+DEFAULT_CRYPTO = ("bitcoin", "ethereum")
+NAV_STALE_AFTER_DAYS = 7  # NAVs publish on business days; a week without one means the feed broke
+
+
+def crypto_symbol(coin_id: str) -> str:
+    return f"CRYPTO_{coin_id}_USD"
+
+
+def stock_symbol(ticker: str) -> str:
+    return f"STK_{ticker}_USD"
+
+
+def nav_symbol(code: str) -> str:
+    return f"NAV_{code}"
 
 
 def fx_symbol(ccy: str) -> str:
@@ -35,7 +51,13 @@ class QuoteBook:
     """Latest cached quotes, read once per operation."""
 
     gold: tuple[Decimal, datetime, str] | None = None  # usd/oz, fetched_at, source
+    silver: tuple[Decimal, datetime, str] | None = None
     fx: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
+    crypto: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
+    stocks: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
+    nav: dict[str, tuple[Decimal, date, datetime, str]] = field(
+        default_factory=dict
+    )  # nav, nav date, fetched
     indices: dict[str, tuple[list[tuple[date, Decimal]], datetime]] = field(default_factory=dict)
 
     @property
@@ -51,6 +73,14 @@ async def load_quote_book(session: AsyncSession) -> QuoteBook:
     for q in rows:
         if q.symbol == GOLD:
             book.gold = (q.value, q.fetched_at, q.source)  # ordered by date: the last row wins
+        elif q.symbol == SILVER:
+            book.silver = (q.value, q.fetched_at, q.source)
+        elif q.symbol.startswith("CRYPTO_"):
+            book.crypto[q.symbol[7:-4]] = (q.value, q.fetched_at, q.source)
+        elif q.symbol.startswith("STK_"):
+            book.stocks[q.symbol[4:-4]] = (q.value, q.fetched_at, q.source)
+        elif q.symbol.startswith("NAV_"):
+            book.nav[q.symbol[4:]] = (q.value, q.quote_date, q.fetched_at, q.source)
         elif q.symbol.startswith("FX_") and q.symbol.endswith("_AED"):
             book.fx[q.symbol[3:-4]] = (q.value, q.fetched_at, q.source)
         elif q.symbol.startswith("IDX_"):
@@ -79,6 +109,10 @@ class RefreshReport:
     gold: str = "skipped"
     fx: str = "skipped"
     property_index: str = "skipped"
+    silver: str = "skipped"
+    crypto: str = "skipped"
+    stocks: str = "skipped"
+    funds: str = "skipped"
     assets_revalued: int = 0
     assets_unvalued: int = 0
     errors: list[str] = field(default_factory=list)
@@ -100,8 +134,49 @@ async def refresh_quotes(
         except ProviderError as exc:
             rep.gold = "failed"
             rep.errors.append(str(exc))
+    if providers.silver:
+        try:
+            await _upsert(
+                session, SILVER, day, await providers.silver.usd_per_troy_oz(), providers.silver.name, now
+            )
+            rep.silver = "ok"
+        except ProviderError as exc:
+            rep.silver = "failed"
+            rep.errors.append(str(exc))
+    want = await wanted_symbols(session)
+    if providers.crypto:
+        try:
+            for cid, price in (await providers.crypto.usd_prices(want.crypto)).items():
+                await _upsert(session, crypto_symbol(cid), day, price, providers.crypto.name, now)
+            rep.crypto = "ok"
+        except ProviderError as exc:
+            rep.crypto = "failed"
+            rep.errors.append(str(exc))
+    if providers.stocks and want.stocks:
+        try:
+            for tk, price in (await providers.stocks.usd_prices(want.stocks)).items():
+                await _upsert(session, stock_symbol(tk), day, price, providers.stocks.name, now)
+            rep.stocks = "ok"
+        except ProviderError as exc:
+            rep.stocks = "failed"
+            rep.errors.append(str(exc))
+    if providers.funds and want.funds:
+        failed = 0
+        for code in sorted(want.funds):
+            try:
+                nav = await providers.funds.latest(code)
+                await _upsert(session, nav_symbol(code), nav.nav_date, nav.nav, providers.funds.name, now)
+            except ProviderError as exc:
+                failed += 1
+                rep.errors.append(str(exc))
+        rep.funds = "ok" if not failed else ("failed" if failed == len(want.funds) else "partial")
     if providers.fx:
         wanted = {"USD"}
+        wanted |= set(
+            (
+                await session.execute(select(FundHolding.currency).where(FundHolding.deleted_at.is_(None)))
+            ).scalars()
+        )
         for table, col in (
             (Asset, Asset.currency),
             (Liability, Liability.currency),
@@ -144,7 +219,10 @@ def revalue_asset(asset: Asset, book: QuoteBook) -> bool:
         asset.valuation_note = "Live valuation only supports AED assets"
         return False
     valued: pricing.Valued | None
-    if asset.kind is AssetKind.gold and asset.valuation_source is ValuationSource.market:
+    if (
+        asset.kind in (AssetKind.gold, AssetKind.gold_jewellery)
+        and asset.valuation_source is ValuationSource.market
+    ):
         gold = book.gold
         usd_oz, usd_at = (gold[0], gold[1]) if gold else (None, None)
         valued, reason = pricing.value_gold(
@@ -156,8 +234,28 @@ def revalue_asset(asset: Asset, book: QuoteBook) -> bool:
         valued, reason = pricing.value_property(
             asset.meta or {}, asset.cost_basis_minor, asset.acquired_on, points, fetched
         )
+    elif (
+        asset.kind in (AssetKind.crypto, AssetKind.stock) and asset.valuation_source is ValuationSource.market
+    ):
+        meta = asset.meta or {}
+        if asset.kind is AssetKind.crypto:
+            key, quotes, hint = (
+                str(meta.get("coingecko_id") or ""),
+                book.crypto,
+                "metadata.coingecko_id (e.g. bitcoin)",
+            )
+        else:
+            key, quotes, hint = (
+                str(meta.get("ticker") or "").lower(),
+                book.stocks,
+                "metadata.ticker (US, e.g. aapl.us)",
+            )
+        quote = quotes.get(key) if key else None
+        valued, reason = pricing.value_priced(asset.quantity, key, hint, quote, book.aed_per_usd)
     else:
-        asset.valuation_note = "Live valuation is available for gold (market) and real estate (estimate)"
+        asset.valuation_note = (
+            "Live valuation: gold, jewellery, crypto, stocks (market); real estate (estimate)"
+        )
         return False
     if valued is None:
         asset.valuation_note = reason[:240]
@@ -183,6 +281,7 @@ async def revalue_assets(
         try:
             if revalue_asset(asset, book):
                 ok += 1
+                await record_valuation(session, asset)
             else:
                 bad += 1
         except Exception:
@@ -231,3 +330,51 @@ def asset_inputs(assets: list[Asset], now: datetime | None = None) -> list[Asset
             )
         )
     return out
+
+
+@dataclass(slots=True)
+class Wanted:
+    crypto: set[str]
+    stocks: set[str]
+    funds: set[str]
+
+
+async def wanted_symbols(session: AsyncSession) -> Wanted:
+    crypto, stocks = set(DEFAULT_CRYPTO), set()
+    rows = await session.execute(
+        select(Asset.kind, Asset.meta).where(
+            Asset.deleted_at.is_(None), Asset.kind.in_((AssetKind.crypto, AssetKind.stock))
+        )
+    )
+    for kind, meta in rows:
+        if kind is AssetKind.crypto and (meta or {}).get("coingecko_id"):
+            crypto.add(str(meta["coingecko_id"]))
+        elif kind is AssetKind.stock and (meta or {}).get("ticker"):
+            stocks.add(str(meta["ticker"]).lower())
+    funds = set(
+        (
+            await session.execute(
+                select(FundHolding.scheme_code).where(
+                    FundHolding.deleted_at.is_(None), FundHolding.scheme_code.is_not(None)
+                )
+            )
+        ).scalars()
+    )
+    return Wanted(crypto, stocks, {f for f in funds if f})
+
+
+async def record_valuation(session: AsyncSession, asset: Asset) -> None:
+    """Keep one valuation point per asset per day (the latest of the day wins)."""
+    if asset.market_value_minor is None:
+        return
+    day = datetime.now(UTC).date()
+    stmt = insert(AssetValuation).values(
+        user_id=asset.user_id, asset_id=asset.id, valued_on=day, value_minor=asset.market_value_minor,
+        basis=asset.valuation_source.value,
+    )  # fmt: skip
+    await session.execute(
+        stmt.on_conflict_do_update(
+            constraint="uq_asset_valuations_asset_day",
+            set_={"value_minor": stmt.excluded.value_minor, "basis": stmt.excluded.basis},
+        )
+    )

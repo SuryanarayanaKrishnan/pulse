@@ -6,6 +6,7 @@ from sqlalchemy import select
 
 from app.api.deps import CurrentUser, SessionDep
 from app.models.insights import NetWorthSnapshot
+from app.schemas.documents import RemindersOut
 from app.schemas.insights import (
     CashflowOut,
     CommitmentOut,
@@ -124,6 +125,17 @@ async def safe_to_spend(user: CurrentUser, session: SessionDep) -> SafeToSpendOu
         ],
         notes=notes,
     )  # fmt: skip
+
+
+@router.get("/reminders", response_model=RemindersOut)
+async def reminders(
+    user: CurrentUser, session: SessionDep, days: Annotated[int, Query(ge=1, le=730)] = 90
+) -> RemindersOut:
+    """Maturity, renewal and expiry dates from your documents and fixed-deposit assets: overdue first,
+    then what falls due within the window. `next_due` is the single most urgent open item."""
+    today = svc.today_dubai()
+    items = await svc.due_items(session, user.id, today, days)
+    return RemindersOut(as_of=today, next_due=items[0] if items else None, items=items)
 
 
 @router.get("/health-score", response_model=HealthScoreOut)

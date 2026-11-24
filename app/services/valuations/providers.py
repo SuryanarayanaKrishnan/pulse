@@ -5,9 +5,11 @@ exercised by the test suite (which uses fakes) and should be checked against the
 relied on in production. Swap them by implementing the protocols and returning them from ``get_providers``.
 """
 
+import csv
+import io
 import json
 from dataclasses import dataclass
-from datetime import date
+from datetime import UTC, date, datetime
 from decimal import Decimal, InvalidOperation
 from typing import Protocol
 
@@ -56,7 +58,7 @@ def _dec(value: object) -> Decimal:
 
 @dataclass(slots=True)
 class GoldApiProvider:
-    """gold-api.com: GET /price/XAU -> {"price": <USD per troy oz>, ...} (no key)."""
+    """gold-api.com: GET /price/<XAU|XAG> -> {"price": <USD per troy oz>, ...} (free, no key)."""
 
     client: httpx.AsyncClient
     url: str = "https://api.gold-api.com/price/XAU"
@@ -123,11 +125,182 @@ class StaticPropertyIndex:
         return out
 
 
+class CryptoProvider(Protocol):
+    name: str
+
+    async def usd_prices(self, ids: set[str]) -> dict[str, Decimal]: ...
+
+    async def history(self, coin_id: str, days: int) -> list[tuple[date, Decimal]]: ...
+
+
+class StockProvider(Protocol):
+    name: str
+
+    async def usd_prices(self, tickers: set[str]) -> dict[str, Decimal]: ...
+
+    async def history(self, ticker: str, days: int) -> list[tuple[date, Decimal]]: ...
+
+
+@dataclass(frozen=True, slots=True)
+class FundScheme:
+    code: str
+    name: str
+
+
+@dataclass(frozen=True, slots=True)
+class FundNav:
+    code: str
+    name: str | None
+    nav_date: date
+    nav: Decimal
+
+
+class FundProvider(Protocol):
+    name: str
+
+    async def search(self, query: str) -> list[FundScheme]: ...
+
+    async def latest(self, code: str) -> FundNav: ...
+
+    async def history(self, code: str, days: int) -> list[tuple[date, Decimal]]: ...
+
+
+@dataclass(slots=True)
+class CoinGeckoProvider:
+    """CoinGecko public API (free, no key, rate limited): /simple/price and /coins/{id}/market_chart."""
+
+    client: httpx.AsyncClient
+    base: str = "https://api.coingecko.com/api/v3"
+    name: str = "coingecko"
+
+    async def usd_prices(self, ids: set[str]) -> dict[str, Decimal]:
+        if not ids:
+            return {}
+        try:
+            r = await self.client.get(
+                f"{self.base}/simple/price", params={"ids": ",".join(sorted(ids)), "vs_currencies": "usd"}
+            )
+            r.raise_for_status()
+            body = r.json()
+            return {i: _dec(body[i]["usd"]) for i in ids if i in body and "usd" in body[i]}
+        except (httpx.HTTPError, KeyError, TypeError, ValueError) as exc:
+            raise ProviderError(f"crypto prices unavailable: {exc}") from exc
+
+    async def history(self, coin_id: str, days: int) -> list[tuple[date, Decimal]]:
+        try:
+            r = await self.client.get(
+                f"{self.base}/coins/{coin_id}/market_chart",
+                params={"vs_currency": "usd", "days": days, "interval": "daily"},
+            )
+            r.raise_for_status()
+            out: dict[date, Decimal] = {}
+            for ms, price in r.json()["prices"]:
+                out[datetime.fromtimestamp(ms / 1000, tz=UTC).date()] = _dec(price)
+            return sorted(out.items())
+        except (httpx.HTTPError, KeyError, TypeError, ValueError) as exc:
+            raise ProviderError(f"crypto history unavailable: {exc}") from exc
+
+
+@dataclass(slots=True)
+class StooqProvider:
+    """Stooq CSV quotes (free, no key; US tickers as 'aapl.us', USD). Stooq's terms allow free personal
+    use of its downloads; keep volumes low (the cache does) and swap this class if that ever changes.
+    Unofficial scraping endpoints (e.g. Yahoo's) are deliberately NOT used."""
+
+    client: httpx.AsyncClient
+    base: str = "https://stooq.com"
+    name: str = "stooq.com"
+
+    async def usd_prices(self, tickers: set[str]) -> dict[str, Decimal]:
+        if not tickers:
+            return {}
+        out: dict[str, Decimal] = {}
+        try:
+            r = await self.client.get(
+                f"{self.base}/q/l/", params={"s": "+".join(sorted(tickers)), "f": "sd2c", "h": "", "e": "csv"}
+            )
+            r.raise_for_status()
+            for row in csv.DictReader(io.StringIO(r.text)):
+                try:
+                    out[row["Symbol"].lower()] = _dec(row["Close"])
+                except (KeyError, ProviderError):
+                    continue  # N/D for an unknown ticker
+        except httpx.HTTPError as exc:
+            raise ProviderError(f"stock prices unavailable: {exc}") from exc
+        return out
+
+    async def history(self, ticker: str, days: int) -> list[tuple[date, Decimal]]:
+        try:
+            r = await self.client.get(f"{self.base}/q/d/l/", params={"s": ticker, "i": "d"})
+            r.raise_for_status()
+            rows = []
+            for row in csv.DictReader(io.StringIO(r.text)):
+                try:
+                    rows.append((date.fromisoformat(row["Date"]), _dec(row["Close"])))
+                except (KeyError, ValueError, ProviderError):
+                    continue
+            return rows[-days:]
+        except httpx.HTTPError as exc:
+            raise ProviderError(f"stock history unavailable: {exc}") from exc
+
+
+@dataclass(slots=True)
+class MfApiProvider:
+    """mfapi.in (free, no key): /mf/search?q=, /mf/{code}/latest, /mf/{code}. NAVs are in INR, dd-mm-yyyy."""
+
+    client: httpx.AsyncClient
+    base: str = "https://api.mfapi.in"
+    name: str = "mfapi.in"
+
+    async def _get(self, path: str, **params: str) -> object:
+        try:
+            r = await self.client.get(f"{self.base}{path}", params=params or None)
+            r.raise_for_status()
+            return r.json()
+        except (httpx.HTTPError, ValueError) as exc:
+            raise ProviderError(f"mfapi unavailable: {exc}") from exc
+
+    async def search(self, query: str) -> list[FundScheme]:
+        body = await self._get("/mf/search", q=query)
+        if not isinstance(body, list):
+            raise ProviderError("unexpected search response")
+        return [FundScheme(str(x["schemeCode"]), str(x["schemeName"])) for x in body if "schemeCode" in x][
+            :50
+        ]
+
+    @staticmethod
+    def _point(row: dict[str, str]) -> tuple[date, Decimal]:
+        d, m, y = row["date"].split("-")
+        return date(int(y), int(m), int(d)), _dec(row["nav"])
+
+    async def latest(self, code: str) -> FundNav:
+        body = await self._get(f"/mf/{code}/latest")
+        try:
+            assert isinstance(body, dict)
+            d, nav = self._point(body["data"][0])
+            return FundNav(code, (body.get("meta") or {}).get("scheme_name"), d, nav)
+        except (KeyError, IndexError, ValueError, TypeError, AssertionError) as exc:
+            raise ProviderError(f"unexpected NAV response for {code}") from exc
+
+    async def history(self, code: str, days: int) -> list[tuple[date, Decimal]]:
+        body = await self._get(f"/mf/{code}")
+        try:
+            assert isinstance(body, dict)
+            pts = sorted(self._point(r) for r in body["data"])
+        except (KeyError, ValueError, TypeError, AssertionError) as exc:
+            raise ProviderError(f"unexpected NAV history for {code}") from exc
+        return pts[-days:]
+
+
 @dataclass(slots=True)
 class Providers:
     gold: GoldProvider | None = None
+    silver: GoldProvider | None = None
     fx: FxProvider | None = None
     property_index: PropertyIndexProvider | None = None
+    crypto: CryptoProvider | None = None
+    stocks: StockProvider | None = None
+    funds: FundProvider | None = None
 
 
 def get_providers(client: httpx.AsyncClient) -> Providers:
@@ -143,6 +316,13 @@ def get_providers(client: httpx.AsyncClient) -> Providers:
         fx = OpenErApiFxProvider(client)
     elif s.fx_provider == "peg":
         fx = PegFxProvider()
+    on = s.gold_provider == "goldapi"
     return Providers(
-        gold=GoldApiProvider(client) if s.gold_provider == "goldapi" else None, fx=fx, property_index=prop
+        gold=GoldApiProvider(client) if on else None,
+        silver=GoldApiProvider(client, url="https://api.gold-api.com/price/XAG") if on else None,
+        fx=fx,
+        property_index=prop,
+        crypto=CoinGeckoProvider(client) if s.crypto_provider == "coingecko" else None,
+        stocks=StooqProvider(client) if s.stock_provider == "stooq" else None,
+        funds=MfApiProvider(client) if s.fund_provider == "mfapi" else None,
     )
