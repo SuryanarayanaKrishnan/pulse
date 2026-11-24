@@ -28,11 +28,19 @@
    },
    "perks": {
     "lounge": {
-     "text": "14 visits a year"
+     "text": "14 visits a year via Mastercard Travel Pass (activate with a USD 1 spend)"
+    },
+    "insurance": {
+     "text": "Travel insurance, rental car damage waiver"
     }
    },
    "welcome_offer": null,
    "sources": [
+    {
+     "url": "https://www.almasraf.ae/personal-banking/personal-card/world-elite",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
     {
      "url": "https://kredit.ae/credit-cards/al-masraf-world-elite-credit-card/details",
      "kind": "aggregator",
@@ -41,7 +49,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 14 visits a year lounge."
+   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 14 visits a year lounge. Bank page (World Elite) confirms 0.735 points per USD local and international, described as 1% cashback equivalent, no cap; fees point to a schedule of charges I could not read, so fees stay aggregator."
   },
   {
    "id": "al-masraf-world",
@@ -76,6 +84,11 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.almasraf.ae/personal-banking/personal-card/world-elite",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/al-masraf-world-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -83,7 +96,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 8 visits a year lounge."
+   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 8 visits a year lounge. Bank page (World Elite) confirms 0.735 points per USD local and international, described as 1% cashback equivalent, no cap; fees point to a schedule of charges I could not read, so fees stay aggregator."
   },
   {
    "id": "al-masraf-platinum",
@@ -118,6 +131,11 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.almasraf.ae/personal-banking/personal-card/world-elite",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/al-masraf-platinum-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -125,7 +143,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 4 visits a year lounge."
+   "notes": "Earns 0.735 Al Masraf Points per USD (0.2/AED); aggregator says about 1% cashback-equivalent, so point_value_aed 0.05 gives 1%. Joining fee and annual fee both quoted (up to this amount). No cap. 4 visits a year lounge. Bank page (World Elite) confirms 0.735 points per USD local and international, described as 1% cashback equivalent, no cap; fees point to a schedule of charges I could not read, so fees stay aggregator."
   }
  ]
 }

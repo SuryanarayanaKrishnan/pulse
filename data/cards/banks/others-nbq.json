@@ -1,0 +1,138 @@
+{
+ "issuer": "National Bank of Umm Al Quwain",
+ "cards": [
+  {
+   "id": "nbq-gold",
+   "issuer": "National Bank of Umm Al Quwain",
+   "name": "Gold",
+   "network": "visa",
+   "tier": "gold",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": 2.49,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbq.ae/docs/default-source/kfs/01-nbq-kfs-cc-15102025-3.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbq.ae/personal/cards/nbq-gold-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Gold page mentions 1% cashback under a loyalty programme (meta text only, no caps), free travel insurance. NBQ KFS (Oct 2025): FX 2.49% plus the Visa processing fee, cash advance 3.15% + AED 21, late AED 157.50/month, interest 2.49%/month, 55 days interest-free. KFS table layout was inferred for the fee/salary mapping. Earn rates are not stated in the KFS or card page, so rewards are not modelled."
+  },
+  {
+   "id": "nbq-platinum",
+   "issuer": "National Bank of Umm Al Quwain",
+   "name": "Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "basic",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 2.49,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbq.ae/docs/default-source/kfs/01-nbq-kfs-cc-15102025-3.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbq.ae/personal/cards/nbq-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Annual fee AED 500 per KFS (stored with 5% VAT). NBQ KFS (Oct 2025): FX 2.49% plus the Visa processing fee, cash advance 3.15% + AED 21, late AED 157.50/month, interest 2.49%/month, 55 days interest-free. KFS table layout was inferred for the fee/salary mapping. Earn rates are not stated in the KFS or card page, so rewards are not modelled."
+  },
+  {
+   "id": "nbq-infinite",
+   "issuer": "National Bank of Umm Al Quwain",
+   "name": "Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "basic",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 2.49,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Priority Pass 1,300+ lounges"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbq.ae/docs/default-source/kfs/01-nbq-kfs-cc-15102025-3.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbq.ae/personal/cards/nbq-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Invitation-only; Priority Pass 1,300+ lounges; annual fee AED 1,000 per KFS (stored with VAT). NBQ KFS (Oct 2025): FX 2.49% plus the Visa processing fee, cash advance 3.15% + AED 21, late AED 157.50/month, interest 2.49%/month, 55 days interest-free. KFS table layout was inferred for the fee/salary mapping. Earn rates are not stated in the KFS or card page, so rewards are not modelled."
+  }
+ ]
+}

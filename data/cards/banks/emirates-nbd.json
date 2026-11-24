@@ -103,11 +103,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-signature-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Rates converted from miles per USD at 3.6725 AED/USD. Domestic 0.75 mi/USD = base; intl non-EU 1 mi/USD and EU/UK 0.37-0.5 mi/USD are not modelled (no channel field in the engine). Miles valued conservatively at AED 0.025 (about 0.9 percent on domestic spend); good Skywards redemptions can reach 0.035+ but cash-ish redemptions are far lower. Annual fee starts in year 2."
+   "notes": "Rates converted from miles per USD at 3.6725 AED/USD. Domestic 0.75 mi/USD = base; intl non-EU 1 mi/USD and EU/UK 0.37-0.5 mi/USD are not modelled (no channel field in the engine). Miles valued conservatively at AED 0.025 (about 0.9 percent on domestic spend); good Skywards redemptions can reach 0.035+ but cash-ish redemptions are far lower. Annual fee starts in year 2. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-skywards-infinite",
@@ -208,11 +213,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Skywards Express Miles add-on (AED 250 + VAT per month) replaces the annual fee and gives +50% miles on non-Emirates spend, capped at 4,000 bonus miles per statement. Welcome offer differs between bank page (up to 100,000) and aggregator (up to 150,000, digital applications) so quote the lower. Miles valued at AED 0.025."
+   "notes": "Skywards Express Miles add-on (AED 250 + VAT per month) replaces the annual fee and gives +50% miles on non-Emirates spend, capped at 4,000 bonus miles per statement. Welcome offer differs between bank page (up to 100,000) and aggregator (up to 150,000, digital applications) so quote the lower. Miles valued at AED 0.025. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-share-signature",
@@ -299,11 +309,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-signature-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life. SHARE Points redeem 10 = AED 1 only within SHARE/Majid Al Futtaim partners, so value is locked to that ecosystem."
+   "notes": "Free for life. SHARE Points redeem 10 = AED 1 only within SHARE/Majid Al Futtaim partners, so value is locked to that ecosystem. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-share-infinite",
@@ -398,11 +413,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Official page lists the fee as AED 1,500 (pre-VAT); aggregator AED 1,575 incl. VAT. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Official page lists the fee as AED 1,500 (pre-VAT); aggregator AED 1,575 incl. VAT. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-share-platinum",
@@ -480,11 +500,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-platinum-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life. Aggregator states a monthly cap of 25,000 SHARE Points (AED 2,500 value) across all categories."
+   "notes": "Free for life. Aggregator states a monthly cap of 25,000 SHARE Points (AED 2,500 value) across all categories. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-darna-visa-signature",
@@ -575,11 +600,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-signature-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Bank page markets this card as free for life for a limited time while listing AED 315 annual fee; the standard fee is recorded. Aggregator shows 8 lounge visits vs 12 shown in its benefits section, so lounge count is uncertain. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Bank page markets this card as free for life for a limited time while listing AED 315 annual fee; the standard fee is recorded. Aggregator shows 8 lounge visits vs 12 shown in its benefits section, so lounge count is uncertain. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-darna-visa-infinite",
@@ -674,11 +704,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Darna Platinum tier included. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Darna Platinum tier included. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-darna-select-visa",
@@ -756,11 +791,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-select-visa-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life; Darna Silver status. Aggregator states a monthly cap of 25,000 points (AED 2,500 value)."
+   "notes": "Free for life; Darna Silver status. Aggregator states a monthly cap of 25,000 points (AED 2,500 value). KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-darna-infinite-privilege",
@@ -841,11 +881,16 @@
      "url": "https://kredit.ae/credit-cards/enbd-darna-infinite-privilege-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Not on the bank's public card list; single secondary source, so treat as unverified (likely invitation or high-income product). Aggregator cap: 200,000 points a month. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Not on the bank's public card list; single secondary source, so treat as unverified (likely invitation or high-income product). Aggregator cap: 200,000 points a month. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on). KFS confirms AED 2,625 annual and joining; earn rates still only from aggregator, so confidence stays medium."
   },
   {
    "id": "enbd-voyager-world",
@@ -946,11 +991,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life. Bank states 1 Voyager Mile is worth AED 0.01 (75,000 miles = AED 750); the 6% portal and 3% travel rates are in miles at that value. Monthly cap 100,000 miles overall."
+   "notes": "Free for life. Bank states 1 Voyager Mile is worth AED 0.01 (75,000 miles = AED 750); the 6% portal and 3% travel rates are in miles at that value. Monthly cap 100,000 miles overall. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on). CONFLICT: KFS (garbled grid) suggests AED 315 renewal vs stored free; unresolved."
   },
   {
    "id": "enbd-voyager-world-elite",
@@ -1056,11 +1106,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-elite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "First year free, AED 1,575 from year two. 1 mile = AED 0.01 per bank welcome-offer valuation. Monthly cap 200,000 miles."
+   "notes": "First year free, AED 1,575 from year two. 1 mile = AED 0.01 per bank welcome-offer valuation. Monthly cap 200,000 miles. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-marriott-bonvoy-world-elite",
@@ -1155,11 +1210,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-elite-mastercard-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Earn tiers (6/3/0.75/0.30 per USD) are from the aggregator; the bank page confirms 6 per USD at hotels but its tier table was only partly readable. Bonvoy point valued at AED 0.025. Free night award is issued each year when the annual fee is paid. Fast-food purchases above USD 25 earn the 3-point rate."
+   "notes": "Earn tiers (6/3/0.75/0.30 per USD) are from the aggregator; the bank page confirms 6 per USD at hotels but its tier table was only partly readable. Bonvoy point valued at AED 0.025. Free night award is issued each year when the annual fee is paid. Fast-food purchases above USD 25 earn the 3-point rate. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-marriott-bonvoy-world",
@@ -1239,11 +1299,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-mastercard",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Free for life. Single official source (bank page; aggregator has no listing), earn rates 3/1.5/0.375/0.15 points per USD."
+   "notes": "Free for life. Single official source (bank page; aggregator has no listing), earn rates 3/1.5/0.375/0.15 points per USD. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on). CONFLICT: KFS lists a Marriott Bonvoy World Infinite-named row at AED 315 joining/renewal while this card is stored as free from the bank page; unresolved, verify."
   },
   {
    "id": "enbd-etihad-guest-visa-elevate",
@@ -1336,11 +1401,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-elevate",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Bank page: 10 miles per AED 10 on Etihad, 7.5 per AED 10 hotels and dining, up to 5 per AED 10 elsewhere. Aggregator reads the same card as 1 mile per AED on Etihad/dining/hotels and 0.6 elsewhere (eligible spend capped AED 100,000 per cycle). The lower bank-page numbers are used. Reduced tiers scaled at 25% and 10% of base. Miles valued at AED 0.025; 50% redemption discount voucher per AED 150,000 spent (max 2/yr)."
+   "notes": "Bank page: 10 miles per AED 10 on Etihad, 7.5 per AED 10 hotels and dining, up to 5 per AED 10 elsewhere. Aggregator reads the same card as 1 mile per AED on Etihad/dining/hotels and 0.6 elsewhere (eligible spend capped AED 100,000 per cycle). The lower bank-page numbers are used. Reduced tiers scaled at 25% and 10% of base. Miles valued at AED 0.025; 50% redemption discount voucher per AED 150,000 spent (max 2/yr). KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-etihad-guest-visa-inspire",
@@ -1419,11 +1489,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-inspire",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Official page only (not listed by the aggregator); earn: 7 miles per AED 10 Etihad, 6 per AED 10 hotels and dining, up to 3.5 per AED 10 elsewhere. 25% redemption voucher per AED 100,000 spend, max 2/year. Annual fee from year 2."
+   "notes": "Official page only (not listed by the aggregator); earn: 7 miles per AED 10 Etihad, 6 per AED 10 hotels and dining, up to 3.5 per AED 10 elsewhere. 25% redemption voucher per AED 100,000 spend, max 2/year. Annual fee from year 2. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-dnata-platinum",
@@ -1526,11 +1601,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-platinum-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "dnata points shown as 1 point per AED 100 = 1% so one point is treated as AED 1 per the bank's percent-back framing; 15% headline applies only at named partners. General cap 2,000 points per statement. Welcome offer value is tiny (about AED 10 if a point is AED 0.01 elsewhere). Point value is unverified: confirm the redemption rate before relying on it."
+   "notes": "dnata points shown as 1 point per AED 100 = 1% so one point is treated as AED 1 per the bank's percent-back framing; 15% headline applies only at named partners. General cap 2,000 points per statement. Welcome offer value is tiny (about AED 10 if a point is AED 0.01 elsewhere). Point value is unverified: confirm the redemption rate before relying on it. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-dnata-world",
@@ -1545,7 +1625,7 @@
    "joining_fee_minor": 104895,
    "fee_waiver": null,
    "min_salary_minor": 2000000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 1.99,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 1,
@@ -1638,11 +1718,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-world-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "10% on Duty Free worldwide; 0% forex fee is advertised on the bank page but the fee table shows 1.99%, so verify before relying on it. Point value of AED 1 follows the bank percent-back framing and is unverified. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "10% on Duty Free worldwide; 0% forex fee is advertised on the bank page but the fee table shows 1.99%, so verify before relying on it. Point value of AED 1 follows the bank percent-back framing and is unverified. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-u-by-emaar-infinite",
@@ -1737,11 +1822,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Platinum U By Emaar status; suite upgrade; 20% off F&B and spa at Emaar hotels. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Platinum U By Emaar status; suite upgrade; 20% off F&B and spa at Emaar hotels. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-u-by-emaar-infinite-emirati",
@@ -1840,11 +1930,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card-for-emiratis",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "For UAE nationals. Cash advances and quasi-cash earn nothing."
+   "notes": "For UAE nationals. Cash advances and quasi-cash earn nothing. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-u-by-emaar-signature",
@@ -1931,11 +2026,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-signature-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Gold U By Emaar status. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Gold U By Emaar status. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-u-by-emaar-family",
@@ -2015,11 +2115,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-family-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life, no minimum spend. Bank page describes 5% back on Emaar spend and 1% elsewhere with 25% base on grocery and 10% base on fuel/government/telecom."
+   "notes": "Free for life, no minimum spend. Bank page describes 5% back on Emaar spend and 1% elsewhere with 25% base on grocery and 10% base on fuel/government/telecom. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-lulu-247-platinum",
@@ -2110,11 +2215,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-platinum-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Stated as percent back in LuLu Points; point treated as AED 1 per bank framing (unverified redemption value). LuLu cap 1,667 points per statement. Joining fee is higher than the annual fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Stated as percent back in LuLu Points; point treated as AED 1 per bank framing (unverified redemption value). LuLu cap 1,667 points per statement. Joining fee is higher than the annual fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-lulu-247-titanium",
@@ -2199,11 +2309,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-titanium-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Free for life. Lounge access ended 1 May 2025 per the bank page. Point treated as AED 1 per bank percent-back framing."
+   "notes": "Free for life. Lounge access ended 1 May 2025 per the bank page. Point treated as AED 1 per bank percent-back framing. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-visa-infinite",
@@ -2276,11 +2391,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "2 Plus Points per AED 100 base; Plus Points treated as AED 1 each since the bank quotes the earn as a percent. Cap 3,000 points per statement. Bank lists AED 1,575 annual; joining fee from aggregator. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "2 Plus Points per AED 100 base; Plus Points treated as AED 1 each since the bank quotes the earn as a percent. Cap 3,000 points per statement. Bank lists AED 1,575 annual; joining fee from aggregator. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-visa-platinum",
@@ -2337,7 +2457,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Official page only. Bank advertises no annual fee as a current offer, standard fee not shown. Earn up to 1.5 points per AED 100."
+   "notes": "Official page only. Bank advertises no annual fee as a current offer, standard fee not shown. Earn up to 1.5 points per AED 100. Not listed in the 08/2026 credit-card KFS; may be closed to new applicants, unverified."
   },
   {
    "id": "enbd-visa-flexi",
@@ -2405,11 +2525,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-flexi-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Choose 6 benefits from a menu. Bank page currently advertises no joining and annual fee as an exclusive offer; the aggregator shows AED 735 each, which is stored as the standard fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Choose 6 benefits from a menu. Bank page currently advertises no joining and annual fee as an exclusive offer; the aggregator shows AED 735 each, which is stored as the standard fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-mastercard-platinum",
@@ -2478,11 +2603,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-platinum-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Bank page shows a current offer of no annual fee; standard AED 735 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Bank page shows a current offer of no annual fee; standard AED 735 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-mastercard-titanium",
@@ -2550,11 +2680,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-titanium-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Bank page shows a current no joining/annual fee offer; standard AED 420 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Bank page shows a current no joining/annual fee offer; standard AED 420 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-webshopper",
@@ -2594,11 +2729,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/webshopper-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Online-only card: cannot be used in store or at ATMs. 1 Plus Point per AED 200 online. Cap 500 points per statement. Network not confirmed."
+   "notes": "Online-only card: cannot be used in store or at ATMs. 1 Plus Point per AED 200 online. Cap 500 points per statement. Network not confirmed. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-go4it-platinum",
@@ -2651,11 +2791,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-platinum-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Built-in Nol chip. Base earn 1 point per AED 200 on weekdays (0.5%); weekends 5 points per AED 200 (2.5%) which the engine cannot model by day. RTA spend 4 points per AED 200 (2%). Bank shows a current no-annual-fee offer. Network not confirmed on the sources used. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Built-in Nol chip. Base earn 1 point per AED 200 on weekdays (0.5%); weekends 5 points per AED 200 (2.5%) which the engine cannot model by day. RTA spend 4 points per AED 200 (2%). Bank shows a current no-annual-fee offer. Network not confirmed on the sources used. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-go4it-gold",
@@ -2708,11 +2853,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-gold-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Built-in Nol chip. 1 point per AED 400 weekdays (0.25%), 5 per AED 400 on weekends (1.25%), RTA 4 per AED 400 (1%). Bank shows a current no-annual-fee offer. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Built-in Nol chip. 1 point per AED 400 weekdays (0.25%), 5 per AED 400 on weekends (1.25%), RTA 4 per AED 400 (1%). Bank shows a current no-annual-fee offer. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-duo",
@@ -2782,11 +2932,16 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/duo-credit-cards",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Two cards in one package (Diners Club + Mastercard). Bank page says exclusive to Abu Dhabi residents and shows a current no-annual-fee offer; aggregator shows AED 840. Max 500 points (AED 500) per statement. Age 21-63. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+   "notes": "Two cards in one package (Diners Club + Mastercard). Bank page says exclusive to Abu Dhabi residents and shows a current no-annual-fee offer; aggregator shows AED 840. Max 500 points (AED 500) per statement. Age 21-63. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
   },
   {
    "id": "enbd-diners-club",
@@ -2844,7 +2999,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Official page only. Earn: 5% duty free, 2.5% dining, 0.5% other in Plus Points; per-statement cap exists but is not stated on the page. Diners network is not in the schema list so network is null."
+   "notes": "Official page only. Earn: 5% duty free, 2.5% dining, 0.5% other in Plus Points; per-statement cap exists but is not stated on the page. Diners network is not in the schema list so network is null. Not listed in the 08/2026 credit-card KFS; may be closed to new applicants, unverified."
   },
   {
    "id": "enbd-priority-banking-visa-infinite",
@@ -2859,7 +3014,7 @@
    "joining_fee_minor": null,
    "fee_waiver": null,
    "min_salary_minor": null,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 1.99,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 1,
@@ -2882,11 +3037,104 @@
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/priority-banking-visa-infinite-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Priority Banking customers only. Plus Points earn depends on single transaction size: 5% on transactions of AED 5,000+, 2% on AED 2,500-4,999, 1% below AED 2,500; a 1% flat tier applies to grocery, insurance, car dealers, fuel, utilities, real estate, charity, education, fast food, transit, government, telecom and EU spend. The engine cannot model per-transaction tiers, so 1% is stored. First year free, then AED 1,575. Possible quarterly AED 5,000 cashback draw at AED 50,000 quarterly spend. Minimum salary not shown."
+   "notes": "Priority Banking customers only. Plus Points earn depends on single transaction size: 5% on transactions of AED 5,000+, 2% on AED 2,500-4,999, 1% below AED 2,500; a 1% flat tier applies to grocery, insurance, car dealers, fuel, utilities, real estate, charity, education, fast food, transit, government, telecom and EU spend. The engine cannot model per-transaction tiers, so 1% is stored. First year free, then AED 1,575. Possible quarterly AED 5,000 cashback draw at AED 50,000 quarterly spend. Minimum salary not shown. KFS (footer 08/2026, fees effective 1 Mar 2026) read: 1.99% foreign-currency conversion fee on all cards; renewal fee matches stored annual fee (fee grid is garbled in the PDF text, joining-fee columns not relied on)."
+  },
+  {
+   "id": "enbd-noon-one",
+   "issuer": "Emirates NBD",
+   "name": "noon One",
+   "network": "visa",
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "noon Food",
+      "merchants": [
+       "noon food",
+       "noonfood"
+      ],
+      "rate": 0.2,
+      "conditions": "Paid as noon credits, spendable only at noon. 2025 article lists an AED 2,000 monthly reward cap; newer pages omit it."
+     },
+     {
+      "name": "NowNow",
+      "merchants": [
+       "nownow"
+      ],
+      "rate": 0.1,
+      "conditions": "noon credits"
+     },
+     {
+      "name": "noon.com and other noon",
+      "merchants": [
+       "noon"
+      ],
+      "rate": 0.05,
+      "conditions": "noon credits; rule order: noon Food and NowNow match first"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities",
+     "education"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "AED 500 noon gift card after AED 5,000 spend within two months",
+    "value_aed_est": 500,
+    "min_spend_minor": 500000,
+    "window_days": 60
+   },
+   "sources": [
+    {
+     "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/noon-one-visa-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/noon",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/blog/best-credit-cards-for-online-shopping-uae-2025.md",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "New: listed in the 08/2026 KFS as free (no joining or renewal fee) with 1.99% FX fee. Earn rates and noon-specific rewards not read (card page body would not load, fetch budget ran out), so reward_structure is an empty placeholder; fill in next round. Earn rates, salary and welcome offer from two aggregator pages (Nov 2025 and Nov 2026); the bank card page would not load, so confirm on emiratesnbd.com.",
+   "deals": []
   }
  ]
 }

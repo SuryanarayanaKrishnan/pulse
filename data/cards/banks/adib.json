@@ -73,11 +73,16 @@
      "url": "https://kredit.ae/credit-cards/adib-skywards-signature-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.5 miles/USD (0.41/AED) international, 0.6 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Aggregator shows AED 5,000 min salary, unusually low vs fee; verify."
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.5 miles/USD (0.41/AED) international, 0.6 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Aggregator shows AED 5,000 min salary, unusually low vs fee; verify. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-skywards-infinite",
@@ -151,11 +156,16 @@
      "url": "https://kredit.ae/credit-cards/adib-skywards-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 2 miles/USD (0.54/AED) international, 0.8 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Min salary AED 5,000 per aggregator looks suspicious; verify."
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 2 miles/USD (0.54/AED) international, 0.8 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Min salary AED 5,000 per aggregator looks suspicious; verify. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-cashback-covered",
@@ -230,11 +240,26 @@
      "url": "https://kredit.ae/credit-cards/adib-cashback-covered-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/en/personal/cards/cashback-visa-card/adib-cashback-visa-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/kfs/adib-covered-cards_kfs.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Overall monthly cashback cap AED 1,000. Everything outside the five categories earns nothing per aggregator (not stated explicitly; check). Four free supplementary cards. Profit 3.75%/month. ADIB official page blocked/404 in this session so not cross-checked."
+   "notes": "Overall monthly cashback cap AED 1,000. Everything outside the five categories earns nothing per aggregator (not stated explicitly; check). Four free supplementary cards. Profit 3.75%/month. Current official page: adib.ae/en/personal/cards/cashback-visa-card/adib-cashback-visa-covered-card (old URL 404s). Page and comparison PDF confirm AED 99 fee, 4% caps 300/300/300/200/100 and AED 1,000 monthly total. KFS link found but not read. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-marriott-bonvoy-signature",
@@ -309,11 +334,16 @@
      "url": "https://kredit.ae/credit-cards/adib-marriott-bonvoy-visa-signature-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Bonvoy points valued conservatively at AED 0.02 each. International 2 points/USD (0.54/AED), EEA 1/USD. Gives Silver Elite and 10 night credits; USD 15,000 annual spend upgrades to Gold. Profit 3.75%/month. Joining and annual fee both AED 523.95, no spend waiver."
+   "notes": "Bonvoy points valued conservatively at AED 0.02 each. International 2 points/USD (0.54/AED), EEA 1/USD. Gives Silver Elite and 10 night credits; USD 15,000 annual spend upgrades to Gold. Profit 3.75%/month. Joining and annual fee both AED 523.95, no spend waiver. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-marriott-bonvoy-infinite",
@@ -390,11 +420,16 @@
      "url": "https://kredit.ae/credit-cards/adib-marriott-bonvoy-visa-infinite-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Bonvoy point AED 0.02 conservative. International 4 points/USD (1.09/AED), EEA 1.5/USD. Gold Elite on issue, annual free night award worth up to 85,000 points per aggregator headline. Profit 3.75%/month."
+   "notes": "Bonvoy point AED 0.02 conservative. International 4 points/USD (1.09/AED), EEA 1.5/USD. Gold Elite on issue, annual free night award worth up to 85,000 points per aggregator headline. Profit 3.75%/month. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-share-infinite",
@@ -475,11 +510,16 @@
      "url": "https://kredit.ae/credit-cards/adib-share-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "10 SHARE points = AED 1. Non-Carrefour groceries get only 0.5%. Fee AED 1,048.95 year one, waived later with AED 30,000 international or AED 75,000 total prior-year spend. Profit 3.75%/month."
+   "notes": "10 SHARE points = AED 1. Non-Carrefour groceries get only 0.5%. Fee AED 1,048.95 year one, waived later with AED 30,000 international or AED 75,000 total prior-year spend. Profit 3.75%/month. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
   },
   {
    "id": "adib-share-platinum",
@@ -556,11 +596,414 @@
      "url": "https://kredit.ae/credit-cards/adib-share-platinum-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "10 SHARE points = AED 1. Base 1.25%, reduced 0.25%. EEA spend 0.25%. Fee waived from year two with AED 45,000 spend or AED 15,000 non-AED spend. Profit 3.75%/month. [2026-11 official check] ADIB card comparison PDF confirms annual fee (ex-VAT figure times 1.05 stored), 3.75% monthly profit rate and earn rates; minimum salary and FX fee not in that PDF (KFS fetch blocked by tool budget), so salary stays aggregator-based."
+  },
+  {
+   "id": "adib-aldar-infinite",
+   "issuer": "ADIB",
+   "name": "Aldar Visa Infinite Card",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 104895,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.05,
+    "base_rate": 0.3,
+    "rules": [
+     {
+      "name": "Eligible Aldar retail and hospitality",
+      "merchants": [
+       "aldar",
+       "yas mall",
+       "yas island",
+       "ferrari world",
+       "warner bros"
+      ],
+      "rate": 2.0,
+      "conditions": "Darna points; bank prose says eligible Aldar ecosystem merchants; exact merchant list not read"
+     },
+     {
+      "name": "Specific merchants (reduced)",
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "transport",
+       "rent"
+      ],
+      "rate": 0.05,
+      "conditions": "Reduced rate at specific merchants; Aldar-ecosystem groceries excluded from this rate"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.4
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/aldar-cards/aldar-visa-infinite-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "10 SHARE points = AED 1. Base 1.25%, reduced 0.25%. EEA spend 0.25%. Fee waived from year two with AED 45,000 spend or AED 15,000 non-AED spend. Profit 3.75%/month."
+   "notes": "Darna points valued at 0.05 AED (bank quotes 200 per 100 AED as 10%). International earn higher (non-AED) and EEA lower; engine cannot express by channel so stored in international_rate. Fee reversal from year two depends on spend thresholds not read. Minimum salary and FX not seen. Profit rate 3.75% a month."
+  },
+  {
+   "id": "adib-aldar-platinum",
+   "issuer": "ADIB",
+   "name": "Aldar Visa Platinum Card",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.05,
+    "base_rate": 0.2,
+    "rules": [
+     {
+      "name": "Eligible Aldar retail and hospitality",
+      "merchants": [
+       "aldar",
+       "yas mall",
+       "yas island",
+       "ferrari world",
+       "warner bros"
+      ],
+      "rate": 1.2,
+      "conditions": "Darna points; bank prose says eligible Aldar ecosystem merchants; exact merchant list not read"
+     },
+     {
+      "name": "Specific merchants (reduced)",
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "transport",
+       "rent"
+      ],
+      "rate": 0.05,
+      "conditions": "Reduced rate at specific merchants; Aldar-ecosystem groceries excluded from this rate"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 0.3
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/aldar-cards/aldar-visa-platinum-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Darna points valued at 0.05 AED (bank quotes 200 per 100 AED as 10%). International earn higher (non-AED) and EEA lower; engine cannot express by channel so stored in international_rate. Fee reversal from year two depends on spend thresholds not read. Minimum salary and FX not seen. Profit rate 3.75% a month."
+  },
+  {
+   "id": "adib-etihad-guest-gold",
+   "issuer": "ADIB",
+   "name": "Etihad Guest Visa Gold Card",
+   "network": "visa",
+   "tier": "gold",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.25,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/etihad-guest-cards/adib-etihad-guest-visa-gold-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn per PDF: Gold 1 mile per 4, Platinum 2.2 per 4, Infinite 2.5 per 4 local (3.5 per 4 on Etihad Airways), higher internationally (Gold 1.5, Plat 3, Inf 3.5 per 4). The PDF does not name the spend unit for \"per 4\"; assumed AED 4 (so base_rate = miles/4 per AED) - unverified, which is why confidence stays medium. Mile value 0.03 AED is our conservative guess. Fee is the PDF figure times 1.05."
+  },
+  {
+   "id": "adib-etihad-guest-platinum",
+   "issuer": "ADIB",
+   "name": "Etihad Guest Visa Platinum Card",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 210000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.55,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/etihad-guest-cards/adib-etihad-guest-visa-platinum-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn per PDF: Gold 1 mile per 4, Platinum 2.2 per 4, Infinite 2.5 per 4 local (3.5 per 4 on Etihad Airways), higher internationally (Gold 1.5, Plat 3, Inf 3.5 per 4). The PDF does not name the spend unit for \"per 4\"; assumed AED 4 (so base_rate = miles/4 per AED) - unverified, which is why confidence stays medium. Mile value 0.03 AED is our conservative guess. Fee is the PDF figure times 1.05."
+  },
+  {
+   "id": "adib-etihad-guest-infinite",
+   "issuer": "ADIB",
+   "name": "Etihad Guest Visa Infinite Covered Card",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 315000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.625,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/etihad-guest-cards/adib-etihad-guest-visa-infinite-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn per PDF: Gold 1 mile per 4, Platinum 2.2 per 4, Infinite 2.5 per 4 local (3.5 per 4 on Etihad Airways), higher internationally (Gold 1.5, Plat 3, Inf 3.5 per 4). The PDF does not name the spend unit for \"per 4\"; assumed AED 4 (so base_rate = miles/4 per AED) - unverified, which is why confidence stays medium. Mile value 0.03 AED is our conservative guess. Fee is the PDF figure times 1.05."
+  },
+  {
+   "id": "adib-exceed-visa",
+   "issuer": "ADIB",
+   "name": "Exceed Visa Covered Card",
+   "network": "visa",
+   "tier": "other",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 10395,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.005,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/exceed-cards/exceed-visa-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn 0.5 Exceed Rewards per AED 100 local (1 per 100 international) per comparison PDF; value of a reward point is not stated, 0.01 AED is a placeholder so this card is effectively unranked. Fee AED 99 plus VAT."
+  },
+  {
+   "id": "adib-smiles-classic",
+   "issuer": "ADIB",
+   "name": "Smiles Visa Classic Card",
+   "network": "visa",
+   "tier": "classic",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.8,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/smiles-covered-cards/adib-smiles-visa-classic-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn per comparison PDF: Classic 4 points per 5 local, Signature 10 per 5 (higher internationally and on the Smiles app). Spend unit assumed AED and Smiles point value not stated (0.01 AED placeholder); treat ranking as unknown. Signature fee AED 1,199 shown on bank page (stored 1,258.95 with VAT assumed; bank page may already include VAT - unresolved)."
+  },
+  {
+   "id": "adib-smiles-signature",
+   "issuer": "ADIB",
+   "name": "Smiles Visa Signature Card",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 125895,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 2.0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.adib.ae/en/personal/cards/smiles-covered-cards/adib-smiles-visa-signature-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.adib.ae/-/media/project/adib/adibsite/docs/personal/cards/comparison-of-card-offering.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earn per comparison PDF: Classic 4 points per 5 local, Signature 10 per 5 (higher internationally and on the Smiles app). Spend unit assumed AED and Smiles point value not stated (0.01 AED placeholder); treat ranking as unknown. Signature fee AED 1,199 shown on bank page (stored 1,258.95 with VAT assumed; bank page may already include VAT - unresolved)."
   }
  ]
 }

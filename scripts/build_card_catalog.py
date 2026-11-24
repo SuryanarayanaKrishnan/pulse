@@ -84,8 +84,20 @@ def build() -> tuple[dict, list[str]]:
     }, errs
 
 
+def check_stacking(catalog: dict) -> list[str]:
+    path = ROOT / "data" / "cards" / "stacking.json"
+    ids = {c["id"] for c in catalog["cards"]}
+    errs = []
+    for m in json.loads(path.read_text())["merchants"]:
+        for p in m.get("plays", []):
+            if p.get("card_id") not in ids:
+                errs.append(f"stacking {m['id']}: unknown card_id {p.get('card_id')}")
+    return errs
+
+
 def main() -> int:
     catalog, errs = build()
+    errs += check_stacking(catalog)
     if "--validate" in sys.argv:
         print("\n".join(errs) or f"ok: {catalog['count']} cards")
         return 1 if errs else 0

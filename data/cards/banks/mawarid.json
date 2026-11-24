@@ -1,0 +1,418 @@
+{
+ "issuer": "Mawarid",
+ "cards": [
+  {
+   "id": "mawarid-world-elite",
+   "issuer": "Mawarid",
+   "name": "World Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": null,
+   "fee_waiver": {
+    "spend_minor": 5000000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "waived at AED 50,000 yearly spend"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.0,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 750,
+      "conditions": "MCC 5411"
+     },
+     {
+      "name": "Dine-in restaurants",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 750,
+      "conditions": "MCC 5812/5814; cap per statement period (16th to 15th)"
+     },
+     {
+      "name": "Fuel",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 250,
+      "conditions": "MCC 5541/5542; fuel only, not other transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities",
+     "telecom"
+    ],
+    "monthly_total_cap_units": 5000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge access"
+    },
+    "valet": {
+     "text": "Valet parking"
+    },
+    "insurance": {
+     "text": "Collision damage waiver and travel insurance"
+    },
+    "other": {
+     "text": "Fast-track security, Careem airport transfers, concierge, hotel and booking discounts"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.mawarid.ae/en/cards/world-elite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/en/credit-cards/falak-tayyeb-loyalty",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/Mawarid-Key-Fact-Sheet.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/schedule-of-tariffs-and-charges.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/banks/mawarid.md",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Falak Tayyeb points: 10% on grocery, dine-in and fuel, 2% other retail, caps per statement period. Redemption described as cashback in AED; we assume 1 point = AED 1 of the stated percentage, so confirm against the programme terms. Mawarid does not reassess mis-coded merchants. About 40 MCCs excluded (ATM, telecom, utilities, insurance, parking, tax, government, charity, rent, quasi-cash). Min credit limit AED 30,000. Verified against Mawarid KFS and schedule of tariffs (Nov 2026): FX conversion fee 3.00%, late fee AED 175 (commitment to donate), cash advance 3.10%/month, profit 3.10%/month illustrative, min income AED 5,000 per KFS (general; premium cards need a higher credit limit). Network Mastercard per the Mastercard Travel Pass/offer pages; the KFS does not name it. No welcome offer found on the card page; Mastercard offer PDFs not read (fetch budget ran out). Falak Tayyeb earn rates and caps from the programme page; KFS gives no points value, so 1 point = AED 1 of stated percentage remains an assumption."
+  },
+  {
+   "id": "mawarid-world",
+   "issuer": "Mawarid",
+   "name": "World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": null,
+   "fee_waiver": {
+    "spend_minor": 3000000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "waived at AED 30,000 yearly spend"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.0,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 500,
+      "conditions": "MCC 5411"
+     },
+     {
+      "name": "Dine-in restaurants",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 500,
+      "conditions": "MCC 5812/5814; cap per statement period (16th to 15th)"
+     },
+     {
+      "name": "Fuel",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 200,
+      "conditions": "MCC 5541/5542; fuel only, not other transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities",
+     "telecom"
+    ],
+    "monthly_total_cap_units": 3500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge access"
+    },
+    "valet": {
+     "text": "Valet parking"
+    },
+    "insurance": {
+     "text": "Travel insurance"
+    },
+    "other": {
+     "text": "Careem transfers, car rental, hotel discounts"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.mawarid.ae/en/cards/world-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/en/credit-cards/falak-tayyeb-loyalty",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/Mawarid-Key-Fact-Sheet.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/schedule-of-tariffs-and-charges.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/banks/mawarid.md",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Falak Tayyeb points: 10% on grocery, dine-in and fuel, 2% other retail, caps per statement period. Redemption described as cashback in AED; we assume 1 point = AED 1 of the stated percentage, so confirm against the programme terms. Mawarid does not reassess mis-coded merchants. About 40 MCCs excluded (ATM, telecom, utilities, insurance, parking, tax, government, charity, rent, quasi-cash). Min credit limit AED 20,000. Verified against Mawarid KFS and schedule of tariffs (Nov 2026): FX conversion fee 3.00%, late fee AED 175 (commitment to donate), cash advance 3.10%/month, profit 3.10%/month illustrative, min income AED 5,000 per KFS (general; premium cards need a higher credit limit). Network Mastercard per the Mastercard Travel Pass/offer pages; the KFS does not name it. No welcome offer found on the card page; Mastercard offer PDFs not read (fetch budget ran out). Falak Tayyeb earn rates and caps from the programme page; KFS gives no points value, so 1 point = AED 1 of stated percentage remains an assumption."
+  },
+  {
+   "id": "mawarid-platinum",
+   "issuer": "Mawarid",
+   "name": "Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.0,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 250,
+      "conditions": "MCC 5411"
+     },
+     {
+      "name": "Dine-in restaurants",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 250,
+      "conditions": "MCC 5812/5814; cap per statement period (16th to 15th)"
+     },
+     {
+      "name": "Fuel",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 150,
+      "conditions": "MCC 5541/5542; fuel only, not other transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities",
+     "telecom"
+    ],
+    "monthly_total_cap_units": 2500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Travel Pass lounge access"
+    },
+    "valet": {
+     "text": "Valet parking"
+    },
+    "insurance": {
+     "text": "Purchase protection"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.mawarid.ae/en/cards/platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/en/credit-cards/falak-tayyeb-loyalty",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/Mawarid-Key-Fact-Sheet.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/schedule-of-tariffs-and-charges.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/banks/mawarid.md",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Falak Tayyeb points: 10% on grocery, dine-in and fuel, 2% other retail, caps per statement period. Redemption described as cashback in AED; we assume 1 point = AED 1 of the stated percentage, so confirm against the programme terms. Mawarid does not reassess mis-coded merchants. About 40 MCCs excluded (ATM, telecom, utilities, insurance, parking, tax, government, charity, rent, quasi-cash). Min credit limit AED not listed. Verified against Mawarid KFS and schedule of tariffs (Nov 2026): FX conversion fee 3.00%, late fee AED 175 (commitment to donate), cash advance 3.10%/month, profit 3.10%/month illustrative, min income AED 5,000 per KFS (general; premium cards need a higher credit limit). Network Mastercard per the Mastercard Travel Pass/offer pages; the KFS does not name it. No welcome offer found on the card page; Mastercard offer PDFs not read (fetch budget ran out). Falak Tayyeb earn rates and caps from the programme page; KFS gives no points value, so 1 point = AED 1 of stated percentage remains an assumption."
+  },
+  {
+   "id": "mawarid-titanium",
+   "issuer": "Mawarid",
+   "name": "Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 3.0,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Groceries",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 100,
+      "conditions": "MCC 5411"
+     },
+     {
+      "name": "Dine-in restaurants",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 100,
+      "conditions": "MCC 5812/5814; cap per statement period (16th to 15th)"
+     },
+     {
+      "name": "Fuel",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 100,
+      "conditions": "MCC 5541/5542; fuel only, not other transport"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer",
+     "rent",
+     "utilities",
+     "telecom"
+    ],
+    "monthly_total_cap_units": 1500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Lounge on flight delay via Travel Pass; no general access"
+    },
+    "valet": {
+     "text": "Valet parking"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.mawarid.ae/en/cards/titanium-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/en/credit-cards/falak-tayyeb-loyalty",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/Mawarid-Key-Fact-Sheet.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mawarid.ae/Data/Files/schedule-of-tariffs-and-charges.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/banks/mawarid.md",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Falak Tayyeb points: 10% on grocery, dine-in and fuel, 2% other retail, caps per statement period. Redemption described as cashback in AED; we assume 1 point = AED 1 of the stated percentage, so confirm against the programme terms. Mawarid does not reassess mis-coded merchants. About 40 MCCs excluded (ATM, telecom, utilities, insurance, parking, tax, government, charity, rent, quasi-cash). Min credit limit AED not listed. Verified against Mawarid KFS and schedule of tariffs (Nov 2026): FX conversion fee 3.00%, late fee AED 175 (commitment to donate), cash advance 3.10%/month, profit 3.10%/month illustrative, min income AED 5,000 per KFS (general; premium cards need a higher credit limit). Network Mastercard per the Mastercard Travel Pass/offer pages; the KFS does not name it. No welcome offer found on the card page; Mastercard offer PDFs not read (fetch budget ran out). Falak Tayyeb earn rates and caps from the programme page; KFS gives no points value, so 1 point = AED 1 of stated percentage remains an assumption. Schedule also lists a Titanium (Ujara) variant: AED 105/157.50/262.50 annual fee by limit tier (up to 15k/25k/50k), no cash advance; the free-for-life Murabaha variant is modelled here."
+  }
+ ]
+}

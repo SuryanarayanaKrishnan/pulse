@@ -586,11 +586,21 @@
      "url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-infinite-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only for earn/fees. Mile value set at AED 0.03 (conservative; Etihad miles are worth roughly 3-4 fils). Miles rate quoted per AED 10 spent (7 = 0.7/AED). Monthly cap 55,000 miles. Annual fee AED 2,625 incl VAT. Welcome offer may have been revised by FAB's Oct 2026 Etihad Guest promo terms (PDF not readable here)."
+   "notes": "Aggregator-only for earn/fees. Mile value set at AED 0.03 (conservative; Etihad miles are worth roughly 3-4 fils). Miles rate quoted per AED 10 spent (7 = 0.7/AED). Monthly cap 55,000 miles. Annual fee AED 2,625 incl VAT. Welcome offer may have been revised by FAB's Oct 2026 Etihad Guest promo terms (PDF not readable here). Read 2026-11-24: FAB Infinite card KFS page confirms annual fee AED 2,625, 55,000 joining miles, up to 7 miles per AED 10 (9 on Miles Accelerator at AED 262.50/month), 12 lounge visits/yr, no monthly miles cap stated (the 55,000 cap above is aggregator-only), FX 2.49% + VAT (=2.61%) plus scheme charges. Per-category caps/exclusions beyond the fee schedule remain unverified, so confidence stays medium. An older undated FAB FAQ shows different, higher per-AED10 rates and a 150,000 miles/month cap; ignored as legacy."
   },
   {
    "id": "fab-etihad-guest-signature",
@@ -666,11 +676,21 @@
      "url": "https://kredit.ae/credit-cards/fab-etihad-guest-signature-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-signature-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only. Mile value AED 0.03 conservative. Monthly cap 30,000 miles. Fast-track to Etihad Guest Silver per aggregator."
+   "notes": "Aggregator-only. Mile value AED 0.03 conservative. Monthly cap 30,000 miles. Fast-track to Etihad Guest Silver per aggregator. Read 2026-11-24: FAB Signature KFS page confirms annual fee AED 1,575, 35,000 joining miles, up to 5.5 miles per AED 10, 8 lounge visits, FX 2.49% + VAT. Monthly cap 30,000 still aggregator-only, so confidence stays medium."
   },
   {
    "id": "fab-etihad-guest-platinum",
@@ -746,11 +766,16 @@
      "url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "Only the bank marketing page was readable: annual fee AED 500 + VAT = 525, min salary AED 8,000, 'up to 5.5 Etihad Guest miles per AED 10'. Base and category earn rates were NOT found, so rates are set to 0 (unknown). Do not use for reward maths until verified. Optional paid Miles Accelerator programme exists."
+   "notes": "Only the bank marketing page was readable: annual fee AED 500 + VAT = 525, min salary AED 8,000, 'up to 5.5 Etihad Guest miles per AED 10'. Base and category earn rates were NOT found, so rates are set to 0 (unknown). Do not use for reward maths until verified. Optional paid Miles Accelerator programme exists. Annual fee AED 525 incl. VAT confirmed by FAB's fee schedule PDF (Etihad Guest section). Earn rates still not obtained from an official document."
   },
   {
    "id": "fab-blue-platinum",
@@ -827,11 +852,21 @@
      "url": "https://kredit.ae/credit-cards/fab-blue-platinum-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fabgroup/home/personal/key-facts-statements/blue-fab-platinum-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 2000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 2000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days. Read 2026-11-24: FAB's Blue Platinum KFS page confirms no annual fee, 5% (10 rewards per AED) at Al-Futtaim stores, 1% (2 rewards per AED) elsewhere, FX 2.49% + VAT. That page lists NO monthly cap and NO reduced categories; the AED 2,000 cap and 0.15% categories above come from the aggregator (FAB's rewards T&C does list 0.5-rate low-interchange categories on most cards), so they are kept but flagged unconfirmed."
   },
   {
    "id": "fab-blue-signature",
@@ -911,11 +946,16 @@
      "url": "https://kredit.ae/credit-cards/blue-fab-signature-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 3000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 3000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days. Annual fee Free confirmed by FAB fee schedule PDF; earn rates and caps for this tier remain aggregator-only."
   },
   {
    "id": "fab-blue-infinite",
@@ -1002,11 +1042,16 @@
      "url": "https://kredit.ae/credit-cards/fab-blue-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 4000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days."
+   "notes": "Aggregator-only. No annual or joining fee. Rewards are paid as Al-Futtaim FAB Rewards (treated 1:1 with AED, usable at Al-Futtaim stores; value elsewhere may be lower). Monthly reward cap AED 4000 across all spend. Groceries, fuel, transport, utilities, education, rent, government, insurance earn only 0.15%. 0% instalment plans and balance transfers for up to 12 months if requested within 90 days. Annual fee Free confirmed by FAB fee schedule PDF; earn rates and caps for this tier remain aggregator-only."
   },
   {
    "id": "fab-emirati-islamic",
@@ -1144,11 +1189,21 @@
      "url": "https://kredit.ae/credit-cards/fab-du-titanium-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/terms-and-conditions-consolidated/fab-reward-programmes/fab-rewards-terms-and-conditions-en.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Free for life. DISCREPANCY: bank page advertises 15% saving on du spend, aggregator (citing KFS) says 10% cashback after AED 1,250 prior-month spend; used 10%. Everything else earns 1 FAB Reward per AED (~0.3%), 50,000 point monthly cap on non-du. Interest 3.5%/month (lower than other FAB cards). Network not stated."
+   "notes": "Free for life. DISCREPANCY: bank page advertises 15% saving on du spend, aggregator (citing KFS) says 10% cashback after AED 1,250 prior-month spend; used 10%. Everything else earns 1 FAB Reward per AED (~0.3%), 50,000 point monthly cap on non-du. Interest 3.5%/month (lower than other FAB cards). Network not stated. Fee schedule PDF confirms free. FAB Rewards T&C (read via apply.bankfab.com) lists a monthly cap of 167,000 reward points at du merchants and 50,000 elsewhere, and a AED 2,500 prior-month spend condition for du cards; these differ from the aggregator's AED 1,250 and 150 cap, which stay in the structure pending reconciliation."
   },
   {
    "id": "fab-elite",
@@ -1489,11 +1544,21 @@
      "url": "https://kredit.ae/credit-cards/fab-rewards-active-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/terms-and-conditions-consolidated/fab-reward-programmes/fab-rewards-terms-and-conditions-en.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Bank page: annual fee AED 300 (+VAT = 315). Aggregator shows an extra joining fee of AED 315, not on the bank page (joining null). 2 points/AED general (0.6%), 5 on sports (1.5%), 0.5 on reduced categories. Steps reward: 25 points per 1,000 steps from 6,000/day (max 10,000 steps counted). Total monthly cap 50,000 points. Sports merchant list not confirmed."
+   "notes": "Bank page: annual fee AED 300 (+VAT = 315). Aggregator shows an extra joining fee of AED 315, not on the bank page (joining null). 2 points/AED general (0.6%), 5 on sports (1.5%), 0.5 on reduced categories. Steps reward: 25 points per 1,000 steps from 6,000/day (max 10,000 steps counted). Total monthly cap 50,000 points. Sports merchant list not confirmed. Fee schedule PDF confirms annual fee AED 315 incl. VAT. FAB Rewards T&C confirms 50,000 points monthly cap, 0.5/AED on low-interchange categories, steps reward minimum 6,000 and max 10,000 steps/day, rewards expire after 2 years. Joining fee not listed in the fee schedule (aggregator's AED 315 unconfirmed)."
   },
   {
    "id": "fab-travel",
@@ -1585,21 +1650,41 @@
    "kind": "lifestyle",
    "islamic": false,
    "status": "active",
-   "annual_fee_minor": null,
+   "annual_fee_minor": 10500,
    "joining_fee_minor": null,
-   "fee_waiver": null,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; AED 105 incl. VAT afterwards per fee schedule"
+   },
    "min_salary_minor": 500000,
    "fx_markup_pct": 0,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.003,
-    "base_rate": 0,
-    "rules": [],
+    "base_rate": 1,
+    "rules": [
+     {
+      "name": "Low-interchange categories",
+      "rate": 0.5,
+      "categories": [
+       "groceries",
+       "utilities",
+       "transport",
+       "education",
+       "telecom",
+       "rent"
+      ],
+      "conditions": "special categories earn 0.5 per AED per FAB Rewards T&C"
+     }
+    ],
     "excluded_categories": [
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "monthly_total_cap_units": 312000
    },
    "perks": {
     "dining": {
@@ -1618,11 +1703,21 @@
      "url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-z-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/credit-cards/fees-and-charges/etihad-guest-credit-card.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://apply.bankfab.com/-/media/fab-uds/personal/terms-and-conditions-consolidated/fab-reward-programmes/fab-rewards-terms-and-conditions-en.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "community_notes": [],
-   "notes": "Only the marketing page was read: min salary AED 5,000, first-year annual fee waived (later fee unknown), 1.99% monthly interest, no FX fees abroad, FAB Rewards on spend (rates not stated). Earn rates and annual fee unknown so rewards set empty. No kredit.ae detail page exists."
+   "notes": "Fee schedule PDF: annual fee AED 105 incl. VAT, free in year one; 0% bank international fee (scheme charges still apply). FAB Rewards T&C: 1 reward per AED on retail, 0.5 on special categories, monthly cap 312,000 rewards (bank page quotes up to 1,000 per month). Reward value taken as about AED 0.003 (334 rewards ~ AED 1 implied by caps). Min salary AED 5,000, interest 1.99%/month from bank page. Perks: 20% streaming cashback capped AED 50/month (needs AED 3,000 prior-month spend; Arabic T&C says 5,000), cinema AED 20 tickets x2/month, Virgin Megastore 30% up to AED 150 twice/month, Noon One and Careem Plus free for a year."
   }
  ]
 }

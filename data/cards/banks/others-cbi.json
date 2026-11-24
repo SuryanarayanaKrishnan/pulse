@@ -37,7 +37,7 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "Does not earn points. Edge/CBI First customers get up to 100% back on cinema, streaming, valet (AED 75/150/300 a month at AED 4k/8k/12k spend, to 31 Dec 2026). Profit/interest 3.45%/month. Intl fee 2.99%."
+   "notes": "Does not earn points. Edge/CBI First customers get up to 100% back on cinema, streaming, valet (AED 75/150/300 a month at AED 4k/8k/12k spend, to 31 Dec 2026). Profit/interest 3.45%/month. Intl fee 2.99%. CBI KFS for the World Elite Exclusive card confirms 2.99% international fee for CBI cards; these tiers were not on that document."
   },
   {
    "id": "cbi-rewards-platinum",
@@ -75,7 +75,7 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "0.5 CBI Rewards points/AED UAE, 1 abroad; optional AED 525/year Accelerator doubles to 1 UAE and 1.5-2 abroad. Point value not found (placeholder 0.007 gives about 0.35% as aggregator shows). Intl fee 2.99%."
+   "notes": "0.5 CBI Rewards points/AED UAE, 1 abroad; optional AED 525/year Accelerator doubles to 1 UAE and 1.5-2 abroad. Point value not found (placeholder 0.007 gives about 0.35% as aggregator shows). Intl fee 2.99%. CBI KFS for the World Elite Exclusive card confirms 2.99% international fee for CBI cards; these tiers were not on that document."
   },
   {
    "id": "cbi-rewards-world",
@@ -113,7 +113,47 @@
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "1 point/AED UAE (1.75 on single UAE transaction of AED 2,000+), 2.5 abroad. Aggregator implies 0.7% at 1 pt/AED, so point value 0.007. Intl fee 2.99%."
+   "notes": "1 point/AED UAE (1.75 on single UAE transaction of AED 2,000+), 2.5 abroad. Aggregator implies 0.7% at 1 pt/AED, so point value 0.007. Intl fee 2.99%. CBI KFS for the World Elite Exclusive card confirms 2.99% international fee for CBI cards; these tiers were not on that document."
+  },
+  {
+   "id": "cbi-world-elite-exclusive",
+   "issuer": "Commercial Bank International",
+   "name": "World Elite Exclusive",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 1575000,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "100,000 miles joining bonus after first spend (per KFS)"
+   },
+   "sources": [
+    {
+     "url": "https://www.cbiuae.com/media/ycyjcxh4/wee-soc-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "From the CBI World Elite Exclusive KFS/schedule (text scrambled): primary annual fee AED 15,750, supplementary 7,875, optional Skywards-linked options up to AED 76,115, FX 2.99% (excl. VAT), interest 2.99%/month, 55 days interest-free. Earn rate not in the document so not modelled; miles tier invite-style product."
   }
  ]
 }

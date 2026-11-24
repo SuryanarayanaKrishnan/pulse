@@ -59,6 +59,19 @@
      "cc_payment",
      "transfer",
      "utilities"
+    ],
+    "mcc_exclusions": [
+     4784,
+     9211,
+     9222,
+     9223,
+     9311,
+     9399,
+     9402,
+     9405,
+     4111,
+     4112,
+     4131
     ]
    },
    "perks": {
@@ -69,6 +82,16 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.alhilalbank.ae/en/personal/cards/credit-cards/cashback-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.alhilalbank.ae/en/Images/ahb-cashback-faq.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/al-hilal-cashback-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -76,7 +99,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Rates tier with spend (1% first AED 3,000, 3% to 8,000, 5% above) in the two chosen categories; modelled at the top tier for all four, so only two apply. Utility and government payments through Al Hilal app earn nothing. Free for life."
+   "notes": "Rates tier with spend (1% first AED 3,000, 3% to 8,000, 5% above) in the two chosen categories; modelled at the top tier for all four, so only two apply. Utility and government payments through Al Hilal app earn nothing. Free for life. Official FAQ (read): two chosen categories, tiers by total monthly retail spend 1% to AED 3,000, 3% to 8,000, 5% above; cap AED 250 per chosen category and AED 500 total; other retail 1%; credited next month. Fee, min salary and FX not confirmed on official pages (fee schedule PDF layout unreadable; scheduled FX 2.89% for some Al Hilal cards), so confidence stays medium. KFS lists further Al Hilal covered cards (Elite World, World Emirati, World) not modelled."
   }
  ]
 }

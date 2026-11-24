@@ -14,7 +14,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 500000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.005,
@@ -44,14 +44,24 @@
    },
    "sources": [
     {
+     "url": "https://www.deem.io/wp-content/uploads/2026/04/Schedule-of-Fees-Charges-March-2026-English-1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.deem.io/blogs/cashback-vs-reward-points-uae",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/deem-titanium-mastercard-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "community_notes": [],
-   "notes": "Joy Points value not found: placeholder 0.005. Monthly cap 50,000 points. Alternative WIN draw option. Year one free. Interest 3.99%/month. Not Islamic per aggregator."
+   "notes": "Official Deem fee schedule (Mar 2026): annual fee AED 210, FX 2.99%, cash advance 3% or AED 105, late AED 241.50, retail interest 3.99%/month. Deem blog: 100 Joy Points = AED 0.50 cashback/gift card (AED 1 other redemptions), min redemption 15,000, expiry 24 months; accelerated earn needs AED 3,000 monthly spend, cap 50,000 points. Card page says first year free (saves AED 200) and also min salary AED 5,000; elsewhere page says 'free for life', which conflicts with the fee schedule. Exact points per AED (aggregator: 2) not on official pages. Not Islamic. Alt WIN draw mode."
   },
   {
    "id": "deem-world",
@@ -66,7 +76,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 2500000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 2.99,
    "reward_structure": {
     "unit": "points",
     "point_value_aed": 0.005,
@@ -100,14 +110,76 @@
    },
    "sources": [
     {
+     "url": "https://www.deem.io/wp-content/uploads/2026/04/Schedule-of-Fees-Charges-March-2026-English-1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.deem.io/blogs/cashback-vs-reward-points-uae",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/deem-world-mastercard-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
     }
    ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Official Deem fee schedule (Mar 2026): annual fee AED 525, FX 2.99%, interest 3.75%/month. Joy: 100 points = AED 0.50 cashback; accelerated tier needs AED 7,500 monthly spend, cap 100,000 points. Card page lists min salary AED 25,000. Points per AED (aggregator: 5) not on official pages."
+  },
+  {
+   "id": "deem-platinum",
+   "issuer": "Deem Finance",
+   "name": "Platinum Mastercard",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 2.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.005,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Lounge access listed (25+ regional lounges on card page; 1,000+ worldwide on cards overview)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://deem.io/cards/platinum-mastercard",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.deem.io/wp-content/uploads/2026/04/Schedule-of-Fees-Charges-March-2026-English-1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.deem.io/blogs/cashback-vs-reward-points-uae",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "Joy Points placeholder 0.005. Monthly cap 100,000. Lounge access listed. Year one free."
+   "notes": "Fee schedule says AED 315; card page says free for life, saving AED 300 (conflict; schedule used). Min salary AED 10,000. Joy accelerated earn needs AED 5,000 monthly spend, cap 75,000 points; 100 points = AED 0.50. Joy points per AED not published, so base_rate 0 means earn is not modelled. Interest 3.99%/month. Not Islamic."
   }
  ]
 }

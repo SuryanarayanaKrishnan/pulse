@@ -18,8 +18,8 @@
     "first_year_free": true,
     "text": "AED 630 fee waived with AED 5,000 retail spend within 60 days of issue"
    },
-   "min_salary_minor": 2000000,
-   "fx_markup_pct": null,
+   "min_salary_minor": 1000000,
+   "fx_markup_pct": 3.5,
    "reward_structure": {
     "unit": "cashback",
     "point_value_aed": 1,
@@ -51,7 +51,7 @@
        "travel"
       ],
       "monthly_cap_units": 100,
-      "conditions": "truncated source; check",
+      "conditions": "international spend, 5%",
       "channel": "international"
      }
     ],
@@ -60,7 +60,20 @@
      "cc_payment",
      "transfer"
     ],
-    "min_monthly_spend_minor": 500000
+    "min_monthly_spend_minor": 500000,
+    "mcc_exclusions": [
+     6211,
+     6010,
+     6011,
+     6012,
+     6051,
+     6300,
+     9399,
+     9223,
+     4829,
+     6050,
+     6540
+    ]
    },
    "perks": {
     "lounge": {
@@ -82,14 +95,29 @@
    },
    "sources": [
     {
+     "url": "https://www.ajmanbank.ae/site/LIFE_creditcard/en",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/LIFE_creditcard/LIFE_Cash_Back_Reward_TandC_April_Y2026.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/KFS_CREDIT_CARD_MAY_2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/ajman-bank-life-world-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Network Mastercard. Profit 3.8%/month (LIFE) per aggregator. Ajman official page returned 404 in this session. All bonus rates need AED 5,000 statement spend; base 1% rate and the international 5% detail unverified (source truncated).",
+   "notes": "Official LIFE T&C (Apr 2026): cycle runs 11th to 10th; needs AED 5,000 cycle spend; per-category caps AED 100 (online, dine-in, international, refreshment 50%); other retail 1% within the AED 400 max plus other retail. Annual fee AED 600 on the bank page (63,000 fils here includes 5% VAT as the aggregator quotes). Official page states min salary AED 10,000 for the LIFE card; kredit.ae says AED 20,000, official used. Welcome bonus excludes instalments, balance transfers, refunds. Cashback expires after one year; forfeited if minimum due missed on two consecutive dues. Profit 45.6% p.a. FX 3.5% per KFS. Lounge tier assignment not stated per card on the page.",
    "deals": [
     {
      "name": "Cinemas and listed entertainment",
@@ -112,7 +140,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 1000000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 3.5,
    "reward_structure": {
     "unit": "cashback",
     "point_value_aed": 1,
@@ -175,6 +203,11 @@
    },
    "sources": [
     {
+     "url": "https://media.ajmanbank.ae/site/files/KFS%20-%20ENAR%20ULTRACASH%20Card%20(ULTRA%20C)%20R3.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/ajman-bank-ultracash-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
@@ -182,7 +215,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Pick any two of fuel, education, grocery, online shopping; the engine applies all four, so only two should count in practice. Fee AED 315 expats, AED 525 nationals. Profit 3.5%/month.",
+   "notes": "Pick any two of fuel, education, grocery, online shopping; the engine applies all four, so only two should count in practice. Fee AED 315 expats, AED 525 nationals. Profit 3.5%/month. Official Ultracash KFS: fee AED 500 nationals / 300 expats (+VAT), FX 3.5% (combined May 2025 KFS says 3.67%), cash advance AED 150, late AED 125 monthly; official source says only 'up to 10% on 2 of 4 categories', caps not confirmed officially, so stays medium.",
    "deals": []
   },
   {
@@ -198,7 +231,7 @@
    "joining_fee_minor": 0,
    "fee_waiver": null,
    "min_salary_minor": 1000000,
-   "fx_markup_pct": null,
+   "fx_markup_pct": 3.5,
    "reward_structure": {
     "unit": "cashback",
     "point_value_aed": 1,
@@ -228,7 +261,20 @@
      "cc_payment",
      "transfer"
     ],
-    "min_monthly_spend_minor": 300000
+    "min_monthly_spend_minor": 300000,
+    "mcc_exclusions": [
+     6211,
+     6010,
+     6011,
+     6012,
+     6051,
+     6300,
+     9399,
+     9223,
+     4829,
+     6050,
+     6540
+    ]
    },
    "perks": {
     "lounge": {
@@ -242,14 +288,29 @@
    "welcome_offer": null,
    "sources": [
     {
+     "url": "https://www.ajmanbank.ae/site/LIFE_creditcard/en",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/LIFE_creditcard/LIFE_Cash_Back_Reward_TandC_April_Y2026.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/KFS_CREDIT_CARD_MAY_2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    },
+    {
      "url": "https://kredit.ae/credit-cards/ajman-bank-life-platinum-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Network Mastercard. Profit 3.8%/month (LIFE) per aggregator. Ajman official page returned 404 in this session. Total monthly cashback cap AED 200; each rule capped AED 50. Free for life.",
+   "notes": "Official LIFE T&C (Apr 2026): needs AED 3,000 cycle spend; each category capped AED 50, total cashback max AED 200; other retail 1% (cap AED 50). Free for life. Official page states min salary AED 10,000 for LIFE. FX 3.5% per KFS; profit 45.6% p.a. Lounge tier assignment not stated per card on the page.",
    "deals": [
     {
      "name": "Cinemas and listed entertainment",
@@ -258,6 +319,152 @@
      "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
     }
    ]
+  },
+  {
+   "id": "ajman-bright-titanium",
+   "issuer": "Ajman Bank",
+   "name": "BRight Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": 2.1,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.1,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.ajmanbank.ae/site/bright-titanium.html",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/Tariff_of_Charges_Bright.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/KFS_CREDIT_CARD_MAY_2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earns up to 1 BRight Reward per AED 10 (0.1/AED). Valet 2 a month. BRight Reward value in AED not published (0.01 is our placeholder). Fees from Ajman tariff (stated as listed, likely excl. VAT: Titanium free for life, Platinum 1,000, World 1,500; stored with 5% VAT for paid tiers). Profit 3.5%/month, cash advance AED 150, late AED 125. Min salary not published."
+  },
+  {
+   "id": "ajman-bright-platinum",
+   "issuer": "Ajman Bank",
+   "name": "BRight Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": 0.0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.1,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.ajmanbank.ae/site/files/Tariff_of_Charges_Bright.pdf",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/Tariff_of_Charges_Bright.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/KFS_CREDIT_CARD_MAY_2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Reward rate stated only as same programme as Titanium in the KFS; Platinum-specific rate not confirmed. BRight Reward value in AED not published (0.01 is our placeholder). Fees from Ajman tariff (stated as listed, likely excl. VAT: Titanium free for life, Platinum 1,000, World 1,500; stored with 5% VAT for paid tiers). Profit 3.5%/month, cash advance AED 150, late AED 125. Min salary not published."
+  },
+  {
+   "id": "ajman-bright-world",
+   "issuer": "Ajman Bank",
+   "name": "BRight World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": 0.0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.25,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": {
+    "text": "15,000 BRight Rewards upfront (page promotion)"
+   },
+   "sources": [
+    {
+     "url": "https://resources.ajmanbank.ae/site/bright-world.html",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/Tariff_of_Charges_Bright.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.ajmanbank.ae/site/files/KFS_CREDIT_CARD_MAY_2025.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Earns 2.5 BRight Rewards per AED 10 (0.25/AED). Valet 4 a month, lounge access (details unstated), up to 30% off Cleartrip. BRight Reward value in AED not published (0.01 is our placeholder). Fees from Ajman tariff (stated as listed, likely excl. VAT: Titanium free for life, Platinum 1,000, World 1,500; stored with 5% VAT for paid tiers). Profit 3.5%/month, cash advance AED 150, late AED 125. Min salary not published."
   }
  ]
 }
