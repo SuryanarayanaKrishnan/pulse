@@ -3,6 +3,7 @@
 
 Usage: python scripts/build_card_catalog.py [--validate | --check]   (--validate: no write; --check fails if catalog.json is stale)
 """
+
 from __future__ import annotations
 
 import json
@@ -53,7 +54,10 @@ def validate(card: dict, issuer: str) -> list[str]:
         need(str(s.get("url", "")).startswith("https://"), "source url must be https")
         need(bool(DATE_RE.match(str(s.get("verified_on", "")))), "source verified_on must be YYYY-MM-DD")
     if card.get("confidence") == "high":
-        need(any(s.get("kind") in {"bank_page", "kfs", "tc_pdf"} for s in srcs), "high confidence needs an official source")
+        need(
+            any(s.get("kind") in {"bank_page", "kfs", "tc_pdf"} for s in srcs),
+            "high confidence needs an official source",
+        )
     return errs
 
 
@@ -71,7 +75,13 @@ def build() -> tuple[dict, list[str]]:
             cards.append(c)
     cards.sort(key=lambda c: c["id"])
     newest = max((s["verified_on"] for c in cards for s in c.get("sources", [])), default=str(date.today()))
-    return {"schema_version": 1, "catalog_version": newest, "currency": "AED", "count": len(cards), "cards": cards}, errs
+    return {
+        "schema_version": 1,
+        "catalog_version": newest,
+        "currency": "AED",
+        "count": len(cards),
+        "cards": cards,
+    }, errs
 
 
 def main() -> int:

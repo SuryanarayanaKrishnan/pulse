@@ -14,8 +14,10 @@ updates data/cards/banks/*.json - the watcher never edits the catalog itself.
 
 Usage: python scripts/offer_watch.py [--limit N] [--offline-dir DIR]
 """
+
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import html
 import json
@@ -25,7 +27,7 @@ import time
 import urllib.parse
 import urllib.request
 import urllib.robotparser
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -45,11 +47,28 @@ SIGNAL = re.compile(
     re.I,
 )
 DATE_PATTERNS = [
-    (re.compile(r"(\d{1,2})(?:st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?,?\s+(20\d\d)", re.I), "dmy"),
-    (re.compile(r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(20\d\d)", re.I), "mdy"),
+    (
+        re.compile(
+            r"(\d{1,2})(?:st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?,?\s+(20\d\d)",
+            re.I,
+        ),
+        "dmy",
+    ),
+    (
+        re.compile(
+            r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(20\d\d)",
+            re.I,
+        ),
+        "mdy",
+    ),
     (re.compile(r"(20\d\d)-(\d\d)-(\d\d)"), "iso"),
 ]
-MONTHS = {m: i + 1 for i, m in enumerate("jan feb mar apr may jun jul aug sep oct nov dec".split())}
+MONTHS = {
+    m: i + 1
+    for i, m in enumerate(
+        ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+    )
+}
 
 
 class _Text(HTMLParser):
@@ -123,10 +142,8 @@ def robots_ok(url: str, cache: dict[str, urllib.robotparser.RobotFileParser]) ->
     rp = cache.get(base)
     if rp is None:
         rp = urllib.robotparser.RobotFileParser(base + "/robots.txt")
-        try:
+        with contextlib.suppress(Exception):  # unreachable robots.txt: only an explicit disallow blocks us
             rp.read()
-        except Exception:  # noqa: BLE001  unreachable robots -> be conservative only on explicit disallow
-            pass
         cache[base] = rp
     try:
         return rp.can_fetch(UA, url)
@@ -177,7 +194,7 @@ def main(argv: list[str]) -> int:
     limit = int(argv[argv.index("--limit") + 1]) if "--limit" in argv else None
     offline = Path(argv[argv.index("--offline-dir") + 1]) if "--offline-dir" in argv else None
     catalog = json.loads(CATALOG.read_text())
-    today = datetime.now(timezone.utc).date()
+    today = datetime.now(UTC).date()
     SNAP_DIR.mkdir(parents=True, exist_ok=True)
     targets = list(watch_targets(catalog).items())[:limit]
     robots: dict[str, urllib.robotparser.RobotFileParser] = {}
@@ -214,9 +231,15 @@ def main(argv: list[str]) -> int:
             d = diff_lines(old["lines"], lines)
             if d["added"] or d["removed"]:
                 changes.append({"url": url, "card_ids": card_ids, "detected_on": today.isoformat(), **d})
-        sp.write_text(json.dumps({"url": url, "fetched_on": today.isoformat(), "lines": lines}, indent=1, ensure_ascii=False))
+        sp.write_text(
+            json.dumps(
+                {"url": url, "fetched_on": today.isoformat(), "lines": lines}, indent=1, ensure_ascii=False
+            )
+        )
         for ex in expiring(lines, today):
-            changes.append({"url": url, "card_ids": card_ids, "detected_on": today.isoformat(), "expiring": ex})
+            changes.append(
+                {"url": url, "card_ids": card_ids, "detected_on": today.isoformat(), "expiring": ex}
+            )
 
     feed = {
         "generated_on": today.isoformat(),
@@ -226,7 +249,9 @@ def main(argv: list[str]) -> int:
         "errors": errors,
     }
     FEED.write_text(json.dumps(feed, indent=1, ensure_ascii=False) + "\n")
-    print(f"## Offer watch {today}\n- pages checked: {len(targets)}\n- changes: {len(changes)}\n- thin/JS pages: {len(thin)}\n- errors: {len(errors)}")
+    print(
+        f"## Offer watch {today}\n- pages checked: {len(targets)}\n- changes: {len(changes)}\n- thin/JS pages: {len(thin)}\n- errors: {len(errors)}"
+    )
     for c in changes[:40]:
         print(f"\n### {', '.join(c['card_ids'])}\n{c['url']}")
         for x in c.get("added", [])[:6]:

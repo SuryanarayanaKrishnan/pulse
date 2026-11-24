@@ -15,7 +15,11 @@ def test_banks_validate():
 
 
 def test_catalog_json_is_current():
-    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_card_catalog.py"), "--check"], capture_output=True, text=True)
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "build_card_catalog.py"), "--check"],
+        capture_output=True,
+        text=True,
+    )
     assert r.returncode == 0, r.stdout
 
 
