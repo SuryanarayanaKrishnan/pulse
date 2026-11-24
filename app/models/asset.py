@@ -27,6 +27,7 @@ class AssetKind(enum.StrEnum):
     crypto = "crypto"
     cash = "cash"
     vehicle = "vehicle"
+    gold_jewellery = "gold_jewellery"
     other = "other"
 
 

@@ -18,12 +18,14 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from sqlalchemy.pool import NullPool
 
 from app.api.v1.routers.email_connections import get_http_client
+from app.api.v1.routers.prices import get_price_providers
 from app.core.config import get_settings
 from app.core.crypto import Encryptor, generate_key, get_encryptor
 from app.core.db import get_session
 from app.core.queue import get_queue, get_queue_or_none
 from app.main import create_app
 from app.services.storage import LocalStorage, get_storage
+from app.services.valuations.providers import Providers
 from tests.conftest import FakeQueue
 from tests.fake_google import FakeGoogle
 
@@ -53,6 +55,12 @@ async def sessionmaker_() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
     engine = create_async_engine(TEST_DB, poolclass=NullPool)
     yield async_sessionmaker(engine, expire_on_commit=False)
     await engine.dispose()
+
+
+@pytest.fixture
+def price_providers() -> Providers:
+    """Fake market-data sources shared with the app under test (empty: no network, no sources)."""
+    return Providers()
 
 
 @pytest.fixture
@@ -117,6 +125,7 @@ async def new_user(
     storage: LocalStorage,
     encryptor: Encryptor,
     google: FakeGoogle,
+    price_providers: Providers,
 ) -> AsyncIterator[Callable[[], Api]]:
     app = create_app()
 
@@ -132,6 +141,7 @@ async def new_user(
     app.dependency_overrides[get_queue_or_none] = _queue
     app.dependency_overrides[get_storage] = lambda: storage
     app.dependency_overrides[get_encryptor] = lambda: encryptor
+    app.dependency_overrides[get_price_providers] = lambda: price_providers
     gmail_settings = get_settings().model_copy(
         update={
             "google_client_id": "cid.apps.googleusercontent.com",

@@ -144,6 +144,10 @@ statements (see "Known limitations"). To adapt a bank: edit its module (`Layout`
 | insights | `GET /insights/cashflow`, `/insights/spend-trends`, `/insights/net-worth-history`, `/insights/safe-to-spend`, `/insights/health-score`, `GET /cards/due-dates` |
 | recurring / goals | `GET /recurring`, `/recurring/upcoming`, `PUT/DELETE /recurring/{key}/review`; `/goals` CRUD |
 | market | `GET /market/quotes` |
+| prices | `GET /prices/snapshot`, `GET /prices/history?symbol=&days=` |
+| funds | `GET /funds/search`, `/funds/schemes/{code}/latest`, `/funds/holdings` CRUD, `PUT /funds/holdings/{id}/nav`, `GET .../history`, `GET/POST .../transactions`, `POST /funds/cas/import` |
+| jewellery | `/jewellery` CRUD, `PUT /jewellery/{asset_id}/backup`, `GET /assets/{id}/valuation-history` |
+| documents | `/documents` CRUD, `PUT /documents/{id}/backup`, `POST /documents/{id}/reminders`, `POST /documents/reminders/{id}/done`, `DELETE /documents/reminders/{id}`, `GET /insights/reminders` |
 | family | `/households` and children (see Family) |
 | ops | `GET /health` (liveness), `GET /ready` (DB + Redis) |
 
@@ -384,6 +388,20 @@ days, during which the owner can cancel by any sign of life) rather than automat
 claim; the vault stores locations and instructions, never credentials or card numbers; nominee access is
 read-only; UAE succession rules (Sharia or the DIFC wills registry, depending on the person) are not something
 the app can interpret, and the app must say that it is not a will.
+
+## Live prices, mutual funds, jewellery and documents (migration 0005)
+
+Hard rule: nothing here costs money. Every provider is a free public API that needs no key; there are no paid plans and no billing cloud resources. Set a provider to `none` to turn it off. The provider endpoints are implemented from public documentation and are exercised in tests only through mocked transports and fakes; they have not been verified against the live services. Stooq is read as its public CSV download, so check its terms before heavy use.
+
+**Prices.** `market_quotes` stays the cache (symbols `XAU_USD_OZ`, `XAG_USD_OZ`, `FX_<CCY>_AED`, `CRYPTO_<id>_USD`, `STK_<ticker>_USD`, `NAV_<code>`). `GET /v1/prices/snapshot` returns gold and silver (per oz and per gram, AED and USD, karats 24/22/21/18), FX, crypto, stocks and fund NAVs in one payload with `Cache-Control: private, max-age=<ttl>`. A request refreshes the cache when gold is older than `PRICE_TTL_SECONDS` (8 s timeout); on any failure it serves the stale cache (stale-while-error). `GET /v1/prices/history?symbol=gold|silver|fx:EUR|crypto:bitcoin|stock:aapl.us|nav:<code>&days=` charts cached daily quotes; crypto, stock and NAV history are backfilled from the provider when fewer than 5 points are cached. There is no free gold or FX history source, so those build up from the daily cache.
+
+**Mutual funds.** `india_mf` holdings are priced from mfapi.in (search, latest NAV, history); `manual` holdings take a user-entered NAV and units, with optional manual NAV updates. Value = units x NAV converted to AED with the cached FX rate (USD falls back to the 3.6725 peg; otherwise the value is null with a note). The NAV basis is `market`, `stale_market` (older than 7 days), `manual` or `none`. Funds count in `/v1/net-worth` and net-worth snapshots. `POST /v1/funds/cas/import` takes a CAMS/KFintech CAS PDF (multipart `file`, form `password`, usually derived from PAN), parses it best-effort into holdings and transactions, dedupes by hash, and resolves scheme codes by an unambiguous name match. The file and password are used in memory only and are never stored.
+
+**Jewellery.** `/v1/jewellery` stores description, weight, karat or purity override, purchase price and date, photo keys (the photos stay on the device) and optional encrypted backup-blob metadata (`encrypted: true` required; no blob is stored here). Each piece is also a `gold_jewellery` asset valued as weight x purity x live gold (melt value), with market-vs-purchase gain/loss; `GET /v1/assets/{id}/valuation-history` returns the daily valuation points recorded on each revalue.
+
+**Documents and reminders.** `/v1/documents` keeps metadata for title deeds, FD certificates, insurance, etc., with reminders (maturity, renewal, expiry, custom). `GET /v1/insights/reminders` merges them with FD assets that have `metadata.maturity_date`, status `overdue`, `due_soon` or `upcoming`, and `next_due`.
+
+New settings: `CRYPTO_PROVIDER` (`coingecko`|`none`), `STOCK_PROVIDER` (`stooq`|`none`), `FUND_PROVIDER` (`mfapi`|`none`), `PRICE_TTL_SECONDS` (900), `PRICES_REFRESH_ON_REQUEST` (true). The scheduled FX refresh now also covers fund currencies.
 
 ## Running locally
 

@@ -117,7 +117,14 @@ async def test_manual_assets_are_untouched_and_unsupported_kinds_explain(new_use
             {"kind": "stock", "name": "X", "manual_value_minor": 5_00, "valuation_source": "market"},
         )
     ).json()
-    assert stock["value_basis"] == "manual" and "gold" in stock["valuation_note"]
+    assert stock["value_basis"] == "manual" and "metadata.ticker" in stock["valuation_note"]
+    car = (
+        await api.post(
+            "/v1/assets",
+            {"kind": "vehicle", "name": "Car", "manual_value_minor": 9_00, "valuation_source": "market"},
+        )
+    ).json()
+    assert car["value_basis"] == "manual" and "gold" in car["valuation_note"]
     bare = (
         await api.post("/v1/assets", {"kind": "other", "name": "Thing", "cost_basis_minor": 77_00})
     ).json()

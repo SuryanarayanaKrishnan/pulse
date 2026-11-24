@@ -127,6 +127,7 @@ async def refresh_valuations(ctx: dict[str, Any]) -> dict[str, Any]:
             rep = await refresh_all(session, providers)
     log.info("valuations_refreshed", gold=rep.gold, fx=rep.fx, property_index=rep.property_index)
     return {
-        "gold": rep.gold, "fx": rep.fx, "property_index": rep.property_index,
+        "gold": rep.gold, "fx": rep.fx, "property_index": rep.property_index, "silver": rep.silver,
+        "crypto": rep.crypto, "stocks": rep.stocks, "funds": rep.funds,
         "assets_revalued": rep.assets_revalued, "assets_unvalued": rep.assets_unvalued, "errors": rep.errors,
     }  # fmt: skip
