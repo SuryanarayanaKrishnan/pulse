@@ -572,7 +572,7 @@
     "requires_fee_payment": false
    },
    "community_notes": [],
-   "notes": "Annual AED 1,500 + 5% VAT (supplementary AED 600 + VAT). Vantage point value 0.0034 AED derived from aggregator (2 pts = 0.69%) not an official redemption table. Most perks need AED 10,000 spend in the previous statement cycle. Medium confidence because the 0.5-point low-category rate and point value could not be confirmed on the bank page.",
+   "notes": "Annual AED 1,500 + 5% VAT (supplementary AED 600 + VAT). Vantage point value 0.0034 AED derived from aggregator (2 pts = 0.69%) not an official redemption table. Most perks need AED 10,000 spend in the previous statement cycle. Medium confidence because the 0.5-point low-category rate and point value could not be confirmed on the bank page. Bank page re-read 2026-11-24: fee AED 1,500 + VAT, min income AED 25,000, 6 pts/AED international, 4 travel, 2 local, 1 'other local' (reduced 0.5 rate for government etc. still comes from aggregator), lounge 12 visits with USD 1 international spend else 2, one guest, travel insurance multi-trip up to 90 days, valet/golf/transfers need AED 10,000 prior-cycle spend (T&Cs updated 1 Jul 2026). Interest 3.85%/month. FX fee not on page.",
    "id": "mashreq-solitaire",
    "name": "Solitaire",
    "reward_structure": {
@@ -606,7 +606,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "international_rate": 6
    },
    "sources": [
     {
@@ -620,7 +621,7 @@
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "issuer": "Mashreq"
   },
   {
@@ -709,7 +710,7 @@
    "tier": "other",
    "kind": "points",
    "islamic": false,
-   "status": "closed_to_new",
+   "status": "unverified",
    "annual_fee_minor": 525000,
    "joining_fee_minor": 0,
    "fee_waiver": null,
@@ -724,7 +725,7 @@
     "text": "Hotel stay or 3 million Vantage points per aggregator listing"
    },
    "community_notes": [],
-   "notes": "Invitation-only card; only the kredit.ae bank listing was seen (fee AED 5,250, 5 Vantage points per AED). Not on Mashreq's public card menu. Value of the welcome offer unknown. Treat as unverified.",
+   "notes": "Invitation-only card; only the kredit.ae bank listing was seen (fee AED 5,250, 5 Vantage points per AED). Not on Mashreq's public card menu. Value of the welcome offer unknown. Treat as unverified. 2026-11-24: the Mashreq NEO credit card menu lists only Solitaire, Platinum Plus, Cashback, noon, Aura, Aura World, Aura World Elite; no io card, so status set to unverified.",
    "id": "mashreq-io",
    "name": "IO",
    "reward_structure": {
@@ -742,6 +743,11 @@
     {
      "url": "https://kredit.ae/banks/mashreq",
      "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/",
+     "kind": "bank_page",
      "verified_on": "2026-11-24"
     }
    ],

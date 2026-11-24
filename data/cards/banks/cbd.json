@@ -441,8 +441,13 @@
    "status": "active",
    "annual_fee_minor": 20895,
    "joining_fee_minor": 0,
-   "fee_waiver": null,
-   "min_salary_minor": null,
+   "fee_waiver": {
+    "spend_minor": 1200000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free; from year two waived with AED 12,000 annual retail spend (bank page)"
+   },
+   "min_salary_minor": 500000,
    "fx_markup_pct": null,
    "reward_structure": {
     "unit": "points",
@@ -485,7 +490,15 @@
     "quarterly_bonus_units": 7500,
     "quarterly_bonus_threshold_minor": 2750000
    },
-   "perks": {},
+   "perks": {
+    "cinema": {
+     "text": "50% off two Novo tickets a month",
+     "conditions": "AED 2,000 monthly spend"
+    },
+    "insurance": {
+     "text": "Optional Credit Shield at 1% of monthly outstanding balance; page lists complimentary insurance without detail"
+    }
+   },
    "welcome_offer": {
     "text": "First year annual fee waived; AED 200 extra Unravel hotel discount",
     "requires_fee_payment": false
@@ -497,9 +510,9 @@
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "community_notes": [],
-   "notes": "Bank page only: annual fee AED 199 + VAT assumed 208.95, free in year one; salary requirement not read; Smiles point value (AED 0.01) is an unverified assumption. 'Up to' 1.5 pts domestic, 2 abroad, 5 pts on e&/Smiles/elGrocer (cap 10,000/month); 7,500 bonus pts per quarter at AED 27,500 spend."
+   "notes": "Bank page only: annual fee AED 199 + VAT assumed 208.95, free in year one; salary requirement not read; Smiles point value (AED 0.01) is an unverified assumption. 'Up to' 1.5 pts domestic, 2 abroad, 5 pts on e&/Smiles/elGrocer (cap 10,000/month); 7,500 bonus pts per quarter at AED 27,500 spend. Bank page re-read: min salary AED 5,000 (confirmed employee), fee AED 199 + 5% VAT from year two, waiver at AED 12,000 yearly spend. The page's own category earn table renders as zeros so base/category rates remain from earlier read; no lounge listed; FX fee not on page."
   },
   {
    "id": "cbd-visa-platinum",
@@ -513,7 +526,7 @@
    "annual_fee_minor": 0,
    "joining_fee_minor": 0,
    "fee_waiver": null,
-   "min_salary_minor": null,
+   "min_salary_minor": 500000,
    "fx_markup_pct": null,
    "reward_structure": {
     "unit": "points",
@@ -526,10 +539,19 @@
      "transfer"
     ]
    },
-   "perks": {},
+   "perks": {
+    "dining": {
+     "text": "BOGO dining/lifestyle offers via CBD app and 2-for-1 via Entertainer by Visa"
+    },
+    "insurance": {
+     "text": "Optional Credit Shield at 1% of monthly outstanding balance"
+    }
+   },
    "welcome_offer": {
-    "text": "0% interest on balance transfer and quick cash for 6 or 12 months if requested within 30 days of issue",
-    "requires_fee_payment": false
+    "text": "0% on balance transfer and cash-on-call (6 or 12 months) if requested within 30 days of issuance; processing 1.99% (6m) or 2.99% (12m); valid to 31 Dec 2026",
+    "requires_fee_payment": false,
+    "window_days": 30,
+    "valid_until": "2026-12-31"
    },
    "sources": [
     {
@@ -538,9 +560,9 @@
      "verified_on": "2026-11-24"
     }
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "community_notes": [],
-   "notes": "Bank page only: no annual fee ever, up to 1.5 CBD Rewards points per AED, up to 5 free supplementary cards. Exact category rates and salary not found, so base rate left 0 (unknown). Possibly legacy/migrated product."
+   "notes": "No annual fee ever; up to 1.5 CBD points per AED stated without category breakdown, so rate rules left empty and base 0 (unknown). Min salary AED 5,000 for confirmed employees. Up to 5 free supplementary cards. FX fee not stated. Raised from low to medium: bank page re-read and consistent, but earn detail missing."
   }
  ]
 }

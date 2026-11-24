@@ -326,6 +326,114 @@
    ],
    "confidence": "high",
    "issuer": "HSBC"
+  },
+  {
+   "issuer": "HSBC",
+   "islamic": false,
+   "status": "active",
+   "joining_fee_minor": 0,
+   "fx_markup_pct": null,
+   "community_notes": [],
+   "deals": [],
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "points",
+   "id": "hsbc-premier",
+   "name": "Premier",
+   "annual_fee_minor": 0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0025,
+    "base_rate": 1,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "8 complimentary visits a year to 1,200+ lounges; guests USD 32",
+     "count_per_year": 8,
+     "conditions": "Needs a USD 1+ cross-border transaction at least every 3 months"
+    },
+    "cinema": {
+     "text": "Buy 1 get 1 movie tickets monthly; up to 25% off cinema food and drink",
+     "conditions": "AED 6,000 spend in the booking month"
+    },
+    "dining": {
+     "text": "Zomato Gold up to 50% off dining; talabat up to 20% off twice a month"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to AED 4,000 in value: AED 2,500 iStyle eGift card, 50,000 points for a supplementary card transaction, 50,000 points for a non-AED transaction of AED 500+, 1 year Noon One and talabat pro; primary card only; ends 31 Dec 2026",
+    "value_aed_est": null,
+    "valid_until": "2026-12-31",
+    "requires_fee_payment": false
+   },
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/credit-cards/products/premier/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "notes": "Bank page: no annual fee, needs a Premier Account (age 18-70, UAE resident), 1 point per AED, 44.28% APR. Network Mastercard is implied by Mastercard T&Cs/Travel Pass on page, not stated outright. Points value is an unverified conservative guess (0.0025); redemption table not seen. Min salary, fee waiver and FX fee not on page."
+  },
+  {
+   "issuer": "HSBC",
+   "islamic": false,
+   "status": "active",
+   "joining_fee_minor": 0,
+   "fx_markup_pct": null,
+   "community_notes": [],
+   "deals": [],
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "network": "mastercard",
+   "tier": "other",
+   "kind": "points",
+   "id": "hsbc-advance",
+   "name": "Advance",
+   "annual_fee_minor": 0,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0025,
+    "base_rate": 1,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "4 complimentary visits a year to selected lounges; guests USD 32",
+     "count_per_year": 4,
+     "conditions": "Needs a USD 1+ cross-border transaction every 3 months"
+    },
+    "cinema": {
+     "text": "Buy 1 get 1 movie tickets monthly with qualifying spend; up to 25% off food and drink"
+    },
+    "dining": {
+     "text": "Zomato Gold 12 months, up to 50% off dining; Careem Plus 12 months"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.hsbc.ae/credit-cards/products/advance/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "notes": "Bank page: no annual fee, needs an Advance Account (age 18-65, UAE resident), 1 point per AED, 44.28% APR, 56 interest-free days, flexi instalments 3-36 months. Network Mastercard implied, not stated. Points value unverified guess. Min salary, FX fee and welcome offer not on page. HSBC Private Bank card page has no details; not added."
   }
  ]
 }

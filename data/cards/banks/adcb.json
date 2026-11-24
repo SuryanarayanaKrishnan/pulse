@@ -498,7 +498,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Two variants sold (Visa Gold and Mastercard Titanium), no annual fee, min salary AED 5,000 (or AED 3,000 limit). Earn up to 0.5 TouchPoint/AED, +5,000 bonus points in months with AED 5,000 spend. 100,000 points = about AED 500. No kredit.ae page; earn base read from the bank page only."
+   "notes": "Two variants sold (Visa Gold and Mastercard Titanium), no annual fee, min salary AED 5,000 (or AED 3,000 limit). Earn up to 0.5 TouchPoint/AED, +5,000 bonus points in months with AED 5,000 spend. 100,000 points = about AED 500. No kredit.ae page; earn base read from the bank page only. Bank page re-read 2026-11-24 did not show fee, salary or earn rates (only Shahid 50% off first Mastercard use, 0% instalments in first 90 days, 55 interest-free days); earlier figures retained. touchpoints-flex-kfs.pdf and ADCB KFS index returned client errors."
   },
   {
    "id": "adcb-touchpoints-platinum",
@@ -749,7 +749,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Emiratis only (metal card). Annual fee AED 2,100 incl VAT (stated on bank page). Min salary AED 10,000 or AED 20,000 limit. Earns 'up to 3' TouchPoints/AED (base modelled as 3); 0.7 at supermarkets/auto/insurance/fast food, 0.35 at fuel/education/government/telecom/transport, 0.4 in EEA. 200,000 points = about AED 1,000. Anniversary bonus: 250,000 pts at AED 250k annual spend, 500,000 at 350k, 750,000 at 500k. Premium perk details not fully read; no aggregator page."
+   "notes": "Emiratis only (metal card). Annual fee AED 2,100 incl VAT (stated on bank page). Min salary AED 10,000 or AED 20,000 limit. Earns 'up to 3' TouchPoints/AED (base modelled as 3); 0.7 at supermarkets/auto/insurance/fast food, 0.35 at fuel/education/government/telecom/transport, 0.4 in EEA. 200,000 points = about AED 1,000. Anniversary bonus: 250,000 pts at AED 250k annual spend, 500,000 at 350k, 750,000 at 500k. Premium perk details not fully read; no aggregator page. Bank page re-read 2026-11-24: fee AED 2,100 incl VAT, min salary AED 10,000 or AED 20,000 limit, Emiratis only, age 21+, 300,000 welcome TouchPoints, 1,000+ lounges, anniversary points up to 750,000; page gives no per-AED earn rate, FX fee or waiver so confidence stays medium."
   },
   {
    "id": "adcb-private-world-elite",
@@ -819,7 +819,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "Aggregator-only; invitation/private-banking tier, minimum salary not published. Annual fee AED 7,875, supplementary AED 1,575, retail finance rate 1.99%/month. 4 TouchPoints/AED base, 0.7 supermarkets/auto/insurance, 0.35 fuel/education etc. TouchPoint value assumed AED 0.005 (same programme as other ADCB cards)."
+   "notes": "Aggregator-only; invitation/private-banking tier, minimum salary not published. Annual fee AED 7,875, supplementary AED 1,575, retail finance rate 1.99%/month. 4 TouchPoints/AED base, 0.7 supermarkets/auto/insurance, 0.35 fuel/education etc. TouchPoint value assumed AED 0.005 (same programme as other ADCB cards). ADCB bank page not reachable (client error on guessed URLs); aggregator only."
   },
   {
    "id": "adcb-shukran",
@@ -1080,7 +1080,7 @@
    ],
    "confidence": "medium",
    "community_notes": [],
-   "notes": "UAE nationals only, Shariah-compliant. Aggregator-only. NO cashback unless total card spend that month is AED 7,000+; then 7% on dining, fuel, hotels, travel, fitness, spas, jewellery (jewellery not modelled), 50% on online cinema tickets, 1% elsewhere; AED 1,500 monthly cap. Annual fee AED 945 incl VAT, waived in year one. Salary AED 8,000 or AED 15,000 limit.",
+   "notes": "UAE nationals only, Shariah-compliant. Aggregator-only. NO cashback unless total card spend that month is AED 7,000+; then 7% on dining, fuel, hotels, travel, fitness, spas, jewellery (jewellery not modelled), 50% on online cinema tickets, 1% elsewhere; AED 1,500 monthly cap. Annual fee AED 945 incl VAT, waived in year one. Salary AED 8,000 or AED 15,000 limit. ADCB bank page not reachable (client error on guessed URLs); aggregator only.",
    "deals": [
     {
      "name": "Online movie tickets",
