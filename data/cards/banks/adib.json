@@ -1,0 +1,566 @@
+{
+ "issuer": "ADIB",
+ "cards": [
+  {
+   "id": "adib-skywards-signature",
+   "issuer": "ADIB",
+   "name": "Emirates Skywards Visa Signature Covered Card",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.6807,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "conditions": "direct airline spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0681,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "groceries, utilities, education, fuel, rent, transit, telecom and similar earn the reduced rate; government capped/low"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits plus a guest, 1,200+ lounges via Visa Airport Companion"
+    },
+    "valet": {
+     "text": "2 per month via Valtrans",
+     "count_per_month": 2
+    },
+    "dining": {
+     "text": "2 airport transfers a year, capped AED 150 Dubai/Sharjah, AED 350 elsewhere"
+    },
+    "insurance": {
+     "text": "Visa travel medical and accident cover up to USD 500,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "25,000 Skywards Miles for activation and first retail purchase within 30 days of issue",
+    "value_aed_est": 750
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-skywards-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 1.5 miles/USD (0.41/AED) international, 0.6 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Aggregator shows AED 5,000 min salary, unusually low vs fee; verify."
+  },
+  {
+   "id": "adib-skywards-infinite",
+   "issuer": "ADIB",
+   "name": "Emirates Skywards Visa Infinite Covered Card",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 472500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.03,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Emirates/flydubai",
+      "rate": 0.8169,
+      "merchants": [
+       "emirates",
+       "flydubai"
+      ],
+      "conditions": "direct airline spend"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0681,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "groceries, utilities, education, fuel, rent, transit, telecom and similar earn the reduced rate; government capped/low"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits plus a guest"
+    },
+    "valet": {
+     "text": "4 per month via Valtrans",
+     "count_per_month": 4
+    },
+    "dining": {
+     "text": "4 airport transfers a year (AED 150/350 cap each); 24h concierge"
+    },
+    "insurance": {
+     "text": "Visa travel cover up to USD 500,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "50,000 Skywards Miles for activation and first purchase within 30 days",
+    "value_aed_est": 1500
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-skywards-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Miles are quoted per USD 1 by the bank; converted to per AED at 3.6725. International (non-AED, non-EEA) spend earns a higher rate that the engine cannot express: 2 miles/USD (0.54/AED) international, 0.8 in EEA.. point_value_aed 0.03 is a conservative estimate of a Skywards/Etihad mile. Profit rate 3.75%/month, 55-day grace. ADIB lists reduced rates for government, groceries, utilities, education, fuel, real estate, transit/Salik, charity. Min salary AED 5,000 per aggregator looks suspicious; verify."
+  },
+  {
+   "id": "adib-cashback-covered",
+   "issuer": "ADIB",
+   "name": "Cashback Covered Card",
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 10395,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Supermarkets and groceries",
+      "rate": 0.04,
+      "categories": [
+       "groceries"
+      ],
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "Fuel and automobile",
+      "rate": 0.04,
+      "categories": [
+       "transport"
+      ],
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "School and education",
+      "rate": 0.04,
+      "categories": [
+       "education"
+      ],
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "Dining",
+      "rate": 0.04,
+      "categories": [
+       "dining"
+      ],
+      "monthly_cap_units": 200
+     },
+     {
+      "name": "Utility payments",
+      "rate": 0.04,
+      "categories": [
+       "utilities"
+      ],
+      "monthly_cap_units": 100
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-cashback-covered-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Overall monthly cashback cap AED 1,000. Everything outside the five categories earns nothing per aggregator (not stated explicitly; check). Four free supplementary cards. Profit 3.75%/month. ADIB official page blocked/404 in this session so not cross-checked."
+  },
+  {
+   "id": "adib-marriott-bonvoy-signature",
+   "issuer": "ADIB",
+   "name": "Marriott Bonvoy Visa Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 52395,
+   "joining_fee_minor": 52395,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.02,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Marriott hotels",
+      "rate": 0.8169,
+      "merchants": [
+       "marriott",
+       "sheraton",
+       "westin",
+       "ritz-carlton",
+       "st regis",
+       "le meridien",
+       "w hotels"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.0681,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ],
+      "conditions": "supermarkets, government, utilities, education, petrol, real estate, transit/Salik, charity"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits for cardholder only (no guest)"
+    },
+    "valet": {
+     "text": "2 per month via Valtrans",
+     "count_per_month": 2
+    },
+    "dining": {
+     "text": "2 airport transfers a year"
+    }
+   },
+   "welcome_offer": {
+    "text": "50,000 Marriott Bonvoy points, no minimum spend",
+    "value_aed_est": 1000
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-marriott-bonvoy-visa-signature-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Bonvoy points valued conservatively at AED 0.02 each. International 2 points/USD (0.54/AED), EEA 1/USD. Gives Silver Elite and 10 night credits; USD 15,000 annual spend upgrades to Gold. Profit 3.75%/month. Joining and annual fee both AED 523.95, no spend waiver."
+  },
+  {
+   "id": "adib-marriott-bonvoy-infinite",
+   "issuer": "ADIB",
+   "name": "Marriott Bonvoy Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 262500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.02,
+    "base_rate": 0.8169,
+    "rules": [
+     {
+      "name": "Marriott hotels",
+      "rate": 2.1784,
+      "merchants": [
+       "marriott",
+       "sheraton",
+       "westin",
+       "ritz-carlton",
+       "st regis",
+       "le meridien",
+       "w hotels"
+      ]
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.1361,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "rent",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited visits plus one guest"
+    },
+    "valet": {
+     "text": "4 per month via Valtrans",
+     "count_per_month": 4
+    },
+    "dining": {
+     "text": "4 airport transfers a year"
+    }
+   },
+   "welcome_offer": {
+    "text": "150,000 Bonvoy points (100,000 on issue + 50,000 after USD 15,000 in 90 days); applications 27 Aug-30 Nov 2026 get a further 50,000",
+    "value_aed_est": 3000,
+    "min_spend_minor": 5508750,
+    "window_days": 90,
+    "valid_until": "2026-11-30"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-marriott-bonvoy-visa-infinite-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Bonvoy point AED 0.02 conservative. International 4 points/USD (1.09/AED), EEA 1.5/USD. Gold Elite on issue, annual free night award worth up to 85,000 points per aggregator headline. Profit 3.75%/month."
+  },
+  {
+   "id": "adib-share-infinite",
+   "issuer": "ADIB",
+   "name": "SHARE Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 104895,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 7500000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "From year two waived if prior-year spend was AED 75,000, or AED 30,000 international"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.2,
+    "rules": [
+     {
+      "name": "Carrefour and MAF venues",
+      "rate": 0.6,
+      "categories": [
+       "groceries"
+      ],
+      "merchants": [
+       "carrefour",
+       "majid al futtaim",
+       "mall of the emirates",
+       "city centre",
+       "vox cinemas",
+       "ski dubai",
+       "magic planet"
+      ],
+      "conditions": "6% back; doubled to 12% for 90 days at a narrower MAF list on applications 15 May-31 Dec 2026"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.05,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "transport"
+      ],
+      "conditions": "fuel, transport, government, utilities, education, telecom, grocery earn 0.05"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "valet": {
+     "text": "4 per month via Valtrans",
+     "count_per_month": 4
+    },
+    "dining": {
+     "text": "24h Visa concierge"
+    }
+   },
+   "welcome_offer": {
+    "text": "10,000 SHARE points (AED 1,000) after paying first annual fee, activation and first purchase within 30 days",
+    "value_aed_est": 1000,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-share-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "10 SHARE points = AED 1. Non-Carrefour groceries get only 0.5%. Fee AED 1,048.95 year one, waived later with AED 30,000 international or AED 75,000 total prior-year spend. Profit 3.75%/month."
+  },
+  {
+   "id": "adib-share-platinum",
+   "issuer": "ADIB",
+   "name": "SHARE Visa Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 4500000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "From year two waived at AED 45,000 total or AED 15,000 non-AED prior-year spend"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.125,
+    "rules": [
+     {
+      "name": "Carrefour and MAF venues",
+      "rate": 0.3,
+      "categories": [
+       "groceries"
+      ],
+      "merchants": [
+       "carrefour",
+       "majid al futtaim",
+       "mall of the emirates",
+       "city centre",
+       "vox cinemas",
+       "ski dubai",
+       "magic planet"
+      ],
+      "conditions": "3% back; doubled for 90 days on applications 15 May-31 Dec 2026"
+     },
+     {
+      "name": "Reduced categories",
+      "rate": 0.025,
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "telecom",
+       "transport"
+      ]
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "valet": {
+     "text": "1 per month via Valtrans",
+     "count_per_month": 1
+    }
+   },
+   "welcome_offer": {
+    "text": "2,000 SHARE points (AED 200) for activation and first purchase in 30 days, credited after first fee payment",
+    "value_aed_est": 200,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/adib-share-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "10 SHARE points = AED 1. Base 1.25%, reduced 0.25%. EEA spend 0.25%. Fee waived from year two with AED 45,000 spend or AED 15,000 non-AED spend. Profit 3.75%/month."
+  }
+ ]
+}

@@ -21,7 +21,17 @@ class Settings(BaseSettings):
     db_max_overflow: int = 5
     db_echo: bool = False
 
+    # Job backend: "arq" (Redis worker; local dev / any always-on host) or "cloudtasks"
+    # (Cloud Tasks + Cloud Scheduler call /internal/* on this service; scales to zero).
+    queue_backend: Literal["arq", "cloudtasks"] = "arq"
     redis_url: str = "redis://localhost:6379/0"
+    gcp_project: str = ""
+    gcp_location: str = ""  # region of the Cloud Tasks queue (same as Cloud Run)
+    cloud_tasks_queue: str = "pulse-jobs"
+    # Public https URL of this service; used as the task target and as the OIDC audience.
+    service_url: str = ""
+    # Service account that Cloud Tasks / Scheduler sign their OIDC tokens as.
+    tasks_invoker_sa: str = ""
 
     supabase_jwt_secret: str = ""
     supabase_jwks_url: str = ""

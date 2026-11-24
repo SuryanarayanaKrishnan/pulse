@@ -1,0 +1,92 @@
+{
+ "issuer": "Invest Bank",
+ "cards": [
+  {
+   "id": "invest-platinum",
+   "issuer": "Invest Bank",
+   "name": "Platinum",
+   "network": null,
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "unverified",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.03,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "25+ VIP lounges (Marhaba, CAC)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/invest-bank-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Flat 3% cashback capped AED 1,000 per month; first year free; Entertainer offers. Excludes cash advances, balance transfers, fees. Interest 3.49%/month. Catalog only; Invest Bank status unverified."
+  },
+  {
+   "id": "invest-world",
+   "issuer": "Invest Bank",
+   "name": "World",
+   "network": null,
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "unverified",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.03,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited access to 1,000+ lounges"
+    },
+    "insurance": {
+     "text": "Up to USD 500,000"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/invest-bank-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Flat 3% cashback capped AED 1,500 per month. Unlimited lounges, travel insurance up to USD 500,000."
+  }
+ ]
+}

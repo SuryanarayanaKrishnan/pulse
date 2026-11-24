@@ -1,0 +1,182 @@
+{
+ "issuer": "United Arab Bank",
+ "cards": [
+  {
+   "id": "uab-titanium",
+   "issuer": "United Arab Bank",
+   "name": "Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Groceries and fuel",
+      "rate": 0.05,
+      "categories": [
+       "groceries",
+       "transport"
+      ],
+      "monthly_cap_units": 500,
+      "conditions": "3% at AED 3,000 monthly spend, 5% at AED 5,000; shared cap AED 500 per month"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/uab-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived.",
+   "deals": [
+    {
+     "name": "Video streaming",
+     "conditions": "100% on qualifying streaming within the AED 500 cap",
+     "raw_rate": 1.0,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  },
+  {
+   "id": "uab-platinum",
+   "issuer": "United Arab Bank",
+   "name": "Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 78750,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 6000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Waived at AED 60,000 annual spend; first year free"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Groceries and fuel",
+      "rate": 0.05,
+      "categories": [
+       "groceries",
+       "transport"
+      ],
+      "monthly_cap_units": 500,
+      "conditions": "3% at AED 3,000 monthly spend, 5% at AED 5,000; shared cap AED 500 per month"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "min_monthly_spend_minor": 300000
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/uab-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "3% cashback on grocery and fuel after AED 3,000 eligible monthly spend, 5% after AED 5,000, shared AED 500 monthly cap; qualifying video streaming earns 100% within the cap; other spend earns nothing. Finance charge 3.79%/month per Nov 2025 KFS. First-year fee waived.",
+   "deals": [
+    {
+     "name": "Video streaming",
+     "conditions": "100% on qualifying streaming within the AED 500 cap",
+     "raw_rate": 1.0,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  },
+  {
+   "id": "uab-world",
+   "issuer": "United Arab Bank",
+   "name": "World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 105000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": 6000000,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Waived at AED 60,000 spend; first year free"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "School fees, fashion, fuel",
+      "rate": 0.1,
+      "categories": [
+       "education",
+       "shopping",
+       "transport"
+      ],
+      "monthly_cap_units": 500,
+      "conditions": "3%/5%/10% at AED 5,000/10,000/15,000 monthly spend excluding school fees; school fees cap AED 2,000/month and 6,000/year; streaming up to AED 150/month"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/uab-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Min salary AED 5,000 per aggregator looks too low for World; verify. Rate depends on total monthly spend; modelled at top tier. First-year fee free, later waived at AED 60,000.",
+   "deals": []
+  }
+ ]
+}

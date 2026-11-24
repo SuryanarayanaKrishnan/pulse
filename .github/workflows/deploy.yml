@@ -1,0 +1,57 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**.md"]
+
+concurrency: deploy
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  SERVICE: pulse-api
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Skips quietly until the GCP variables are configured (see docs/HOSTING.md).
+    if: vars.GCP_PROJECT_ID != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Build image (Cloud Build, free 2500 min/month)
+        run: |
+          IMAGE="${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/pulse/$SERVICE:${{ github.sha }}"
+          gcloud builds submit --project "${{ vars.GCP_PROJECT_ID }}" --tag "$IMAGE" .
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+      - name: Run database migrations
+        run: |
+          JOB=pulse-migrate
+          ARGS=(--project "${{ vars.GCP_PROJECT_ID }}" --region "${{ vars.GCP_REGION }}" --image "$IMAGE"
+            --service-account "pulse-runtime@${{ vars.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
+            --set-secrets "DATABASE_URL=MIGRATIONS_DATABASE_URL:latest" --set-env-vars "DB_PGBOUNCER=false,APP_ENV=production"
+            --command alembic --args upgrade,head --max-retries 0 --task-timeout 300)
+          gcloud run jobs deploy "$JOB" "${ARGS[@]}"
+          gcloud run jobs execute "$JOB" --project "${{ vars.GCP_PROJECT_ID }}" --region "${{ vars.GCP_REGION }}" --wait
+      - name: Deploy service
+        run: |
+          P="${{ vars.GCP_PROJECT_ID }}"; R="${{ vars.GCP_REGION }}"
+          URL="$(gcloud run services describe $SERVICE --project $P --region $R --format 'value(status.url)' 2>/dev/null || true)"
+          gcloud run deploy $SERVICE --project $P --region $R --image "$IMAGE" --allow-unauthenticated \
+            --service-account "pulse-runtime@$P.iam.gserviceaccount.com" \
+            --cpu 1 --memory 512Mi --min-instances 0 --max-instances 2 --concurrency 40 --timeout 300 \
+            --set-secrets "DATABASE_URL=DATABASE_URL:latest,SUPABASE_JWT_SECRET=SUPABASE_JWT_SECRET:latest,FERNET_KEYS=FERNET_KEYS:latest" \
+            --set-env-vars "APP_ENV=production,LOG_JSON=true,QUEUE_BACKEND=cloudtasks,GCP_PROJECT=$P,GCP_LOCATION=$R,CLOUD_TASKS_QUEUE=pulse-jobs,TASKS_INVOKER_SA=pulse-invoker@$P.iam.gserviceaccount.com,DB_PGBOUNCER=${{ vars.DB_PGBOUNCER || 'true' }},SUPABASE_JWKS_URL=${{ vars.SUPABASE_JWKS_URL }},CORS_ORIGINS=${{ vars.CORS_ORIGINS || 'http://localhost:3000' }},STORAGE_BACKEND=${{ vars.STORAGE_BACKEND || 'local' }},SERVICE_URL=${URL}"
+          URL="$(gcloud run services describe $SERVICE --project $P --region $R --format 'value(status.url)')"
+          # First deploy: SERVICE_URL was unknown; set it now (no-op afterwards).
+          gcloud run services update $SERVICE --project $P --region $R --update-env-vars "SERVICE_URL=$URL" >/dev/null
+          echo "SERVICE_URL=$URL" >> "$GITHUB_ENV"
+      - name: Cron schedules
+        run: PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" REGION="${{ vars.GCP_REGION }}" deploy/scheduler.sh
+      - name: Smoke test
+        run: curl -fsS --retry 5 --retry-delay 5 "$SERVICE_URL/ready"

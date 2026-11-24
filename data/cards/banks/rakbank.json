@@ -1,0 +1,586 @@
+{
+ "issuer": "RAKBANK",
+ "cards": [
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "perks": {
+    "insurance": {
+     "text": "IHG hotels 15% off room rates; free monthly international transfer fee via RAKMoneyTransfer"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 300 welcome bonus for digital applications 31 Aug to 15 Nov 2026 (minimum spend applies; promo window now closed)",
+    "value_aed_est": 300,
+    "valid_until": "2026-11-15"
+   },
+   "community_notes": [],
+   "notes": "Tiered by total monthly card spend: nothing under AED 1,000, 1% from AED 1,000, 1.5% from AED 3,000 (modelled at 1%, so understates high spenders). Total cashback capped at AED 300 per month. Bank page confirms free for life and 'up to 1.5%' but tier thresholds/caps are from the aggregator only; KFS not opened. Free international cash advance up to 80% of limit is not relevant to rewards.",
+   "id": "rakbank-red",
+   "name": "RED",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "min_monthly_spend_minor": 100000,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "conditions": "Charity, government, bills, education, transit/transport, telecom, real estate, fuel; only once monthly spend reaches AED 1,000"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.rakbank.ae/en/cards/credit-cards/red-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-red-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "RAKBANK"
+  },
+  {
+   "network": null,
+   "tier": "titanium",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 800000,
+   "fx_markup_pct": null,
+   "perks": {},
+   "welcome_offer": {
+    "text": "AED 500 welcome bonus for digital applications 31 Aug to 31 Dec 2026 (minimum spend criteria apply, details not seen)",
+    "value_aed_est": 500,
+    "valid_until": "2026-12-31"
+   },
+   "community_notes": [],
+   "notes": "Nothing earned in a month with under AED 2,000 total spend. Other retail 1% (capped AED 100 a month), eligible wallet retail 2% (capped AED 100) not modelled; effective max is low because each bucket is capped. Bank page confirms headline rates (up to 5%, 50% cinema, up to 2%); caps and thresholds from aggregator only.",
+   "id": "rakbank-titanium",
+   "name": "Titanium",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "min_monthly_spend_minor": 200000,
+    "rules": [
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.05,
+      "monthly_cap_units": 100,
+      "conditions": "Worldwide; AED 100 cap per category; needs AED 2,000 total monthly spend"
+     },
+     {
+      "name": "Supermarkets",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.05,
+      "monthly_cap_units": 100,
+      "conditions": "Worldwide; AED 100 cap; needs AED 2,000 monthly spend"
+     },
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "monthly_cap_units": 50,
+      "conditions": "Government, bills, education, transport, telecom, real estate, fuel; AED 50 combined cap"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.rakbank.ae/en/cards/credit-cards/titanium-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "RAKBANK",
+   "deals": [
+    {
+     "name": "Cinema and streaming",
+     "conditions": "Cinema 50% capped at AED 100 a month (aggregator); bank page also advertises up to 50% on streaming",
+     "raw_rate": 0.5,
+     "note": "ticket/partner discount, not a % of spend; excluded from earn engine"
+    }
+   ]
+  },
+  {
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cashback",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 99750,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "First year free per aggregator index; renewal waiver terms not seen"
+   },
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Complimentary airport lounge access (aggregator says unlimited)"
+    },
+    "insurance": {
+     "text": "Careem Plus 12 months free; 2 airport transfers a year; eSIM 1 a year (aggregator)"
+    }
+   },
+   "welcome_offer": {
+    "text": "AED 750 welcome bonus for digital applications 31 Aug to 31 Dec 2026 (minimum spend criteria apply, details not seen)",
+    "value_aed_est": 750,
+    "valid_until": "2026-12-31"
+   },
+   "community_notes": [],
+   "notes": "No cashback at all in a month where total retail spend is under AED 10,000. Standard 1% (cap AED 100) and 3% wallet (cap AED 150, combined max AED 250) not fully modelled. Self-employed alternative and security cheque requirements exist. Annual AED 997.50 incl. VAT. Bank page confirms 10% categories, up to 3% retail, Careem Plus; caps from aggregator only.",
+   "id": "rakbank-world",
+   "name": "World",
+   "reward_structure": {
+    "unit": "cashback",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "min_monthly_spend_minor": 1000000,
+    "rules": [
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "Supermarkets",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 300
+     },
+     {
+      "name": "Travel and hotels",
+      "categories": [
+       "travel"
+      ],
+      "rate": 0.1,
+      "monthly_cap_units": 400,
+      "conditions": "Travel, supermarket and dining combined max AED 1,000 a month"
+     },
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.0025,
+      "monthly_cap_units": 50,
+      "conditions": "Charity, government, bills, schools, transit, telecom, real estate, fuel"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.rakbank.ae/en/cards/credit-cards/world-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "RAKBANK",
+   "deals": []
+  },
+  {
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 61740,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 3500000,
+   "fx_markup_pct": 0,
+   "perks": {
+    "lounge": {
+     "text": "Lounge access (1,300+ lounges per bank page)"
+    },
+    "cinema": {
+     "text": "50% off VOX tickets, 4 a month per aggregator"
+    },
+    "valet": {
+     "text": "2 chauffeured rides a month; up to 6 airport transfers a year"
+    },
+    "dining": {
+     "text": "Premium pass (beach clubs, gyms), padel games, streaming cashback up to AED 200"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 1,000 RAKrewards welcome bonus per bank page; first 3 months of the top tier fee-free",
+    "value_aed_est": 8
+   },
+   "community_notes": [],
+   "notes": "No annual fee: a monthly tier fee instead (Prime from AED 51.45 a month incl. VAT, so annual_fee shown is 12x the lowest tier). Tier is switchable monthly: Prime earns 2 RAKrewards per AED, Plus 3, Privilege 4 (bank page: up to 3.2% = 4 x 0.008 AED). Modelled at Prime. RAKrewards value 0.008 AED derived from the quoted percentages. Fees of Plus/Privilege tiers not captured. Zero FX markup per bank page. Redemption is for flights and hotels.",
+   "id": "rakbank-elevate",
+   "name": "Elevate",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 2,
+    "rules": [
+     {
+      "name": "Groceries and insurance",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.6,
+      "conditions": "Reduced rate in all tiers"
+     },
+     {
+      "name": "Government, bills, education, transport, telecom, rent, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.4
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.rakbank.ae/en/cards/credit-cards/elevate-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-elevate-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "issuer": "RAKBANK"
+  },
+  {
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 42000,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Aggregator index mentions a year-two spend-based waiver; threshold not captured"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "perks": {
+    "insurance": {
+     "text": "Annual Air Arabia return ticket after eligible spend; Careem airport transfers; baggage and meal vouchers; 50% off VOX tickets"
+    }
+   },
+   "welcome_offer": {
+    "text": "Bank page now advertises 20,000 AirRewards; aggregator says 15,000 after paying fee and AED 5,000 retail spend in 3 months. Not reconciled.",
+    "min_spend_minor": 500000,
+    "window_days": 90
+   },
+   "community_notes": [],
+   "notes": "Earn: 1.75 AirRewards per AED 5 on AirArabia.com and international spend (0.35 per AED), 1.25 per AED 5 on UAE retail (0.25 per AED), 0.3 per AED 5 reduced. The AED value of one AirReward was not found, so 0.01 AED is a placeholder guess; real value likely higher when redeemed on Air Arabia. Bank page says no joining fee while the aggregator lists AED 420 joining plus AED 420 annual: conflict unresolved (joining set 0 per bank page). International earn rate not modelled by category.",
+   "id": "rakbank-air-arabia-platinum",
+   "name": "Air Arabia Platinum",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.25,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.06,
+      "conditions": "0.3 AirRewards per AED 5; includes government, bills, fuel, real estate, charity"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://www.rakbank.ae/en/cards/credit-cards/air-arabia-platinum",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-air-arabia-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "RAKBANK"
+  },
+  {
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": null,
+   "perks": {
+    "insurance": {
+     "text": "Complimentary travel Takaful and purchase protection"
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Only the 0.35 RAKrewards per AED reduced-category rate was published on the aggregator; the standard earn rate was not found, so base_rate 0 is a placeholder, not a fact. RAKrewards value 0.008 AED borrowed from the other RAKBANK cards. No official page read.",
+   "id": "rakbank-islamic-platinum",
+   "name": "Islamic Platinum",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 0,
+    "rules": [
+     {
+      "name": "Reduced categories",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.35
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-rakislamic-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "RAKBANK"
+  },
+  {
+   "network": null,
+   "tier": "other",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": null,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1500000,
+   "fx_markup_pct": 1.15,
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge access per aggregator"
+    },
+    "insurance": {
+     "text": "Salik and DARB cashback advertised on index listing"
+    }
+   },
+   "welcome_offer": {
+    "text": "50,000 RAKrewards after AED 10,000 spend within first 3 statement cycles",
+    "value_aed_est": 400,
+    "min_spend_minor": 1000000
+   },
+   "community_notes": [],
+   "notes": "UAE nationals only. International spend earns 5 RAKrewards per AED (not modelled; EEA-currency spend only 0.5). Annual fee unclear: card page says free, bank index says no annual fee in the first year, so left null. RAKrewards value 0.008 AED borrowed from other RAKBANK cards.",
+   "id": "rakbank-islamic-watani",
+   "name": "Islamic Watani",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 3,
+    "rules": [
+     {
+      "name": "Supermarkets and Takaful",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.6
+     },
+     {
+      "name": "Government, bills, transit, education, real estate, fuel, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.4
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-rakislamic-watani-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "RAKBANK"
+  },
+  {
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "points",
+   "islamic": true,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "perks": {
+    "lounge": {
+     "text": "Lounge access (aggregator says unlimited)"
+    },
+    "insurance": {
+     "text": "Careem Plus 1 a year"
+    }
+   },
+   "welcome_offer": null,
+   "community_notes": [],
+   "notes": "Spend-tiered: domestic earns 1.25 RAKrewards per AED below AED 15,000 a month, 2.5 from 15,000, 3.75 from 30,000; international 3.75/5/6.25 (modelled at the bottom tier only). Bonus categories (dining, electronics, fashion, online, fitness) need AED 10,000+ spend in the category to earn extra. Monthly caps apply to points. RAKrewards value 0.008 AED derived from percent quotes. No official page read.",
+   "id": "rakbank-islamic-world",
+   "name": "Islamic World",
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.008,
+    "base_rate": 1.25,
+    "min_monthly_spend_minor": 0,
+    "rules": [
+     {
+      "name": "Government, bills, education, transport, telecom, rent, fuel, charity",
+      "categories": [
+       "utilities",
+       "education",
+       "rent",
+       "telecom",
+       "transport"
+      ],
+      "rate": 0.35
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/rakbank-rakislamic-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "issuer": "RAKBANK"
+  }
+ ]
+}

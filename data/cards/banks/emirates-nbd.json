@@ -1,0 +1,2892 @@
+{
+ "issuer": "Emirates NBD",
+ "cards": [
+  {
+   "id": "enbd-skywards-signature",
+   "issuer": "Emirates NBD",
+   "name": "Skywards Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 157395,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Annual fee charged from the second year onwards"
+   },
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.2042,
+    "rules": [
+     {
+      "name": "Emirates, flydubai, duty free, delivery and car-booking apps",
+      "categories": [],
+      "rate": 0.4084,
+      "conditions": "Direct Emirates, Emirates Holidays, flydubai and duty-free spend plus online food-delivery and car-booking apps; rate is per USD converted to per AED at 3.6725",
+      "merchants": [
+       "emirates",
+       "flydubai",
+       "emirates holidays",
+       "dubai duty free",
+       "talabat",
+       "careem",
+       "deliveroo",
+       "noon food"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0511,
+      "conditions": "Fast food, insurance and car dealerships share this tier but have no matching category slug"
+     },
+     {
+      "name": "Utilities, government, fuel, telecom, education, real estate",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0204,
+      "conditions": "Tenth-of-base tier per bank terms"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion lounge visits",
+     "count_per_year": 8,
+     "conditions": "Register on the app; do a USD 1 foreign-currency transaction at least 10 days before; guests USD 32"
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 5,000 spend in month of use, AED 30 booking fee"
+    },
+    "cinema": {
+     "text": "Buy one get one at VOX and Reel, up to 2 free tickets/month",
+     "conditions": "AED 5,000 spend in month of use"
+    },
+    "valet": {
+     "text": "3 free valet services a month at select Abu Dhabi venues"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 40,000 bonus Skywards Miles: 15,000 on paying the joining fee, 15,000 on USD 10,000 spend within the first 3 statements, 10,000 on USD 3,750 Emirates spend within 12 statements",
+    "value_aed_est": 1000,
+    "min_spend_minor": 3673000,
+    "window_days": 90,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-skywards-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-signature-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Rates converted from miles per USD at 3.6725 AED/USD. Domestic 0.75 mi/USD = base; intl non-EU 1 mi/USD and EU/UK 0.37-0.5 mi/USD are not modelled (no channel field in the engine). Miles valued conservatively at AED 0.025 (about 0.9 percent on domestic spend); good Skywards redemptions can reach 0.035+ but cash-ish redemptions are far lower. Annual fee starts in year 2."
+  },
+  {
+   "id": "enbd-skywards-infinite",
+   "issuer": "Emirates NBD",
+   "name": "Skywards Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 314895,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Annual fee from second year; Skywards Express Miles subscription (AED 262.50/month incl. VAT) can replace it"
+   },
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.2723,
+    "rules": [
+     {
+      "name": "Emirates, flydubai, duty free, delivery and car-booking apps",
+      "categories": [],
+      "rate": 0.5446,
+      "conditions": "Direct Emirates, Emirates Holidays, flydubai and duty-free spend plus online food-delivery and car-booking apps; rate is per USD converted to per AED at 3.6725",
+      "merchants": [
+       "emirates",
+       "flydubai",
+       "emirates holidays",
+       "dubai duty free",
+       "talabat",
+       "careem",
+       "deliveroo",
+       "noon food"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0681,
+      "conditions": "Fast food, insurance and car dealerships share this tier but have no matching category slug"
+     },
+     {
+      "name": "Utilities, government, fuel, telecom, education, real estate",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0272,
+      "conditions": "Tenth-of-base tier per bank terms"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion lounge visits for you and one guest; Skywards Silver also gives Emirates business-class lounge access",
+     "count_per_year": 12
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 5,000 spend in month, AED 30 booking fee"
+    },
+    "cinema": {
+     "text": "Buy one get one at VOX and Reel, 2 free of 4 tickets a month",
+     "conditions": "AED 5,000 spend in month of use"
+    },
+    "valet": {
+     "text": "4 free Abu Dhabi valet services a month; extra use AED 55, AED 99 charged in months under AED 5,000 spend"
+    }
+   },
+   "welcome_offer": {
+    "text": "Official page: up to 100,000 bonus Skywards Miles plus a year of Rotana Rewards Exclusive Club. Aggregator shows up to 150,000 for digital applications (50,000 on joining fee, 75,000 on USD 25,000 spend in 3 statements, 25,000 on USD 3,500 Emirates spend)",
+    "value_aed_est": 2500,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-skywards-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Skywards Express Miles add-on (AED 250 + VAT per month) replaces the annual fee and gives +50% miles on non-Emirates spend, capped at 4,000 bonus miles per statement. Welcome offer differs between bank page (up to 100,000) and aggregator (up to 150,000, digital applications) so quote the lower. Miles valued at AED 0.025."
+  },
+  {
+   "id": "enbd-share-signature",
+   "issuer": "Emirates NBD",
+   "name": "SHARE Visa Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.1,
+    "rules": [
+     {
+      "name": "Carrefour and Majid Al Futtaim destinations",
+      "categories": [],
+      "rate": 0.6,
+      "conditions": "Mall of the Emirates, City Centre malls and Carrefour (store and online) and SHARE partners; 10 SHARE points = AED 1",
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "majid al futtaim",
+       "vox cinemas"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers, EU spend",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.025,
+      "conditions": "Grocery outside SHARE partners; fast food, insurance, car dealers and EU/UK spend are also in this tier"
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.01
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits",
+     "count_per_year": 8,
+     "conditions": "USD 1 foreign transaction 10+ days earlier; guests USD 32"
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 2 free tickets/month",
+     "conditions": "AED 3,500 spend in the month, book online/app"
+    }
+   },
+   "welcome_offer": {
+    "text": "5,000 SHARE Points (AED 500) when you spend AED 25,000 in the first 3 months",
+    "value_aed_est": 500,
+    "min_spend_minor": 2500000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-share-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-signature-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. SHARE Points redeem 10 = AED 1 only within SHARE/Majid Al Futtaim partners, so value is locked to that ecosystem."
+  },
+  {
+   "id": "enbd-share-infinite",
+   "issuer": "Emirates NBD",
+   "name": "SHARE Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 157500,
+   "fee_waiver": {
+    "spend_minor": 4000000,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Joining fee reversed on AED 40,000 spend within the first 3 months"
+   },
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Carrefour and Majid Al Futtaim destinations",
+      "categories": [],
+      "rate": 0.8,
+      "conditions": "Mall of the Emirates, City Centre malls and Carrefour (store and online) and SHARE partners; 10 SHARE points = AED 1",
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "majid al futtaim",
+       "vox cinemas"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers, EU spend",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0375,
+      "conditions": "Grocery outside SHARE partners; fast food, insurance, car dealers and EU/UK spend are also in this tier"
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits for you and one guest",
+     "count_per_year": 12
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 30 booking fee; AED 249 no-show"
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 tickets/month",
+     "conditions": "AED 3,500 spend in month"
+    }
+   },
+   "welcome_offer": {
+    "text": "10,000 SHARE Points (AED 1,000) on AED 40,000 spend in the first 3 months, and the joining fee is refunded on the same spend",
+    "value_aed_est": 1000,
+    "min_spend_minor": 4000000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-share-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Official page lists the fee as AED 1,500 (pre-VAT); aggregator AED 1,575 incl. VAT. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-share-platinum",
+   "issuer": "Emirates NBD",
+   "name": "SHARE Visa Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.075,
+    "rules": [
+     {
+      "name": "Carrefour and Majid Al Futtaim destinations",
+      "categories": [],
+      "rate": 0.4,
+      "conditions": "Mall of the Emirates, City Centre malls and Carrefour (store and online) and SHARE partners; 10 SHARE points = AED 1",
+      "merchants": [
+       "carrefour",
+       "mall of the emirates",
+       "city centre",
+       "majid al futtaim",
+       "vox cinemas"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers, EU spend",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.019,
+      "conditions": "Grocery outside SHARE partners; fast food, insurance, car dealers and EU/UK spend are also in this tier"
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0075
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 25000
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy one get one, up to 2 free tickets/month",
+     "conditions": "AED 3,500 spend in month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-share-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. Aggregator states a monthly cap of 25,000 SHARE Points (AED 2,500 value) across all categories."
+  },
+  {
+   "id": "enbd-darna-visa-signature",
+   "issuer": "Emirates NBD",
+   "name": "Darna Visa Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 31500,
+   "joining_fee_minor": 31500,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Bank page says free for life for a limited time (promo); standard AED 315"
+   },
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.1,
+    "rules": [
+     {
+      "name": "Aldar destinations",
+      "categories": [],
+      "rate": 0.75,
+      "conditions": "Yas Mall, Yas Island parks, Aldar hotels, spas, golf and other Aldar destinations; 10 Darna Points = AED 1",
+      "merchants": [
+       "yas mall",
+       "yas island",
+       "aldar",
+       "ferrari world",
+       "yas waterworld",
+       "warner bros"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.025
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.01
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits for you and one guest",
+     "count_per_year": null
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 free tickets/month",
+     "conditions": "AED 5,000 spend in month"
+    }
+   },
+   "welcome_offer": {
+    "text": "3,000 Darna Points (about AED 300) on AED 15,000 spend in the first 3 months",
+    "value_aed_est": 300,
+    "min_spend_minor": 1500000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-darna-visa-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-signature-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Bank page markets this card as free for life for a limited time while listing AED 315 annual fee; the standard fee is recorded. Aggregator shows 8 lounge visits vs 12 shown in its benefits section, so lounge count is uncertain. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-darna-visa-infinite",
+   "issuer": "Emirates NBD",
+   "name": "Darna Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 157500,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Aldar destinations",
+      "categories": [],
+      "rate": 1.0,
+      "conditions": "Yas Mall, Yas Island parks, Aldar hotels, spas, golf and other Aldar destinations; 10 Darna Points = AED 1",
+      "merchants": [
+       "yas mall",
+       "yas island",
+       "aldar",
+       "ferrari world",
+       "yas waterworld",
+       "warner bros"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0375
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits for you and one guest",
+     "count_per_year": 12
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 5,000 monthly spend"
+    },
+    "valet": {
+     "text": "4 free Abu Dhabi/Al Ain valet services a month",
+     "conditions": "AED 5,000 spend in month"
+    },
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 free tickets/month",
+     "conditions": "AED 5,000 spend in month"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 15,000 Darna Points: 7,500 on paying the joining fee plus 7,500 on AED 20,000 spend in the first 3 months",
+    "value_aed_est": 1500,
+    "min_spend_minor": 2000000,
+    "window_days": 90,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-darna-visa-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Darna Platinum tier included. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-darna-select-visa",
+   "issuer": "Emirates NBD",
+   "name": "Darna Select Visa",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.075,
+    "rules": [
+     {
+      "name": "Aldar destinations",
+      "categories": [],
+      "rate": 0.625,
+      "conditions": "Yas Mall, Yas Island parks, Aldar hotels, spas, golf and other Aldar destinations; 10 Darna Points = AED 1",
+      "merchants": [
+       "yas mall",
+       "yas island",
+       "aldar",
+       "ferrari world",
+       "yas waterworld",
+       "warner bros"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.01875
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0075
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 25000
+   },
+   "perks": {
+    "cinema": {
+     "text": "VOX buy one get one, up to 3 free tickets/month",
+     "conditions": "AED 5,000 spend in month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-darna-select-visa-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-select-visa-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life; Darna Silver status. Aggregator states a monthly cap of 25,000 points (AED 2,500 value)."
+  },
+  {
+   "id": "enbd-darna-infinite-privilege",
+   "issuer": "Emirates NBD",
+   "name": "Darna Infinite Privilege",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 262500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": null,
+   "min_salary_minor": 5000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Aldar destinations",
+      "categories": [],
+      "rate": 1.0,
+      "conditions": "Yas Mall, Yas Island parks, Aldar hotels, spas, golf and other Aldar destinations; 10 Darna Points = AED 1",
+      "merchants": [
+       "yas mall",
+       "yas island",
+       "aldar",
+       "ferrari world",
+       "yas waterworld",
+       "warner bros"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0375
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 200000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited airport lounge access per aggregator"
+    },
+    "cinema": {
+     "text": "3 free tickets/month"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 25,000 Darna Points: 15,000 on paying the joining fee plus 10,000 on AED 30,000 spend in the first 3 months",
+    "value_aed_est": 2500,
+    "min_spend_minor": 3000000,
+    "window_days": 90,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-darna-infinite-privilege-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Not on the bank's public card list; single secondary source, so treat as unverified (likely invitation or high-income product). Aggregator cap: 200,000 points a month. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-voyager-world",
+   "issuer": "Emirates NBD",
+   "name": "Voyager World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 0.5,
+    "rules": [
+     {
+      "name": "Voyager Travel Portal",
+      "categories": [],
+      "rate": 6,
+      "conditions": "Bookings made through the Voyager Travel Portal",
+      "merchants": [
+       "voyager travel portal"
+      ]
+     },
+     {
+      "name": "Travel bookings",
+      "categories": [
+       "travel"
+      ],
+      "rate": 3,
+      "conditions": "Flight and hotel bookings outside the portal"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.125,
+      "conditions": "Also applies to all EU/UK spend regardless of category"
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.05,
+      "conditions": "Also charity"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 100000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge visits or dining offers; guests USD 32",
+     "count_per_year": 8
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 5,000 monthly spend"
+    },
+    "cinema": {
+     "text": "3 free tickets a month (buy one get one)"
+    },
+    "valet": {
+     "text": "4 free Abu Dhabi/Al Ain valet services a month"
+    },
+    "insurance": {
+     "text": "Travel medical cover up to USD 500,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "75,000 Voyager Miles (bank says worth AED 750) on AED 35,000 spend within 3 statements; first year only",
+    "value_aed_est": 750,
+    "min_spend_minor": 3500000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-voyager-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. Bank states 1 Voyager Mile is worth AED 0.01 (75,000 miles = AED 750); the 6% portal and 3% travel rates are in miles at that value. Monthly cap 100,000 miles overall."
+  },
+  {
+   "id": "enbd-voyager-world-elite",
+   "issuer": "Emirates NBD",
+   "name": "Voyager World Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 0,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Annual fee from the second year"
+   },
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.01,
+    "base_rate": 1.0,
+    "rules": [
+     {
+      "name": "Voyager Travel Portal",
+      "categories": [],
+      "rate": 12,
+      "conditions": "Bookings made through the Voyager Travel Portal",
+      "merchants": [
+       "voyager travel portal"
+      ]
+     },
+     {
+      "name": "Travel bookings",
+      "categories": [
+       "travel"
+      ],
+      "rate": 6,
+      "conditions": "Flight and hotel bookings outside the portal"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.25,
+      "conditions": "Also applies to all EU/UK spend regardless of category"
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.1,
+      "conditions": "Also charity"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 200000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass visits for you and one guest",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "2 rounds a month at 6 UAE courses",
+     "conditions": "AED 5,000 monthly spend"
+    },
+    "valet": {
+     "text": "4 free Abu Dhabi/Al Ain valet services a month"
+    },
+    "cinema": {
+     "text": "3 free tickets a month"
+    },
+    "insurance": {
+     "text": "Travel medical cover up to USD 500,000"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 150,000 Voyager Miles (AED 1,500) on AED 70,000 spend within 3 statements; first year only",
+    "value_aed_est": 1500,
+    "min_spend_minor": 7000000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-voyager-world-elite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-elite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "First year free, AED 1,575 from year two. 1 mile = AED 0.01 per bank welcome-offer valuation. Monthly cap 200,000 miles."
+  },
+  {
+   "id": "enbd-marriott-bonvoy-world-elite",
+   "issuer": "Emirates NBD",
+   "name": "Marriott Bonvoy World Elite",
+   "network": "mastercard",
+   "tier": "world_elite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 157500,
+   "fee_waiver": null,
+   "min_salary_minor": 2500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.8169,
+    "rules": [
+     {
+      "name": "Marriott Bonvoy hotels",
+      "categories": [],
+      "rate": 1.6338,
+      "conditions": "Participating Marriott Bonvoy hotels; rate per USD converted to AED at 3.6725",
+      "merchants": [
+       "marriott",
+       "ritz-carlton",
+       "st. regis",
+       "w hotel",
+       "sheraton",
+       "westin",
+       "jw marriott",
+       "le meridien",
+       "renaissance",
+       "courtyard"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.2042
+     },
+     {
+      "name": "Real estate, education, fuel, government, utilities, telecom, car-hailing, delivery apps",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0817
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass visits for you and one guest",
+     "count_per_year": 14
+    },
+    "golf": {
+     "text": "2 rounds a month",
+     "conditions": "per aggregator"
+    },
+    "dining": {
+     "text": "Annual free night award (valued at 50,000 points) plus Gold Elite status"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 200,000 Bonvoy points: 100,000 on activation and joining-fee payment plus 100,000 on USD 15,000 retail spend in the first 3 statements. Cards issued 15 Sep to 30 Nov 2026",
+    "value_aed_est": 5000,
+    "min_spend_minor": 5508750,
+    "window_days": 90,
+    "requires_fee_payment": true,
+    "valid_until": "2026-11-30"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-marriott-bonvoy-world-elite/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-elite-mastercard-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Earn tiers (6/3/0.75/0.30 per USD) are from the aggregator; the bank page confirms 6 per USD at hotels but its tier table was only partly readable. Bonvoy point valued at AED 0.025. Free night award is issued each year when the annual fee is paid. Fast-food purchases above USD 25 earn the 3-point rate."
+  },
+  {
+   "id": "enbd-marriott-bonvoy-world",
+   "issuer": "Emirates NBD",
+   "name": "Marriott Bonvoy World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.4084,
+    "rules": [
+     {
+      "name": "Marriott Bonvoy hotels",
+      "categories": [],
+      "rate": 0.8169,
+      "conditions": "Participating Marriott Bonvoy hotels; rate per USD converted to AED at 3.6725",
+      "merchants": [
+       "marriott",
+       "ritz-carlton",
+       "st. regis",
+       "w hotel",
+       "sheraton",
+       "westin",
+       "jw marriott",
+       "le meridien",
+       "renaissance",
+       "courtyard"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.1021
+     },
+     {
+      "name": "Real estate, education, fuel, government, utilities, telecom, car-hailing, delivery apps",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0408
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "dining": {
+     "text": "Annual free night award on anniversary; automatic Silver Elite status"
+    }
+   },
+   "welcome_offer": {
+    "text": "2 Free Night Awards (35,000 points each) on USD 6,000 cumulative retail spend in the first 3 billing statements",
+    "value_aed_est": null,
+    "min_spend_minor": 2203500,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-mastercard",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Free for life. Single official source (bank page; aggregator has no listing), earn rates 3/1.5/0.375/0.15 points per USD."
+  },
+  {
+   "id": "enbd-etihad-guest-visa-elevate",
+   "issuer": "Emirates NBD",
+   "name": "Etihad Guest Visa Elevate",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.5,
+    "rules": [
+     {
+      "name": "Etihad Airways",
+      "categories": [],
+      "rate": 1.0,
+      "merchants": [
+       "etihad",
+       "etihad airways"
+      ],
+      "conditions": "Spend with Etihad Airways"
+     },
+     {
+      "name": "Hotels and dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.75,
+      "conditions": "Hotels and dining; hotels have no dedicated slug so only dining is mapped"
+     },
+     {
+      "name": "Grocery, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.125
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.05
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits for you and one guest",
+     "count_per_year": 12
+    },
+    "valet": {
+     "text": "Abu Dhabi valet parking, 3/month per aggregator"
+    },
+    "cinema": {
+     "text": "3/month per aggregator"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 200,000 bonus Etihad Guest Miles: 40,000 on joining-fee payment, 60,000 on AED 90,000 spend and 100,000 on AED 120,000 spend, both within 6 months (aggregator breakdown)",
+    "value_aed_est": 3000,
+    "min_spend_minor": 12000000,
+    "window_days": 180,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-etihad-guest-visa-elevate-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-elevate",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Bank page: 10 miles per AED 10 on Etihad, 7.5 per AED 10 hotels and dining, up to 5 per AED 10 elsewhere. Aggregator reads the same card as 1 mile per AED on Etihad/dining/hotels and 0.6 elsewhere (eligible spend capped AED 100,000 per cycle). The lower bank-page numbers are used. Reduced tiers scaled at 25% and 10% of base. Miles valued at AED 0.025; 50% redemption discount voucher per AED 150,000 spent (max 2/yr)."
+  },
+  {
+   "id": "enbd-etihad-guest-visa-inspire",
+   "issuer": "Emirates NBD",
+   "name": "Etihad Guest Visa Inspire",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "miles",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 157500,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.025,
+    "base_rate": 0.35,
+    "rules": [
+     {
+      "name": "Etihad Airways",
+      "categories": [],
+      "rate": 0.7,
+      "merchants": [
+       "etihad",
+       "etihad airways"
+      ],
+      "conditions": "Spend with Etihad Airways"
+     },
+     {
+      "name": "Hotels and dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.6,
+      "conditions": "Hotels and dining; hotels have no dedicated slug so only dining is mapped"
+     },
+     {
+      "name": "Grocery, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0875
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.035
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion lounge access"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 60,000 bonus Etihad Guest Miles and fast track to Silver tier after one return Etihad flight",
+    "value_aed_est": 900,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-inspire",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Official page only (not listed by the aggregator); earn: 7 miles per AED 10 Etihad, 6 per AED 10 hotels and dining, up to 3.5 per AED 10 elsewhere. 25% redemption voucher per AED 100,000 spend, max 2/year. Annual fee from year 2."
+  },
+  {
+   "id": "enbd-dnata-platinum",
+   "issuer": "Emirates NBD",
+   "name": "dnata Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 52500,
+   "joining_fee_minor": 52500,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Costa, City Sightseeing, Giraffe and dnata partners",
+      "categories": [],
+      "rate": 0.15,
+      "merchants": [
+       "costa coffee",
+       "city sightseeing",
+       "giraffe",
+       "emirates leisure retail"
+      ],
+      "conditions": "15% back in dnata points"
+     },
+     {
+      "name": "dnata Travel, MMI, Arabian Adventures",
+      "categories": [],
+      "rate": 0.1,
+      "merchants": [
+       "dnata travel",
+       "dnata",
+       "mmi",
+       "arabian adventures",
+       "al hamra cellar",
+       "le clos"
+      ]
+     },
+     {
+      "name": "Duty free",
+      "categories": [],
+      "rate": 0.05,
+      "merchants": [
+       "dubai duty free"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0025
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.001
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 2000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass lounge visits",
+     "count_per_year": 4
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 1,000 dnata points: 500 on paying the joining fee, 500 on AED 10,000 retail spend in the first 3 statements",
+    "value_aed_est": 10,
+    "min_spend_minor": 1000000,
+    "window_days": 90,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-dnata-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "dnata points shown as 1 point per AED 100 = 1% so one point is treated as AED 1 per the bank's percent-back framing; 15% headline applies only at named partners. General cap 2,000 points per statement. Welcome offer value is tiny (about AED 10 if a point is AED 0.01 elsewhere). Point value is unverified: confirm the redemption rate before relying on it."
+  },
+  {
+   "id": "enbd-dnata-world",
+   "issuer": "Emirates NBD",
+   "name": "dnata World",
+   "network": "mastercard",
+   "tier": "world",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 104895,
+   "joining_fee_minor": 104895,
+   "fee_waiver": null,
+   "min_salary_minor": 2000000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Costa, City Sightseeing, Giraffe and dnata partners",
+      "categories": [],
+      "rate": 0.15,
+      "merchants": [
+       "costa coffee",
+       "city sightseeing",
+       "giraffe",
+       "emirates leisure retail"
+      ],
+      "conditions": "15% back in dnata points"
+     },
+     {
+      "name": "dnata Travel, MMI, Arabian Adventures",
+      "categories": [],
+      "rate": 0.1,
+      "merchants": [
+       "dnata travel",
+       "dnata",
+       "mmi",
+       "arabian adventures",
+       "al hamra cellar",
+       "le clos"
+      ]
+     },
+     {
+      "name": "Duty free",
+      "categories": [],
+      "rate": 0.1,
+      "merchants": [
+       "dubai duty free"
+      ]
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.00375
+     },
+     {
+      "name": "Fuel, transit, government, utilities, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 3000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass visits",
+     "count_per_year": 8
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "4 a month at select Abu Dhabi venues"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 2,500 dnata points: 1,000 on paying the joining fee, 1,500 on AED 25,000 spend in the first 3 statements",
+    "requires_fee_payment": true,
+    "min_spend_minor": 2500000,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-dnata-world-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-world-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "10% on Duty Free worldwide; 0% forex fee is advertised on the bank page but the fee table shows 1.99%, so verify before relying on it. Point value of AED 1 follows the bank percent-back framing and is unverified. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-u-by-emaar-infinite",
+   "issuer": "Emirates NBD",
+   "name": "U By Emaar Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Emaar destinations",
+      "categories": [],
+      "rate": 0.75,
+      "merchants": [
+       "emaar",
+       "dubai mall",
+       "address hotels",
+       "vida hotels",
+       "dubai marina mall",
+       "souk al bahar",
+       "reel cinemas",
+       "dubai aquarium",
+       "kidzania"
+      ],
+      "conditions": "Participating Emaar malls, hotels, dining and entertainment; 10 UPoints = AED 1"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0375
+     },
+     {
+      "name": "Government, utilities, fuel, transit, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 83333
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits, 1/month per aggregator"
+    },
+    "cinema": {
+     "text": "Reel Cinemas buy one get one, up to 3 a month"
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "4 a month; Dubai Mall Grand Drive valet suspended from 1 May 2025"
+    }
+   },
+   "welcome_offer": {
+    "text": "Up to 25,000 UPoints: 15,000 after activation and joining-fee payment, 10,000 after USD 10,000 spend in the first 3 statements",
+    "value_aed_est": 2500,
+    "min_spend_minor": 3672500,
+    "window_days": 90,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-u-by-emaar-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Platinum U By Emaar status; suite upgrade; 20% off F&B and spa at Emaar hotels. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-u-by-emaar-infinite-emirati",
+   "issuer": "Emirates NBD",
+   "name": "U By Emaar Infinite Emirati",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 262500,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": true,
+    "text": "Joining fee waived under current offer; annual fee AED 1,575"
+   },
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.15,
+    "rules": [
+     {
+      "name": "Emaar destinations",
+      "categories": [],
+      "rate": 0.75,
+      "merchants": [
+       "emaar",
+       "dubai mall",
+       "address hotels",
+       "vida hotels",
+       "dubai marina mall",
+       "souk al bahar",
+       "reel cinemas",
+       "dubai aquarium",
+       "kidzania"
+      ],
+      "conditions": "Participating Emaar malls, hotels, dining and entertainment; 10 UPoints = AED 1"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0375
+     },
+     {
+      "name": "Government, utilities, fuel, transit, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.015
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 83333
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits, 1/month per aggregator"
+    },
+    "cinema": {
+     "text": "Reel buy one get one, 3 a month"
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "4 a month; Grand Drive redirected to China Town valet"
+    }
+   },
+   "welcome_offer": {
+    "text": "Joining fee waived (first year free) plus up to 25,000 UPoints: double UPoints at Emaar for 3 months and 10,000 on USD 10,000 spend in the first 3 cycles",
+    "value_aed_est": 2500,
+    "min_spend_minor": 3672500,
+    "window_days": 90
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-u-by-emaar-infinite-emirati-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card-for-emiratis",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "For UAE nationals. Cash advances and quasi-cash earn nothing."
+  },
+  {
+   "id": "enbd-u-by-emaar-signature",
+   "issuer": "Emirates NBD",
+   "name": "U By Emaar Signature",
+   "network": "visa",
+   "tier": "signature",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 26250,
+   "joining_fee_minor": 52500,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.125,
+    "rules": [
+     {
+      "name": "Emaar destinations",
+      "categories": [],
+      "rate": 0.625,
+      "merchants": [
+       "emaar",
+       "dubai mall",
+       "address hotels",
+       "vida hotels",
+       "dubai marina mall",
+       "souk al bahar",
+       "reel cinemas",
+       "dubai aquarium",
+       "kidzania"
+      ],
+      "conditions": "Participating Emaar malls, hotels, dining and entertainment; 10 UPoints = AED 1"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.0313
+     },
+     {
+      "name": "Government, utilities, fuel, transit, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.0125
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 16666
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits",
+     "count_per_year": 8
+    },
+    "cinema": {
+     "text": "Reel buy one get one, 3 a month"
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-u-by-emaar-signature-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-signature-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Gold U By Emaar status. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-u-by-emaar-family",
+   "issuer": "Emirates NBD",
+   "name": "U By Emaar Family",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.1,
+    "base_rate": 0.1,
+    "rules": [
+     {
+      "name": "Emaar destinations",
+      "categories": [],
+      "rate": 0.5,
+      "merchants": [
+       "emaar",
+       "dubai mall",
+       "address hotels",
+       "vida hotels",
+       "dubai marina mall",
+       "souk al bahar",
+       "reel cinemas",
+       "dubai aquarium",
+       "kidzania"
+      ],
+      "conditions": "Participating Emaar malls, hotels, dining and entertainment; 10 UPoints = AED 1"
+     },
+     {
+      "name": "Groceries, fast food, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.025
+     },
+     {
+      "name": "Government, utilities, fuel, transit, real estate, education, telecom",
+      "categories": [
+       "utilities",
+       "transport",
+       "telecom",
+       "education",
+       "rent"
+      ],
+      "rate": 0.01
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 8333
+   },
+   "perks": {
+    "cinema": {
+     "text": "Reel buy one get one, up to 3 a month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-u-by-emaar-family-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-family-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life, no minimum spend. Bank page describes 5% back on Emaar spend and 1% elsewhere with 25% base on grocery and 10% base on fuel/government/telecom."
+  },
+  {
+   "id": "enbd-lulu-247-platinum",
+   "issuer": "Emirates NBD",
+   "name": "LuLu 247 Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 26250,
+   "joining_fee_minor": 52500,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.007,
+    "rules": [
+     {
+      "name": "LuLu stores and online",
+      "categories": [],
+      "rate": 0.07,
+      "merchants": [
+       "lulu",
+       "lulu hypermarket"
+      ],
+      "conditions": "LuLu in-store and online"
+     },
+     {
+      "name": "Fuel",
+      "categories": [],
+      "rate": 0.04,
+      "merchants": [
+       "adnoc",
+       "enoc",
+       "eppco",
+       "emarat"
+      ],
+      "conditions": "Fuel stations"
+     },
+     {
+      "name": "Utility bills",
+      "categories": [
+       "utilities"
+      ],
+      "rate": 0.02
+     },
+     {
+      "name": "Education, government, real estate and similar",
+      "categories": [
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.0007
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 1667
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass visits",
+     "count_per_year": 4
+    },
+    "cinema": {
+     "text": "Buy one get one"
+    }
+   },
+   "welcome_offer": {
+    "text": "500 LuLu Points: 250 after paying joining fee and first transaction, 250 after AED 8,000 spend in the first 2 statements; also 0% balance transfer",
+    "min_spend_minor": 800000,
+    "requires_fee_payment": true
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-lulu-247-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Stated as percent back in LuLu Points; point treated as AED 1 per bank framing (unverified redemption value). LuLu cap 1,667 points per statement. Joining fee is higher than the annual fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-lulu-247-titanium",
+   "issuer": "Emirates NBD",
+   "name": "LuLu 247 Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "cobrand",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 0,
+   "joining_fee_minor": 0,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.0035,
+    "rules": [
+     {
+      "name": "LuLu stores and online",
+      "categories": [],
+      "rate": 0.035,
+      "merchants": [
+       "lulu",
+       "lulu hypermarket"
+      ],
+      "conditions": "LuLu in-store and online"
+     },
+     {
+      "name": "Fuel",
+      "categories": [],
+      "rate": 0.02,
+      "merchants": [
+       "adnoc",
+       "enoc",
+       "eppco",
+       "emarat"
+      ],
+      "conditions": "Fuel stations"
+     },
+     {
+      "name": "Utility bills",
+      "categories": [
+       "utilities"
+      ],
+      "rate": 0.01
+     },
+     {
+      "name": "Education, government, real estate and similar",
+      "categories": [
+       "education",
+       "rent",
+       "telecom"
+      ],
+      "rate": 0.00035
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 833
+   },
+   "perks": {
+    "lounge": {
+     "text": "Lounge access discontinued effective 1 May 2025"
+    }
+   },
+   "welcome_offer": {
+    "text": "0% balance transfer with no processing fee (AED 1,000+, 6 or 12 months, up to 50% of limit)"
+   },
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-lulu-247-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-titanium-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Free for life. Lounge access ended 1 May 2025 per the bank page. Point treated as AED 1 per bank percent-back framing."
+  },
+  {
+   "id": "enbd-visa-infinite",
+   "issuer": "Emirates NBD",
+   "name": "Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": 157500,
+   "fee_waiver": null,
+   "min_salary_minor": 3000000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.02,
+    "rules": [
+     {
+      "name": "Groceries, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.004,
+      "conditions": "Insurance and car dealers share this reduced tier"
+     },
+     {
+      "name": "Fuel, utilities, real estate, education",
+      "categories": [
+       "utilities",
+       "transport",
+       "education",
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 3000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion visits for you and one guest",
+     "count_per_year": 12
+    },
+    "golf": {
+     "text": "2 rounds a month"
+    },
+    "valet": {
+     "text": "4 a month at Abu Dhabi venues"
+    },
+    "cinema": {
+     "text": "3 a month"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-visa-infinite-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "2 Plus Points per AED 100 base; Plus Points treated as AED 1 each since the bank quotes the earn as a percent. Cap 3,000 points per statement. Bank lists AED 1,575 annual; joining fee from aggregator. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-visa-platinum",
+   "issuer": "Emirates NBD",
+   "name": "Visa Platinum",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": null,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Groceries, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.004,
+      "conditions": "Insurance and car dealers share this reduced tier"
+     },
+     {
+      "name": "Fuel, utilities, real estate, education",
+      "categories": [
+       "utilities",
+       "transport",
+       "education",
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Official page only. Bank advertises no annual fee as a current offer, standard fee not shown. Earn up to 1.5 points per AED 100."
+  },
+  {
+   "id": "enbd-visa-flexi",
+   "issuer": "Emirates NBD",
+   "name": "Visa Flexi",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Bank page lists a current offer of no joining and annual fee"
+   },
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Groceries, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.004,
+      "conditions": "Insurance and car dealers share this reduced tier"
+     },
+     {
+      "name": "Fuel, utilities, real estate, education",
+      "categories": [
+       "utilities",
+       "transport",
+       "education",
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 2000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Complimentary access to 900+ lounges, per bank page headline"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-visa-flexi-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-flexi-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Choose 6 benefits from a menu. Bank page currently advertises no joining and annual fee as an exclusive offer; the aggregator shows AED 735 each, which is stored as the standard fee. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-mastercard-platinum",
+   "issuer": "Emirates NBD",
+   "name": "Mastercard Platinum",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 73500,
+   "joining_fee_minor": 73500,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Bank page lists a current no-annual-fee offer"
+   },
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.015,
+    "rules": [
+     {
+      "name": "Groceries, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.004,
+      "conditions": "Insurance and car dealers share this reduced tier"
+     },
+     {
+      "name": "Fuel, utilities, real estate, education",
+      "categories": [
+       "utilities",
+       "transport",
+       "education",
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 2000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Mastercard Travel Pass visits",
+     "count_per_year": 4
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-mastercard-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Bank page shows a current offer of no annual fee; standard AED 735 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-mastercard-titanium",
+   "issuer": "Emirates NBD",
+   "name": "Mastercard Titanium",
+   "network": "mastercard",
+   "tier": "titanium",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 42000,
+   "joining_fee_minor": 42000,
+   "fee_waiver": {
+    "spend_minor": null,
+    "period": "year",
+    "first_year_free": false,
+    "text": "Bank page lists a current no-fee offer"
+   },
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [
+     {
+      "name": "Groceries, insurance, car dealers",
+      "categories": [
+       "groceries"
+      ],
+      "rate": 0.004,
+      "conditions": "Insurance and car dealers share this reduced tier"
+     },
+     {
+      "name": "Fuel, utilities, real estate, education",
+      "categories": [
+       "utilities",
+       "transport",
+       "education",
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 1000
+   },
+   "perks": {
+    "lounge": {
+     "text": "Lounge access with flight-delay pass only"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-mastercard-titanium-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-titanium-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Bank page shows a current no joining/annual fee offer; standard AED 420 recorded. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-webshopper",
+   "issuer": "Emirates NBD",
+   "name": "Webshopper",
+   "network": null,
+   "tier": "classic",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 5250,
+   "joining_fee_minor": 5250,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 500
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-webshopper-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/webshopper-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Online-only card: cannot be used in store or at ATMs. 1 Plus Point per AED 200 online. Cap 500 points per statement. Network not confirmed."
+  },
+  {
+   "id": "enbd-go4it-platinum",
+   "issuer": "Emirates NBD",
+   "name": "Go4it Platinum",
+   "network": null,
+   "tier": "platinum",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 20895,
+   "joining_fee_minor": 20895,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "RTA and transport",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.02,
+      "conditions": "RTA services (Nol top-up, parking, metro); weekend spend earns 5x base"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 3000
+   },
+   "perks": {
+    "cinema": {
+     "text": "Buy one get one at VOX per bank/aggregator"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-go4it-platinum-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Built-in Nol chip. Base earn 1 point per AED 200 on weekdays (0.5%); weekends 5 points per AED 200 (2.5%) which the engine cannot model by day. RTA spend 4 points per AED 200 (2%). Bank shows a current no-annual-fee offer. Network not confirmed on the sources used. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-go4it-gold",
+   "issuer": "Emirates NBD",
+   "name": "Go4it Gold",
+   "network": null,
+   "tier": "gold",
+   "kind": "lifestyle",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 10395,
+   "joining_fee_minor": 10395,
+   "fee_waiver": null,
+   "min_salary_minor": 500000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.0025,
+    "rules": [
+     {
+      "name": "RTA and transport",
+      "categories": [
+       "transport"
+      ],
+      "rate": 0.01,
+      "conditions": "RTA services (Nol top-up, parking, metro); weekend spend earns 5x base"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 2000
+   },
+   "perks": {
+    "cinema": {
+     "text": "Buy one get one at VOX per bank/aggregator"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-go4it-gold-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-gold-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Built-in Nol chip. 1 point per AED 400 weekdays (0.25%), 5 per AED 400 on weekends (1.25%), RTA 4 per AED 400 (1%). Bank shows a current no-annual-fee offer. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-duo",
+   "issuer": "Emirates NBD",
+   "name": "Duo (Diners Club + Mastercard)",
+   "network": "mastercard",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 84000,
+   "joining_fee_minor": 84000,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": 1.99,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "Grocery, utilities, education, fuel",
+      "categories": [
+       "groceries",
+       "utilities",
+       "education",
+       "transport"
+      ],
+      "rate": 0.015,
+      "conditions": "5% when total monthly card spend is AED 5,000 or more, otherwise 1.5%; electronics also qualifies but cannot be mapped to a slug; conservative 1.5% stored",
+      "tier_rate_at_5000_monthly_spend": 0.05
+     },
+     {
+      "name": "Real estate",
+      "categories": [
+       "rent"
+      ],
+      "rate": 0.002
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "monthly_cap_points_total": 500
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge access via the Diners Club card per aggregator"
+    },
+    "golf": {
+     "text": "Complimentary access to top UAE courses"
+    },
+    "cinema": {
+     "text": "Royal Cinemas buy one get one"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://kredit.ae/credit-cards/enbd-duo-credit-card/details",
+     "kind": "aggregator",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/duo-credit-cards",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "high",
+   "community_notes": [],
+   "notes": "Two cards in one package (Diners Club + Mastercard). Bank page says exclusive to Abu Dhabi residents and shows a current no-annual-fee offer; aggregator shows AED 840. Max 500 points (AED 500) per statement. Age 21-63. Fees recorded VAT-inclusive as shown by the aggregator; bank pages sometimes show the pre-VAT figure."
+  },
+  {
+   "id": "enbd-diners-club",
+   "issuer": "Emirates NBD",
+   "name": "Diners Club",
+   "network": null,
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 42000,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": 1200000,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.005,
+    "rules": [
+     {
+      "name": "Duty free",
+      "categories": [],
+      "rate": 0.05,
+      "merchants": [
+       "dubai duty free"
+      ]
+     },
+     {
+      "name": "Dining",
+      "categories": [
+       "dining"
+      ],
+      "rate": 0.025
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "lounge": {
+     "text": "Unlimited lounge access, 1,900+ lounges per bank page"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/diners-club-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Official page only. Earn: 5% duty free, 2.5% dining, 0.5% other in Plus Points; per-statement cap exists but is not stated on the page. Diners network is not in the schema list so network is null."
+  },
+  {
+   "id": "enbd-priority-banking-visa-infinite",
+   "issuer": "Emirates NBD",
+   "name": "Priority Banking Visa Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": 157500,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 1,
+    "base_rate": 0.01,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {
+    "golf": {
+     "text": "Free golf in UAE and up to 40% off premium courses worldwide"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://www.emiratesnbd.com/en/cards/credit-cards/priority-banking-visa-infinite-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Priority Banking customers only. Plus Points earn depends on single transaction size: 5% on transactions of AED 5,000+, 2% on AED 2,500-4,999, 1% below AED 2,500; a 1% flat tier applies to grocery, insurance, car dealers, fuel, utilities, real estate, charity, education, fast food, transit, government, telecom and EU spend. The engine cannot model per-transaction tiers, so 1% is stored. First year free, then AED 1,575. Possible quarterly AED 5,000 cashback draw at AED 50,000 quarterly spend. Minimum salary not shown."
+  }
+ ]
+}

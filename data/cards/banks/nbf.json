@@ -1,0 +1,167 @@
+{
+ "issuer": "NBF",
+ "cards": [
+  {
+   "id": "nbf-platinum-exclusive",
+   "issuer": "NBF",
+   "name": "Platinum Exclusive",
+   "network": "visa",
+   "tier": "platinum",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": null,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0035,
+    "base_rate": 2.5,
+    "rules": [
+     {
+      "name": "Special categories",
+      "rate": 1,
+      "categories": [
+       "groceries",
+       "telecom",
+       "transport",
+       "education",
+       "rent",
+       "utilities"
+      ],
+      "conditions": "supermarkets, telecom, fuel, education, government, charities, transport, rentals, insurance and fast food earn 1 pt per AED"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 3.5,
+    "monthly_total_cap_units": 999999
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbf.ae/personal/rewards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/personal/personal-cards/platinum-exclusive-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Earn: 2.5 pts per AED in the UAE (about 0.88%), 3.5 pts on non-AED spend, 1 pt in special categories; cap 999,999 pts/month. Merchant category is whatever the merchant registered, so mis-categorised spend cannot be disputed. Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+  },
+  {
+   "id": "nbf-infinite",
+   "issuer": "NBF",
+   "name": "Infinite",
+   "network": "visa",
+   "tier": "infinite",
+   "kind": "points",
+   "islamic": false,
+   "status": "active",
+   "annual_fee_minor": null,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0035,
+    "base_rate": 3.5,
+    "rules": [
+     {
+      "name": "Special categories",
+      "rate": 1,
+      "categories": [
+       "groceries",
+       "telecom",
+       "transport",
+       "education",
+       "rent",
+       "utilities"
+      ],
+      "conditions": "supermarkets, telecom, fuel, education, government, charities, transport, rentals, insurance and fast food earn 1 pt per AED"
+     }
+    ],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ],
+    "international_rate": 5,
+    "alsamy_base_rate": 4,
+    "alsamy_international_rate": 6,
+    "monthly_total_cap_units": 999999
+   },
+   "perks": {
+    "lounge": {
+     "text": "Visa Airport Companion app lounge access (details not stated on page)"
+    }
+   },
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbf.ae/personal/rewards/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://nbf.ae/personal/personal-cards/infinite-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "medium",
+   "community_notes": [],
+   "notes": "Earn rate depends on banking segment: NBF Al Samy customers 4 pts/AED local and 6 abroad; NBF Priority customers 3.5 local and 5 abroad (used as base, the conservative figure); rate for customers outside those segments is not stated. 1 pt in special categories. Cap 999,999 pts/month. Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+  },
+  {
+   "id": "nbf-classic",
+   "issuer": "NBF",
+   "name": "Classic",
+   "network": null,
+   "tier": "classic",
+   "kind": "basic",
+   "islamic": false,
+   "status": "unverified",
+   "annual_fee_minor": null,
+   "joining_fee_minor": null,
+   "fee_waiver": null,
+   "min_salary_minor": null,
+   "fx_markup_pct": null,
+   "reward_structure": {
+    "unit": "points",
+    "point_value_aed": 0.0035,
+    "base_rate": 0,
+    "rules": [],
+    "excluded_categories": [
+     "fees",
+     "cc_payment",
+     "transfer"
+    ]
+   },
+   "perks": {},
+   "welcome_offer": null,
+   "sources": [
+    {
+     "url": "https://nbf.ae/personal/personal-cards/classic-credit-card/",
+     "kind": "bank_page",
+     "verified_on": "2026-11-24"
+    }
+   ],
+   "confidence": "low",
+   "community_notes": [],
+   "notes": "Listed on NBF's site but the page was not read in detail and the rewards page gives no earn rates for it; all numbers unknown (base rate set to 0 = unknown). Fees, minimum salary and welcome offers were NOT obtained: NBF's card pages carry no figures and the Key Facts Statement PDF could not be opened in this environment, so they are null. Rewards programme started 11 Feb 2025; spend through NBF Direct app/online banking earns no points. Point value from NBF rewards page: 1 point = AED 0.0035."
+  }
+ ]
+}
