@@ -1,4 +1,4 @@
-.PHONY: install dev worker lint format typecheck test test-integration check migrate revision up down
+.PHONY: install dev worker lint format typecheck test test-integration check migrate sync-cards revision up down
 
 install:
 	uv sync
@@ -31,6 +31,9 @@ check: lint typecheck test
 
 migrate:
 	uv run alembic upgrade head
+
+sync-cards:
+	uv run python -m app.services.card_catalog
 
 revision:
 	uv run alembic revision --autogenerate -m "$(m)"

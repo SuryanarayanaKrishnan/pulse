@@ -35,7 +35,7 @@ jobs:
           ARGS=(--project "${{ vars.GCP_PROJECT_ID }}" --region "${{ vars.GCP_REGION }}" --image "$IMAGE"
             --service-account "pulse-runtime@${{ vars.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
             --set-secrets "DATABASE_URL=MIGRATIONS_DATABASE_URL:latest" --set-env-vars "DB_PGBOUNCER=false,APP_ENV=production"
-            --command alembic --args upgrade,head --max-retries 0 --task-timeout 300)
+            --command sh --args=-c,"alembic upgrade head && python -m app.services.card_catalog" --max-retries 0 --task-timeout 300)
           gcloud run jobs deploy "$JOB" "${ARGS[@]}"
           gcloud run jobs execute "$JOB" --project "${{ vars.GCP_PROJECT_ID }}" --region "${{ vars.GCP_REGION }}" --wait
       - name: Deploy service

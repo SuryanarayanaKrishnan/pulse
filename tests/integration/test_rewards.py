@@ -1,9 +1,58 @@
 """Card catalog, user cards, rewards summary, best-card ranking and the wallet-tap nudge."""
 
+import json
 from datetime import UTC, datetime
 
+import pytest
+
+from app.services.card_catalog import UPSERT
 from app.services.rewards import parse_structure
 from tests.integration.test_flows import mk_account
+
+EXCL = ["fees", "cc_payment", "transfer", "rent", "education", "utilities"]
+
+
+def _structure(base, rules):
+    return {
+        "unit": "cashback",
+        "point_value_aed": 1,
+        "base_rate": base,
+        "rules": rules,
+        "excluded_categories": EXCL,
+    }
+
+
+# Fixed fixtures independent of the live catalog (whose rates change): the numbers below are asserted exactly.
+TEST_CARDS = {
+    "Test Bank Dining Cashback": _structure(
+        0.005, [{"name": "Dining", "rate": 0.05, "categories": ["dining"], "monthly_cap_units": 300}]
+    ),
+    "Test Bank Plain Cashback": _structure(
+        0.01, [{"name": "Dining", "rate": 0.03, "categories": ["dining"], "monthly_cap_units": 100}]
+    ),
+}
+MASH, FAB = "Test Bank Dining Cashback", "Test Bank Plain Cashback"
+
+
+@pytest.fixture(autouse=True)
+async def test_cards(sessionmaker_):
+    async with sessionmaker_() as s:
+        for name, rs in TEST_CARDS.items():
+            await s.execute(
+                UPSERT,
+                {
+                    "issuer": "Test Bank",
+                    "name": name.removeprefix("Test Bank "),
+                    "network": "visa",
+                    "fee": 0,
+                    "salary": 500_000,
+                    "rs": json.dumps(rs),
+                    "perks": "{}",
+                    "source_url": None,
+                    "verified_at": None,
+                },
+            )
+        await s.commit()
 
 
 async def catalog(api) -> dict[str, dict]:
@@ -37,18 +86,27 @@ async def spend(api, account_id: str, category_id: str | None, amount: int, merc
     assert (await api.post("/v1/transactions", body)).status_code == 201
 
 
-async def test_seeded_catalog_parses_and_is_flagged_unverified(new_user):
+async def test_loaded_catalog_parses_and_flags_verification(new_user):
     api = new_user()
     cards = (await api.get("/v1/cards/catalog")).json()
-    assert len(cards) >= 10
+    assert len(cards) >= 100
+    real = [c for c in cards if c["perks"].get("catalog_id")]
+    assert len(real) >= 100
     for c in cards:
-        parse_structure(c["reward_structure"])  # every seeded structure is valid
-        assert c["data_status"] == "unverified" and c["verified_on"] is None and "source" in c
+        parse_structure(c["reward_structure"])  # every structure is valid
+        assert "source" in c
+        if c["data_status"] == "verified":
+            assert c["verified_on"] and c["source"] and c["perks"]["confidence"] == "high"
+        else:
+            assert c["verified_on"] is None
+    assert any(c["data_status"] == "verified" for c in real) and any(
+        c["data_status"] == "unverified" for c in real
+    )
 
 
 async def test_add_and_remove_cards_validates_account(new_user):
     a, b = new_user(), new_user()
-    cat = (await catalog(a))["Mashreq Cashback Credit Card"]
+    cat = (await catalog(a))[MASH]
     bank = await mk_account(a, last4="1000")
     assert (
         await a.post("/v1/cards", {"catalog_card_id": cat["id"], "account_id": bank["id"]})
@@ -66,7 +124,7 @@ async def test_add_and_remove_cards_validates_account(new_user):
 
 async def test_summary_tracks_cap_usage_and_cycle(new_user):
     api = new_user()
-    cat = (await catalog(api))["Mashreq Cashback Credit Card"]  # dining 5%, cap AED 300
+    cat = (await catalog(api))[MASH]  # dining 5%, cap AED 300
     uc, acc = await add_card(api, cat, "3000")
     dining = await cat_id(api, "Dining & Delivery")
     await spend(api, acc["id"], dining, 400_000)  # 5% of 4000 = 200
@@ -86,7 +144,7 @@ async def test_summary_tracks_cap_usage_and_cycle(new_user):
 async def test_best_card_prefers_headroom_and_validates_input(new_user):
     api = new_user()
     cats = await catalog(api)
-    mash, fab = cats["Mashreq Cashback Credit Card"], cats["First Abu Dhabi Bank Cashback Card"]
+    mash, fab = cats[MASH], cats[FAB]
     _, a1 = await add_card(api, mash, "4001")
     uc2, _ = await add_card(api, fab, "4002")
     body = {"category": "dining", "amount_minor": 10_000}
@@ -107,8 +165,8 @@ async def test_best_card_prefers_headroom_and_validates_input(new_user):
 async def test_wallet_tap_returns_nudge_when_cap_is_hit(new_user):
     api = new_user()
     cats = await catalog(api)
-    _, acc = await add_card(api, cats["Mashreq Cashback Credit Card"], "5001")
-    await add_card(api, cats["First Abu Dhabi Bank Cashback Card"], "5002")
+    _, acc = await add_card(api, cats[MASH], "5001")
+    await add_card(api, cats[FAB], "5002")
     tok = (await api.post("/v1/ingest/token")).json()["token"]
     now = datetime.now(UTC).isoformat()
 
