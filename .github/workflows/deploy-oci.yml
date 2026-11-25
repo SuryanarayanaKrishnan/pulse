@@ -14,13 +14,29 @@ jobs:
     runs-on: ubuntu-latest
     # Skips quietly until the VM is configured (see docs/HOSTING.md).
     if: vars.OCI_HOST != ''
+    env:
+      HOST: ${{ vars.OCI_HOST }}
+      DEPLOY_USER: ${{ vars.OCI_USER || 'ubuntu' }}
     steps:
+      - uses: actions/checkout@v4
       - name: Set up SSH
+        env:
+          KEY: ${{ secrets.OCI_SSH_KEY }}
         run: |
           install -m 700 -d ~/.ssh
-          printf '%s\n' "${{ secrets.OCI_SSH_KEY }}" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
-          ssh-keyscan -H "${{ vars.OCI_HOST }}" >> ~/.ssh/known_hosts
+          printf '%s\n' "$KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+      - name: Wait for first-boot setup
+        run: ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'for i in $(seq 1 60); do [ -f /opt/pulse/.cloud-init-done ] && exit 0; sleep 5; done; exit 1'
+      - name: Sync code and env
+        env:
+          PULSE_ENV: ${{ secrets.PULSE_ENV }}
+        run: |
+          rsync -az --delete -e "ssh -i ~/.ssh/id_deploy" \
+            --exclude .git --exclude .venv --exclude tests --exclude '.env' --exclude '.fernet' --exclude '.cloud-init-done' \
+            ./ "$DEPLOY_USER@$HOST:/opt/pulse/"
+          printf '%s\n' "$PULSE_ENV" | ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'umask 077; cat > /opt/pulse/.env.new && mv /opt/pulse/.env.new /opt/pulse/.env'
       - name: Deploy
-        run: ssh -i ~/.ssh/id_deploy "${{ vars.OCI_USER || 'ubuntu' }}@${{ vars.OCI_HOST }}" 'bash /opt/pulse/deploy/oci/deploy.sh'
+        run: ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'bash /opt/pulse/deploy/oci/deploy.sh'
       - name: Smoke test
-        run: curl -fsS --retry 6 --retry-delay 5 "https://${{ vars.API_DOMAIN }}/ready"
+        run: curl -fsS --retry 8 --retry-delay 10 "https://${{ vars.API_DOMAIN }}/ready"

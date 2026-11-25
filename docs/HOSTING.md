@@ -25,20 +25,22 @@ Stay inside Always Free: only the `VM.Standard.A1.Flex` shape (or `VM.Standard.E
 
 ## One-time setup (what only you can do)
 
-1. **Oracle account** at [oracle.com/cloud/free](https://www.oracle.com/cloud/free/), home region as above.
-2. **Create the VM** (Compute > Instances > Create): image **Ubuntu 24.04 (aarch64)**, shape **Ampere A1.Flex, 2 OCPU / 12 GB**, boot volume 50 GB, public IPv4, and **download the SSH key pair it generates** (or paste your own public key).
-3. **Open ports**: VCN > Subnet > Security List > add ingress rules for TCP **80** and **443** from `0.0.0.0/0` (22 is already open).
-4. **Supabase project** (free, Mumbai). Collect the session-pooler URL (port 5432), transaction-pooler URL (port 6543), the JWT secret, and the JWKS URL.
-5. **On the VM** (`ssh ubuntu@<ip>`): copy `deploy/oci/provision.sh` over (or paste it), then:
-   ```
-   bash provision.sh && exit        # log back in so the docker group applies
-   cp /opt/pulse/deploy/oci/env.example /opt/pulse/.env && chmod 600 /opt/pulse/.env
-   nano /opt/pulse/.env             # fill values; API_DOMAIN = <ip with dashes>.sslip.io
-   docker run --rm python:3.13-slim sh -c "pip -q install cryptography && python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())'"   # value for FERNET_KEYS
-   bash /opt/pulse/deploy/oci/deploy.sh
-   ```
-   Secrets stay on the VM; never paste them in chat or commit them.
-6. **Auto-deploy (optional)**: in GitHub add secret `OCI_SSH_KEY` (private key) and variables `OCI_HOST` (public IP), `OCI_USER` (`ubuntu`), `API_DOMAIN`. Every push to `main` then redeploys.
+Total: about 15 minutes. Secrets never go through chat; they go straight into GitHub.
+
+1. **Make a deploy key** (Windows PowerShell): `ssh-keygen -t ed25519 -f $HOME\pulse_deploy -N '""'`. You get `pulse_deploy` (private) and `pulse_deploy.pub` (public).
+2. **Oracle console** ([cloud.oracle.com](https://cloud.oracle.com)) > Compute > Instances > Create instance:
+   - Image **Ubuntu 24.04 (aarch64)**, shape **Ampere A1.Flex, 2 OCPU / 12 GB**, boot volume 50 GB, public IPv4.
+   - SSH keys: paste the contents of `pulse_deploy.pub`.
+   - Show advanced options > Management > **Cloud-init script**: paste `deploy/oci/cloud-init.yaml`.
+   - After it is running, VCN > subnet > Security List > add ingress TCP **80** and **443** from `0.0.0.0/0`.
+3. **Supabase** (free, Mumbai). Gather: session-pooler URL (5432), transaction-pooler URL (6543), JWT secret, JWKS URL.
+4. **GitHub** (repo Settings > Secrets and variables > Actions):
+   - Secret `OCI_SSH_KEY`: contents of `pulse_deploy`.
+   - Secret `PULSE_ENV`: your filled copy of `deploy/oci/env.example` (leave `FERNET_KEYS` empty; the VM generates and keeps its own).
+   - Variables `OCI_HOST` (VM public IP) and `API_DOMAIN` (`<ip with dashes>.sslip.io`, e.g. `129-146-1-2.sslip.io`). Optional `OCI_USER` (default `ubuntu`).
+5. Run the **Deploy (Oracle Cloud VM)** workflow. It waits for first boot, syncs the code, builds on the VM, migrates, and smoke-tests `https://<API_DOMAIN>/ready`. Every later push to `main` redeploys.
+
+The VM never needs GitHub access, so the repo can stay private. To change a setting later, edit `PULSE_ENV` and re-run the workflow.
 
 ## Login with Google
 
@@ -47,7 +49,7 @@ Supabase Auth handles it, so the backend needs no change (it already verifies Su
 ## Operating it
 
 - Logs: `cd /opt/pulse/deploy/oci && docker compose -f docker-compose.prod.yml logs -f api worker`
-- Redeploy: `bash /opt/pulse/deploy/oci/deploy.sh` (resets the checkout to `origin/main`).
+- Redeploy: re-run the workflow, or `bash /opt/pulse/deploy/oci/deploy.sh` on the VM.
 - Backups: statement PDFs sit in a Docker volume on the VM and the database is on Supabase free (no point-in-time recovery). Take a `pg_dump` before inviting people.
 
 ## Render fallback
