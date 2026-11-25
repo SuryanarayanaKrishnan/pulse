@@ -28,6 +28,7 @@ from app.api.v1.routers import (
     statement_passwords,
     statements,
     transactions,
+    vault_relay,
 )
 
 api_router = APIRouter()
@@ -60,5 +61,6 @@ for module in (
     statements,
     statement_passwords,
     email_connections,
+    vault_relay,
 ):
     api_router.include_router(module.router)

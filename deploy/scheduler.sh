@@ -15,3 +15,4 @@ upsert() { # name schedule path
 upsert pulse-gmail-sync   "5 0,6,12,18 * * *" sync_all_gmail_connections
 upsert pulse-networth     "30 20 * * *"       snapshot_net_worth   # 00:30 Dubai
 upsert pulse-valuations   "20 1,7,13,19 * * *" refresh_valuations
+upsert pulse-vault-warn   "40 * * * *" warn_vault_owners

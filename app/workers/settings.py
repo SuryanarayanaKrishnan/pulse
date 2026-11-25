@@ -14,6 +14,7 @@ from app.workers.tasks import (
     snapshot_net_worth,
     sync_all_gmail_connections,
     sync_gmail_connection,
+    warn_vault_owners,
 )
 
 
@@ -39,6 +40,8 @@ class WorkerSettings:
         cron(snapshot_net_worth, hour={20}, minute={30}, run_at_startup=False),
         # Gold / FX / property index every 6 hours, offset from the Gmail sync.
         cron(refresh_valuations, hour={1, 7, 13, 19}, minute={20}, run_at_startup=False),
+        # Hourly: warn vault owners before a release and when a nominee asks to open it.
+        cron(warn_vault_owners, minute={40}, run_at_startup=False),
     ]
     on_startup = startup
     on_shutdown = shutdown
