@@ -110,6 +110,43 @@ def catalog_rows(catalog: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def public_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
+    """The catalog in the shape the phone downloads (``GET /v1/catalog/cards``).
+
+    ``version`` is the catalog date as an integer (2026-11-24 -> 20261124) so the app can compare versions
+    numerically. Discontinued cards are left out. Everything the phone shows beyond the reward rules
+    (fees, waiver, welcome offer, notes, confidence) sits under ``perks``, as in ``catalog_rows``.
+    """
+    cards = []
+    for c in catalog["cards"]:
+        if c.get("status") == "discontinued":
+            continue
+        perks: dict[str, Any] = {k: c[k] for k in PERK_KEYS if c.get(k) not in (None, [], {})}
+        perks["benefits"] = c.get("perks") or {}
+        verified = _verified_at(c)
+        cards.append(
+            {
+                "id": c["id"],
+                "issuer": c["issuer"],
+                "name": c["name"],
+                "network": c.get("network"),
+                "annual_fee_minor": c.get("annual_fee_minor") or 0,
+                "min_salary_minor": c.get("min_salary_minor"),
+                "reward_structure": c["reward_structure"],
+                "perks": perks,
+                "art": c.get("art"),
+                "verified_on": verified.date().isoformat() if verified else None,
+                "source": _source_url(c),
+            }
+        )
+    day = str(catalog["catalog_version"])
+    return {
+        "version": int(day.replace("-", "")),
+        "updated_on": day,
+        "cards": cards,
+    }
+
+
 def sync_catalog_conn(bind: Any, catalog: dict[str, Any], *, retire: bool = True) -> int:
     """Synchronous upsert on an Alembic/SQLAlchemy connection. Returns the number of cards written."""
     rows = catalog_rows(catalog)
