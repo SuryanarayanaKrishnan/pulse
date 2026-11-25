@@ -7,13 +7,13 @@
    "id": "sib-cashback-tabby-wallet-only",
    "kind": "caveat",
    "title": "Paying Tabby with the SIB Cashback card",
-   "body": "Community reports say the 10% online rate on the SIB Cashback card only applies to Tabby repayments made through Apple Pay or Google Pay. Paying by typing the card number reportedly earns the low 0.5% tier. Tabby can also charge up to about 1% to repay by card, so a 0.5% repayment can lose money. Check the cashback line after the first repayment.",
+   "body": "Reports on r/UAECreditCards are mixed. SIB customer care told one member that Tabby repayments and YouGotAGift fall under MCC 5999 and no longer earn the 10% rate, and many members agreed in November. Others say it still works when paid through Apple Pay or Google Pay (which show up as a different merchant, 'TabbyDubai'), and one member redeemed the cashback that way. Tabby can also charge up to about 1% to repay by card. Check the cashback line after your first repayment before repeating it.",
    "card_ids": [
     "sib-cashback",
     "tabby-card"
    ],
    "severity": "warn",
-   "confidence": "reported",
+   "confidence": "corroborated",
    "status": "active",
    "valid_from": "2026-11-25",
    "valid_until": null,
@@ -31,8 +31,19 @@
    },
    "sources": [
     {
-     "kind": "user_report",
-     "ref": "surya, 2026-11-25 (relaying r/UAECreditCards)"
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xicy5u/",
+     "as_of": "2026-10"
+    },
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xnmquu/",
+     "as_of": "2026-11"
+    },
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xvwqu3/",
+     "as_of": "2026-11"
     },
     {
      "kind": "blog",
@@ -41,7 +52,7 @@
     }
    ],
    "conflicts": [
-    "The kredit.ae blog says a wallet does not override the MCC 5999 exclusion. The two accounts disagree; keep as reported until a statement confirms either."
+    "Whether Apple/Google Pay still earns is disputed: one member redeemed cashback that way, a blog says wallets do not override MCC 5999, and several members report inconsistent results with the same payment mode."
    ],
    "first_seen": "2026-11-25",
    "last_confirmed": "2026-11-25",
@@ -170,6 +181,105 @@
      "kind": "aggregator",
      "url": "https://kredit.ae/credit-cards/noon",
      "as_of": "2026-11-22"
+    }
+   ],
+   "first_seen": "2026-11-25",
+   "last_confirmed": "2026-11-25"
+  },
+  {
+   "id": "liv-wio-card-bill-stack",
+   "kind": "combo",
+   "title": "Pay card bills through Liv, settle Liv with Wio",
+   "body": "A new r/UAECreditCards post (23 Nov) proposes paying other credit card bills, such as a Tabby or SIB card, through Liv, then settling the Liv bill with a Wio card. The poster counts up to 9% on the first card, 1% on Liv Cashback Plus for new customers (0.5% existing) and 0.5% on Wio. It is unproven ('if this works as expected'), Wio's own terms limit bill-pay cashback and need an eligible spend, and the first payment may be treated as a transfer. Test with a small bill first.",
+   "card_ids": [
+    "liv-cashback-plus",
+    "wio-credit",
+    "sib-cashback"
+   ],
+   "severity": "info",
+   "confidence": "reported",
+   "status": "watching",
+   "valid_from": "2026-11-25",
+   "valid_until": null,
+   "review_by": "2026-12-15",
+   "sources": [
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1y3plyi/",
+     "as_of": "2026-11-23"
+    }
+   ],
+   "first_seen": "2026-11-25",
+   "last_confirmed": "2026-11-25"
+  },
+  {
+   "id": "mashreq-noon-govt-rate-cut",
+   "kind": "offer_change",
+   "title": "Mashreq noon: government payments earn less",
+   "body": "A member reports Mashreq is cutting the rate on government payments on the noon card from 0.33% to 0.15%. Check Mashreq's notice for the effective date.",
+   "card_ids": [
+    "mashreq-noon"
+   ],
+   "severity": "info",
+   "confidence": "reported",
+   "status": "active",
+   "valid_from": "2026-11-25",
+   "valid_until": null,
+   "review_by": "2027-01-25",
+   "sources": [
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1y13vj2/",
+     "as_of": "2026-11-21"
+    }
+   ],
+   "first_seen": "2026-11-25",
+   "last_confirmed": "2026-11-25"
+  },
+  {
+   "id": "ei-switch-min-spend-4000",
+   "kind": "offer_change",
+   "title": "EI Switch Cashback: minimum spend rises to AED 4,000",
+   "body": "The minimum monthly spend for Emirates Islamic Switch Cashback rises from AED 2,500 to AED 4,000 per statement cycle from 10 January 2027. Other terms are reported unchanged.",
+   "card_ids": [
+    "ei-switch-cashback"
+   ],
+   "severity": "warn",
+   "confidence": "corroborated",
+   "status": "active",
+   "valid_from": "2026-11-25",
+   "valid_until": "2027-01-10",
+   "review_by": "2027-01-10",
+   "sources": [
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xpb512/",
+     "as_of": "2026-11-05"
+    }
+   ],
+   "first_seen": "2026-11-25",
+   "last_confirmed": "2026-11-25"
+  },
+  {
+   "id": "white-friday-2026-noon-stack",
+   "kind": "combo",
+   "title": "White Friday: ENBD noon One stacks with noon grocery offer",
+   "body": "From a community deals thread: noon groceries had a 40% discount (up to AED 25) on any Visa from 23 to 27 Nov, and the ENBD noon card adds 10% cashback on top, for roughly 50% off. ADIB cards had a 30% noon discount (max AED 150) from 19 to 27 Nov. Offers end 27 Nov.",
+   "card_ids": [
+    "enbd-noon-one",
+    "adib-cashback-covered"
+   ],
+   "severity": "info",
+   "confidence": "reported",
+   "status": "active",
+   "valid_from": "2026-11-25",
+   "valid_until": "2026-11-27",
+   "review_by": "2026-11-27",
+   "sources": [
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xzp9x8/",
+     "as_of": "2026-11-23"
     }
    ],
    "first_seen": "2026-11-25",
