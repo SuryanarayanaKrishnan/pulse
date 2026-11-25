@@ -419,6 +419,21 @@ make worker                     # arq worker (separate terminal)
 
 Or everything in containers: `make up` (api, worker, postgres, redis; migrations run first).
 
+### Dev sign-in (local only)
+
+To run the Flutter app against a local backend without a real Supabase login, set in `.env`:
+
+```
+APP_ENV=development
+ALLOW_DEV_AUTH=true
+SUPABASE_JWT_SECRET=<any long random string>
+```
+
+This mounts `POST /v1/dev/token`, which returns a 24 h HS256 JWT for a fixed local user (override with
+`DEV_AUTH_USER_ID` / `DEV_AUTH_EMAIL`). The normal auth path accepts it. The route does not exist unless the
+flag is set, and the app **refuses to start** with `ALLOW_DEV_AUTH=true` under any `APP_ENV` other than
+`development`, so it cannot be enabled in staging or production. The app side is `--dart-define=DEV_AUTH=true`.
+
 ### Checks and tests
 
 ```bash
