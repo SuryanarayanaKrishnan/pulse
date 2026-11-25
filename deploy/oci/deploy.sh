@@ -16,6 +16,10 @@ fi
 sed -i '/^POSTGRES_PASSWORD=/d' .env && echo "POSTGRES_PASSWORD=$(cat .pgpass)" >> .env
 chmod 600 .env .fernet .pgpass 2>/dev/null || true
 
+# Nightly off-VM backup (03:10 UTC = 07:10 Dubai), logged to /var/log/pulse-backup.log
+echo '10 3 * * * ubuntu /opt/pulse/deploy/oci/backup.sh >> /var/log/pulse-backup.log 2>&1' | sudo tee /etc/cron.d/pulse-backup >/dev/null
+sudo touch /var/log/pulse-backup.log && sudo chown ubuntu /var/log/pulse-backup.log
+
 cd deploy/oci
 docker compose -f docker-compose.prod.yml --env-file /opt/pulse/.env up -d --build --remove-orphans
 docker image prune -f >/dev/null

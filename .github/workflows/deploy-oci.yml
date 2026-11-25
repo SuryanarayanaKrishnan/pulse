@@ -66,6 +66,7 @@ jobs:
             echo "API_DOMAIN=$API_DOMAIN"
             echo "GOOGLE_REDIRECT_URI=https://$API_DOMAIN/v1/email-connections/gmail/callback"
             echo "REDIS_URL=redis://redis:6379/0"
+            echo "BACKUP_PASSPHRASE=$(sha256sum ~/.ssh/id_deploy | cut -d' ' -f1)"
           } > /tmp/pulse.env
           rsync -az --delete -e "ssh -i ~/.ssh/id_deploy" \
             --exclude .git --exclude .venv --exclude tests --exclude .env --exclude .fernet --exclude .pgpass --exclude .cloud-init-done \

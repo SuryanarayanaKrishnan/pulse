@@ -44,7 +44,7 @@ Everything else is done by the `Deploy (Oracle Cloud)` workflow: it creates the 
    Optional `PULSE_ENV` for extra settings (see `deploy/oci/env.example`).
 4. Run **Actions > Deploy (Oracle Cloud) > Run workflow**. The first run creates the VM (ARM capacity can take a few retries; it keeps trying for about 25 minutes) and ends with the live URL in the job summary. Every push to `main` redeploys.
 
-The database is **Postgres on the VM** (nightly dumps kept in a volume), so no database secret is needed. Supabase is only used for sign-in (Google login) and the app's encrypted backup; put its JWKS URL in `deploy/oci/public.env`.
+The database is **Postgres on the VM**, so no database secret is needed. Every night at 07:10 Dubai time a dump is encrypted (AES-256, passphrase = SHA-256 of your `pulse_deploy` key) and uploaded to a private Always Free Object Storage bucket `pulse-backups` (newest 14 kept, plus the Fernet key). Losing the VM does not lose data, as long as you keep the `pulse_deploy` file. Supabase is only used for sign-in (Google login) and the app's encrypted backup; put its JWKS URL in `deploy/oci/public.env`.
 
 The workflow only ever creates `VM.Standard.A1.Flex` (2 OCPU, 12 GB, 50 GB boot) plus a VCN with a free internet gateway. Nothing else is created.
 
@@ -56,7 +56,9 @@ Supabase Auth handles it, so the backend needs no change (it already verifies Su
 
 - Logs: `cd /opt/pulse/deploy/oci && docker compose -f docker-compose.prod.yml logs -f api worker`
 - Redeploy: re-run the workflow, or `bash /opt/pulse/deploy/oci/deploy.sh` on the VM.
-- Backups: nightly dumps (last 14) and statement PDFs sit on the VM's disk. If Oracle reclaims or loses the VM they go too; copy a dump off the VM before real users depend on it.
+- Backups: database dumps and the Fernet key go off-VM nightly (see above). Statement PDFs still live only on the VM disk; move them to object storage before real users upload many.
+- Restore: `oci os object get -bn pulse-backups --name db/pulse-<ts>.dump.enc --file x.enc`, then `openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass pass:$(sha256sum pulse_deploy | cut -d' ' -f1) -in x.enc | pg_restore -U pulse -d pulse --clean`.
+- Manual backup now: `bash /opt/pulse/deploy/oci/backup.sh`.
 
 ## Render fallback
 

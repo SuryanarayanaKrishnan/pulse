@@ -29,22 +29,6 @@ services:
       timeout: 3s
       retries: 10
 
-  pgbackup:
-    image: postgres:16-alpine
-    restart: unless-stopped
-    environment:
-      PGPASSWORD: ${POSTGRES_PASSWORD}
-    entrypoint: ["sh", "-c"]
-    command:
-      - |
-        while true; do
-          pg_dump -h postgres -U pulse -Fc pulse > /backups/pulse-$$(date +%Y%m%d-%H%M).dump && ls -1t /backups/*.dump | tail -n +15 | xargs -r rm
-          sleep 86400
-        done
-    volumes: [pgbackups:/backups]
-    depends_on:
-      postgres: {condition: service_healthy}
-
   redis:
     image: redis:7-alpine
     restart: unless-stopped
@@ -103,5 +87,4 @@ volumes:
   caddy_config:
   redis_data:
   pgdata:
-  pgbackups:
   storage:

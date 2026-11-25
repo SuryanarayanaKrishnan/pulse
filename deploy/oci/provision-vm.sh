@@ -72,6 +72,29 @@ if [ -z "$INST" ]; then
   [ -n "$INST" ] || { log "still out of host capacity after retries; re-run the workflow later"; exit 1; }
 fi
 
+# ---- off-VM backups: private Object Storage bucket (Always Free: 20 GB) writable only by this VM ----
+BUCKET=pulse-backups
+NS="$(o os ns get | jq -r .data)"
+o os bucket get --namespace-name "$NS" --bucket-name "$BUCKET" >/dev/null 2>&1 || {
+  log "creating bucket $BUCKET"
+  o os bucket create -c "$C" --namespace-name "$NS" --name "$BUCKET" --storage-tier Standard \
+    --public-access-type NoPublicAccess >/dev/null
+}
+RULE="instance.id = '$INST'"
+DG="$(o iam dynamic-group list -c "$C" --name pulse-vm --all | jq -r '.data[0].id // empty')"
+if [ -z "$DG" ]; then
+  o iam dynamic-group create -c "$C" --name pulse-vm --description "Pulse VM" --matching-rule "$RULE" >/dev/null
+else
+  o iam dynamic-group update --dynamic-group-id "$DG" --matching-rule "$RULE" --force >/dev/null
+fi
+STMT="[\"Allow dynamic-group pulse-vm to manage objects in tenancy where target.bucket.name='$BUCKET'\",\"Allow dynamic-group pulse-vm to read buckets in tenancy\"]"
+POL="$(o iam policy list -c "$C" --name pulse-vm-backups --all | jq -r '.data[0].id // empty')"
+if [ -z "$POL" ]; then
+  o iam policy create -c "$C" --name pulse-vm-backups --description "Pulse VM backups" --statements "$STMT" >/dev/null
+else
+  o iam policy update --policy-id "$POL" --statements "$STMT" --force >/dev/null
+fi
+
 IP="$(o compute instance list-vnics --instance-id "$INST" | jq -r '.data[0]."public-ip"')"
 [ -n "$IP" ] && [ "$IP" != null ] || { log "instance has no public IP yet"; exit 1; }
 log "instance $INST at $IP"
