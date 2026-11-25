@@ -287,3 +287,25 @@ async def test_cas_import_leaves_unresolved_schemes_for_manual_codes(
     assert rep.funds in ("ok", "partial")
     assert (await api.get(f"/v1/funds/holdings/{fixed['id']}")).json()["nav"]["basis"] == "market"
     _ = (FundHolding, Decimal)
+
+
+async def test_stock_quotes_by_ticker_cache_and_stale(new_user, price_providers):
+    api = new_user()
+    stocks = FakeStocks({"voo.us": Decimal("500.25"), "aapl.us": Decimal("200")})
+    price_providers.stocks = stocks
+    r = await api.get("/v1/prices/stocks", params={"tickers": "VOO, aapl.us,voo,bad ticker!,zzzz"})
+    assert r.status_code == 200 and "max-age=900" in r.headers["cache-control"]
+    q = {x["ticker"]: x for x in r.json()["quotes"]}
+    assert list(q) == ["voo.us", "aapl.us", "zzzz.us"]  # normalised, de-duplicated, junk dropped
+    assert float(q["voo.us"]["usd"]) == 500.25 and q["voo.us"]["status"] == "live"
+    assert q["zzzz.us"]["usd"] is None and q["zzzz.us"]["status"] == "unavailable"
+    price_providers.stocks = FakeStocks(fail=True)
+    r = await api.get("/v1/prices/stocks", params={"tickers": "voo"})
+    assert float(r.json()["quotes"][0]["usd"]) == 500.25  # served from cache, source not needed
+
+
+def test_normalise_tickers():
+    from app.services.valuations.prices import normalise_tickers
+
+    assert normalise_tickers("VOO,brk-b, aapl.us,,;;") == ["voo.us", "brk-b.us", "aapl.us"]
+    assert len(normalise_tickers(",".join(f"t{i}" for i in range(40)))) == 25
