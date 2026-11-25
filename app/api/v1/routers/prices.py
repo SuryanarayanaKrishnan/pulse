@@ -43,7 +43,7 @@ async def stock_prices(
     session: SessionDep,
     providers: ProvidersDep,
     response: Response,
-    tickers: Annotated[str, Query(description="Comma-separated US tickers, e.g. VOO,AAPL (max 25)")],
+    tickers: Annotated[str, Query(description="Comma-separated tickers, e.g. VOO,AAPL,RELIANCE.NS (max 25)")],
 ) -> StockQuotesOut:
     """Last close for the tickers a phone tracks (free Stooq source, cached for the TTL, stale on error).
     Only the tickers are sent: no amounts, quantities or user data."""

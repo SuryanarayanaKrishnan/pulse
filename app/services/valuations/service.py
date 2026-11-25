@@ -30,8 +30,8 @@ def crypto_symbol(coin_id: str) -> str:
     return f"CRYPTO_{coin_id}_USD"
 
 
-def stock_symbol(ticker: str) -> str:
-    return f"STK_{ticker}_USD"
+def stock_symbol(ticker: str, currency: str = "USD") -> str:
+    return f"STK_{ticker}_{currency}"
 
 
 def nav_symbol(code: str) -> str:
@@ -55,6 +55,9 @@ class QuoteBook:
     fx: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
     crypto: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
     stocks: dict[str, tuple[Decimal, datetime, str]] = field(default_factory=dict)
+    local_stocks: dict[str, tuple[Decimal, datetime, str, str]] = field(
+        default_factory=dict
+    )  # non-USD listings (e.g. NSE): price, fetched_at, source, currency
     nav: dict[str, tuple[Decimal, date, datetime, str]] = field(
         default_factory=dict
     )  # nav, nav date, fetched
@@ -78,7 +81,11 @@ async def load_quote_book(session: AsyncSession) -> QuoteBook:
         elif q.symbol.startswith("CRYPTO_"):
             book.crypto[q.symbol[7:-4]] = (q.value, q.fetched_at, q.source)
         elif q.symbol.startswith("STK_"):
-            book.stocks[q.symbol[4:-4]] = (q.value, q.fetched_at, q.source)
+            body, _, ccy = q.symbol[4:].rpartition("_")
+            if ccy == "USD":
+                book.stocks[body] = (q.value, q.fetched_at, q.source)
+            elif body:
+                book.local_stocks[body] = (q.value, q.fetched_at, q.source, ccy)
         elif q.symbol.startswith("NAV_"):
             book.nav[q.symbol[4:]] = (q.value, q.quote_date, q.fetched_at, q.source)
         elif q.symbol.startswith("FX_") and q.symbol.endswith("_AED"):
