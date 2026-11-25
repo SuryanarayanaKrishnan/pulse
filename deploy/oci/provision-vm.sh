@@ -54,6 +54,7 @@ if [ -z "$INST" ]; then
   [ -n "$IMG" ] || { log "no Ubuntu 24.04 aarch64 image found in this region"; exit 1; }
 
   # ---- launch; ARM capacity is scarce, so cycle through ADs and retry for ~25 min ----
+  # Retry on "out of host capacity" and on 429 TooManyRequests (Oracle throttles launches).
   mapfile -t ADS < <(o iam availability-domain list -c "$C" | jq -r '.data[].name')
   for round in $(seq 1 25); do
     for AD in "${ADS[@]}"; do
@@ -62,8 +63,13 @@ if [ -z "$INST" ]; then
           --shape-config "{\"ocpus\":$OCPUS,\"memoryInGBs\":$MEM_GB}" --image-id "$IMG" --subnet-id "$SUBNET" \
           --assign-public-ip true --display-name "$NAME" --boot-volume-size-in-gbs "$BOOT_GB" \
           --ssh-authorized-keys-file "$SSH_PUBKEY_FILE" --user-data-file "$HERE/cloud-init.yaml" \
-          --wait-for-state RUNNING 2>&1)"; then
+          --wait-for-state RUNNING --max-retries 0 2>&1)"; then
         INST="$(jq -r .data.id <<<"$OUT")"; break 2
+      fi
+      if grep -qi "TooManyRequests" <<<"$OUT"; then
+        # A throttled launch may still have created the instance; pick it up if so.
+        INST="$(existing)"; [ -z "$INST" ] || break 2
+        log "throttled (429); sleeping 90s"; sleep 90; continue
       fi
       grep -qi "out of host capacity\|OutOfHostCapacity\|LimitExceeded.*capacity" <<<"$OUT" || { echo "$OUT" >&2; exit 1; }
     done
