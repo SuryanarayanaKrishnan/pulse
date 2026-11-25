@@ -86,6 +86,11 @@ class BestCardIn(BaseModel):
     category: str | None = Field(default=None, max_length=40, description="Category slug, e.g. dining")
     merchant: str | None = Field(default=None, max_length=200)
     amount_minor: PositiveMinor
+    channel: str | None = Field(
+        default=None,
+        max_length=30,
+        description="How you will pay: wallet or card_details, so community caveats apply.",
+    )
 
     @model_validator(mode="after")
     def _one_of(self) -> "BestCardIn":

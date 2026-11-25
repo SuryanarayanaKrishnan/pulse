@@ -1,0 +1,330 @@
+{
+ "generated_on": "2026-11-25",
+ "changes": [
+  {
+   "url": "https://www.hsbc.ae/credit-cards/products/skywards-signature/",
+   "card_ids": [
+    "hsbc-skywards-signature"
+   ],
+   "detected_on": "2026-11-25",
+   "expiring": {
+    "line": "T&Cs apply (PDF). Offer ends 30 November 2026.",
+    "date": "2026-11-30",
+    "days_left": 5
+   }
+  }
+ ],
+ "catalog_welcome_offers_expiring": [
+  {
+   "card_id": "adib-marriott-bonvoy-infinite",
+   "valid_until": "2026-11-30",
+   "days_left": 5
+  },
+  {
+   "card_id": "enbd-marriott-bonvoy-world-elite",
+   "valid_until": "2026-11-30",
+   "days_left": 5
+  },
+  {
+   "card_id": "fab-cashback",
+   "valid_until": "2026-11-30",
+   "days_left": 5
+  },
+  {
+   "card_id": "fab-etihad-guest-platinum",
+   "valid_until": "2026-11-30",
+   "days_left": 5
+  }
+ ],
+ "thin_pages": [],
+ "errors": [
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/365-cashback-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/betaqti-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/essential-cashback-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/adcb-lulu-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/adcb-lulu-titanium-gold-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/shukran-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/talabat-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-ic.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-platinum-cc.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/touchpoint-tg-cc.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.adcb.com/en/personal/cards/credit-cards/traveller-credit-card.aspx",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://resources.ajmanbank.ae/site/bright-world.html",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.alhilalbank.ae/en/personal/cards/credit-cards/cashback-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/cbd-one",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/smiles-platinum",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/smiles-signature",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/super-saver",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-infinite",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-platinum",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://www.cbd.ae/personal/cards/credit-cards/cbd-yes-rewards",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "url": "https://deem.io/cards/platinum-mastercard",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/cashback-plus-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/etihad-guest-saqer-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/skywards-black-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/skywards-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/skywards-signature-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/switch-cashback-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-select-visa-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/darna-visa-signature-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/diners-club-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/dnata-world-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/duo-credit-cards",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-elevate",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/etihad-guest-visa-inspire",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-gold-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/go4it-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/lulu-247-titanium-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-mastercard",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-elite-mastercard-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/mastercard-titanium-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/noon-one-visa-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/priority-banking-visa-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/share-visa-signature-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/skywards-signature-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-family-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-infinite-credit-card-for-emiratis",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/u-by-emaar-signature-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-flexi-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-infinite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/visa-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/voyager-world-elite-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesnbd.com/en/cards/credit-cards/webshopper-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.liv.me/en/liv-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.liv.me/en/liv-tamayaz-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.rakbank.ae/en/cards/credit-cards/air-arabia-platinum",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.rakbank.ae/en/cards/credit-cards/elevate-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.rakbank.ae/en/cards/credit-cards/red-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.rakbank.ae/en/cards/credit-cards/titanium-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.rakbank.ae/en/cards/credit-cards/world-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://sib.ae/en/cashback-card-faqs",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://sib.ae/en/Cashback-TCs",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://sib.ae/en/Smiles-TCs",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.sib.ae/en/personal-banking/credit-cards",
+   "error": "disallowed by robots.txt"
+  }
+ ]
+}

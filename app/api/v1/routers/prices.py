@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, Query, Response
 from app.api.deps import CurrentUser, SessionDep
 from app.core.config import get_settings
 from app.core.errors import NotFoundError
-from app.schemas.prices import HistoryOut, PriceSnapshotOut
+from app.schemas.prices import HistoryOut, PriceSnapshotOut, StockQuotesOut
 from app.services.valuations import prices
 from app.services.valuations.providers import Providers, get_providers
 from app.services.valuations.service import load_quote_book
@@ -35,6 +35,21 @@ async def price_snapshot(
     snap = prices.snapshot(await load_quote_book(session))
     response.headers["Cache-Control"] = f"private, max-age={snap.ttl_seconds}"
     return snap
+
+
+@router.get("/stocks", response_model=StockQuotesOut)
+async def stock_prices(
+    user: CurrentUser,
+    session: SessionDep,
+    providers: ProvidersDep,
+    response: Response,
+    tickers: Annotated[str, Query(description="Comma-separated tickers, e.g. VOO,AAPL,RELIANCE.NS (max 25)")],
+) -> StockQuotesOut:
+    """Last close for the tickers a phone tracks (free Stooq source, cached for the TTL, stale on error).
+    Only the tickers are sent: no amounts, quantities or user data."""
+    out = await prices.stock_quotes(session, providers, prices.normalise_tickers(tickers))
+    response.headers["Cache-Control"] = f"private, max-age={out.ttl_seconds}"
+    return out
 
 
 @router.get("/history", response_model=HistoryOut)

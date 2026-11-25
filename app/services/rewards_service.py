@@ -13,6 +13,7 @@ from app.models.card import CatalogCard, UserCard
 from app.models.category import Category
 from app.models.transaction import Direction, Transaction
 from app.schemas.rewards import CapOut, CardRewardsOut, CatalogCardOut, FeeWaiverOut
+from app.services import card_intel
 from app.services import rewards as engine
 from app.services.merchants import guess_category_slug, merchant_key, normalize_merchant
 from app.services.parsers.dates import DUBAI, to_dubai_date
@@ -44,6 +45,10 @@ class CardCtx:
     @property
     def title(self) -> str:
         return self.user_card.nickname or self.catalog.name
+
+    @property
+    def slug(self) -> str | None:
+        return (self.catalog.perks or {}).get("catalog_id")
 
 
 async def load_cards(session: AsyncSession, user_id: UUID) -> list[CardCtx]:
@@ -223,14 +228,25 @@ async def rank_cards(
     today: date,
     slugs: dict[UUID, str | None],
     exclude: UUID | None = None,
+    channel: str | None = None,
 ) -> list[tuple[CardCtx, engine.Quote]]:
+    adjustments = card_intel.recommender_adjustments(card_intel.load_intel(), today)
     ranked: list[tuple[CardCtx, engine.Quote]] = []
     for ctx in cards:
         if ctx.user_card.id == exclude:
             continue
         state, _, _ = await card_state(session, user_id, ctx, today, slugs)
         ranked.append(
-            (ctx, engine.quote(ctx.spec, state, engine.Spend(amount_minor, category, merchant_key_)))
+            (
+                ctx,
+                engine.quote_with_intel(
+                    ctx.spec,
+                    state,
+                    engine.Spend(amount_minor, category, merchant_key_, channel),
+                    ctx.slug,
+                    adjustments,
+                ),
+            )
         )
     ranked.sort(key=lambda cq: (-cq[1].value_minor, cq[0].user_card.created_at))
     return ranked
