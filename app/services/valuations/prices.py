@@ -171,11 +171,12 @@ def _quote_currency(providers: Providers, ticker: str) -> str:
     return of(ticker) if of else "USD"
 
 
-def _cached_stock(book, ticker: str) -> tuple[Decimal, datetime, str, str] | None:
+def _cached_stock(book: QuoteBook, ticker: str) -> tuple[Decimal, datetime, str, str] | None:
     if ticker in book.stocks:
         p, at, src = book.stocks[ticker]
         return p, at, src, "USD"
-    return book.local_stocks.get(ticker)
+    local = book.local_stocks.get(ticker)
+    return local if local is not None else None
 
 
 async def stock_quotes(session: AsyncSession, providers: Providers, tickers: list[str]) -> StockQuotesOut:
@@ -192,11 +193,12 @@ async def stock_quotes(session: AsyncSession, providers: Providers, tickers: lis
         return hit is not None and now - hit[1] <= timedelta(seconds=ttl)
 
     need = [t for t in tickers if not fresh(t)]
-    if need and providers.stocks:
+    stocks = providers.stocks
+    if need and stocks:
         try:
-            got = await asyncio.wait_for(providers.stocks.usd_prices(set(need)), REFRESH_TIMEOUT_SECONDS)
+            got = await asyncio.wait_for(stocks.usd_prices(set(need)), REFRESH_TIMEOUT_SECONDS)
             day = now.date()
-            source_of = getattr(providers.stocks, "source_of", lambda _t: providers.stocks.name)
+            source_of = getattr(stocks, "source_of", lambda _t: stocks.name)
             for t, price in got.items():
                 ccy, src = _quote_currency(providers, t), source_of(t)
                 await _upsert(session, stock_symbol(t, ccy), day, price, src, now)
