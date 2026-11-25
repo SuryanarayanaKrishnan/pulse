@@ -2,10 +2,11 @@
 # Paste into Oracle Cloud > Create instance > Show advanced options > Management > Cloud-init script.
 # Installs Docker, opens ports 80/443 in the VM firewall, adds swap, creates /opt/pulse. No secrets in here.
 package_update: true
-packages: [ca-certificates, curl, git, rsync, iptables-persistent]
+packages: [ca-certificates, curl, git, rsync, iptables-persistent, pipx, openssl]
 runcmd:
   - curl -fsSL https://get.docker.com | sh
   - usermod -aG docker ubuntu
+  - PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install oci-cli
   - iptables -I INPUT 5 -p tcp --dport 80 -j ACCEPT
   - iptables -I INPUT 5 -p tcp --dport 443 -j ACCEPT
   - netfilter-persistent save

@@ -1,4 +1,6 @@
-name: Deploy (Oracle Cloud VM)
+name: Deploy (Oracle Cloud)
+# Creates the Always Free ARM VM on first run (idempotent), then ships the backend to it.
+# Secrets needed: OCI_USER, OCI_TENANCY, OCI_FINGERPRINT, OCI_REGION, OCI_KEY, OCI_SSH_KEY. Optional: PULSE_ENV.
 on:
   workflow_dispatch:
   push:
@@ -12,31 +14,69 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Skips quietly until the VM is configured (see docs/HOSTING.md).
-    if: vars.OCI_HOST != ''
+    timeout-minutes: 60
     env:
-      HOST: ${{ vars.OCI_HOST }}
-      DEPLOY_USER: ${{ vars.OCI_USER || 'ubuntu' }}
+      OCI_CLI_USER: ${{ secrets.OCI_USER }}
+      OCI_CLI_TENANCY: ${{ secrets.OCI_TENANCY }}
+      OCI_CLI_FINGERPRINT: ${{ secrets.OCI_FINGERPRINT }}
+      OCI_CLI_REGION: ${{ secrets.OCI_REGION }}
+      OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_KEY }}
+      SSH_KEY: ${{ secrets.OCI_SSH_KEY }}
+      PULSE_ENV: ${{ secrets.PULSE_ENV }}
     steps:
       - uses: actions/checkout@v4
-      - name: Set up SSH
-        env:
-          KEY: ${{ secrets.OCI_SSH_KEY }}
+      - name: Check secrets
+        run: |
+          missing=""
+          for v in OCI_CLI_USER OCI_CLI_TENANCY OCI_CLI_FINGERPRINT OCI_CLI_REGION OCI_CLI_KEY_CONTENT SSH_KEY; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then echo "::notice::Skipping deploy; missing secrets:$missing (see docs/HOSTING.md)"; echo "SKIP=1" >> "$GITHUB_ENV"; fi
+      - name: Install OCI CLI
+        if: env.SKIP != '1'
+        run: pipx install oci-cli
+      - name: SSH key
+        if: env.SKIP != '1'
         run: |
           install -m 700 -d ~/.ssh
-          printf '%s\n' "$KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
-          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
-      - name: Wait for first-boot setup
-        run: ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'for i in $(seq 1 60); do [ -f /opt/pulse/.cloud-init-done ] && exit 0; sleep 5; done; exit 1'
-      - name: Sync code and env
-        env:
-          PULSE_ENV: ${{ secrets.PULSE_ENV }}
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keygen -y -f ~/.ssh/id_deploy > ~/.ssh/id_deploy.pub
+      - name: Ensure VM (Always Free A1)
+        if: env.SKIP != '1'
+        id: vm
         run: |
+          IP="$(SSH_PUBKEY_FILE=$HOME/.ssh/id_deploy.pub deploy/oci/provision-vm.sh)"
+          echo "HOST=$IP" >> "$GITHUB_ENV"
+          echo "API_DOMAIN=$(echo "$IP" | tr . -).sslip.io" >> "$GITHUB_ENV"
+      - name: Wait for SSH and first-boot setup
+        if: env.SKIP != '1'
+        run: |
+          ssh-keyscan -T 5 -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          for i in $(seq 1 90); do
+            ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=5 -i ~/.ssh/id_deploy "ubuntu@$HOST" 'test -f /opt/pulse/.cloud-init-done' 2>/dev/null && exit 0
+            sleep 10
+          done
+          echo "VM not ready after 15 minutes"; exit 1
+      - name: Sync code and env
+        if: env.SKIP != '1'
+        run: |
+          {
+            cat deploy/oci/public.env
+            printf '%s\n' "$PULSE_ENV"
+            echo "API_DOMAIN=$API_DOMAIN"
+            echo "GOOGLE_REDIRECT_URI=https://$API_DOMAIN/v1/email-connections/gmail/callback"
+            echo "REDIS_URL=redis://redis:6379/0"
+            echo "BACKUP_PASSPHRASE=$(sha256sum ~/.ssh/id_deploy | cut -d' ' -f1)"
+          } > /tmp/pulse.env
           rsync -az --delete -e "ssh -i ~/.ssh/id_deploy" \
-            --exclude .git --exclude .venv --exclude tests --exclude '.env' --exclude '.fernet' --exclude '.cloud-init-done' \
-            ./ "$DEPLOY_USER@$HOST:/opt/pulse/"
-          printf '%s\n' "$PULSE_ENV" | ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'umask 077; cat > /opt/pulse/.env.new && mv /opt/pulse/.env.new /opt/pulse/.env'
+            --exclude .git --exclude .venv --exclude tests --exclude .env --exclude .fernet --exclude .pgpass --exclude .cloud-init-done \
+            ./ "ubuntu@$HOST:/opt/pulse/"
+          ssh -i ~/.ssh/id_deploy "ubuntu@$HOST" 'umask 077; cat > /opt/pulse/.env.new && mv /opt/pulse/.env.new /opt/pulse/.env' < /tmp/pulse.env
       - name: Deploy
-        run: ssh -i ~/.ssh/id_deploy "$DEPLOY_USER@$HOST" 'bash /opt/pulse/deploy/oci/deploy.sh'
+        if: env.SKIP != '1'
+        run: ssh -i ~/.ssh/id_deploy "ubuntu@$HOST" 'bash /opt/pulse/deploy/oci/deploy.sh'
       - name: Smoke test
-        run: curl -fsS --retry 8 --retry-delay 10 "https://${{ vars.API_DOMAIN }}/ready"
+        if: env.SKIP != '1'
+        run: |
+          curl -fsS --retry 10 --retry-delay 10 "https://$API_DOMAIN/ready"
+          echo "### Backend live: https://$API_DOMAIN" >> "$GITHUB_STEP_SUMMARY"

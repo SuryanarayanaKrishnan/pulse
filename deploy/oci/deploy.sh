@@ -11,7 +11,14 @@ if ! grep -qE '^FERNET_KEYS=.+' .env; then
     "pip -q install cryptography >/dev/null 2>&1 && python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())'" > .fernet
   sed -i '/^FERNET_KEYS=/d' .env && echo "FERNET_KEYS=$(cat .fernet)" >> .env
 fi
-chmod 600 .env .fernet 2>/dev/null || true
+# Local Postgres password: generated once, kept on the VM.
+[ -f .pgpass ] || head -c 24 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' > .pgpass
+sed -i '/^POSTGRES_PASSWORD=/d' .env && echo "POSTGRES_PASSWORD=$(cat .pgpass)" >> .env
+chmod 600 .env .fernet .pgpass 2>/dev/null || true
+
+# Nightly off-VM backup (03:10 UTC = 07:10 Dubai), logged to /var/log/pulse-backup.log
+echo '10 3 * * * ubuntu /opt/pulse/deploy/oci/backup.sh >> /var/log/pulse-backup.log 2>&1' | sudo tee /etc/cron.d/pulse-backup >/dev/null
+sudo touch /var/log/pulse-backup.log && sudo chown ubuntu /var/log/pulse-backup.log
 
 cd deploy/oci
 docker compose -f docker-compose.prod.yml --env-file /opt/pulse/.env up -d --build --remove-orphans
