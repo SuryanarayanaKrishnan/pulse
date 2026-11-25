@@ -94,3 +94,41 @@ def test_garbage_structure_is_rejected(bad):
 )
 def test_cycle_bounds(today, day, start, end):
     assert r.cycle_bounds(today, day) == (start, end)
+
+
+def test_quote_with_intel_blends_override_only_for_matching_channel():
+    from decimal import Decimal
+
+    from app.services import rewards as r
+
+    spec = r.parse_structure(
+        {
+            "unit": "cashback",
+            "base": {"rate": 0.005},
+            "rules": [{"name": "Online", "rate": 0.10, "categories": ["shopping"], "cap": 300}],
+        }
+    )
+    state = r.compute_cycle(spec, [])
+    adj = [
+        {
+            "type": "rate_override",
+            "card_id": "sib-cashback",
+            "when": {"merchant_keys": ["tabby"], "payment_channel": "card_details"},
+            "rate": 0.005,
+            "trust": 0.5,
+        }
+    ]
+    base = r.quote(spec, state, r.Spend(100_000, "shopping", "tabby")).units
+    wallet = r.quote_with_intel(
+        spec, state, r.Spend(100_000, "shopping", "tabby", "wallet"), "sib-cashback", adj
+    )
+    unknown = r.quote_with_intel(spec, state, r.Spend(100_000, "shopping", "tabby"), "sib-cashback", adj)
+    card = r.quote_with_intel(
+        spec, state, r.Spend(100_000, "shopping", "tabby", "card_details"), "sib-cashback", adj
+    )
+    other = r.quote_with_intel(
+        spec, state, r.Spend(100_000, "shopping", "tabby", "card_details"), "other-card", adj
+    )
+    assert wallet.units == unknown.units == other.units == base
+    # trust 0.5: halfway between 10% and 0.5% -> 5.25%
+    assert card.units == base * Decimal("0.0525") / Decimal("0.10")

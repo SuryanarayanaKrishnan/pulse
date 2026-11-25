@@ -45,6 +45,7 @@ async def best_card(payload: BestCardIn, user: CurrentUser, session: SessionDep)
         payload.amount_minor,
         today,
         slugs,
+        channel=payload.channel,
     )
     return BestCardOut(
         category=category,

@@ -36,3 +36,15 @@ so one unverified report lowers a card's rank without removing it. Wiring that b
 The only seeded item (SIB Cashback and Tabby) has two accounts: relayed from r/UAECreditCards that it works
 only via Apple/Google Pay, versus a kredit.ae blog saying wallets do not override the exclusion. It ships as
 `reported` with the conflict listed.
+
+## Ranking blend (live)
+
+`rewards.quote_with_intel` applies active `rate_override` effects: `rate = trust * override + (1 - trust) * catalog
+rate`. `POST /v1/rewards/best-card` takes an optional `channel` (`wallet` or `card_details`). A channel-specific
+override (SIB + Tabby via card details) only applies when the channel is known; unknown or wallet keeps the catalog
+rate, so the recommender tells people to pay through a wallet instead of ranking SIB down.
+
+## Daily scout
+
+A daily low-volume job reads the newest posts (one listing call, no comment crawling beyond a few threads), runs
+`scripts/reddit_intel.py` and opens a PR that only adds `intel_candidates.json`. A human promotes candidates.
