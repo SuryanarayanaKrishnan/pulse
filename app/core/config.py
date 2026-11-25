@@ -1,7 +1,7 @@
 from functools import lru_cache
 from typing import Annotated, Literal
 
-from pydantic import field_validator
+from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
@@ -37,6 +37,12 @@ class Settings(BaseSettings):
     supabase_jwks_url: str = ""
     supabase_jwt_audience: str = "authenticated"
     supabase_jwt_issuer: str = ""
+
+    # Dev-only: exposes POST /v1/dev/token, which mints a JWT for a fixed local user so the app
+    # can talk to a local backend without a real Supabase login. Refused outside local dev.
+    allow_dev_auth: bool = False
+    dev_auth_user_id: str = "00000000-0000-4000-8000-00000000d3e1"
+    dev_auth_email: str = "dev@pulse.local"
 
     fernet_keys: Annotated[list[str], NoDecode] = []
 
@@ -94,6 +100,18 @@ class Settings(BaseSettings):
             if v.startswith(prefix):
                 return "postgresql+asyncpg://" + v[len(prefix) :]
         return v
+
+    @model_validator(mode="after")
+    def _dev_auth_only_locally(self) -> "Settings":
+        if self.allow_dev_auth:
+            if self.app_env not in ("development", "test"):
+                raise ValueError(
+                    "ALLOW_DEV_AUTH is only permitted with APP_ENV=development; "
+                    f"refusing to start with APP_ENV={self.app_env}"
+                )
+            if not self.supabase_jwt_secret:
+                raise ValueError("ALLOW_DEV_AUTH needs SUPABASE_JWT_SECRET to sign dev tokens")
+        return self
 
     @property
     def state_secret(self) -> str:

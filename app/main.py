@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1.api import api_router
-from app.api.v1.routers import health, internal
+from app.api.v1.routers import dev_auth, health, internal
 from app.core.config import get_settings
 from app.core.db import dispose_engine
 from app.core.errors import register_exception_handlers
@@ -48,6 +48,8 @@ def create_app() -> FastAPI:
     app.include_router(health.router)
     app.include_router(internal.router)
     app.include_router(api_router, prefix="/v1")
+    if settings.allow_dev_auth and not settings.is_production:
+        app.include_router(dev_auth.router, prefix="/v1")
     return app
 
 
