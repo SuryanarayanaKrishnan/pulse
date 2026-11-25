@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     # Service account that Cloud Tasks / Scheduler sign their OIDC tokens as.
     tasks_invoker_sa: str = ""
 
+    # Optional override (base64 Ed25519 seed) for /v1/config; default derives from FERNET_KEYS[0].
+    config_signing_key: str = ""
+
     supabase_jwt_secret: str = ""
     supabase_jwks_url: str = ""
     supabase_jwt_audience: str = "authenticated"
