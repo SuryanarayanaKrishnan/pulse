@@ -56,6 +56,18 @@ async def card_intel_feed(user: CurrentUser, session: SessionDep) -> dict[str, A
     }
 
 
+@router.get("/combos")
+async def card_combos(user: CurrentUser) -> dict[str, Any]:
+    """Default stacking combos and tips for everyone, with or without cards. Each item carries a `tier`
+    ("free" or "plus"); the app locks plus items until the user is entitled (docs/ENTITLEMENT.md)."""
+    intel = card_intel.load_intel()
+    today = insights.today_dubai()
+    return {
+        "as_of": intel["as_of"],
+        "items": [r.out() for r in card_intel.starter_items(intel, today)],
+    }
+
+
 @router.get("/due-dates", response_model=DueDatesOut)
 async def card_due_dates(user: CurrentUser, session: SessionDep) -> DueDatesOut:
     """Per credit card: statement date, due date with days left, minimum due and total due (separately,
