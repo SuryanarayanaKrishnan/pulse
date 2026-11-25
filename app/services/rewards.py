@@ -105,6 +105,7 @@ class Spend:
     amount_minor: int
     category: str | None = None
     merchant_key: str | None = None
+    channel: str | None = None  # how it is paid: "wallet", "card_details", ... (None = unknown)
 
 
 @dataclass(slots=True)
@@ -180,6 +181,42 @@ def quote(spec: CardSpec, state: CycleResult, spend: Spend) -> Quote:
     full = Decimal(spend.amount_minor) / 100 * rule.rate
     units = full if headroom is None else min(full, headroom)
     return Quote(units, spec.value_minor(units), rule.name, headroom, units < full)
+
+
+def _intel_matches(adj: dict[str, Any], card_slug: str | None, spend: Spend) -> bool:
+    if adj.get("type") != "rate_override" or adj.get("card_id") != card_slug:
+        return False
+    when = adj.get("when") or {}
+    keys = when.get("merchant_keys")
+    if keys and not (spend.merchant_key and any(k in spend.merchant_key for k in keys)):
+        return False
+    channel = when.get("payment_channel")
+    # A channel-specific override only applies when we know the spend is paid that way.
+    return not (channel and spend.channel != channel)
+
+
+def quote_with_intel(
+    spec: CardSpec,
+    state: CycleResult,
+    spend: Spend,
+    card_slug: str | None,
+    adjustments: list[dict[str, Any]],
+) -> Quote:
+    """``quote`` blended with community intel: ``rate = trust * override + (1 - trust) * catalog rate``.
+
+    One unverified report (trust 0.5) lowers a card's rank without removing it; verified intel replaces
+    the rate. Adjustments come from ``card_intel.recommender_adjustments``."""
+    q = quote(spec, state, spend)
+    rule = select_rule(spec, spend.category, spend.merchant_key)
+    if q.rule is None or rule is None or rule.rate <= 0:
+        return q
+    for adj in adjustments:
+        if _intel_matches(adj, card_slug, spend):
+            trust = Decimal(str(adj["trust"]))
+            blended = trust * Decimal(str(adj["rate"])) + (1 - trust) * rule.rate
+            units = q.units * blended / rule.rate
+            return Quote(units, spec.value_minor(units), q.rule, q.headroom_units, q.capped)
+    return q
 
 
 # ------------------------------------------------------------------------------------------------
