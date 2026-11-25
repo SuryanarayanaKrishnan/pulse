@@ -150,7 +150,9 @@ _TICKER_RE = re.compile(r"^[a-z0-9][a-z0-9.\-]{0,11}$")
 
 
 def normalise_tickers(raw: str) -> list[str]:
-    """'VOO, aapl.us' -> ['voo.us', 'aapl.us']. US tickers only (Stooq); a bare ticker gets '.us'.
+    """'VOO, aapl.us, reliance.ns' -> ['voo.us', 'aapl.us', 'reliance.ns']. A bare ticker gets '.us'.
+    '.ns' (NSE) is priced from NSE's free file; '.bo', '.dfm' and '.adx' pass through but have no free
+    source, so they come back 'unavailable' and the phone asks for a manual price.
     Invalid entries are dropped and duplicates collapse, order kept."""
     out: list[str] = []
     for part in raw.split(","):
@@ -164,28 +166,53 @@ def normalise_tickers(raw: str) -> list[str]:
     return out[:MAX_QUOTE_TICKERS]
 
 
+def _quote_currency(providers: Providers, ticker: str) -> str:
+    of = getattr(providers.stocks, "currency_of", None)
+    return of(ticker) if of else "USD"
+
+
+def _cached_stock(book: QuoteBook, ticker: str) -> tuple[Decimal, datetime, str, str] | None:
+    if ticker in book.stocks:
+        p, at, src = book.stocks[ticker]
+        return p, at, src, "USD"
+    local = book.local_stocks.get(ticker)
+    return local if local is not None else None
+
+
 async def stock_quotes(session: AsyncSession, providers: Providers, tickers: list[str]) -> StockQuotesOut:
-    """Last close for any US ticker the phone asks about, cached for the TTL. Stale-while-error: if the
-    source is down the last good close is served marked stale; an unknown ticker is 'unavailable'."""
+    """Last close for any ticker the phone asks about (US via Stooq, '.ns' via NSE), cached for the TTL.
+    Stale-while-error: if the source is down the last good close is served marked stale; a ticker with
+    no free source is 'unavailable' and the phone falls back to a manual price."""
     s = get_settings()
     now = datetime.now(UTC)
     ttl = s.price_ttl_seconds
     book = await load_quote_book(session)
-    need = [t for t in tickers if t not in book.stocks or now - book.stocks[t][1] > timedelta(seconds=ttl)]
-    if need and providers.stocks:
+
+    def fresh(t: str) -> bool:
+        hit = _cached_stock(book, t)
+        return hit is not None and now - hit[1] <= timedelta(seconds=ttl)
+
+    need = [t for t in tickers if not fresh(t)]
+    stocks = providers.stocks
+    if need and stocks:
         try:
-            got = await asyncio.wait_for(providers.stocks.usd_prices(set(need)), REFRESH_TIMEOUT_SECONDS)
+            got = await asyncio.wait_for(stocks.usd_prices(set(need)), REFRESH_TIMEOUT_SECONDS)
             day = now.date()
+            source_of = getattr(stocks, "source_of", lambda _t: stocks.name)
             for t, price in got.items():
-                await _upsert(session, stock_symbol(t), day, price, providers.stocks.name, now)
-                book.stocks[t] = (price, now, providers.stocks.name)
+                ccy, src = _quote_currency(providers, t), source_of(t)
+                await _upsert(session, stock_symbol(t, ccy), day, price, src, now)
+                if ccy == "USD":
+                    book.stocks[t] = (price, now, src)
+                else:
+                    book.local_stocks[t] = (price, now, src, ccy)
             await session.commit()
         except Exception:  # noqa: BLE001 - stale-while-error is the contract
             log.warning("stock_quotes_failed", exc_info=True)
             await session.rollback()
     out = []
     for t in tickers:
-        hit = book.stocks.get(t)
+        hit = _cached_stock(book, t)
         if hit is None:
             out.append(
                 StockQuoteOut(ticker=t, usd=None, status="unavailable", last_updated=None, source=None)
@@ -194,7 +221,9 @@ async def stock_quotes(session: AsyncSession, providers: Providers, tickers: lis
             out.append(
                 StockQuoteOut(
                     ticker=t,
-                    usd=hit[0],
+                    usd=hit[0] if hit[3] == "USD" else None,
+                    price=hit[0],
+                    currency=hit[3],
                     status=status_for(hit[1], now, ttl),
                     last_updated=hit[1],
                     source=hit[2],

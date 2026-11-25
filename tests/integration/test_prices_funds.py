@@ -309,3 +309,48 @@ def test_normalise_tickers():
 
     assert normalise_tickers("VOO,brk-b, aapl.us,,;;") == ["voo.us", "brk-b.us", "aapl.us"]
     assert len(normalise_tickers(",".join(f"t{i}" for i in range(40)))) == 25
+
+
+def test_normalise_keeps_nse_and_passes_uae_through():
+    from app.services.valuations.prices import normalise_tickers
+
+    assert normalise_tickers("reliance.ns, EMAAR.dfm, tcs.NS") == ["reliance.ns", "emaar.dfm", "tcs.ns"]
+
+
+def test_parse_bhavcopy_reads_eq_series_with_spaced_headers():
+    from app.services.valuations.providers import parse_bhavcopy
+
+    text = (
+        "SYMBOL, SERIES, DATE1, PREV_CLOSE, CLOSE_PRICE\n"
+        "RELIANCE, EQ, 24-Nov-2026, 1400.00, 1412.35\n"
+        "TCS, EQ, 24-Nov-2026, 3000.00, 3050.5\n"
+        "GOLDBEES, BE, 24-Nov-2026, 70, 71.2\n"
+        "FOO, N1, 24-Nov-2026, 1, 2\n"
+        "BAD, EQ, 24-Nov-2026, 1, -\n"
+    )
+    got = parse_bhavcopy(text)
+    assert got == {"RELIANCE": Decimal("1412.35"), "TCS": Decimal("3050.5"), "GOLDBEES": Decimal("71.2")}
+
+
+async def test_routed_provider_prices_us_and_nse_with_currency(new_user, price_providers):
+    from app.services.valuations.providers import RoutedStockProvider
+
+    class Nse:
+        name = "fake-nse"
+
+        async def usd_prices(self, tickers):
+            return {t: Decimal("1412.35") for t in tickers if t == "reliance.ns"}
+
+        async def history(self, ticker, days):
+            return []
+
+    price_providers.stocks = RoutedStockProvider(FakeStocks({"voo.us": Decimal("500")}), Nse())
+    api = new_user()
+    r = await api.get("/v1/prices/stocks", params={"tickers": "voo,reliance.ns,emaar.dfm"})
+    q = {x["ticker"]: x for x in r.json()["quotes"]}
+    assert q["voo.us"]["currency"] == "USD" and float(q["voo.us"]["usd"]) == 500
+    assert q["reliance.ns"]["currency"] == "INR" and q["reliance.ns"]["usd"] is None
+    assert float(q["reliance.ns"]["price"]) == 1412.35 and q["reliance.ns"]["source"] == "fake-nse"
+    assert q["emaar.dfm"]["status"] == "unavailable"
+    r = await api.get("/v1/prices/stocks", params={"tickers": "reliance.ns"})  # now from cache
+    assert r.json()["quotes"][0]["status"] == "live"

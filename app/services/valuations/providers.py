@@ -244,6 +244,103 @@ class StooqProvider:
             raise ProviderError(f"stock history unavailable: {exc}") from exc
 
 
+NSE_ARCHIVE = "https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{d}.csv"
+
+
+@dataclass(slots=True)
+class NseBhavcopyProvider:
+    """NSE's own free end-of-day file (the daily 'bhavcopy'), one CSV for every listed equity, INR.
+    No key; it is a static file, so one download answers any number of tickers. Tickers look like
+    'reliance.ns'. If today's file is not out yet (weekend, before the evening publish) it steps back
+    up to ``lookback`` days. Written from the file's documented layout; verify against the live file."""
+
+    client: httpx.AsyncClient
+    name: str = "nseindia.com"
+    currency: str = "INR"
+    lookback: int = 6
+
+    async def _latest_rows(self) -> dict[str, Decimal]:
+        day = datetime.now(UTC).date()
+        for _ in range(self.lookback):
+            if day.weekday() < 5:
+                try:
+                    r = await self.client.get(
+                        NSE_ARCHIVE.format(d=day.strftime("%d%m%Y")),
+                        headers={"User-Agent": "Mozilla/5.0 (compatible; PulseApp)"},
+                    )
+                except httpx.HTTPError as exc:
+                    raise ProviderError(f"NSE file unavailable: {exc}") from exc
+                if r.status_code == 200 and r.text.strip():
+                    return parse_bhavcopy(r.text)
+            day = date.fromordinal(day.toordinal() - 1)
+        raise ProviderError("NSE file unavailable: no recent bhavcopy")
+
+    async def usd_prices(self, tickers: set[str]) -> dict[str, Decimal]:
+        """Named for the StockProvider protocol; values are INR here (see ``currency``)."""
+        want = {t[: -len(".ns")].upper(): t for t in tickers if t.endswith(".ns")}
+        if not want:
+            return {}
+        rows = await self._latest_rows()
+        return {want[sym]: px for sym, px in rows.items() if sym in want}
+
+    async def history(self, ticker: str, days: int) -> list[tuple[date, Decimal]]:
+        return []
+
+
+def parse_bhavcopy(text: str) -> dict[str, Decimal]:
+    """SYMBOL -> CLOSE_PRICE for the cash equity series (EQ, BE, SM, ST). Header cells carry stray spaces."""
+    out: dict[str, Decimal] = {}
+    reader = csv.reader(io.StringIO(text))
+    header = [h.strip().upper() for h in next(reader, [])]
+    try:
+        i_sym, i_ser, i_close = header.index("SYMBOL"), header.index("SERIES"), header.index("CLOSE_PRICE")
+    except ValueError:
+        raise ProviderError("NSE file has an unexpected layout") from None
+    for row in reader:
+        if len(row) <= max(i_sym, i_ser, i_close) or row[i_ser].strip() not in {"EQ", "BE", "SM", "ST"}:
+            continue
+        try:
+            px = _dec(row[i_close].strip())
+        except ProviderError:
+            continue
+        out[row[i_sym].strip().upper()] = px
+    return out
+
+
+@dataclass(slots=True)
+class RoutedStockProvider:
+    """Sends '.ns' tickers to NSE and everything else to Stooq. ``currency_of`` says what a quote is in."""
+
+    us: StockProvider
+    nse: NseBhavcopyProvider
+    name: str = "stooq.com + nseindia.com"
+
+    @staticmethod
+    def currency_of(ticker: str) -> str:
+        return "INR" if ticker.endswith(".ns") else "USD"
+
+    def source_of(self, ticker: str) -> str:
+        return self.nse.name if ticker.endswith(".ns") else self.us.name
+
+    async def usd_prices(self, tickers: set[str]) -> dict[str, Decimal]:
+        ns = {t for t in tickers if t.endswith(".ns")}
+        out: dict[str, Decimal] = {}
+        errors: list[ProviderError] = []
+        for prov, part in ((self.us, tickers - ns), (self.nse, ns)):
+            if not part:
+                continue
+            try:
+                out.update(await prov.usd_prices(part))
+            except ProviderError as exc:
+                errors.append(exc)
+        if errors and not out:
+            raise errors[0]
+        return out
+
+    async def history(self, ticker: str, days: int) -> list[tuple[date, Decimal]]:
+        return await (self.nse if ticker.endswith(".ns") else self.us).history(ticker, days)
+
+
 @dataclass(slots=True)
 class MfApiProvider:
     """mfapi.in (free, no key): /mf/search?q=, /mf/{code}/latest, /mf/{code}. NAVs are in INR, dd-mm-yyyy."""
@@ -323,6 +420,10 @@ def get_providers(client: httpx.AsyncClient) -> Providers:
         fx=fx,
         property_index=prop,
         crypto=CoinGeckoProvider(client) if s.crypto_provider == "coingecko" else None,
-        stocks=StooqProvider(client) if s.stock_provider == "stooq" else None,
+        stocks=(
+            RoutedStockProvider(StooqProvider(client), NseBhavcopyProvider(client))
+            if s.stock_provider == "stooq"
+            else None
+        ),
         funds=MfApiProvider(client) if s.fund_provider == "mfapi" else None,
     )
