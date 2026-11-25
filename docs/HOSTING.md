@@ -6,11 +6,12 @@ GCP was dropped because it asks for a deposit. The beta runs on **Oracle Cloud A
 
 | Piece | Service | Notes |
 |---|---|---|
-| Database, auth (incl. Google login), storage | **Supabase free**, Mumbai (ap-south-1) | No Gulf region exists. |
+| Database | **Postgres in Docker on the same VM**, nightly `pg_dump` | No secret to manage, no free-tier pause. |
+| Sign-in (incl. Google) and app backup | **Supabase free**, Mumbai | Backend only verifies its JWTs. |
 | API, worker, Redis, HTTPS | **One OCI Always Free ARM VM** (`VM.Standard.A1.Flex`, 2 OCPU / 12 GB), Docker Compose | Always Free allows 4 OCPU / 24 GB / 200 GB total. We use half. |
 | TLS | **Caddy** with Let's Encrypt on `<ip>.sslip.io` | Free hostname, no domain to buy. Swap in a real domain later by changing `API_DOMAIN`. |
 | Deploy | GitHub Actions over SSH (`deploy-oci.yml`) | Rebuilds on the VM, so the image is native arm64. |
-| Fallback | Render free web service (`render.yaml`) | Sleeps when idle and the worker only runs while awake. |
+| Fallback | Render free web service (`render.yaml`) | Sleeps when idle; needs an external Postgres (e.g. Supabase) as `DATABASE_URL`. |
 
 The stack is the same code as local dev (`QUEUE_BACKEND=arq`, Redis container, arq worker), so crons and statement parsing behave exactly as tested. The Cloud Run / Cloud Tasks path stays in the repo (`deploy-gcp.yml`, manual only) in case we want it later.
 
@@ -25,22 +26,27 @@ Stay inside Always Free: only the `VM.Standard.A1.Flex` shape (or `VM.Standard.E
 
 ## One-time setup (what only you can do)
 
-Total: about 15 minutes. Secrets never go through chat; they go straight into GitHub.
+Everything else is done by the `Deploy (Oracle Cloud)` workflow: it creates the network, security rules and VM through the OCI API, then builds and starts the stack. Secrets go straight into GitHub, never chat.
 
-1. **Make a deploy key** (Windows PowerShell): `ssh-keygen -t ed25519 -f $HOME\pulse_deploy -N '""'`. You get `pulse_deploy` (private) and `pulse_deploy.pub` (public).
-2. **Oracle console** ([cloud.oracle.com](https://cloud.oracle.com)) > Compute > Instances > Create instance:
-   - Image **Ubuntu 24.04 (aarch64)**, shape **Ampere A1.Flex, 2 OCPU / 12 GB**, boot volume 50 GB, public IPv4.
-   - SSH keys: paste the contents of `pulse_deploy.pub`.
-   - Show advanced options > Management > **Cloud-init script**: paste `deploy/oci/cloud-init.yaml`.
-   - After it is running, VCN > subnet > Security List > add ingress TCP **80** and **443** from `0.0.0.0/0`.
-3. **Supabase** (free, Mumbai). Gather: session-pooler URL (5432), transaction-pooler URL (6543), JWT secret, JWKS URL.
-4. **GitHub** (repo Settings > Secrets and variables > Actions):
-   - Secret `OCI_SSH_KEY`: contents of `pulse_deploy`.
-   - Secret `PULSE_ENV`: your filled copy of `deploy/oci/env.example` (leave `FERNET_KEYS` empty; the VM generates and keeps its own).
-   - Variables `OCI_HOST` (VM public IP) and `API_DOMAIN` (`<ip with dashes>.sslip.io`, e.g. `129-146-1-2.sslip.io`). Optional `OCI_USER` (default `ubuntu`).
-5. Run the **Deploy (Oracle Cloud VM)** workflow. It waits for first boot, syncs the code, builds on the VM, migrates, and smoke-tests `https://<API_DOMAIN>/ready`. Every later push to `main` redeploys.
+1. **SSH deploy key** (Windows PowerShell): `ssh-keygen -t ed25519 -f $HOME\pulse_deploy -N '""'`. Keep the file `pulse_deploy` (private) for step 3. The VM gets its public half automatically.
+2. **OCI API key**: Oracle console > profile icon (top right) > your username > **API keys** > **Add API key** > *Generate API key pair* > download the private key, then **Add**. The "Configuration file preview" shows `user`, `tenancy`, `fingerprint` and `region`.
+3. **GitHub** (repo > Settings > Secrets and variables > Actions > New repository secret). Add six secrets:
 
-The VM never needs GitHub access, so the repo can stay private. To change a setting later, edit `PULSE_ENV` and re-run the workflow.
+   | Secret | Value |
+   |---|---|
+   | `OCI_USER` | `user=` OCID from the preview |
+   | `OCI_TENANCY` | `tenancy=` OCID |
+   | `OCI_FINGERPRINT` | `fingerprint=` |
+   | `OCI_REGION` | `region=`, e.g. `ap-mumbai-1` |
+   | `OCI_KEY` | full contents of the downloaded private key `.pem` |
+   | `OCI_SSH_KEY` | full contents of `pulse_deploy` |
+
+   Optional `PULSE_ENV` for extra settings (see `deploy/oci/env.example`).
+4. Run **Actions > Deploy (Oracle Cloud) > Run workflow**. The first run creates the VM (ARM capacity can take a few retries; it keeps trying for about 25 minutes) and ends with the live URL in the job summary. Every push to `main` redeploys.
+
+The database is **Postgres on the VM** (nightly dumps kept in a volume), so no database secret is needed. Supabase is only used for sign-in (Google login) and the app's encrypted backup; put its JWKS URL in `deploy/oci/public.env`.
+
+The workflow only ever creates `VM.Standard.A1.Flex` (2 OCPU, 12 GB, 50 GB boot) plus a VCN with a free internet gateway. Nothing else is created.
 
 ## Login with Google
 
@@ -50,7 +56,7 @@ Supabase Auth handles it, so the backend needs no change (it already verifies Su
 
 - Logs: `cd /opt/pulse/deploy/oci && docker compose -f docker-compose.prod.yml logs -f api worker`
 - Redeploy: re-run the workflow, or `bash /opt/pulse/deploy/oci/deploy.sh` on the VM.
-- Backups: statement PDFs sit in a Docker volume on the VM and the database is on Supabase free (no point-in-time recovery). Take a `pg_dump` before inviting people.
+- Backups: nightly dumps (last 14) and statement PDFs sit on the VM's disk. If Oracle reclaims or loses the VM they go too; copy a dump off the VM before real users depend on it.
 
 ## Render fallback
 
