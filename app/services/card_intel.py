@@ -21,6 +21,10 @@ KINDS = {"caveat", "combo", "bonus", "offer_change"}
 SEVERITIES = {"info", "warn"}
 CONFIDENCES = {"reported", "corroborated", "verified"}
 STATUSES = {"active", "watching", "retired"}
+# free: shown to everyone, no cards needed. plus: niche detail (rare combos, time-bound caveats) behind the
+# paywall. The server labels tiers; the app decides what the user may see (see docs/ENTITLEMENT.md).
+TIERS = {"free", "plus"}
+DEFAULT_TIER = "plus"
 # How much the recommender trusts an item. A single unverified report only nudges, never hides a card.
 TRUST = {"reported": 0.5, "corroborated": 0.8, "verified": 1.0}
 
@@ -46,6 +50,8 @@ def validate(intel: dict[str, Any], known_card_ids: set[str] | None = None) -> l
             errs.append(f"{iid}: bad confidence")
         if it.get("status") not in STATUSES:
             errs.append(f"{iid}: bad status")
+        if it.get("tier", DEFAULT_TIER) not in TIERS:
+            errs.append(f"{iid}: bad tier")
         if not it.get("card_ids"):
             errs.append(f"{iid}: no card_ids")
         if not it.get("sources"):
@@ -90,6 +96,7 @@ class IntelForUser:
             "title": it["title"],
             "body": it["body"],
             "severity": it["severity"],
+            "tier": it.get("tier", DEFAULT_TIER),
             "confidence": it["confidence"],
             "card_ids": it["card_ids"],
             "owned_card_ids": self.owned_card_ids,
@@ -119,6 +126,27 @@ def intel_for_cards(
             missing = []
         out.append(IntelForUser(it, have, missing))
     out.sort(key=lambda r: (r.item["severity"] != "warn", r.item["kind"], r.item["id"]))
+    return out
+
+
+def starter_items(intel: dict[str, Any], today: date) -> list[IntelForUser]:
+    """Active items for everyone, owned cards or not: the default combos a brand-new user sees.
+
+    Free items come first, then plus items (the app shows those as locked teasers until entitled).
+    Nothing here depends on the user, so the response is cacheable.
+    """
+    out = [
+        IntelForUser(it, [], [c for c in it["card_ids"]] if it["kind"] == "combo" else [])
+        for it in intel.get("items", [])
+        if is_active(it, today) and it["kind"] in {"combo", "offer_change", "bonus", "caveat"}
+    ]
+    out.sort(
+        key=lambda r: (
+            r.item.get("tier", DEFAULT_TIER) != "free",
+            r.item["kind"] != "combo",
+            r.item["id"],
+        )
+    )
     return out
 
 

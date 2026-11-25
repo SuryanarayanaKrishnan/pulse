@@ -86,3 +86,32 @@ def test_reddit_candidates_need_card_and_issue():
     got = ri.candidates(posts, idx)
     assert [c["post_id"] for c in got] == ["a1"]
     assert "sib-cashback" in got[0]["card_ids"] and "caveat" in got[0]["suggested_kinds"]
+
+
+def test_starter_items_need_no_cards_and_free_comes_first():
+    intel = ci.load_intel()
+    items = ci.starter_items(intel, date(2026, 11, 30))
+    tiers = [r.item.get("tier", ci.DEFAULT_TIER) for r in items]
+    assert "free" in tiers and "plus" in tiers
+    assert tiers == sorted(tiers, key=lambda t: t != "free")  # free block, then plus
+    assert all(r.owned_card_ids == [] for r in items)
+    combo = next(r for r in items if r.item["kind"] == "combo")
+    assert combo.missing_card_ids == combo.item["card_ids"]
+    assert combo.out()["tier"] in ci.TIERS
+
+
+def test_starter_items_respect_dates_and_missing_tier_defaults_to_plus():
+    i = _intel(kind="combo", valid_until="2026-12-01")
+    assert ci.starter_items(i, date(2026, 11, 30))[0].out()["tier"] == "plus"
+    assert ci.starter_items(i, date(2026, 12, 2)) == []
+    assert ci.validate(_intel(tier="gold")) != []
+    assert ci.validate(_intel(tier="free")) == []
+
+
+def test_shipped_free_combos_exist_for_new_users():
+    free = [
+        r
+        for r in ci.starter_items(ci.load_intel(), date(2026, 11, 30))
+        if r.item.get("tier") == "free" and r.item["kind"] == "combo"
+    ]
+    assert len(free) >= 3
