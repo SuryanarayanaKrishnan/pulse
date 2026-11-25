@@ -1,6 +1,7 @@
 """The price snapshot the phone caches, on-demand refresh with stale-while-error, and chart history."""
 
 import asyncio
+import re
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 
@@ -17,6 +18,8 @@ from app.schemas.prices import (
     MetalOut,
     MoneyPair,
     PriceSnapshotOut,
+    StockQuoteOut,
+    StockQuotesOut,
     SymbolPriceOut,
 )
 from app.services.valuations import pricing
@@ -137,6 +140,67 @@ def snapshot(book: QuoteBook, now: datetime | None = None) -> PriceSnapshotOut:
             "Stocks are US tickers priced in USD; a ticker appears once an asset references it.",
         ],
     )
+
+
+# ---------------------------------------------------------------------------------------------
+# Stock quotes by ticker (phone portfolio tracking)
+# ---------------------------------------------------------------------------------------------
+MAX_QUOTE_TICKERS = 25
+_TICKER_RE = re.compile(r"^[a-z0-9][a-z0-9.\-]{0,11}$")
+
+
+def normalise_tickers(raw: str) -> list[str]:
+    """'VOO, aapl.us' -> ['voo.us', 'aapl.us']. US tickers only (Stooq); a bare ticker gets '.us'.
+    Invalid entries are dropped and duplicates collapse, order kept."""
+    out: list[str] = []
+    for part in raw.split(","):
+        t = part.strip().lower()
+        if not t or not _TICKER_RE.match(t):
+            continue
+        if "." not in t:
+            t += ".us"
+        if t not in out:
+            out.append(t)
+    return out[:MAX_QUOTE_TICKERS]
+
+
+async def stock_quotes(session: AsyncSession, providers: Providers, tickers: list[str]) -> StockQuotesOut:
+    """Last close for any US ticker the phone asks about, cached for the TTL. Stale-while-error: if the
+    source is down the last good close is served marked stale; an unknown ticker is 'unavailable'."""
+    s = get_settings()
+    now = datetime.now(UTC)
+    ttl = s.price_ttl_seconds
+    book = await load_quote_book(session)
+    need = [t for t in tickers if t not in book.stocks or now - book.stocks[t][1] > timedelta(seconds=ttl)]
+    if need and providers.stocks:
+        try:
+            got = await asyncio.wait_for(providers.stocks.usd_prices(set(need)), REFRESH_TIMEOUT_SECONDS)
+            day = now.date()
+            for t, price in got.items():
+                await _upsert(session, stock_symbol(t), day, price, providers.stocks.name, now)
+                book.stocks[t] = (price, now, providers.stocks.name)
+            await session.commit()
+        except Exception:  # noqa: BLE001 - stale-while-error is the contract
+            log.warning("stock_quotes_failed", exc_info=True)
+            await session.rollback()
+    out = []
+    for t in tickers:
+        hit = book.stocks.get(t)
+        if hit is None:
+            out.append(
+                StockQuoteOut(ticker=t, usd=None, status="unavailable", last_updated=None, source=None)
+            )
+        else:
+            out.append(
+                StockQuoteOut(
+                    ticker=t,
+                    usd=hit[0],
+                    status=status_for(hit[1], now, ttl),
+                    last_updated=hit[1],
+                    source=hit[2],
+                )
+            )
+    return StockQuotesOut(ttl_seconds=ttl, quotes=out)
 
 
 # ---------------------------------------------------------------------------------------------

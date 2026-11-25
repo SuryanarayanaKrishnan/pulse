@@ -46,6 +46,19 @@ class PriceSnapshotOut(BaseModel):
     notes: list[str]
 
 
+class StockQuoteOut(BaseModel):
+    ticker: str = Field(description="Normalised Stooq ticker, e.g. voo.us")
+    usd: Decimal | None = Field(description="Last close in USD; null when no source has it")
+    status: str = Field(description="live | stale | unavailable")
+    last_updated: datetime | None
+    source: str | None
+
+
+class StockQuotesOut(BaseModel):
+    ttl_seconds: int
+    quotes: list[StockQuoteOut]
+
+
 class HistoryPoint(BaseModel):
     date: date
     value: Decimal
