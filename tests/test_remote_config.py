@@ -34,3 +34,11 @@ def test_unsigned_without_key():
 def test_bad_rollout_rejected():
     with pytest.raises(ValueError):
         validate({"version": 1, "flags": {"x": {"enabled": True, "rollout_pct": 150}}})
+
+
+def test_seed_derived_from_existing_secret_is_stable():
+    from app.services.remote_config import derive_seed
+
+    assert derive_seed("abc") == derive_seed("abc") != derive_seed("abd")
+    out = signed(load_config(), derive_seed("abc"))
+    assert out["signature"] and out["public_key"]
