@@ -131,3 +131,15 @@ async def refresh_valuations(ctx: dict[str, Any]) -> dict[str, Any]:
         "crypto": rep.crypto, "stocks": rep.stocks, "funds": rep.funds,
         "assets_revalued": rep.assets_revalued, "assets_unvalued": rep.assets_unvalued, "errors": rep.errors,
     }  # fmt: skip
+
+
+async def warn_vault_owners(ctx: dict[str, Any]) -> int:
+    """Cron: tell owners their family vault is about to be shared, or that a claim was made."""
+    from app.services.push import get_push_sender
+    from app.services.vault_relay import warn_owners
+
+    async with ctx["session_factory"]() as session:
+        sent = await warn_owners(session, get_push_sender())
+        await session.commit()
+    log.info("vault_owners_warned", sent=sent)
+    return sent

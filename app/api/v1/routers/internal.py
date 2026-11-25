@@ -25,6 +25,7 @@ CRONS = {
     "sync_all_gmail_connections": tasks.sync_all_gmail_connections,
     "snapshot_net_worth": tasks.snapshot_net_worth,
     "refresh_valuations": tasks.refresh_valuations,
+    "warn_vault_owners": tasks.warn_vault_owners,
 }
 
 

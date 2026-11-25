@@ -32,6 +32,7 @@ from app.models.split import (
 from app.models.statement import ParseStatus, ReconciliationStatus, Statement, StatementLine
 from app.models.transaction import Direction, RawIngest, Transaction, TxnSource
 from app.models.user import User
+from app.models.vault_relay import VaultRelay
 
 __all__ = [
     "Account",
@@ -85,6 +86,7 @@ __all__ = [
     "Transaction",
     "TxnSource",
     "User",
+    "VaultRelay",
     "UserCard",
     "ValuationSource",
 ]
