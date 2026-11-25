@@ -6,8 +6,8 @@
   {
    "id": "sib-cashback-tabby-wallet-only",
    "kind": "caveat",
-   "title": "Paying Tabby with the SIB Cashback card",
-   "body": "Reports on r/UAECreditCards are mixed. SIB customer care told one member that Tabby repayments and YouGotAGift fall under MCC 5999 and no longer earn the 10% rate, and many members agreed in November. Others say it still works when paid through Apple Pay or Google Pay (which show up as a different merchant, 'TabbyDubai'), and one member redeemed the cashback that way. Tabby can also charge up to about 1% to repay by card. Check the cashback line after your first repayment before repeating it.",
+   "title": "Paying Tabby with the SIB Cashback card: use Apple/Google/Samsung Pay",
+   "body": "Statement evidence shared on r/UAECreditCards: a Tabby repayment paid with the card details (merchant shows as 'TABBY 800 ...') earned 0.5%, while the same repayment through Apple Pay (merchant 'TABBY FZ LLC' / 'TABBYDUBAI') earned 10% on the September statement. Several members confirmed 10% through Apple Pay or Google Pay in October, and one says a SIB call confirmed it as eligible. SIB care also told another member that MCC 5999 earns only 0.5%, and Tabby's merchant code is not consistent, so it may change again. Tip from the thread: pre-check the MCC by paying Tabby with a prepaid card that shows it. Tabby can also charge up to about 1% to repay by card. Check the cashback line after the first repayment.",
    "card_ids": [
     "sib-cashback",
     "tabby-card"
@@ -32,17 +32,12 @@
    "sources": [
     {
      "kind": "reddit",
-     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xicy5u/",
+     "url": "https://www.reddit.com/r/UAEcreditcards/comments/1xicy5u/",
      "as_of": "2026-10"
     },
     {
      "kind": "reddit",
-     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xnmquu/",
-     "as_of": "2026-11"
-    },
-    {
-     "kind": "reddit",
-     "url": "https://www.reddit.com/r/UAECreditCards/comments/1xvwqu3/",
+     "url": "https://www.reddit.com/r/UAEcreditcards/comments/1xvwqu3/",
      "as_of": "2026-11"
     },
     {
@@ -52,7 +47,7 @@
     }
    ],
    "conflicts": [
-    "Whether Apple/Google Pay still earns is disputed: one member redeemed cashback that way, a blog says wallets do not override MCC 5999, and several members report inconsistent results with the same payment mode."
+    "The kredit.ae blog says wallets do not override MCC 5999; statement evidence in the Reddit thread says the wallet path earned 10%. Results can change month to month."
    ],
    "first_seen": "2026-11-25",
    "last_confirmed": "2026-11-25",
