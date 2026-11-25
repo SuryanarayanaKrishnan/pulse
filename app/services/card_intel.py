@@ -26,7 +26,8 @@ TRUST = {"reported": 0.5, "corroborated": 0.8, "verified": 1.0}
 
 
 def load_intel(path: Path | None = None) -> dict[str, Any]:
-    return json.loads((path or INTEL_PATH).read_text())
+    data: dict[str, Any] = json.loads((path or INTEL_PATH).read_text())
+    return data
 
 
 def validate(intel: dict[str, Any], known_card_ids: set[str] | None = None) -> list[str]:

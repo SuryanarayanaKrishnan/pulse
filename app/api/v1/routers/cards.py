@@ -1,5 +1,6 @@
 from dataclasses import asdict
 from datetime import UTC, datetime
+from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, Response
@@ -39,14 +40,14 @@ async def card_catalog(user: CurrentUser, session: SessionDep) -> list[CatalogCa
 
 
 @router.get("/intel")
-async def card_intel_feed(user: CurrentUser, session: SessionDep) -> dict:
+async def card_intel_feed(user: CurrentUser, session: SessionDep) -> dict[str, Any]:
     """Tips, caveats, stacking combos and offer changes matched to the user's cards (curated, dated)."""
     rows = await session.execute(
         select(CatalogCard.perks)
         .join(UserCard, UserCard.catalog_card_id == CatalogCard.id)
         .where(UserCard.user_id == user.id, UserCard.deleted_at.is_(None))
     )
-    owned = {p.get("catalog_id") for (p,) in rows if p and p.get("catalog_id")}
+    owned = {str(p["catalog_id"]) for (p,) in rows if p and p.get("catalog_id")}
     intel = card_intel.load_intel()
     today = insights.today_dubai()
     return {
