@@ -12,6 +12,7 @@ from app.models.account import Account, AccountType
 from app.models.card import CatalogCard, UserCard
 from app.schemas.insights import CardDueOut, DueDatesOut
 from app.schemas.rewards import CatalogCardOut, UserCardCreate, UserCardOut
+from app.services import card_intel
 from app.services import insights_service as insights
 from app.services.rewards_service import catalog_out
 
@@ -35,6 +36,23 @@ async def card_catalog(user: CurrentUser, session: SessionDep) -> list[CatalogCa
     """Reference card products with reward rules. `data_status` is 'unverified' until `verified_on` is set."""
     rows = await session.execute(select(CatalogCard).order_by(CatalogCard.issuer, CatalogCard.name))
     return [catalog_out(c) for c in rows.scalars()]
+
+
+@router.get("/intel")
+async def card_intel_feed(user: CurrentUser, session: SessionDep) -> dict:
+    """Tips, caveats, stacking combos and offer changes matched to the user's cards (curated, dated)."""
+    rows = await session.execute(
+        select(CatalogCard.perks)
+        .join(UserCard, UserCard.catalog_card_id == CatalogCard.id)
+        .where(UserCard.user_id == user.id, UserCard.deleted_at.is_(None))
+    )
+    owned = {p.get("catalog_id") for (p,) in rows if p and p.get("catalog_id")}
+    intel = card_intel.load_intel()
+    today = insights.today_dubai()
+    return {
+        "as_of": intel["as_of"],
+        "items": [r.out() for r in card_intel.intel_for_cards(intel, owned, today)],
+    }
 
 
 @router.get("/due-dates", response_model=DueDatesOut)
