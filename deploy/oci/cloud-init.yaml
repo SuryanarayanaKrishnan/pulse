@@ -1,0 +1,15 @@
+#cloud-config
+# Paste into Oracle Cloud > Create instance > Show advanced options > Management > Cloud-init script.
+# Installs Docker, opens ports 80/443 in the VM firewall, adds swap, creates /opt/pulse. No secrets in here.
+package_update: true
+packages: [ca-certificates, curl, git, rsync, iptables-persistent]
+runcmd:
+  - curl -fsSL https://get.docker.com | sh
+  - usermod -aG docker ubuntu
+  - iptables -I INPUT 5 -p tcp --dport 80 -j ACCEPT
+  - iptables -I INPUT 5 -p tcp --dport 443 -j ACCEPT
+  - netfilter-persistent save
+  - fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - mkdir -p /opt/pulse && chown ubuntu:ubuntu /opt/pulse
+  - touch /opt/pulse/.cloud-init-done

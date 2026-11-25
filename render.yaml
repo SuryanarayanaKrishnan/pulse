@@ -1,0 +1,25 @@
+# Fallback host (Render free web service). Limits: sleeps after 15 min idle (cold start ~30-60 s) and the
+# arq worker lives inside the same container, so crons/ingest jobs only run while it is awake.
+services:
+  - type: web
+    name: pulse-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    dockerCommand: >-
+      sh -c "alembic upgrade head && (arq app.workers.settings.WorkerSettings &) &&
+      exec uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'"
+    envVars:
+      - {key: APP_ENV, value: production}
+      - {key: LOG_JSON, value: "true"}
+      - {key: DB_PGBOUNCER, value: "true"}
+      - {key: REDIS_URL, fromService: {type: keyvalue, name: pulse-redis, property: connectionString}}
+      - {key: DATABASE_URL, sync: false}
+      - {key: SUPABASE_JWT_SECRET, sync: false}
+      - {key: SUPABASE_JWKS_URL, sync: false}
+      - {key: FERNET_KEYS, sync: false}
+      - {key: CORS_ORIGINS, sync: false}
+  - type: keyvalue
+    name: pulse-redis
+    plan: free
+    ipAllowList: []

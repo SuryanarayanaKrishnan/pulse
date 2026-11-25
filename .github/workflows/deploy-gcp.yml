@@ -1,11 +1,9 @@
-name: Deploy
+name: Deploy (GCP Cloud Run, optional)
+# Parked: the beta runs on Oracle Cloud (deploy-oci.yml). Manual trigger only.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths-ignore: ["docs/**", "**.md"]
 
-concurrency: deploy
+concurrency: deploy-gcp
 permissions:
   contents: read
   id-token: write
