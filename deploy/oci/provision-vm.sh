@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# Idempotently creates the Always Free network + A1 ARM VM in Oracle Cloud and prints the public IP.
+# Idempotently creates the Always Free network + VM in Oracle Cloud and prints the public IP.
 # Runs in GitHub Actions. Auth comes from OCI_CLI_USER / OCI_CLI_TENANCY / OCI_CLI_FINGERPRINT /
 # OCI_CLI_KEY_CONTENT / OCI_CLI_REGION. Needs: oci-cli, jq, and SSH_PUBKEY_FILE.
-# Free-tier guard: only VM.Standard.A1.Flex, <= 2 OCPU / 12 GB / 50 GB boot (limit is 4 / 24 / 200 per tenancy).
+# Free-tier guard: only VM.Standard.A1.Flex (<= 2 OCPU / 12 GB / 50 GB boot; limit is 4 / 24 / 200 per tenancy)
+# or, as a fallback when ARM capacity is exhausted, VM.Standard.E2.1.Micro (Always Free, 1 GB, x86).
 set -euo pipefail
 export OCI_CLI_SUPPRESS_FILE_PERMISSIONS_WARNING=True
 C="${OCI_CLI_TENANCY:?}"      # root compartment
 NAME=pulse-api
 SHAPE=VM.Standard.A1.Flex OCPUS=2 MEM_GB=12 BOOT_GB=50
+MICRO=VM.Standard.E2.1.Micro
 HERE="$(cd "$(dirname "$0")" && pwd)"
 : "${SSH_PUBKEY_FILE:?}"
 
@@ -17,6 +19,11 @@ log() { echo "[oci] $*" >&2; }
 existing() {
   o compute instance list -c "$C" --display-name "$NAME" --all \
     | jq -r '[.data[] | select(."lifecycle-state" | IN("RUNNING","PROVISIONING","STARTING"))][0].id // empty'
+}
+
+image_for() {
+  o compute image list -c "$C" --operating-system "Canonical Ubuntu" --operating-system-version "24.04" \
+    --shape "$1" --sort-by TIMECREATED --sort-order DESC --limit 1 | jq -r '.data[0].id // empty'
 }
 
 INST="$(existing)"
@@ -48,32 +55,45 @@ if [ -z "$INST" ]; then
       --dns-label pulse --wait-for-state AVAILABLE | jq -r .data.id)"
   fi
 
-  # ---- image: newest Ubuntu 24.04 built for this ARM shape ----
-  IMG="$(o compute image list -c "$C" --operating-system "Canonical Ubuntu" --operating-system-version "24.04" \
-    --shape "$SHAPE" --sort-by TIMECREATED --sort-order DESC --limit 1 | jq -r '.data[0].id // empty')"
+  # ---- images: newest Ubuntu 24.04 for each free shape ----
+  IMG="$(image_for "$SHAPE")"
   [ -n "$IMG" ] || { log "no Ubuntu 24.04 aarch64 image found in this region"; exit 1; }
+  IMG_MICRO="$(image_for "$MICRO")"
+  [ -n "$IMG_MICRO" ] || log "no Ubuntu 24.04 image for $MICRO; ARM only"
 
-  # ---- launch; ARM capacity is scarce, so cycle through ADs and retry for ~25 min ----
-  # Retry on "out of host capacity" and on 429 TooManyRequests (Oracle throttles launches).
-  mapfile -t ADS < <(o iam availability-domain list -c "$C" | jq -r '.data[].name')
-  for round in $(seq 1 25); do
+  # try_launch SHAPE IMAGE [shape-config-json]; sets INST on success.
+  # Returns 0 launched/picked up, 1 no capacity or throttled (retry), exits on any other error.
+  try_launch() {
+    local shape="$1" image="$2" cfg="${3:-}" AD OUT
+    local -a extra=()
+    [ -z "$cfg" ] || extra=(--shape-config "$cfg")
     for AD in "${ADS[@]}"; do
-      log "launching $SHAPE ($OCPUS OCPU / $MEM_GB GB) in $AD (round $round)"
-      if OUT="$(oci compute instance launch --output json --availability-domain "$AD" -c "$C" --shape "$SHAPE" \
-          --shape-config "{\"ocpus\":$OCPUS,\"memoryInGBs\":$MEM_GB}" --image-id "$IMG" --subnet-id "$SUBNET" \
+      log "launching $shape in $AD (round $round)"
+      if OUT="$(oci compute instance launch --output json --availability-domain "$AD" -c "$C" --shape "$shape" \
+          "${extra[@]}" --image-id "$image" --subnet-id "$SUBNET" \
           --assign-public-ip true --display-name "$NAME" --boot-volume-size-in-gbs "$BOOT_GB" \
           --ssh-authorized-keys-file "$SSH_PUBKEY_FILE" --user-data-file "$HERE/cloud-init.yaml" \
           --wait-for-state RUNNING --max-retries 0 2>&1)"; then
-        INST="$(jq -r .data.id <<<"$OUT")"; break 2
+        INST="$(jq -r .data.id <<<"$OUT")"; return 0
       fi
       if grep -qi "TooManyRequests" <<<"$OUT"; then
         # A throttled launch may still have created the instance; pick it up if so.
-        INST="$(existing)"; [ -z "$INST" ] || break 2
-        log "throttled (429); sleeping 90s"; sleep 90; continue
+        INST="$(existing)"; [ -z "$INST" ] || return 0
+        log "throttled (429); sleeping 90s"; sleep 90; return 1
       fi
       grep -qi "out of host capacity\|OutOfHostCapacity\|LimitExceeded.*capacity" <<<"$OUT" || { echo "$OUT" >&2; exit 1; }
     done
-    log "no ARM capacity yet; sleeping 60s"; sleep 60
+    return 1
+  }
+
+  # ---- launch; capacity is scarce, so each round tries ARM then the AMD micro, for ~25 min ----
+  mapfile -t ADS < <(o iam availability-domain list -c "$C" | jq -r '.data[].name')
+  for round in $(seq 1 25); do
+    try_launch "$SHAPE" "$IMG" "{\"ocpus\":$OCPUS,\"memoryInGBs\":$MEM_GB}" && break
+    if [ -n "$IMG_MICRO" ]; then
+      try_launch "$MICRO" "$IMG_MICRO" && { log "using the AMD micro fallback (1 GB)"; break; }
+    fi
+    log "no capacity yet; sleeping 60s"; sleep 60
   done
   [ -n "$INST" ] || { log "still out of host capacity after retries; re-run the workflow later"; exit 1; }
 fi
