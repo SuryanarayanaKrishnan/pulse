@@ -1,0 +1,56 @@
+name: live-smoke
+# Free: a few HTTPS requests from a GitHub-hosted runner against the live server. Needs no secrets.
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Server to test
+        default: https://129-151-139-52.sslip.io
+  schedule:
+    - cron: "41 4 * * *"   # daily 08:41 UAE time
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Probe the live server
+        env:
+          BASE: ${{ github.event.inputs.base_url || 'https://129-151-139-52.sslip.io' }}
+        run: |
+          python3 - <<'PY'
+          import json, os, ssl, urllib.request, urllib.error, sys
+          base = os.environ["BASE"].rstrip("/")
+          rows, bad = [], 0
+          def call(method, path, body=None, want=(200,), note=""):
+              global bad
+              req = urllib.request.Request(base + path, method=method,
+                  data=json.dumps(body).encode() if body is not None else None,
+                  headers={"content-type": "application/json"})
+              try:
+                  r = urllib.request.urlopen(req, timeout=20); code, txt = r.status, r.read().decode()[:400]
+              except urllib.error.HTTPError as e:
+                  code, txt = e.code, e.read().decode()[:400]
+              except Exception as e:
+                  code, txt = 0, repr(e)
+              ok = code in want
+              bad += (not ok)
+              rows.append(f"| {'PASS' if ok else 'FAIL'} | {method} {path} | {code} | {note} |")
+              print(method, path, code, txt[:200].replace("\n", " "))
+              return code, txt
+          call("GET", "/health", note="process up")
+          call("GET", "/ready", note="database + redis")
+          call("GET", "/v1/config", note="remote config")
+          call("GET", "/v1/catalog/cards", note="card catalog")
+          c, t = call("GET", "/v1/merchant-map", note="shared merchant map")
+          call("GET", "/v1/cards/intel", want=(200, 401), note="card intel")
+          # Login: protected routes must refuse a request with no token
+          for p in ("/v1/me", "/v1/prices/snapshot", "/v1/market/quotes", "/v1/transactions", "/v1/splits"):
+              call("GET", p, want=(401, 403), note="auth enforced (no token => refused)")
+          call("POST", "/v1/category-contributions", {"format": 99, "pairs": []}, want=(400, 422), note="learning endpoint rejects bad batch")
+          call("POST", "/v1/ingest/sms", {"text": "x"}, want=(401, 403, 422), note="ingest needs a token")
+          out = "## Live smoke test: " + base + "\n\n| Result | Request | Status | Meaning |\n|---|---|---|---|\n" + "\n".join(rows) + f"\n\n**{bad} failing**\n"
+          open(os.environ["GITHUB_STEP_SUMMARY"], "a").write(out)
+          sys.exit(1 if bad else 0)
+          PY
