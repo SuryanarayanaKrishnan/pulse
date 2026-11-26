@@ -74,7 +74,10 @@ if [ -z "$INST" ]; then
           --assign-public-ip true --display-name "$NAME" --boot-volume-size-in-gbs "$BOOT_GB" \
           --ssh-authorized-keys-file "$SSH_PUBKEY_FILE" --user-data-file "$HERE/cloud-init.yaml" \
           --wait-for-state RUNNING --max-retries 0 2>&1)"; then
-        INST="$(jq -r .data.id <<<"$OUT")"; return 0
+        # The CLI prints progress text before the JSON; keep only the JSON, else look the VM up by name.
+        INST="$(sed -n '/^{/,$p' <<<"$OUT" | jq -r .data.id 2>/dev/null || true)"
+        [ -n "$INST" ] || INST="$(existing)"
+        return 0
       fi
       if grep -qi "TooManyRequests" <<<"$OUT"; then
         # A throttled launch may still have created the instance; pick it up if so.
@@ -113,12 +116,12 @@ if [ -z "$DG" ]; then
 else
   o iam dynamic-group update --dynamic-group-id "$DG" --matching-rule "$RULE" --force >/dev/null
 fi
+# The policy's statements never change, so create it once and leave it alone afterwards
+# (an update needs --version-date alongside --statements, which is not worth the trouble).
 STMT="[\"Allow dynamic-group pulse-vm to manage objects in tenancy where target.bucket.name='$BUCKET'\",\"Allow dynamic-group pulse-vm to read buckets in tenancy\"]"
 POL="$(o iam policy list -c "$C" --name pulse-vm-backups --all | jq -r '.data[0].id // empty')"
 if [ -z "$POL" ]; then
   o iam policy create -c "$C" --name pulse-vm-backups --description "Pulse VM backups" --statements "$STMT" >/dev/null
-else
-  o iam policy update --policy-id "$POL" --statements "$STMT" --force >/dev/null
 fi
 
 IP="$(o compute instance list-vnics --instance-id "$INST" | jq -r '.data[0]."public-ip"')"
