@@ -90,8 +90,11 @@ def changed_without_bump(base: str) -> list[str]:
     files = [*sorted(PACKS.glob("*.json")), CONFIG, CATALOG]
     for f in files:
         rel = f.relative_to(ROOT).as_posix()
-        old = subprocess.run(  # noqa: S603, S607
-            ["git", "show", f"{base}:{rel}"], cwd=ROOT, capture_output=True, text=True
+        old = subprocess.run(  # noqa: S603
+            ["git", "show", f"{base}:{rel}"],  # noqa: S607
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
         )
         if old.returncode != 0:
             continue  # new file
