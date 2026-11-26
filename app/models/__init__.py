@@ -7,6 +7,7 @@ from app.models.category import Category, CategoryKind, CategoryPreference
 from app.models.household import Household, HouseholdMember, HouseholdRole, MemberStatus, ShareLevel
 from app.models.insights import NetWorthSnapshot, RecurringReview, SavingsGoal
 from app.models.integration import EmailConnection, IngestToken, StatementPassword
+from app.models.learning import CategoryContribution
 from app.models.market import MarketQuote
 from app.models.merchant_rule import MerchantRule
 from app.models.portfolio import (
@@ -35,6 +36,7 @@ from app.models.user import User
 from app.models.vault_relay import VaultRelay
 
 __all__ = [
+    "CategoryContribution",
     "Account",
     "AccountType",
     "Asset",
