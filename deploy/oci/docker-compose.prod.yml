@@ -1,4 +1,4 @@
-# Production stack for a single Oracle Cloud Always Free ARM VM.
+# Production stack for a single Oracle Cloud Always Free VM (ARM A1 or the AMD micro).
 # Run from /opt/pulse/deploy/oci:  docker compose -f docker-compose.prod.yml --env-file /opt/pulse/.env up -d --build
 name: pulse
 services:
@@ -78,6 +78,9 @@ services:
     environment: *env
     volumes: [storage:/data/storage]
     mem_limit: 1g
+    # The image's HEALTHCHECK probes the API's HTTP port, which the arq worker does not serve.
+    healthcheck:
+      disable: true
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
