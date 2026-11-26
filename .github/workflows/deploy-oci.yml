@@ -1,11 +1,18 @@
 name: Deploy (Oracle Cloud)
 # Creates the Always Free ARM VM on first run (idempotent), then ships the backend to it.
+# Runs automatically after the CI workflow succeeds on main (so a red build never ships),
+# or by hand. Docs-only pushes are skipped.
+# A schedule retries every 2 hours: Oracle's free ARM capacity is often unavailable, and
+# the provision script is idempotent, so a scheduled run simply redeploys once a VM exists.
 # Secrets needed: OCI_USER, OCI_TENANCY, OCI_FINGERPRINT, OCI_REGION, OCI_KEY, OCI_SSH_KEY. Optional: PULSE_ENV.
 on:
   workflow_dispatch:
-  push:
+  schedule:
+    - cron: "7 */2 * * *"
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [main]
-    paths-ignore: ["docs/**", "**.md"]
 
 concurrency: deploy-oci
 permissions:
@@ -13,6 +20,8 @@ permissions:
 
 jobs:
   deploy:
+    # Only deploy a green push to main (not pull-request runs of CI).
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
@@ -25,7 +34,18 @@ jobs:
       PULSE_ENV: ${{ secrets.PULSE_ENV }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+      - name: Skip docs-only changes
+        if: github.event_name == 'workflow_run'
+        run: |
+          changed="$(git diff --name-only HEAD~1 HEAD || true)"
+          if [ -n "$changed" ] && ! echo "$changed" | grep -qvE '^docs/|\.md$'; then
+            echo "::notice::Docs-only change; skipping deploy"; echo "SKIP=1" >> "$GITHUB_ENV"
+          fi
       - name: Check secrets
+        if: env.SKIP != '1'
         run: |
           missing=""
           for v in OCI_CLI_USER OCI_CLI_TENANCY OCI_CLI_FINGERPRINT OCI_CLI_REGION OCI_CLI_KEY_CONTENT SSH_KEY; do
