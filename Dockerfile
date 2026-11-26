@@ -7,7 +7,9 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 COPY app ./app
 COPY alembic ./alembic
-COPY data/cards/catalog.json ./data/cards/catalog.json
+# Runtime data: card catalog + intel/art, content packs (/v1/packs), remote config (/v1/config).
+# Without these the live API 500s on /v1/config and serves an empty pack list.
+COPY data ./data
 COPY alembic.ini ./
 RUN uv sync --frozen --no-dev
 

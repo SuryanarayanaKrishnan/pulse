@@ -36,6 +36,13 @@ class Settings(BaseSettings):
     # Optional override (base64 Ed25519 seed) for /v1/config; default derives from FERNET_KEYS[0].
     config_signing_key: str = ""
 
+    # Beta bug reports (POST /v1/bug-reports): the app sends a redacted report, the API files a GitHub
+    # issue in BUG_REPORT_REPO ("owner/name", ideally private) with a fine-grained token that has only
+    # "Issues: read and write" (+ "Contents: read and write" for screenshots). No token: the route answers 503
+    # and the app falls back to its share sheet.
+    bug_report_github_token: str = ""
+    bug_report_repo: str = ""
+
     supabase_jwt_secret: str = ""
     supabase_jwks_url: str = ""
     supabase_jwt_audience: str = "authenticated"
