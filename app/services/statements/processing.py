@@ -78,6 +78,7 @@ def _summary(parsed: ParsedStatement) -> dict[str, Any]:
     return {
         "parser": parsed.parser,
         "last4": parsed.last4,
+        "credit_limit_minor": parsed.credit_limit_minor,
         "statement_date": parsed.statement_date.isoformat() if parsed.statement_date else None,
         "due_date": parsed.due_date.isoformat() if parsed.due_date else None,
         "min_due_minor": parsed.min_due_minor,

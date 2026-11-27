@@ -50,6 +50,7 @@ class ParsedStatement:
     total_payments_minor: int | None = None  # card summary: payments/credits for the period
     total_purchases_minor: int | None = None  # card summary: purchases/charges for the period
     last4: str | None = None
+    credit_limit_minor: int | None = None  # credit card: the limit the statement prints
     product: str | None = None  # product name printed in the account summary (e.g. a savings plan)
     holder_name: str | None = None  # never persisted; only used to tell own-account moves from transfers
     lines: list[StatementLineData] = field(default_factory=list)
