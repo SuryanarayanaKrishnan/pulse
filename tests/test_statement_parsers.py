@@ -55,6 +55,7 @@ def test_card_statement_per_bank(key):
     )
     assert st.last4 == "1234" and st.currency == "AED"
     assert st.period_start == date(2026, 2, 25) and st.period_end == date(2026, 3, 25)
+    assert st.credit_limit_minor == 2_000_000  # the printed limit, for filling a card added by name only
     assert st.due_date == date(2026, 4, 19) and st.statement_date == date(2026, 3, 25)
     assert compute_reconciliation(st.kind, st.opening_minor, st.closing_minor, st.lines).status == "matched"
 

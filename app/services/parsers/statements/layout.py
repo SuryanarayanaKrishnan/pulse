@@ -409,6 +409,10 @@ def extract_summary(lines: list[str], stmt: ParsedStatement, layout: Layout) -> 
                     setattr(stmt, target, d)
         if due_line:
             continue
+        if kind == "credit_card" and stmt.credit_limit_minor is None and (lm := _LIMIT_LABEL.search(ln)):
+            limit = _first_money(ln, lm.end())
+            if limit is not None and limit > 0:
+                stmt.credit_limit_minor = limit
         # One field per line; "Minimum Payment Due" must not also count as "Payments".
         for name in ("min_due", "opening", "closing", "purchases", "payments"):
             mm = patterns[name].search(ln)
@@ -430,6 +434,9 @@ def extract_summary(lines: list[str], stmt: ParsedStatement, layout: Layout) -> 
             break
     if layout.summary_table:
         _extract_summary_table(lines, stmt, layout)
+
+
+_LIMIT_LABEL = re.compile(r"(?:total\s+)?credit\s+limit", re.I)
 
 
 def _balance(value: int, line: str, kind: StatementKind) -> int:
