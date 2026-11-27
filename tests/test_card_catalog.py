@@ -137,4 +137,4 @@ def test_every_major_uae_issuer_has_a_live_card_in_the_catalog():
         "cards"
     ]
     live = {c["issuer"] for c in cards if c["status"] != "discontinued"}
-    assert REQUIRED_ISSUERS <= live, f"missing issuers: {sorted(REQUIRED_ISSUERS - live)}"
+    assert live >= REQUIRED_ISSUERS, f"missing issuers: {sorted(REQUIRED_ISSUERS - live)}"
