@@ -1730,7 +1730,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "monthly_total_cap_units": 1000
    },
    "perks": {},
    "welcome_offer": null,
@@ -15924,7 +15925,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 2500
+    "monthly_total_cap_units": 2500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16040,7 +16042,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 1500
+    "monthly_total_cap_units": 1500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16158,7 +16161,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 3500
+    "monthly_total_cap_units": 3500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16282,7 +16286,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 5000
+    "monthly_total_cap_units": 5000,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -18081,7 +18086,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "cap_cycle": "calendar"
    },
    "perks": {
     "lounge": {

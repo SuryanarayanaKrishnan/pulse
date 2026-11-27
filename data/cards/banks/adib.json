@@ -231,7 +231,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "monthly_total_cap_units": 1000
    },
    "perks": {},
    "welcome_offer": null,

@@ -77,7 +77,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "cap_cycle": "calendar"
    },
    "perks": {
     "lounge": {

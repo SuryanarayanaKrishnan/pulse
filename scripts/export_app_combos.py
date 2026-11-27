@@ -18,8 +18,21 @@ from app.services import card_intel  # noqa: E402
 
 def main(out: str) -> None:
     intel = card_intel.load_intel()
-    items = [r.out() for r in card_intel.starter_items(intel, date.today())]
-    Path(out).write_text(json.dumps({"as_of": intel["as_of"], "items": items}, indent=1) + "\n")
+    # 'watching' items are unproven; they never ship to the app's default list.
+    items = [
+        r.out() for r in card_intel.starter_items(intel, date.today()) if r.item.get("status") != "watching"
+    ]
+    Path(out).write_text(
+        json.dumps(
+            {
+                "generated_by": "pulse scripts/export_app_combos.py: do not edit by hand",
+                "as_of": intel["as_of"],
+                "items": items,
+            },
+            indent=1,
+        )
+        + "\n"
+    )
     print(f"{len(items)} items -> {out}")
 
 
