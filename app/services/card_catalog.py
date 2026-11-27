@@ -39,6 +39,7 @@ PERK_KEYS = (
     "notes",
     "confidence",
     "community_notes",
+    "field_confidence",
 )
 
 UPSERT = sa.text(

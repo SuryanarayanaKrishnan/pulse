@@ -34,6 +34,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "data" / "cards" / "catalog.json"
 SNAP_DIR = ROOT / "data" / "cards" / "snapshots"
+CLAIMS = ROOT / "data" / "cards" / "claims.json"
 FEED = ROOT / "data" / "cards" / "offers_feed.json"
 UA = "PulseOfferWatch/1.0 (+https://github.com/SuryanarayanaKrishnan/pulse; low-rate, robots.txt respected)"
 OFFICIAL = {"bank_page", "kfs", "tc_pdf"}
@@ -157,7 +158,7 @@ def fetch(url: str) -> tuple[int, str]:
         body = r.read(3_000_000)
         ctype = r.headers.get("Content-Type", "")
     if "pdf" in ctype.lower() or url.lower().endswith(".pdf"):
-        return r.status, ""  # PDFs: tracked by ETag/size only in a future pass
+        return r.status, "PDFSHA256:" + hashlib.sha256(body).hexdigest()  # PDFs: any byte change is a change
     return r.status, body.decode("utf-8", "replace")
 
 
@@ -165,13 +166,16 @@ def snap_path(url: str) -> Path:
     return SNAP_DIR / (hashlib.sha1(url.encode()).hexdigest()[:16] + ".json")
 
 
-def watch_targets(catalog: dict) -> dict[str, list[str]]:
+def watch_targets(catalog: dict, claims: list[dict] | None = None) -> dict[str, list[str]]:
     targets: dict[str, list[str]] = {}
+    for cl in claims or []:  # official pages that a combo or a saving figure leans on
+        if cl.get("evidence") == "official":
+            targets.setdefault(cl["source_url"], []).append("claim:" + cl["id"])
     for c in catalog["cards"]:
         if c.get("status") in ("discontinued",):
             continue
         for s in c.get("sources", []):
-            if s["kind"] in OFFICIAL and not s["url"].lower().endswith(".pdf"):
+            if s["kind"] in OFFICIAL:
                 targets.setdefault(s["url"], []).append(c["id"])
     return targets
 
@@ -196,7 +200,8 @@ def main(argv: list[str]) -> int:
     catalog = json.loads(CATALOG.read_text())
     today = datetime.now(UTC).date()
     SNAP_DIR.mkdir(parents=True, exist_ok=True)
-    targets = list(watch_targets(catalog).items())[:limit]
+    claims = json.loads(CLAIMS.read_text())["claims"] if CLAIMS.exists() else []
+    targets = list(watch_targets(catalog, claims).items())[:limit]
     robots: dict[str, urllib.robotparser.RobotFileParser] = {}
     last_hit: dict[str, float] = {}
     changes, errors, thin = [], [], []
@@ -218,13 +223,14 @@ def main(argv: list[str]) -> int:
                 if status != 200:
                     errors.append({"url": url, "error": f"http {status}"})
                     continue
-            lines = signal_lines(raw)
+            # A PDF is one 'line': its file hash, so a changed PDF shows up as a diff.
+            lines = [raw] if raw.startswith("PDFSHA256:") else signal_lines(raw)
         except Exception as e:  # noqa: BLE001
             errors.append({"url": url, "error": str(e)[:200]})
             continue
         sp = snap_path(url)
         old = json.loads(sp.read_text()) if sp.exists() else None
-        if len(raw) < THIN_CHARS or not lines:
+        if not raw.startswith("PDFSHA256:") and (len(raw) < THIN_CHARS or not lines):
             thin.append(url)
             continue
         if old is not None:

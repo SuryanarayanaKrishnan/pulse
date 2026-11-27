@@ -29,6 +29,19 @@ jobs:
           git config user.email "offer-watch@users.noreply.github.com"
           git add data/cards/snapshots data/cards/offers_feed.json data/cards/catalog.json
           git diff --cached --quiet || (git commit -m "chore(offers): daily snapshot" && git push)
+      - name: Find card data that has gone stale
+        id: fresh
+        run: |
+          python scripts/source_freshness.py | tee stale.md
+          echo "stale=$(grep -c '^- ' stale.md || true)" >> "$GITHUB_OUTPUT"
+      - name: Open or refresh one issue for stale card data
+        if: steps.fresh.outputs.stale != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --state open --search "Card data needs a re-check in:title" --json number --jq '.[0].number' || true)
+          if [ -n "$n" ]; then gh issue comment "$n" --body-file stale.md; else
+            gh issue create --title "Card data needs a re-check" --body-file stale.md; fi
       - name: Open an issue when something changed
         if: steps.watch.outputs.changes != '0'
         env:

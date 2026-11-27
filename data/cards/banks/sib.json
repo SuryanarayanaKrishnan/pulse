@@ -77,7 +77,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "cap_cycle": "calendar"
    },
    "perks": {
     "lounge": {
@@ -100,7 +101,7 @@
     {
      "url": "https://sib.ae/en/cashback-card-faqs",
      "kind": "bank_page",
-     "verified_on": "2026-11-24"
+     "verified_on": "2026-11-27"
     },
     {
      "url": "https://sib.ae/en/Cashback-TCs",
@@ -121,7 +122,13 @@
      "as_of": "2026-11-24"
     }
    ],
-   "notes": "Official terms: 10% online/wallet capped AED 300 per calendar month; no minimum spend; cashback expires after 36 months, redeem min AED 100, cannot pay card bill with it; utility bills paid via bank's own online/mobile banking earn nothing. Supermarket MCC 5411, utility/telecom 4900/4813/4814, government 9399/9402, education 8299/8220/8211 are low-rate. MCC 5999 reportedly earns only 0.5% (see community). Annual fee AED 199 per aggregator (official page does not state amount); waived by AED 10,000 retail spend in the year; first year free. FX admin fee 2.5%. Profit 3.49%/month on official page. No welcome bonus on official page."
+   "notes": "Official terms: 10% online/wallet capped AED 300 per calendar month; no minimum spend; cashback expires after 36 months, redeem min AED 100, cannot pay card bill with it; utility bills paid via bank's own online/mobile banking earn nothing. Supermarket MCC 5411, utility/telecom 4900/4813/4814, government 9399/9402, education 8299/8220/8211 are low-rate. MCC 5999 reportedly earns only 0.5% (see community). Annual fee AED 199 per aggregator (official page does not state amount); waived by AED 10,000 retail spend in the year; first year free. FX admin fee 2.5%. Profit 3.49%/month on official page. No welcome bonus on official page. Audit 2026-11-27 (official FAQ re-read): the 10% rate, AED 300 monthly cap (on 'accelerated categories', not listed), AED 10,000 waiver spend and 2.5% non-AED fee are official. The annual fee amount, the base rate on other spend and the 0.5% reduced tier are NOT on the official page (it defers to a key fact statement we could not read); they come from comparison sites. The official page never mentions Tabby or credit card bill payments.",
+   "field_confidence": {
+    "annual_fee_minor": "reported",
+    "reward_structure.base_rate": "unverified",
+    "reward_structure.rules[Reduced categories]": "reported",
+    "reward_structure.rules[Online and wallet spend].categories": "reported"
+   }
   },
   {
    "id": "sib-smiles-titanium",

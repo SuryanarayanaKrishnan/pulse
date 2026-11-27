@@ -29,6 +29,7 @@ One JSON file per issuer in `data/cards/banks/<issuer-slug>.json`:
 | `welcome_offer` | object/null | `{text, value_aed_est?, min_spend_minor?, window_days?, requires_fee_payment?, valid_until?}` |
 | `sources` | list | `{url, kind: bank_page / kfs / tc_pdf / aggregator / community, verified_on: YYYY-MM-DD}`; at least one |
 | `confidence` | high / medium / low | high = cross-checked with a bank page or T&C PDF; medium = single secondary source or recent-but-uncorroborated; low = headline numbers only |
+| `field_confidence` | `{field: verified/reported/community/unverified}` | optional. Fields weaker than the card's `confidence`, e.g. `annual_fee_minor` when only a comparison site states it. See docs/CARD_DATA_GUARDS.md. |
 | `community_notes` | list of `{text, source, as_of}` | anything from forums/Reddit: kept separate from official data |
 | `notes` | str | gotchas in our own words |
 | `deals` | list | ticket or partner discounts (B1G1 cinema, 50% off) that are not a share of spend; kept out of `reward_structure` so they never dominate rankings |

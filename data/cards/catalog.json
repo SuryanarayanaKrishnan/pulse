@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "catalog_version": "2026-11-24",
+ "catalog_version": "2026-11-27",
  "currency": "AED",
  "count": 198,
  "cards": [
@@ -1730,7 +1730,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "monthly_total_cap_units": 1000
    },
    "perks": {},
    "welcome_offer": null,
@@ -6456,11 +6457,20 @@
      "url": "https://kredit.ae/credit-cards/dubai-first-cashback-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dubaifirst.com/-/media/fab-uds/dubaifirst/overview/pdf/terms-and-conditions/fees-and-charges.pdf?view=1",
+     "kind": "kfs",
+     "verified_on": "2026-11-27"
     }
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "community_notes": [],
-   "notes": "Total cashback cap AED 1,000 per statement cycle. 0.5% on other retail; 0.15% on special categories. Dubai First is not Islamic. Network not stated. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only.",
+   "notes": "Total cashback cap AED 1,000 per statement cycle. 0.5% on other retail; 0.15% on special categories. Dubai First is not Islamic. Network not stated.  Audit 2026-11-27: Dubai First's schedule of charges (July 2025) lists the Cashback card annual fee as AED 399 excluding VAT, so AED 418.95 with 5% VAT is right. The homepage advertises '6% instant cashback' while we hold 5% on supermarkets, dining and fuel from a comparison site: the reward rates and caps are unconfirmed and may be stale. No official page with rates was reachable.",
+   "field_confidence": {
+    "reward_structure": "unverified",
+    "annual_fee_minor": "verified"
+   },
    "art": {
     "stops": [
      "#111C36",
@@ -14634,12 +14644,21 @@
     {
      "url": "https://www.liv.me/en/liv-credit-card",
      "kind": "bank_page",
-     "verified_on": "2026-11-24"
+     "verified_on": "2026-11-27"
+    },
+    {
+     "url": "https://www.liv.me/-/media/liv/website/pdf/2024/kfs/apr/liv-credit-card-key-facts-statement-kfs-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-27"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Cashback rate depends on total monthly card spend: 0.75% under AED 5,000, 1.5% from AED 5,000, 2% from AED 10,000, applied to ALL transactions once the tier is reached; base_rate stores the lowest tier. Monthly cap AED 750 (may be lower with a small credit limit). Can be redeemed as Skywards Miles instead, capped at 5,000 miles a month, with a 500-point minimum balance. Government, utility and bill payments earn only 0.1%. 1.99% FX fee plus about 1.15% Mastercard fee. Interest 3.49% a month.",
+   "notes": "Cashback rate depends on total monthly card spend: 0.75% under AED 5,000, 1.5% from AED 5,000, 2% from AED 10,000, applied to ALL transactions once the tier is reached; base_rate stores the lowest tier. Monthly cap AED 750 (may be lower with a small credit limit). Can be redeemed as Skywards Miles instead, capped at 5,000 miles a month, with a 500-point minimum balance. Government, utility and bill payments earn only 0.1%. 1.99% FX fee plus about 1.15% Mastercard fee. Interest 3.49% a month. Audit 2026-11-27: official pages confirm free for life, up to 2% and up to AED 750 a month, AED 5,000 minimum salary, 1.99% FX fee plus about 1.15% Mastercard. The AED 5,000 / 10,000 tier thresholds and the 0.1% rate on bills are not stated on Liv's pages (comparison site only). Neither Liv page says whether paying a credit card bill earns cashback.",
+   "field_confidence": {
+    "reward_structure.tiered_base": "reported",
+    "reward_structure.rules[Government, utilities and bill payments]": "unverified"
+   },
    "art": {
     "stops": [
      "#3A2BB5",
@@ -14733,7 +14752,7 @@
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Cashback tiers by total monthly spend: 1% under AED 7,000, 2% from AED 7,000, 4% from AED 15,000, applied to all transactions; base_rate stores the lowest tier. Monthly cap AED 1,500 (may be lower with a small limit). Skywards Miles redemption mode capped at 10,000 miles a month. Government, utility and bill payments earn only 0.1%. For Liv Max subscribers the first-year AED 735 fee is reversed. Interest 3.25% a month.",
+   "notes": "Cashback tiers by total monthly spend: 1% under AED 7,000, 2% from AED 7,000, 4% from AED 15,000, applied to all transactions; base_rate stores the lowest tier. Monthly cap AED 1,500 (may be lower with a small limit). Skywards Miles redemption mode capped at 10,000 miles a month. Government, utility and bill payments earn only 0.1%. For Liv Max subscribers the first-year AED 735 fee is reversed. Interest 3.25% a month. Audit 2026-11-27: Liv's charges page lists the Cashback+ annual fee as AED 700; the catalog holds AED 735 (700 plus 5% VAT). Check whether Liv's figure already includes VAT before relying on either.",
    "art": {
     "stops": [
      "#32259C",
@@ -15906,7 +15925,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 2500
+    "monthly_total_cap_units": 2500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16022,7 +16042,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 1500
+    "monthly_total_cap_units": 1500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16140,7 +16161,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 3500
+    "monthly_total_cap_units": 3500,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -16264,7 +16286,8 @@
      "utilities",
      "telecom"
     ],
-    "monthly_total_cap_units": 5000
+    "monthly_total_cap_units": 5000,
+    "cap_cycle": "statement"
    },
    "perks": {
     "lounge": {
@@ -18063,7 +18086,8 @@
      "fees",
      "cc_payment",
      "transfer"
-    ]
+    ],
+    "cap_cycle": "calendar"
    },
    "perks": {
     "lounge": {
@@ -18086,7 +18110,7 @@
     {
      "url": "https://sib.ae/en/cashback-card-faqs",
      "kind": "bank_page",
-     "verified_on": "2026-11-24"
+     "verified_on": "2026-11-27"
     },
     {
      "url": "https://sib.ae/en/Cashback-TCs",
@@ -18107,7 +18131,13 @@
      "as_of": "2026-11-24"
     }
    ],
-   "notes": "Official terms: 10% online/wallet capped AED 300 per calendar month; no minimum spend; cashback expires after 36 months, redeem min AED 100, cannot pay card bill with it; utility bills paid via bank's own online/mobile banking earn nothing. Supermarket MCC 5411, utility/telecom 4900/4813/4814, government 9399/9402, education 8299/8220/8211 are low-rate. MCC 5999 reportedly earns only 0.5% (see community). Annual fee AED 199 per aggregator (official page does not state amount); waived by AED 10,000 retail spend in the year; first year free. FX admin fee 2.5%. Profit 3.49%/month on official page. No welcome bonus on official page.",
+   "notes": "Official terms: 10% online/wallet capped AED 300 per calendar month; no minimum spend; cashback expires after 36 months, redeem min AED 100, cannot pay card bill with it; utility bills paid via bank's own online/mobile banking earn nothing. Supermarket MCC 5411, utility/telecom 4900/4813/4814, government 9399/9402, education 8299/8220/8211 are low-rate. MCC 5999 reportedly earns only 0.5% (see community). Annual fee AED 199 per aggregator (official page does not state amount); waived by AED 10,000 retail spend in the year; first year free. FX admin fee 2.5%. Profit 3.49%/month on official page. No welcome bonus on official page. Audit 2026-11-27 (official FAQ re-read): the 10% rate, AED 300 monthly cap (on 'accelerated categories', not listed), AED 10,000 waiver spend and 2.5% non-AED fee are official. The annual fee amount, the base rate on other spend and the 0.5% reduced tier are NOT on the official page (it defers to a key fact statement we could not read); they come from comparison sites. The official page never mentions Tabby or credit card bill payments.",
+   "field_confidence": {
+    "annual_fee_minor": "reported",
+    "reward_structure.base_rate": "unverified",
+    "reward_structure.rules[Reduced categories]": "reported",
+    "reward_structure.rules[Online and wallet spend].categories": "reported"
+   },
    "art": {
     "stops": [
      "#0A5A3B",
@@ -18296,11 +18326,22 @@
      "url": "https://kredit.ae/credit-cards/tabby-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://tabby.ai/en-AE/card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-27"
     }
    ],
    "confidence": "low",
-   "community_notes": [],
-   "notes": "Virtual BNPL-linked Visa, not a conventional credit card. Tabby+ (AED 59/month) gives 5% cashback on 3 selected categories, cap AED 200 a month; categories rotate in-app so not modelled. Up to 40 days to pay statement free; rolling over may cost up to 12%. Collection charges up to AED 200 late. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only.",
+   "community_notes": [
+    {
+     "text": "Repaying Tabby by credit card may cost up to about 1%; Tabby's own pages do not say so",
+     "source": "https://www.reddit.com/r/UAEcreditcards/comments/1xvwqu3/",
+     "as_of": "2026-11"
+    }
+   ],
+   "notes": "Virtual BNPL-linked Visa, not a conventional credit card. Tabby Plus (49 a month on Tabby's own card page; currency not shown, AED likely. We previously held AED 59 from a comparison site, which Tabby's page contradicts) gives 5% cashback on 3 selected categories, cap AED 200 a month; categories rotate in-app so not modelled. Up to 40 days to pay statement free; rolling over may cost up to 12%. Collection charges up to AED 200 late. Official Tabby card page read 2026-11-27: no card or annual fees, 5% on 3 chosen categories up to AED 200 a month, up to 40 days to pay. Tabby's pages state no fee for repaying by card; the ~1% fee is a community report only (see data/cards/claims.json).",
    "art": {
     "stops": [
      "#3EEDBF",
@@ -18600,11 +18641,16 @@
      "url": "https://kredit.ae/credit-cards/wio-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://wio.io/personal-credit",
+     "kind": "bank_page",
+     "verified_on": "2026-11-27"
     }
    ],
    "confidence": "low",
    "community_notes": [],
-   "notes": "2% on spend; 0.5% on government, real estate, utilities/telecom; 0.5% for paying other-bank card bills via Wio (needs AED 5,000 other eligible spend; Plus plan only). Wio Credit and My Money share AED 2,500 monthly cashback cap. Wallet top-ups, cash advances excluded. Interest 3.25%/month Standard/Plus; Plus plan AED 49/month waived at AED 35,000 balance. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only.",
+   "notes": "2% on spend; 0.5% on government, real estate, utilities/telecom; 0.5% for paying other-bank card bills via Wio (needs AED 5,000 other eligible spend; Plus plan only). Wio Credit and My Money share AED 2,500 monthly cashback cap. Wallet top-ups, cash advances excluded. Interest 3.25%/month Standard/Plus; Plus plan AED 49/month waived at AED 35,000 balance. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only. Audit 2026-11-27: Wio's own page says 'up to 0.5%' on paying other credit cards with Wio credit, up to 2,500 a month, terms apply. The AED 5,000 spend condition, the Plus-plan requirement and the 0.5%-of-limit cap come from a comparison site and are not on any Wio page we could read (the key fact statement blocks automated readers).",
    "art": {
     "stops": [
      "#0E0E10",

@@ -64,12 +64,21 @@
     {
      "url": "https://www.liv.me/en/liv-credit-card",
      "kind": "bank_page",
-     "verified_on": "2026-11-24"
+     "verified_on": "2026-11-27"
+    },
+    {
+     "url": "https://www.liv.me/-/media/liv/website/pdf/2024/kfs/apr/liv-credit-card-key-facts-statement-kfs-english.pdf",
+     "kind": "kfs",
+     "verified_on": "2026-11-27"
     }
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Cashback rate depends on total monthly card spend: 0.75% under AED 5,000, 1.5% from AED 5,000, 2% from AED 10,000, applied to ALL transactions once the tier is reached; base_rate stores the lowest tier. Monthly cap AED 750 (may be lower with a small credit limit). Can be redeemed as Skywards Miles instead, capped at 5,000 miles a month, with a 500-point minimum balance. Government, utility and bill payments earn only 0.1%. 1.99% FX fee plus about 1.15% Mastercard fee. Interest 3.49% a month."
+   "notes": "Cashback rate depends on total monthly card spend: 0.75% under AED 5,000, 1.5% from AED 5,000, 2% from AED 10,000, applied to ALL transactions once the tier is reached; base_rate stores the lowest tier. Monthly cap AED 750 (may be lower with a small credit limit). Can be redeemed as Skywards Miles instead, capped at 5,000 miles a month, with a 500-point minimum balance. Government, utility and bill payments earn only 0.1%. 1.99% FX fee plus about 1.15% Mastercard fee. Interest 3.49% a month. Audit 2026-11-27: official pages confirm free for life, up to 2% and up to AED 750 a month, AED 5,000 minimum salary, 1.99% FX fee plus about 1.15% Mastercard. The AED 5,000 / 10,000 tier thresholds and the 0.1% rate on bills are not stated on Liv's pages (comparison site only). Neither Liv page says whether paying a credit card bill earns cashback.",
+   "field_confidence": {
+    "reward_structure.tiered_base": "reported",
+    "reward_structure.rules[Government, utilities and bill payments]": "unverified"
+   }
   },
   {
    "id": "liv-cashback-plus",
@@ -147,7 +156,7 @@
    ],
    "confidence": "high",
    "community_notes": [],
-   "notes": "Cashback tiers by total monthly spend: 1% under AED 7,000, 2% from AED 7,000, 4% from AED 15,000, applied to all transactions; base_rate stores the lowest tier. Monthly cap AED 1,500 (may be lower with a small limit). Skywards Miles redemption mode capped at 10,000 miles a month. Government, utility and bill payments earn only 0.1%. For Liv Max subscribers the first-year AED 735 fee is reversed. Interest 3.25% a month."
+   "notes": "Cashback tiers by total monthly spend: 1% under AED 7,000, 2% from AED 7,000, 4% from AED 15,000, applied to all transactions; base_rate stores the lowest tier. Monthly cap AED 1,500 (may be lower with a small limit). Skywards Miles redemption mode capped at 10,000 miles a month. Government, utility and bill payments earn only 0.1%. For Liv Max subscribers the first-year AED 735 fee is reversed. Interest 3.25% a month. Audit 2026-11-27: Liv's charges page lists the Cashback+ annual fee as AED 700; the catalog holds AED 735 (700 plus 5% VAT). Check whether Liv's figure already includes VAT before relying on either."
   },
   {
    "id": "liv-tamayaz-platinum",
