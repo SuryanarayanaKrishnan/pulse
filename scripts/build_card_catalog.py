@@ -24,6 +24,10 @@ NETWORKS = {None, "visa", "mastercard", "amex", "unionpay"}
 STATUS = {"active", "closed_to_new", "discontinued", "unverified"}
 CONF = {"high", "medium", "low"}
 SRC_KINDS = {"bank_page", "kfs", "tc_pdf", "aggregator", "community"}
+FIELD_CONF = {"verified", "reported", "community", "unverified"}
+# Comparison sites and forums are never an official source, whatever the entry says.
+UNOFFICIAL_HOSTS = ("kredit.ae", "bankbazaar", "reddit.com", "cardsfinder", "wallet.ae")
+OFFICIAL_KINDS = {"bank_page", "kfs", "tc_pdf"}
 ID_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -55,6 +59,13 @@ def validate(card: dict, issuer: str) -> list[str]:
         need(s.get("kind") in SRC_KINDS, f"bad source kind {s.get('kind')}")
         need(str(s.get("url", "")).startswith("https://"), "source url must be https")
         need(bool(DATE_RE.match(str(s.get("verified_on", "")))), "source verified_on must be YYYY-MM-DD")
+    for s in srcs:
+        if s.get("kind") in OFFICIAL_KINDS and any(
+            h in str(s.get("url", "")).lower() for h in UNOFFICIAL_HOSTS
+        ):
+            errs.append(f"{cid}: {s['url']} is a comparison site or forum, not an official source")
+    for fld, lvl in (card.get("field_confidence") or {}).items():
+        need(lvl in FIELD_CONF, f"field_confidence[{fld}] must be one of {sorted(FIELD_CONF)}")
     if card.get("confidence") == "high":
         need(
             any(s.get("kind") in {"bank_page", "kfs", "tc_pdf"} for s in srcs),

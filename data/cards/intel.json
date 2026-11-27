@@ -4,6 +4,93 @@
  "note": "Curated card intel (tips, caveats, combos, offer changes) mostly from community reports such as r/UAECreditCards. Every item is dated and sourced. 'reported' means one or two unverified user reports; the app words it as such. Candidates from the Reddit scraper land in intel_candidates.json and are promoted here by a human.",
  "items": [
   {
+   "id": "reddit-tabby-sib-chain",
+   "kind": "combo",
+   "title": "The Reddit stack: Tabby card, repaid by SIB Cashback, SIB paid by another card",
+   "body": "Spend with the Tabby card, repay Tabby from the SIB Cashback card through Apple Pay or Google Pay so the repayment earns SIB's online rate, then pay the SIB bill with a card that may add its own cashback. Only the first two steps are counted in the figure. The repayment rate and Tabby's repayment fee both come from community reports; check the cashback line after your first repayment.",
+   "card_ids": [
+    "tabby-card",
+    "sib-cashback",
+    "liv-cashback",
+    "dubai-first-cashback"
+   ],
+   "severity": "info",
+   "confidence": "reported",
+   "status": "active",
+   "tier": "free",
+   "valid_from": "2026-11-25",
+   "valid_until": null,
+   "review_by": "2027-01-25",
+   "flow": {
+    "steps": [
+     {
+      "id": "s1",
+      "kind": "spend",
+      "card_id": "tabby-card",
+      "do": "Pay your everyday spending with the Tabby card.",
+      "amount_claim": "app.typical_month_nonbill_spend",
+      "claims": [
+       "tabby.card_annual_fee"
+      ]
+     },
+     {
+      "id": "s2",
+      "kind": "repay",
+      "card_id": "sib-cashback",
+      "pays": "s1",
+      "do": "Pay the Tabby bill with the SIB Cashback card through Apple Pay or Google Pay (not by typing the card number), up to the point where the monthly cap is used.",
+      "earn": {
+       "catalog_rule": "Online and wallet spend",
+       "claims": [
+        "sib.online_wallet_rate",
+        "sib.monthly_cap",
+        "sib.tabby_wallet_repayment_earns_10pct"
+       ]
+      },
+      "fee": {
+       "claim": "tabby.card_repayment_fee"
+      }
+     },
+     {
+      "id": "s3",
+      "kind": "repay",
+      "card_id": "liv-cashback",
+      "pays": "s2",
+      "counted": false,
+      "do": "Pay the SIB Cashback bill with another credit card such as Liv Cashback or Dubai First, which may earn that card's cashback too.",
+      "claims": [
+       "stack.sib_bill_paid_by_card_earns"
+      ]
+     }
+    ],
+    "yearly_costs": [
+     {
+      "claim": "sib.annual_fee",
+      "label": "SIB Cashback annual fee (waived from year two with AED 10,000 of retail spend; not assumed here)"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "kind": "bank_page",
+     "url": "https://sib.ae/en/cashback-card-faqs",
+     "as_of": "2026-11-27"
+    },
+    {
+     "kind": "reddit",
+     "url": "https://www.reddit.com/r/UAEcreditcards/comments/1xvwqu3/",
+     "as_of": "2026-11"
+    },
+    {
+     "kind": "surya",
+     "ref": "surya relaying r/UAECreditCards, 2026-11-27",
+     "as_of": "2026-11-27"
+    }
+   ],
+   "first_seen": "2026-11-25",
+   "last_confirmed": "2026-11-27"
+  },
+  {
    "id": "sib-cashback-tabby-wallet-only",
    "kind": "caveat",
    "title": "Paying Tabby with the SIB Cashback card: use Apple/Google/Samsung Pay",
@@ -135,7 +222,7 @@
    "id": "wio-card-bill-pairing",
    "kind": "combo",
    "title": "Pair Wio with your other cards' bills",
-   "body": "Wio's credit card reportedly earns cashback when you pay other UAE banks' card bills, but only with AED 5,000 of Wio retail spend that cycle, not on the Standard plan, capped at 0.5% of the Wio credit limit a month. Sources disagree on the fees, so check Wio's current key facts first.",
+   "body": "Wio says its credit card earns up to 0.5% cashback, up to AED 2,500 a month, when you pay your other credit cards with it, terms apply. A comparison site adds that you need AED 5,000 of Wio retail spend that cycle, are not on the Standard plan, and are capped at 0.5% of your Wio credit limit; Wio's own pages do not show those conditions and its key fact statement could not be read. Check Wio's current terms first.",
    "card_ids": [
     "wio-credit"
    ],
@@ -148,24 +235,29 @@
    "review_by": "2027-01-25",
    "sources": [
     {
+     "kind": "bank_page",
+     "url": "https://wio.io/personal-credit",
+     "as_of": "2026-11-27"
+    },
+    {
      "kind": "aggregator",
      "url": "https://kredit.ae/blog/how-to-get-extra-cashback-pairing-uae-credit-cards.md",
      "as_of": "2025-07-07"
     }
    ],
    "first_seen": "2026-11-25",
-   "last_confirmed": "2026-11-25"
+   "last_confirmed": "2026-11-27"
   },
   {
    "id": "mashreq-noon-credit-rate-drop",
    "kind": "offer_change",
    "title": "Mashreq noon: credit rate drops in 2027",
-   "body": "Per the card notes, the noon-credit rate falls from 23 Jan 2027 and a monthly cap arrives on 7 Mar 2027. Plan big noon purchases before then.",
+   "body": "Mashreq's noon card page says the 0.33% rate on government, utilities, education, charity, fuel, rental and telecom falls to 0.15% from 23 Jan 2027, and that from 7 Mar 2027 total cashback is capped at AED 1,000 per statement cycle. Cashback is paid as noon credits. Plan big spend before then.",
    "card_ids": [
     "mashreq-noon"
    ],
    "severity": "warn",
-   "confidence": "reported",
+   "confidence": "verified",
    "status": "active",
    "tier": "plus",
    "valid_from": "2026-11-25",
@@ -173,13 +265,18 @@
    "review_by": "2027-01-10",
    "sources": [
     {
+     "kind": "bank_page",
+     "url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/noon-credit-card/",
+     "as_of": "2026-11-27"
+    },
+    {
      "kind": "aggregator",
      "url": "https://kredit.ae/credit-cards/noon",
      "as_of": "2026-11-22"
     }
    ],
    "first_seen": "2026-11-25",
-   "last_confirmed": "2026-11-25"
+   "last_confirmed": "2026-11-27"
   },
   {
    "id": "liv-wio-card-bill-stack",
@@ -211,13 +308,13 @@
    "id": "mashreq-noon-govt-rate-cut",
    "kind": "offer_change",
    "title": "Mashreq noon: government payments earn less",
-   "body": "A member reports Mashreq is cutting the rate on government payments on the noon card from 0.33% to 0.15%. Check Mashreq's notice for the effective date.",
+   "body": "A member reports Mashreq is cutting the rate on government payments on the noon card from 0.33% to 0.15%. Check Mashreq's notice for the effective date. Retired 2026-11-27: confirmed on Mashreq's own page and covered by mashreq-noon-credit-rate-drop.",
    "card_ids": [
     "mashreq-noon"
    ],
    "severity": "info",
    "confidence": "reported",
-   "status": "active",
+   "status": "retired",
    "valid_from": "2026-11-25",
    "valid_until": null,
    "review_by": "2027-01-25",

@@ -33,11 +33,22 @@
      "url": "https://kredit.ae/credit-cards/tabby-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://tabby.ai/en-AE/card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-27"
     }
    ],
    "confidence": "low",
-   "community_notes": [],
-   "notes": "Virtual BNPL-linked Visa, not a conventional credit card. Tabby+ (AED 59/month) gives 5% cashback on 3 selected categories, cap AED 200 a month; categories rotate in-app so not modelled. Up to 40 days to pay statement free; rolling over may cost up to 12%. Collection charges up to AED 200 late. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only."
+   "community_notes": [
+    {
+     "text": "Repaying Tabby by credit card may cost up to about 1%; Tabby's own pages do not say so",
+     "source": "https://www.reddit.com/r/UAEcreditcards/comments/1xvwqu3/",
+     "as_of": "2026-11"
+    }
+   ],
+   "notes": "Virtual BNPL-linked Visa, not a conventional credit card. Tabby Plus (49 a month on Tabby's own card page; currency not shown, AED likely. We previously held AED 59 from a comparison site, which Tabby's page contradicts) gives 5% cashback on 3 selected categories, cap AED 200 a month; categories rotate in-app so not modelled. Up to 40 days to pay statement free; rolling over may cost up to 12%. Collection charges up to AED 200 late. Official Tabby card page read 2026-11-27: no card or annual fees, 5% on 3 chosen categories up to AED 200 a month, up to 40 days to pay. Tabby's pages state no fee for repaying by card; the ~1% fee is a community report only (see data/cards/claims.json)."
   }
  ]
 }

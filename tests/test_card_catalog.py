@@ -65,3 +65,42 @@ def test_generated_art_is_deterministic_and_maps_to_perks():
         assert generate(plain) == generate(plain)
     for r in catalog_rows(cat):
         assert "art" in json.loads(r["perks"])
+
+
+def test_no_comparison_site_passes_as_official_source():
+    import json
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(root / "scripts"))
+    import build_card_catalog as b
+
+    card = {
+        "id": "x-y",
+        "issuer": "X",
+        "name": "Y",
+        "network": None,
+        "status": "active",
+        "confidence": "medium",
+        "reward_structure": {"unit": "cashback", "base_rate": 0.01, "rules": []},
+        "sources": [{"url": "https://kredit.ae/x", "kind": "bank_page", "verified_on": "2026-11-27"}],
+        "field_confidence": {"annual_fee_minor": "maybe"},
+    }
+    errs = b.validate(card, "X")
+    assert any("not an official source" in e for e in errs)
+    assert any("field_confidence" in e for e in errs)
+    assert b.build()[1] == [], json.dumps(b.build()[1])
+
+
+def test_evidence_report_is_current():
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(root / "scripts"))
+    import card_evidence_report as r
+
+    assert (root / "docs" / "CARD_EVIDENCE.md").read_text() == r.render(), (
+        "run python scripts/card_evidence_report.py"
+    )

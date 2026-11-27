@@ -63,11 +63,20 @@
      "url": "https://kredit.ae/credit-cards/dubai-first-cashback-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dubaifirst.com/-/media/fab-uds/dubaifirst/overview/pdf/terms-and-conditions/fees-and-charges.pdf?view=1",
+     "kind": "kfs",
+     "verified_on": "2026-11-27"
     }
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "community_notes": [],
-   "notes": "Total cashback cap AED 1,000 per statement cycle. 0.5% on other retail; 0.15% on special categories. Dubai First is not Islamic. Network not stated. Official bank pages/PDFs could not be read in the 2026-11-24 verification pass (fetch budget exhausted); figures remain aggregator-only."
+   "notes": "Total cashback cap AED 1,000 per statement cycle. 0.5% on other retail; 0.15% on special categories. Dubai First is not Islamic. Network not stated.  Audit 2026-11-27: Dubai First's schedule of charges (July 2025) lists the Cashback card annual fee as AED 399 excluding VAT, so AED 418.95 with 5% VAT is right. The homepage advertises '6% instant cashback' while we hold 5% on supermarkets, dining and fuel from a comparison site: the reward rates and caps are unconfirmed and may be stale. No official page with rates was reachable.",
+   "field_confidence": {
+    "reward_structure": "unverified",
+    "annual_fee_minor": "verified"
+   }
   }
  ]
 }

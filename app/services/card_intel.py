@@ -9,10 +9,13 @@ caveats change which card it suggests.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 from typing import Any
+
+from app.services import combo_flow
 
 ROOT = Path(__file__).resolve().parents[2]
 INTEL_PATH = ROOT / "data" / "cards" / "intel.json"
@@ -34,7 +37,12 @@ def load_intel(path: Path | None = None) -> dict[str, Any]:
     return data
 
 
-def validate(intel: dict[str, Any], known_card_ids: set[str] | None = None) -> list[str]:
+def validate(
+    intel: dict[str, Any],
+    known_card_ids: set[str] | None = None,
+    cards: dict[str, dict[str, Any]] | None = None,
+    claims: dict[str, dict[str, Any]] | None = None,
+) -> list[str]:
     errs: list[str] = []
     seen: set[str] = set()
     for it in intel.get("items", []):
@@ -70,6 +78,36 @@ def validate(intel: dict[str, Any], known_card_ids: set[str] | None = None) -> l
         eff = it.get("effect")
         if eff and eff.get("type") == "rate_override" and not 0 <= eff.get("rate", -1) < 0.5:
             errs.append(f"{iid}: effect rate out of range")
+        errs += _validate_flow(it, cards, claims)
+    return errs
+
+
+def _validate_flow(
+    it: dict[str, Any], cards: dict[str, dict[str, Any]] | None, claims: dict[str, dict[str, Any]] | None
+) -> list[str]:
+    """A saving figure only ever comes from a flow. Hand-typed numbers cannot be shipped."""
+    iid = it.get("id", "?")
+    flow = it.get("flow")
+    errs: list[str] = []
+    for k in ("annual_saving_aed", "saving_note"):
+        if k in it:
+            errs.append(f"{iid}: {k} must be computed from a flow, not typed")
+    if not flow:
+        return errs
+    if re.search(r"\d", it.get("body", "")):
+        errs.append(f"{iid}: body of a flow combo must not hold numbers; the flow computes them")
+    if cards is None or claims is None:
+        return errs
+    try:
+        out = combo_flow.evaluate(flow, cards, claims)
+    except (ValueError, KeyError) as e:
+        return [*errs, f"{iid}: flow does not evaluate: {e}"]
+    order = ["verified", "corroborated", "reported"]
+    if order.index(it.get("confidence", "reported")) < order.index(out["confidence"]):
+        errs.append(f"{iid}: confidence {it.get('confidence')} is stronger than its claims allow")
+    step_cards = {s["card_id"] for s in flow["steps"]}
+    if not step_cards <= set(it.get("card_ids", [])):
+        errs.append(f"{iid}: card_ids must include every card in the flow")
     return errs
 
 
@@ -90,6 +128,13 @@ class IntelForUser:
 
     def out(self) -> dict[str, Any]:
         it = self.item
+        base = self._base()
+        if it.get("flow"):
+            base.update(flow_output(it))
+        return base
+
+    def _base(self) -> dict[str, Any]:
+        it = self.item
         return {
             "id": it["id"],
             "kind": it["kind"],
@@ -105,6 +150,33 @@ class IntelForUser:
             "last_confirmed": it.get("last_confirmed"),
             "sources": [s.get("url") or s.get("ref") for s in it["sources"]],
         }
+
+
+_FLOW_CACHE: dict[str, Any] = {}
+
+
+def flow_output(it: dict[str, Any]) -> dict[str, Any]:
+    """Computed fields for a flow combo: steps, breakdown, figure, confidence and why."""
+    if "cards" not in _FLOW_CACHE:
+        catalog = json.loads((ROOT / "data" / "cards" / "catalog.json").read_text())
+        _FLOW_CACHE["cards"] = {c["id"]: c for c in catalog["cards"]}
+        _FLOW_CACHE["claims"] = combo_flow.load_claims()
+    r = combo_flow.evaluate(it["flow"], _FLOW_CACHE["cards"], _FLOW_CACHE["claims"])
+    return {
+        "confidence": r["confidence"],
+        "confidence_label": r["confidence_label"],
+        "steps": r["steps"],
+        "breakdown": r["breakdown"],
+        "annual_saving_aed": r["annual_saving_aed"],
+        "saving_note": r["saving_note"],
+        "claims": [
+            {
+                k: _FLOW_CACHE["claims"][c][k]
+                for k in ("id", "statement", "confidence", "evidence", "source_url", "checked_on")
+            }
+            for c in r["claims_used"]
+        ],
+    }
 
 
 def intel_for_cards(

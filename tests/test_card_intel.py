@@ -14,7 +14,10 @@ IDS = {c["id"] for c in CATALOG["cards"]}
 
 
 def test_shipped_intel_is_valid_and_ids_exist():
-    assert ci.validate(ci.load_intel(), IDS) == []
+    from app.services import combo_flow as cf
+
+    cards = {c["id"]: c for c in CATALOG["cards"]}
+    assert ci.validate(ci.load_intel(), IDS, cards, cf.load_claims()) == []
 
 
 def _intel(**over):

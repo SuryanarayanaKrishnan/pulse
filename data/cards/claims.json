@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-27",
+  "note": "Every number or mechanic that a combo, tip or saving figure depends on is a claim here, with where it came from. evidence: official (bank/issuer page, KFS or T&C read directly), aggregator (comparison site only), community (forum/Reddit reports), assumption (ours). confidence: verified (official source read, quote held), reported (one secondary source), community (user reports only), unverified (we could not confirm it). Community and unverified claims are never stated as fact in the app. catalog_ref ties a claim to the number held in the card catalog; tests fail if the two drift apart.",
+  "claims": [
+    {
+      "id": "sib.online_wallet_rate",
+      "card_id": "sib-cashback",
+      "statement": "SIB Cashback pays 10% on online and Apple Pay / Samsung Pay spend, except utilities, telecom, government, supermarket, hypermarket and education.",
+      "value": 0.1,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://sib.ae/en/cashback-card-faqs",
+      "quote": "Eligible transactions include online and digital wallet payments (e.g., Samsung wallet, apple pay) except for utilities, telecom, government, supermarket, hypermarket, and education payments.",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "sib-cashback", "rule": "Online and wallet spend", "field": "rate"}
+    },
+    {
+      "id": "sib.monthly_cap",
+      "card_id": "sib-cashback",
+      "statement": "The 10% category is capped at AED 300 of cashback per calendar month per customer. The FAQ calls them 'accelerated categories' without listing them, so the cap's exact scope is not published.",
+      "value": 300,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://sib.ae/en/cashback-card-faqs",
+      "quote": "Cashback on accelerated categories is capped at AED 300 per calendar month per customer.",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "sib-cashback", "rule": "Online and wallet spend", "field": "monthly_cap_units"}
+    },
+    {
+      "id": "sib.annual_fee",
+      "card_id": "sib-cashback",
+      "statement": "SIB Cashback annual fee is AED 199 (comparison site). The official FAQ does not state the amount and points to the key fact statement, which could not be read on 2026-11-27.",
+      "value": 199,
+      "evidence": "aggregator",
+      "confidence": "reported",
+      "source_url": "https://kredit.ae/credit-cards/sib-cashback-credit-card/details",
+      "quote": "Please review the cashback key fact statement available at SIB tariff page for detailed fee information.",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "sib-cashback", "field": "annual_fee_minor", "scale": 0.01}
+    },
+    {
+      "id": "sib.fee_waiver_spend",
+      "card_id": "sib-cashback",
+      "statement": "From the second year the annual fee is waived with AED 10,000 of retail spend in the card cycle. Whether Tabby repayments count as retail spend is not published.",
+      "value": 10000,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://sib.ae/en/cashback-card-faqs",
+      "quote": "AED 10,000 in retail spend during the card cycle is required to qualify for the annual fee waiver",
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "sib.base_rate",
+      "card_id": "sib-cashback",
+      "statement": "Rate on spend outside the 10% category (catalog: 1%). The official FAQ says all retail transactions earn cashback but gives no percentage.",
+      "value": 0.01,
+      "evidence": "aggregator",
+      "confidence": "unverified",
+      "source_url": "https://sib.ae/en/cashback-card-faqs",
+      "quote": "All retail transactions are eligible for cashback.",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "sib-cashback", "field": "base_rate"}
+    },
+    {
+      "id": "sib.tabby_wallet_repayment_earns_10pct",
+      "card_id": "sib-cashback",
+      "statement": "Paying the Tabby bill with SIB Cashback through Apple Pay or Google Pay earns the 10% rate; typing in the card number earns 0.5%. Based on statement screenshots posted by members of r/UAECreditCards in Oct and Nov 2026. SIB's own pages do not mention Tabby. Merchant codes can change, so it may stop working.",
+      "value": true,
+      "evidence": "community",
+      "confidence": "community",
+      "source_url": "https://www.reddit.com/r/UAEcreditcards/comments/1xvwqu3/",
+      "quote": null,
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "tabby.card_repayment_fee",
+      "card_id": "tabby-card",
+      "statement": "Tabby may charge up to about 1% to repay by credit card. Community report only: Tabby's own card page and help centre (read 2026-11-27) state no fee for repaying by card, so the real fee may be zero or different.",
+      "value": 0.01,
+      "evidence": "community",
+      "confidence": "community",
+      "source_url": "https://tabby.ai/en-AE/card",
+      "quote": null,
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "tabby.card_annual_fee",
+      "card_id": "tabby-card",
+      "statement": "Tabby Card has no annual or card fees on the free plan.",
+      "value": 0,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://tabby.ai/en-AE/card",
+      "quote": "No card fees. No annual fees.",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "tabby-card", "field": "annual_fee_minor", "scale": 0.01}
+    },
+    {
+      "id": "tabby.plus_price",
+      "card_id": "tabby-card",
+      "statement": "Tabby Plus plan is listed at 49 a month (currency symbol not shown in the page text; UAE site, so AED is likely). The catalog previously said AED 59.",
+      "value": 49,
+      "evidence": "official",
+      "confidence": "reported",
+      "source_url": "https://tabby.ai/en-AE/card",
+      "quote": "Plus· 49/mo",
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "stack.sib_bill_paid_by_card_earns",
+      "card_id": "sib-cashback",
+      "statement": "Paying the SIB Cashback bill with another credit card (Liv, Dubai First) may earn that card's cashback. Not shown to work: the catalog lists credit card payments as excluded from earning on those cards, and neither bank's page says otherwise.",
+      "value": null,
+      "evidence": "community",
+      "confidence": "unverified",
+      "source_url": "https://www.liv.me/en/liv-credit-card",
+      "quote": null,
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "app.typical_month_nonbill_spend",
+      "card_id": null,
+      "statement": "The app's typical month of spending: AED 5,150, of which AED 4,650 is not bills (groceries 1,500, dining 900, transport 600, shopping 700, travel 400, entertainment 250, health 300) and AED 500 is utilities. Our own assumption, not a fact about any card.",
+      "value": 4650,
+      "evidence": "assumption",
+      "confidence": "unverified",
+      "source_url": "https://github.com/SuryanarayanaKrishnan/pulse-app/blob/main/lib/core/engine/card_upsell.dart",
+      "quote": null,
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "liv-cashback.monthly_cap",
+      "card_id": "liv-cashback",
+      "statement": "Liv Cashback card: up to AED 750 cashback a month, up to 2% on purchases, free for life.",
+      "value": 750,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://www.liv.me/en/liv-credit-card",
+      "quote": "Up to AED 750",
+      "checked_on": "2026-11-27",
+      "catalog_ref": {"card_id": "liv-cashback", "field": "monthly_cap_total_units"}
+    },
+    {
+      "id": "liv-cashback.tier_thresholds",
+      "card_id": "liv-cashback",
+      "statement": "Liv tiers of 0.75% under AED 5,000, 1.5% from 5,000, 2% from 10,000 a month. Liv's own pages only say 'up to 2%' and that a higher spend tier lifts the whole month's rate; the thresholds come from a comparison site.",
+      "value": null,
+      "evidence": "aggregator",
+      "confidence": "reported",
+      "source_url": "https://kredit.ae/credit-cards/liv-cashback-credit-card/details",
+      "quote": "Upgrading your spend tier upgrades your cashback tier for the entire month.",
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "mashreq-noon.rate_changes_2027",
+      "card_id": "mashreq-noon",
+      "statement": "From 23 Jan 2027 the 0.33% rate on government, utilities, education, charity, fuel, rental and telecom falls to 0.15%. From 7 Mar 2027 total cashback is capped at AED 1,000 per statement cycle. Cashback is paid as noon credits.",
+      "value": 0.0015,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://www.mashreq.com/en/uae/neo/cards/credit-cards/noon-credit-card/",
+      "quote": "total cashback on all eligible spends will be capped at AED 1,000 per statement cycle.",
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "wio.card_bill_cashback",
+      "card_id": "wio-credit",
+      "statement": "Wio says up to 0.5% cashback, up to 2,500 a month, when you pay other credit cards with Wio credit. The AED 5,000 spend condition and the cap of 0.5% of the credit limit quoted by a comparison site are not on any page we could read; Wio's key fact statement is blocked to automated readers.",
+      "value": 0.005,
+      "evidence": "official",
+      "confidence": "reported",
+      "source_url": "https://wio.io/personal-credit",
+      "quote": "Get up to 0.5% cashback when you pay your other credit cards with Wio credit. Terms and conditions apply.",
+      "checked_on": "2026-11-27"
+    },
+    {
+      "id": "dubai-first.cashback_headline",
+      "card_id": "dubai-first-cashback",
+      "statement": "Dubai First's homepage advertises 6% instant cashback; the catalog holds 5% on supermarkets, dining and fuel (capped AED 150 each) from a comparison site. Official rates and caps could not be read, so the catalog figures are unconfirmed and may be out of date. Annual fee AED 399 plus VAT (AED 418.95) is confirmed by the July 2025 schedule of charges.",
+      "value": 0.05,
+      "evidence": "aggregator",
+      "confidence": "unverified",
+      "source_url": "https://www.dubaifirst.com/",
+      "quote": "Dubai First Cashback Credit Card offering 6% instant cashback.",
+      "checked_on": "2026-11-27"
+    }
+  ]
+}
