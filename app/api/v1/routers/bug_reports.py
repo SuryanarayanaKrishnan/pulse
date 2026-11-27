@@ -42,6 +42,14 @@ class BugReport(BaseModel):
     screenshot_png_base64: str | None = Field(default=None, max_length=1_000_000)
 
 
+def _labels(report: BugReport) -> list[str]:
+    labels = ["beta-report", "from-app", report.category]
+    platform = str((report.device or {}).get("platform", "")).lower()
+    if platform in {"ios", "android"}:
+        labels.append(platform)
+    return labels
+
+
 def _allow(ip: str, now: float) -> None:
     hits = _ip_hits[ip]
     while hits and now - hits[0] > 3600:
@@ -86,7 +94,7 @@ async def file_bug_report(
     res = await client.post(
         f"https://api.github.com/repos/{repo}/issues",
         headers=headers,
-        json={"title": report.title, "body": body, "labels": ["beta-report", report.category]},
+        json={"title": report.title, "body": body, "labels": _labels(report)},
     )
     if not res.is_success:
         raise HTTPException(status_code=502, detail="Could not file the report")

@@ -50,6 +50,7 @@ async def test_files_issue_with_screenshot_and_labels(make_client, monkeypatch):
     assert [x.method for x in calls] == ["PUT", "POST"]
     issue = calls[1].read().decode()
     assert "beta-report" in issue and "Screenshot" in issue
+    assert "from-app" in issue and '"ios"' in issue
     assert "t0ken" not in r.text
 
 
