@@ -1,104 +1,16 @@
 {
- "generated_on": "2026-11-26",
+ "generated_on": "2026-11-27",
  "changes": [
-  {
-   "url": "https://dib.ae/personal/cards/consumer-platinum-card",
-   "card_ids": [
-    "dib-consumer-cashback-platinum"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://dib.ae/personal/cards/consumer-reward-card",
-   "card_ids": [
-    "dib-consumer-cashback-reward"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/prime-platinum-card",
-   "card_ids": [
-    "dib-prime-platinum"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/prime-signature-card",
-   "card_ids": [
-    "dib-prime-signature"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/shams-dib-platinum-covered-card",
-   "card_ids": [
-    "dib-shams-platinum"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/shams-dib-signature-covered-card",
-   "card_ids": [
-    "dib-shams-signature"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-platinum-covered-card",
-   "card_ids": [
-    "dib-skywards-platinum"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
-  {
-   "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-signature-covered-card",
-   "card_ids": [
-    "dib-skywards-signature"
-   ],
-   "detected_on": "2026-11-26",
-   "added": [],
-   "removed": [
-    "DIB Delivers 7% YoY Growth in Gross Revenue to AED 18.6 billion as Asset Quality Improves and Capital Strengthens"
-   ]
-  },
   {
    "url": "https://www.hsbc.ae/credit-cards/products/skywards-signature/",
    "card_ids": [
     "hsbc-skywards-signature"
    ],
-   "detected_on": "2026-11-26",
+   "detected_on": "2026-11-27",
    "expiring": {
     "line": "T&Cs apply (PDF). Offer ends 30 November 2026.",
     "date": "2026-11-30",
-    "days_left": 4
+    "days_left": 3
    }
   }
  ],
@@ -106,22 +18,22 @@
   {
    "card_id": "adib-marriott-bonvoy-infinite",
    "valid_until": "2026-11-30",
-   "days_left": 4
+   "days_left": 3
   },
   {
    "card_id": "enbd-marriott-bonvoy-world-elite",
    "valid_until": "2026-11-30",
-   "days_left": 4
+   "days_left": 3
   },
   {
    "card_id": "fab-cashback",
    "valid_until": "2026-11-30",
-   "days_left": 4
+   "days_left": 3
   },
   {
    "card_id": "fab-etihad-guest-platinum",
    "valid_until": "2026-11-30",
-   "days_left": 4
+   "days_left": 3
   }
  ],
  "thin_pages": [],
@@ -209,6 +121,10 @@
   {
    "url": "https://deem.io/cards/platinum-mastercard",
    "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-signature-covered-card",
+   "error": "<urlopen error timed out>"
   },
   {
    "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/cashback-plus-credit-card",
