@@ -104,3 +104,37 @@ def test_evidence_report_is_current():
     assert (root / "docs" / "CARD_EVIDENCE.md").read_text() == r.render(), (
         "run python scripts/card_evidence_report.py"
     )
+
+
+REQUIRED_ISSUERS = {
+    "HSBC",
+    "Citibank",
+    "Standard Chartered",
+    "RAKBANK",
+    "CBD",
+    "Emirates NBD",
+    "ADCB",
+    "First Abu Dhabi Bank",
+    "Mashreq",
+    "Dubai Islamic Bank",
+    "ADIB",
+    "Emirates Islamic",
+    "SIB",
+    "NBF",
+    "Dubai First",
+    "Liv",
+    "Wio",
+    "Tabby",
+    "American Express",
+}
+
+
+def test_every_major_uae_issuer_has_a_live_card_in_the_catalog():
+    import json
+    from pathlib import Path
+
+    cards = json.loads((Path(__file__).resolve().parent.parent / "data/cards/catalog.json").read_text())[
+        "cards"
+    ]
+    live = {c["issuer"] for c in cards if c["status"] != "discontinued"}
+    assert REQUIRED_ISSUERS <= live, f"missing issuers: {sorted(REQUIRED_ISSUERS - live)}"
