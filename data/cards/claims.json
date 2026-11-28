@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-27",
+  "as_of": "2026-11-28",
   "note": "Every number or mechanic that a combo, tip or saving figure depends on is a claim here, with where it came from. evidence: official (bank/issuer page, KFS or T&C read directly), aggregator (comparison site only), community (forum/Reddit reports), assumption (ours). confidence: verified (official source read, quote held), reported (one secondary source), community (user reports only), unverified (we could not confirm it). Community and unverified claims are never stated as fact in the app. catalog_ref ties a claim to the number held in the card catalog; tests fail if the two drift apart.",
   "claims": [
     {
@@ -184,6 +184,105 @@
       "source_url": "https://www.dubaifirst.com/",
       "quote": "Dubai First Cashback Credit Card offering 6% instant cashback.",
       "checked_on": "2026-11-27"
+    },
+    {
+      "id": "sib.supplementary_cashback_to_primary",
+      "card_id": "sib-cashback",
+      "statement": "SIB Cashback: cashback earned on supplementary cards accrues to the primary cardholder's account (T&C clause 2.2).",
+      "value": true,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://m.sib.ae/en/Cashback-TCs",
+      "quote": "Cashback earned on the transactions made by using the Supplementary Card(s) will accrue to the account of the Primary Cardholder.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "sib.cap_per_primary_customer",
+      "card_id": "sib-cashback",
+      "statement": "SIB Cashback: the accelerated-category cap is per Customer, defined as the primary cardholder (T&C clause 4.4), not per card.",
+      "value": true,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://m.sib.ae/en/Cashback-TCs",
+      "quote": "Cashback earned per Customer per accelerated categories will be capped to AED 300 per calendar month.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "sib.supplementary_spend_shares_cap",
+      "card_id": "sib-cashback",
+      "statement": "Whether supplementary spend counts toward SIB's AED 300 cap is our inference from clauses 2.2 and 4.4; the T&Cs do not say so in words.",
+      "value": null,
+      "evidence": "assumption",
+      "confidence": "unverified",
+      "source_url": "https://m.sib.ae/en/Cashback-TCs",
+      "quote": "Cashback earned on the transactions made by using the Supplementary Card(s) will accrue to the account of the Primary Cardholder.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "uab.supplementary_spend_aggregated",
+      "card_id": "uab-world",
+      "statement": "UAB cashback: qualifying transactions on supplementary cards are aggregated with the primary card's, and supplementary cashback accrues to the primary cardholder's account (T&C clauses 6(b), 12).",
+      "value": true,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://www.uab.ae/-/media/project/uab/pdf/2026/march/cashback-terms-and-conditions.pdf",
+      "quote": "Qualifying Transactions on Supplementary cards will be aggregated with the Primary card Qualifying Transactions.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "uab.supplementary_spend_shares_cap",
+      "card_id": "uab-world",
+      "statement": "Whether UAB's per-category monthly caps are shared with supplementary spend is our inference from clauses 6(b), 7 and 12; the T&Cs never name caps and supplementary cards together.",
+      "value": null,
+      "evidence": "assumption",
+      "confidence": "unverified",
+      "source_url": "https://www.uab.ae/-/media/project/uab/pdf/2026/march/cashback-terms-and-conditions.pdf",
+      "quote": "The Cashback earned by a supplementary Cardholder(s) will accrue to the account of the primary Cardholder.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "mashreq.supplementary_cashback_to_primary",
+      "card_id": "mashreq-cashback",
+      "statement": "Mashreq Cashback: cashback earned by supplementary cardholders accrues to the primary cardholder's account and is redeemed only as a credit to the Primary Account (T&C clauses 2.2, 3.6). The T&Cs state no monthly cap and do not say whether supplementary spend pools toward one.",
+      "value": true,
+      "evidence": "official",
+      "confidence": "verified",
+      "source_url": "https://www.mashreq.com/-/jssmedia/pdfs/neo/cards/KFS-TnC/Mashreq-Cashback-Card-tnc-new-en.ashx",
+      "quote": "The Cashback earned by a supplementary Cardholder(s) will accrue to the account of the primary Cardholder.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "fab.supplementary_spend_shares_cap",
+      "card_id": "fab-cashback",
+      "statement": "FAB Cashback: the product page says supplementary spend counts toward the AED 3,000 monthly eligibility minimum. Whether the AED 1,000 cap is shared with supplementary cards is not stated; the T&C PDF could not be read (robots.txt).",
+      "value": null,
+      "evidence": "official",
+      "confidence": "unverified",
+      "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/cashback-credit-card",
+      "quote": "If you have supplementary card(s), their eligible spend also counts towards this amount.",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "hsbc.supplementary_spend_shares_cap",
+      "card_id": "hsbc-live-plus",
+      "statement": "HSBC Live+ cashback: supplementary treatment of the monthly caps is not stated on the product pages; the T&C PDF could not be read (robots.txt).",
+      "value": null,
+      "evidence": "assumption",
+      "confidence": "unverified",
+      "source_url": "https://www.hsbc.ae/credit-cards/cashback-credit-cards/",
+      "quote": "",
+      "checked_on": "2026-11-28"
+    },
+    {
+      "id": "adcb.supplementary_spend_shares_cap",
+      "card_id": "adcb-365-cashback",
+      "statement": "ADCB 365 Cashback: the offer T&Cs we could read are silent on supplementary cards and caps; the card's own cashback terms were not found.",
+      "value": null,
+      "evidence": "assumption",
+      "confidence": "unverified",
+      "source_url": "https://www.adcb.com/en/multimedia/pdfs/2025/august/365-cashback-tnc.pdf",
+      "quote": "",
+      "checked_on": "2026-11-28"
     }
   ]
 }
