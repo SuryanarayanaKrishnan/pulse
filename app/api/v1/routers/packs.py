@@ -3,7 +3,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException, Response
 
 from app.core.config import get_settings
-from app.services.packs import load_packs, manifest
+from app.services.packs import load_controls, load_packs, manifest
 from app.services.remote_config import derive_seed, signed
 
 router = APIRouter(prefix="/packs", tags=["packs"])
@@ -18,7 +18,7 @@ def _seed() -> str:
 async def pack_manifest(response: Response) -> dict[str, Any]:
     """Signed list of packs with versions and hashes. Public and identity-free."""
     response.headers["Cache-Control"] = "public, max-age=300"
-    return signed(manifest(load_packs()), _seed())
+    return signed(manifest(load_packs(), load_controls()), _seed())
 
 
 @router.get("/{name}")

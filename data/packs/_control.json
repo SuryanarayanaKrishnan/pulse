@@ -1,0 +1,5 @@
+{"packs": {
+  "tips": {"rollout_pct": 100, "max_version": null, "killed": false},
+  "walkthrough": {"rollout_pct": 100, "max_version": null, "killed": false},
+  "parser_rules": {"rollout_pct": 100, "max_version": null, "killed": false}
+}}
