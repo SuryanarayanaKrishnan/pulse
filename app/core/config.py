@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     # and the app falls back to its share sheet.
     bug_report_github_token: str = ""
     bug_report_repo: str = ""
+    # Only when BUG_REPORT_REPO is private: screenshots are committed to it and can show personal data.
+    bug_report_screenshots: bool = False
 
     supabase_jwt_secret: str = ""
     supabase_jwks_url: str = ""

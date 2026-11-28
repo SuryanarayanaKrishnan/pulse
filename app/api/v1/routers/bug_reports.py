@@ -6,6 +6,7 @@ screenshot_png_base64?}
 limit, a per-IP hourly limit and a global daily limit (in memory; they reset on restart).
 """
 
+import re
 import time
 from collections import defaultdict, deque
 from collections.abc import AsyncIterator
@@ -40,6 +41,15 @@ class BugReport(BaseModel):
     body: str = Field(max_length=60_000)
     device: dict[str, Any] | None = None
     screenshot_png_base64: str | None = Field(default=None, max_length=1_000_000)
+
+
+_EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+_LONG_DIGITS = re.compile(r"\d[\d ,.\-]{5,}\d")
+
+
+def _scrub(text: str) -> str:
+    """Defence in depth for public repos: the app already redacts, this drops emails and long number runs."""
+    return _LONG_DIGITS.sub("#", _EMAIL.sub("[email]", text))
 
 
 def _labels(report: BugReport) -> list[str]:
@@ -81,20 +91,23 @@ async def file_bug_report(
         "Accept": "application/vnd.github+json",
         "User-Agent": "pulse-api",
     }
-    body = report.body
+    body = _scrub(report.body)
     if report.screenshot_png_base64:
-        name = f"screens/{int(time.time())}-{uuid4()}.png"
-        put = await client.put(
-            f"https://api.github.com/repos/{repo}/contents/{name}",
-            headers=headers,
-            json={"message": "bug screenshot", "content": report.screenshot_png_base64},
-        )
-        if put.is_success:
-            body += f"\n\n## Screenshot\nhttps://github.com/{repo}/blob/HEAD/{name}"
+        if settings.bug_report_screenshots:
+            name = f"screens/{int(time.time())}-{uuid4()}.png"
+            put = await client.put(
+                f"https://api.github.com/repos/{repo}/contents/{name}",
+                headers=headers,
+                json={"message": "bug screenshot", "content": report.screenshot_png_base64},
+            )
+            if put.is_success:
+                body += f"\n\n## Screenshot\nhttps://github.com/{repo}/blob/HEAD/{name}"
+        else:
+            body += "\n\n## Screenshot\nWithheld: this repository is public. The tester still has it."
     res = await client.post(
         f"https://api.github.com/repos/{repo}/issues",
         headers=headers,
-        json={"title": report.title, "body": body, "labels": _labels(report)},
+        json={"title": _scrub(report.title), "body": body, "labels": _labels(report)},
     )
     if not res.is_success:
         raise HTTPException(status_code=502, detail="Could not file the report")
