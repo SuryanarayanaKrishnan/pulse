@@ -1,16 +1,16 @@
 {
- "generated_on": "2026-11-27",
+ "generated_on": "2026-11-28",
  "changes": [
   {
    "url": "https://www.hsbc.ae/credit-cards/products/skywards-signature/",
    "card_ids": [
     "hsbc-skywards-signature"
    ],
-   "detected_on": "2026-11-27",
+   "detected_on": "2026-11-28",
    "expiring": {
     "line": "T&Cs apply (PDF). Offer ends 30 November 2026.",
     "date": "2026-11-30",
-    "days_left": 3
+    "days_left": 2
    }
   }
  ],
@@ -18,26 +18,48 @@
   {
    "card_id": "adib-marriott-bonvoy-infinite",
    "valid_until": "2026-11-30",
-   "days_left": 3
+   "days_left": 2
   },
   {
    "card_id": "enbd-marriott-bonvoy-world-elite",
    "valid_until": "2026-11-30",
-   "days_left": 3
+   "days_left": 2
   },
   {
    "card_id": "fab-cashback",
    "valid_until": "2026-11-30",
-   "days_left": 3
+   "days_left": 2
   },
   {
    "card_id": "fab-etihad-guest-platinum",
    "valid_until": "2026-11-30",
-   "days_left": 3
+   "days_left": 2
   }
  ],
- "thin_pages": [],
+ "thin_pages": [
+  "https://www.almasraf.ae/personal-banking/personal-card/world-elite"
+ ],
  "errors": [
+  {
+   "url": "https://sib.ae/en/cashback-card-faqs",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://tabby.ai/en-AE/card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.liv.me/en/liv-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://m.sib.ae/en/Cashback-TCs",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.uab.ae/-/media/project/uab/pdf/2026/march/cashback-terms-and-conditions.pdf",
+   "error": "disallowed by robots.txt"
+  },
   {
    "url": "https://www.adcb.com/en/personal/cards/credit-cards/365-cashback-card.aspx",
    "error": "disallowed by robots.txt"
@@ -87,7 +109,15 @@
    "error": "disallowed by robots.txt"
   },
   {
+   "url": "https://media.ajmanbank.ae/site/files/KFS%20-%20ENAR%20ULTRACASH%20Card%20(ULTRA%20C)%20R3.pdf",
+   "error": "disallowed by robots.txt"
+  },
+  {
    "url": "https://www.alhilalbank.ae/en/personal/cards/credit-cards/cashback-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.alhilalbank.ae/en/Images/ahb-cashback-faq.pdf",
    "error": "disallowed by robots.txt"
   },
   {
@@ -119,15 +149,35 @@
    "error": "HTTP Error 403: Forbidden"
   },
   {
+   "url": "https://www.cbiuae.com/media/ycyjcxh4/wee-soc-english.pdf",
+   "error": "disallowed by robots.txt"
+  },
+  {
    "url": "https://deem.io/cards/platinum-mastercard",
    "error": "disallowed by robots.txt"
   },
   {
-   "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-signature-covered-card",
-   "error": "<urlopen error timed out>"
+   "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-platinum-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-credit-card",
+   "error": "disallowed by robots.txt"
   },
   {
    "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/cashback-plus-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/offers/emarati-credit-card-campaign",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
    "error": "disallowed by robots.txt"
   },
   {
@@ -148,6 +198,10 @@
   },
   {
    "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/switch-cashback-credit-card",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
    "error": "disallowed by robots.txt"
   },
   {
@@ -287,7 +341,11 @@
    "error": "disallowed by robots.txt"
   },
   {
-   "url": "https://www.liv.me/en/liv-credit-card",
+   "url": "https://www.hsbc.ae/content/dam/hsbc/ae/docs/en/cards/kfs-credit-cards.pdf",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.liv.me/-/media/liv/website/pdf/2024/kfs/apr/liv-credit-card-key-facts-statement-kfs-english.pdf",
    "error": "disallowed by robots.txt"
   },
   {
@@ -315,7 +373,11 @@
    "error": "disallowed by robots.txt"
   },
   {
-   "url": "https://sib.ae/en/cashback-card-faqs",
+   "url": "https://av.sc.com/ae/content/docs/ae-sp-price-guide-conventional-english-v3.pdf",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://av.sc.com/ae/content/docs/tccc.pdf",
    "error": "disallowed by robots.txt"
   },
   {
@@ -328,6 +390,10 @@
   },
   {
    "url": "https://www.sib.ae/en/personal-banking/credit-cards",
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.uab.ae/-/media/project/uab/pdf/2026/key-fact-statements/rb-89--kfs-credit-card--islamic-english.pdf",
    "error": "disallowed by robots.txt"
   }
  ]
