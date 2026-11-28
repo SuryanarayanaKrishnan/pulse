@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "catalog_version": "2026-11-27",
+ "catalog_version": "2026-11-28",
  "currency": "AED",
  "count": 198,
  "cards": [
@@ -164,11 +164,6 @@
      "text": "6 VOX BOGO per month",
      "count_per_month": 6
     }
-   },
-   "welcome_offer": {
-    "text": "20% cashback on Amazon, noon, Careem, Talabat for 90 days, AED 50 per merchant/month, AED 600 total",
-    "value_aed_est": 600,
-    "window_days": 90
    },
    "sources": [
     {
@@ -392,9 +387,9 @@
     }
    },
    "welcome_offer": {
-    "text": "300,000 TouchPoints (about AED 1,500) as welcome gift",
-    "value_aed_est": 1500,
-    "requires_fee_payment": false
+    "text": "300,000 TouchPoints as a welcome bonus; UAE nationals only; spend and fee conditions not published on the page",
+    "source_url": "https://www.adcb.com/en/personal/cards/credit-cards/betaqti-credit-card.aspx",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -2894,7 +2889,9 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "15,000 BRight Rewards upfront (page promotion)"
+    "text": "15,000 BRight Rewards upfront; terms not published on the page",
+    "source_url": "https://resources.ajmanbank.ae/site/bright-world.html",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -3260,12 +3257,6 @@
      "text": "3 per month",
      "count_per_month": 3
     }
-   },
-   "welcome_offer": {
-    "text": "AED 500 (nationals) or AED 300 (expats) after one retail transaction in 30 days and fee payment",
-    "value_aed_est": 300,
-    "window_days": 30,
-    "requires_fee_payment": true
    },
    "sources": [
     {
@@ -3641,13 +3632,6 @@
     "dining": {
      "text": "10% back up to AED 50/month after AED 4,000 monthly spend"
     }
-   },
-   "welcome_offer": {
-    "text": "30,000 Membership Rewards points for USD 5,500 within 90 days",
-    "value_aed_est": 600,
-    "min_spend_minor": 2020000,
-    "window_days": 90,
-    "valid_until": "2026-12-31"
    },
    "sources": [
     {
@@ -4215,12 +4199,6 @@
      "text": "Optional Credit Shield at 1% of monthly outstanding balance"
     }
    },
-   "welcome_offer": {
-    "text": "0% on balance transfer and cash-on-call (6 or 12 months) if requested within 30 days of issuance; processing 1.99% (6m) or 2.99% (12m); valid to 31 Dec 2026",
-    "requires_fee_payment": false,
-    "window_days": 30,
-    "valid_until": "2026-12-31"
-   },
    "sources": [
     {
      "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-platinum",
@@ -4540,7 +4518,9 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "100,000 miles joining bonus after first spend (per KFS)"
+    "text": "100,000 miles joining bonus after first spend (CBI schedule of charges, Nov 2025)",
+    "source_url": "https://www.cbiuae.com/media/ycyjcxh4/wee-soc-english.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -5302,9 +5282,6 @@
     ]
    },
    "perks": {},
-   "welcome_offer": {
-    "text": "First year fee free"
-   },
    "sources": [
     {
      "url": "https://www.deem.io/wp-content/uploads/2026/04/Schedule-of-Fees-Charges-March-2026-English-1.pdf",
@@ -5383,9 +5360,6 @@
     "cinema": {
      "text": "VOX/Reel BOGO"
     }
-   },
-   "welcome_offer": {
-    "text": "First year fee free"
    },
    "sources": [
     {
@@ -5865,17 +5839,29 @@
     }
    },
    "welcome_offer": {
-    "text": "200,000 Wala'a Rewards (about AED 1,000) for USD 15,000 spend within 90 days, cards issued by 31 Dec 2026; also 20% cashback at Amazon, Deliveroo, Dubai Now, noon, Talabat for 3 months (AED 25 per merchant, AED 150 total per month)",
+    "text": "200,000 Wala'a Rewards for USD 15,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 25 per merchant a month, AED 450 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 1000,
     "min_spend_minor": 5508750,
     "window_days": 90,
-    "valid_until": "2026-12-31"
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-infinite-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/dib-shams-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/personal/cards/shams-dib-infinite-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -5970,17 +5956,24 @@
     }
    },
    "welcome_offer": {
-    "text": "50,000 Wala'a Rewards (up to AED 250) for USD 5,000 spend in 90 days; 20% cashback at Amazon, Dubai Now, Deliveroo, noon, talabat for 3 months (AED 15 per merchant a month, AED 270 total)",
+    "text": "50,000 Wala'a Rewards for USD 5,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 15 per merchant a month, AED 270 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 250,
     "min_spend_minor": 1836250,
     "window_days": 90,
-    "requires_fee_payment": false
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-platinum-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://www.dib.ae/personal/cards/shams-dib-platinum-covered-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -6080,17 +6073,24 @@
     }
    },
    "welcome_offer": {
-    "text": "100,000 Wala'a Rewards (up to AED 500) for USD 10,000 spend in 90 days; 20% cashback at Amazon, Dubai Now, Deliveroo, noon, talabat for 3 months (AED 20 per merchant a month, AED 360 total)",
+    "text": "100,000 Wala'a Rewards for USD 10,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 20 per merchant a month, AED 360 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 500,
     "min_spend_minor": 3672500,
     "window_days": 90,
-    "requires_fee_payment": false
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-signature-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://www.dib.ae/personal/cards/shams-dib-signature-covered-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -6176,15 +6176,22 @@
     }
    },
    "welcome_offer": {
-    "text": "25,000 Skywards Miles on activation, +25,000 for AED 50,000 balance transfer held 6 months, +25,000 for USD 20,000 spend in first four statements",
+    "text": "Up to 75,000 bonus Skywards Miles: 25,000 on activation, 25,000 for a balance transfer of at least 50,000 held for 6 months, and 25,000 for spend of USD 20,000 within the first 4 statements",
     "value_aed_est": 750,
-    "requires_fee_payment": true
+    "value_note": "value counts the 25,000 activation miles only",
+    "source_url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-infinite-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/dib-skywards-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-infinite-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -6544,9 +6551,14 @@
     }
    },
    "welcome_offer": {
-    "text": "Up to AED 500 (Prime) or AED 200",
+    "text": "Up to AED 500 in Amazon points for Prime members: AED 250 after AED 10,000 retail spend plus AED 250 after AED 2,500 non-AED spend within 60 days; AED 200 without Prime. Income over AED 5,000 a month; cards issued 1 Nov to 31 Dec 2026",
     "value_aed_est": 500,
-    "valid_until": "2026-12-31"
+    "min_spend_minor": 1000000,
+    "window_days": 60,
+    "requires_fee_payment": false,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-platinum-credit-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -6558,6 +6570,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-platinum-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -6643,11 +6660,14 @@
     }
    },
    "welcome_offer": {
-    "text": "Up to AED 500 (Prime) or AED 200: AED 250 after AED 10,000 retail and AED 250 after AED 2,500 non-AED within 60 days; cards issued 1 Nov-31 Dec 2026",
+    "text": "Up to AED 500 in Amazon points for Prime members: AED 250 after AED 10,000 retail spend plus AED 250 after AED 2,500 non-AED spend within 60 days; AED 200 without Prime. Income over AED 15,000 a month; cards issued 1 Nov to 31 Dec 2026",
     "value_aed_est": 500,
     "min_spend_minor": 1000000,
     "window_days": 60,
-    "valid_until": "2026-12-31"
+    "requires_fee_payment": false,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-credit-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -6659,6 +6679,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/Personal-Banking/Cards/credit-cards/amazon-credit-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -7062,11 +7087,14 @@
     }
    },
    "welcome_offer": {
-    "text": "AED 1,000 cashback for AED 15,000 spend within 60 days (new-to-bank, sourced 1 Sep-31 Dec 2026)",
+    "text": "AED 1,000 cashback for AED 15,000 spend within 60 days of card issue. UAE nationals new to the bank only; cards sourced 1 Sep to 31 Dec 2026; no annual fee",
     "value_aed_est": 1000,
     "min_spend_minor": 1500000,
     "window_days": 60,
-    "valid_until": "2026-12-31"
+    "requires_fee_payment": false,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/offers/emarati-credit-card-campaign",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -7078,6 +7106,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/offers/emarati-credit-card-campaign",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "low",
@@ -7164,9 +7197,14 @@
     }
    },
    "welcome_offer": {
-    "text": "20,000 Etihad Guest Miles after fee payment",
-    "value_aed_est": 600,
-    "requires_fee_payment": true
+    "text": "40,000 Etihad Guest Miles: 15,000 on paying the AED 699 annual fee plus 25,000 after AED 30,000 spend within 3 months. New Etihad card applicants only; salary AED 12,000 or more; applications until 31 Dec 2026",
+    "value_aed_est": 1200,
+    "min_spend_minor": 3000000,
+    "window_days": 90,
+    "requires_fee_payment": true,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -7178,6 +7216,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -7251,9 +7294,14 @@
     }
    },
    "welcome_offer": {
-    "text": "5,000 Etihad Guest Miles after fee payment",
-    "value_aed_est": 150,
-    "requires_fee_payment": true
+    "text": "15,000 Etihad Guest Miles: 5,000 on paying the AED 199 annual fee plus 10,000 after AED 12,000 spend within 3 months. New Etihad card applicants only; salary AED 5,000 or more; applications until 31 Dec 2026",
+    "value_aed_est": 450,
+    "min_spend_minor": 1200000,
+    "window_days": 90,
+    "requires_fee_payment": true,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -7265,6 +7313,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -7341,9 +7394,14 @@
     }
    },
    "welcome_offer": {
-    "text": "Up to 55,000 Etihad Guest Miles",
-    "value_aed_est": 1650,
-    "requires_fee_payment": true
+    "text": "100,000 Etihad Guest Miles: 40,000 on paying the AED 1,500 annual fee plus 60,000 after AED 60,000 spend within 3 months. New Etihad card applicants only; salary AED 20,000 or more; applications until 31 Dec 2026",
+    "value_aed_est": 3000,
+    "min_spend_minor": 6000000,
+    "window_days": 90,
+    "requires_fee_payment": true,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -7355,6 +7413,11 @@
      "url": "https://www.emiratesislamic.ae/-/media/ei/pdfs/Key-Information/kfs_cards_ea.pdf",
      "kind": "kfs",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -7432,9 +7495,14 @@
     }
    },
    "welcome_offer": {
-    "text": "30,000 Etihad Guest Miles after fee payment",
-    "value_aed_est": 900,
-    "requires_fee_payment": true
+    "text": "50,000 Etihad Guest Miles: 25,000 on paying the AED 899 annual fee plus 25,000 after AED 45,000 retail spend within 3 months. New Etihad card applicants only; salary AED 12,000 or more; applications until 31 Dec 2026",
+    "value_aed_est": 1500,
+    "min_spend_minor": 4500000,
+    "window_days": 90,
+    "requires_fee_payment": true,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -7451,6 +7519,11 @@
      "url": "https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/etihad-guest-saqer-credit-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.emiratesislamic.ae/en/offers/bonus-etihad-miles-offer",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -7522,9 +7595,6 @@
      "text": "2 Reel BOGO tickets per month",
      "count_per_month": 2
     }
-   },
-   "welcome_offer": {
-    "text": "10,000 EI SmartMiles on approval"
    },
    "sources": [
     {
@@ -7611,12 +7681,6 @@
      "text": "3 Reel BOGO tickets per month",
      "count_per_month": 3
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 175,000 EI SmartMiles: 75,000 after fee, 100,000 after AED 20,000 within 60 days",
-    "min_spend_minor": 2000000,
-    "window_days": 60,
-    "requires_fee_payment": true
    },
    "sources": [
     {
@@ -8266,13 +8330,6 @@
      "text": "3 free tickets/month"
     }
    },
-   "welcome_offer": {
-    "text": "Up to 25,000 Darna Points: 15,000 on paying the joining fee plus 10,000 on AED 30,000 spend in the first 3 months",
-    "value_aed_est": 2500,
-    "min_spend_minor": 3000000,
-    "window_days": 90,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/enbd-darna-infinite-privilege-credit-card/details",
@@ -8802,13 +8859,6 @@
      "count_per_year": 4
     }
    },
-   "welcome_offer": {
-    "text": "Up to 1,000 dnata points: 500 on paying the joining fee, 500 on AED 10,000 retail spend in the first 3 statements",
-    "value_aed_est": 10,
-    "min_spend_minor": 1000000,
-    "window_days": 90,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/enbd-dnata-platinum-credit-card/details",
@@ -8935,12 +8985,6 @@
     "valet": {
      "text": "4 a month at select Abu Dhabi venues"
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 2,500 dnata points: 1,000 on paying the joining fee, 1,500 on AED 25,000 spend in the first 3 statements",
-    "requires_fee_payment": true,
-    "min_spend_minor": 2500000,
-    "window_days": 90
    },
    "sources": [
     {
@@ -9148,13 +9192,6 @@
      "text": "3/month per aggregator"
     }
    },
-   "welcome_offer": {
-    "text": "Up to 200,000 bonus Etihad Guest Miles: 40,000 on joining-fee payment, 60,000 on AED 90,000 spend and 100,000 on AED 120,000 spend, both within 6 months (aggregator breakdown)",
-    "value_aed_est": 3000,
-    "min_spend_minor": 12000000,
-    "window_days": 180,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/enbd-etihad-guest-visa-elevate-credit-card/details",
@@ -9258,11 +9295,6 @@
     "lounge": {
      "text": "Visa Airport Companion lounge access"
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 60,000 bonus Etihad Guest Miles and fast track to Silver tier after one return Etihad flight",
-    "value_aed_est": 900,
-    "requires_fee_payment": true
    },
    "sources": [
     {
@@ -9745,12 +9777,6 @@
      "text": "Annual free night award on anniversary; automatic Silver Elite status"
     }
    },
-   "welcome_offer": {
-    "text": "2 Free Night Awards (35,000 points each) on USD 6,000 cumulative retail spend in the first 3 billing statements",
-    "value_aed_est": null,
-    "min_spend_minor": 2203500,
-    "window_days": 90
-   },
    "sources": [
     {
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-mastercard",
@@ -10145,12 +10171,6 @@
     ]
    },
    "perks": {},
-   "welcome_offer": {
-    "text": "AED 500 noon gift card after AED 5,000 spend within two months",
-    "value_aed_est": 500,
-    "min_spend_minor": 500000,
-    "window_days": 60
-   },
    "sources": [
     {
      "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",
@@ -12093,14 +12113,6 @@
      "text": "Up to 12 Visa Airport Companion visits/yr incl guests (2 free, 10 more unlocked)"
     }
    },
-   "welcome_offer": {
-    "text": "AED 5,000 Al-Futtaim FAB Rewards for UAE nationals after AED 12,000 spend in each of first three 30-day cycles; applications 24 Sep-23 Nov 2026 (ended)",
-    "value_aed_est": 5000,
-    "min_spend_minor": 3600000,
-    "window_days": 90,
-    "valid_until": "2026-11-23",
-    "requires_fee_payment": false
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/fab-blue-infinite-credit-card/details",
@@ -12808,9 +12820,10 @@
     }
    },
    "welcome_offer": {
-    "text": "55,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "text": "55,000 Etihad Guest miles as a one-time joining bonus (bank key facts). A limited-time offer with a three-month spend target ended or ends 30 Nov 2026; its per-card terms are not published",
     "value_aed_est": 1650,
-    "requires_fee_payment": true
+    "source_url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-infinite-credit-card.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -12916,12 +12929,13 @@
     }
    },
    "welcome_offer": {
-    "text": "20,000 joining miles plus 20,000 bonus miles when AED 25,000 is spent within 3 months (bank page offer valid to 30 Nov 2026); Emiratis get first-year fee waived",
+    "text": "20,000 joining miles plus 20,000 bonus miles when AED 25,000 is spent within 3 months; Emiratis get the first year fee-free. Limited-time offer valid to and including 30 Nov 2026",
     "value_aed_est": 1200,
     "min_spend_minor": 2500000,
     "window_days": 90,
     "valid_until": "2026-11-30",
-    "requires_fee_payment": false
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -13020,9 +13034,10 @@
     }
    },
    "welcome_offer": {
-    "text": "35,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "text": "35,000 Etihad Guest miles as a one-time joining bonus (bank key facts). A limited-time offer with a three-month spend target ended or ends 30 Nov 2026; its per-card terms are not published",
     "value_aed_est": 1050,
-    "requires_fee_payment": true
+    "source_url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-signature-credit-card.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -13313,10 +13328,11 @@
     }
    },
    "welcome_offer": {
-    "text": "3 months free TOD streaming after AED 3,000 spend in first 30 days",
+    "text": "3 months of free TOD streaming after spending AED 3,000 in the first 30 days of card issue",
     "min_spend_minor": 300000,
     "window_days": 30,
-    "requires_fee_payment": false
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-rewards-active-credit-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -13892,8 +13908,9 @@
     }
    },
    "welcome_offer": {
-    "text": "Free Careem Plus and Noon One memberships for one year; no annual fee for first year",
-    "requires_fee_payment": false
+    "text": "Free Careem Plus and Noon One memberships for one year; no annual fee for the first year",
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-z-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -14237,10 +14254,10 @@
     }
    },
    "welcome_offer": {
-    "text": "Up to AED 4,000 in value: AED 2,500 iStyle eGift card, 50,000 points for a supplementary card transaction, 50,000 points for a non-AED transaction of AED 500+, 1 year Noon One and talabat pro; primary card only; ends 31 Dec 2026",
-    "value_aed_est": null,
+    "text": "Rewards worth up to 4,000: AED 2,500 iStyle eGift card; 50,000 points for one transaction on a supplementary card; 50,000 points for a non-AED transaction of 500 or more; 1 year of Noon One and talabat pro plus a PlayStation top-up when used in a mobile wallet. Primary card only, and not open to anyone who held an HSBC primary card in the 6 months before applying. Ends 31 Dec 2026",
     "valid_until": "2026-12-31",
-    "requires_fee_payment": false
+    "source_url": "https://www.hsbc.ae/credit-cards/products/premier/",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -15518,9 +15535,6 @@
      "text": "Unlimited airport transfers and valet per aggregator listing"
     }
    },
-   "welcome_offer": {
-    "text": "Hotel stay or 3 million Vantage points per aggregator listing"
-   },
    "community_notes": [],
    "notes": "Invitation-only card; only the kredit.ae bank listing was seen (fee AED 5,250, 5 Vantage points per AED). Not on Mashreq's public card menu. Value of the welcome offer unknown. Treat as unverified. 2026-11-24: the Mashreq NEO credit card menu lists only Solitaire, Platinum Plus, Cashback, noon, Aura, Aura World, Aura World Elite; no io card, so status set to unverified.",
    "id": "mashreq-io",
@@ -16793,11 +16807,6 @@
      "text": "Annual Air Arabia return ticket after eligible spend; Careem airport transfers; baggage and meal vouchers; 50% off VOX tickets"
     }
    },
-   "welcome_offer": {
-    "text": "Bank page now advertises 20,000 AirRewards; aggregator says 15,000 after paying fee and AED 5,000 retail spend in 3 months. Not reconciled.",
-    "min_spend_minor": 500000,
-    "window_days": 90
-   },
    "community_notes": [],
    "notes": "Earn: 1.75 AirRewards per AED 5 on AirArabia.com and international spend (0.35 per AED), 1.25 per AED 5 on UAE retail (0.25 per AED), 0.3 per AED 5 reduced. The AED value of one AirReward was not found, so 0.01 AED is a placeholder guess; real value likely higher when redeemed on Air Arabia. Bank page says no joining fee while the aggregator lists AED 420 joining plus AED 420 annual: conflict unresolved (joining set 0 per bank page). International earn rate not modelled by category.",
    "id": "rakbank-air-arabia-platinum",
@@ -16881,10 +16890,6 @@
     "dining": {
      "text": "Premium pass (beach clubs, gyms), padel games, streaming cashback up to AED 200"
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 1,000 RAKrewards welcome bonus per bank page; first 3 months of the top tier fee-free",
-    "value_aed_est": 8
    },
    "community_notes": [],
    "notes": "No annual fee: a monthly tier fee instead (Prime from AED 51.45 a month incl. VAT, so annual_fee shown is 12x the lowest tier). Tier is switchable monthly: Prime earns 2 RAKrewards per AED, Plus 3, Privilege 4 (bank page: up to 3.2% = 4 x 0.008 AED). Modelled at Prime. RAKrewards value 0.008 AED derived from the quoted percentages. Fees of Plus/Privilege tiers not captured. Zero FX markup per bank page. Redemption is for flights and hotels.",
@@ -17041,11 +17046,6 @@
      "text": "Salik and DARB cashback advertised on index listing"
     }
    },
-   "welcome_offer": {
-    "text": "50,000 RAKrewards after AED 10,000 spend within first 3 statement cycles",
-    "value_aed_est": 400,
-    "min_spend_minor": 1000000
-   },
    "community_notes": [],
    "notes": "UAE nationals only. International spend earns 5 RAKrewards per AED (not modelled; EEA-currency spend only 0.5). Annual fee unclear: card page says free, bank index says no annual fee in the first year, so left null. RAKrewards value 0.008 AED borrowed from other RAKBANK cards.",
    "id": "rakbank-islamic-watani",
@@ -17196,11 +17196,6 @@
      "text": "IHG hotels 15% off room rates; free monthly international transfer fee via RAKMoneyTransfer"
     }
    },
-   "welcome_offer": {
-    "text": "AED 300 welcome bonus for digital applications 31 Aug to 15 Nov 2026 (minimum spend applies; promo window now closed)",
-    "value_aed_est": 300,
-    "valid_until": "2026-11-15"
-   },
    "community_notes": [],
    "notes": "Tiered by total monthly card spend: nothing under AED 1,000, 1% from AED 1,000, 1.5% from AED 3,000 (modelled at 1%, so understates high spenders). Total cashback capped at AED 300 per month. Bank page confirms free for life and 'up to 1.5%' but tier thresholds/caps are from the aggregator only; KFS not opened. Free international cash advance up to 80% of limit is not relevant to rewards. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
    "id": "rakbank-red",
@@ -17289,9 +17284,11 @@
    "fx_markup_pct": null,
    "perks": {},
    "welcome_offer": {
-    "text": "AED 500 welcome bonus for digital applications 31 Aug to 31 Dec 2026 (minimum spend criteria apply, details not seen)",
+    "text": "AED 500 welcome bonus for digital applications from 31 Aug to 31 Dec 2026; a minimum spend applies (amount not published on the page)",
     "value_aed_est": 500,
-    "valid_until": "2026-12-31"
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.rakbank.ae/en/cards/credit-cards/titanium-credit-card",
+    "verified_on": "2026-11-28"
    },
    "community_notes": [],
    "notes": "Nothing earned in a month with under AED 2,000 total spend. Other retail 1% (capped AED 100 a month), eligible wallet retail 2% (capped AED 100) not modelled; effective max is low because each bucket is capped. Bank page confirms headline rates (up to 5%, 50% cinema, up to 2%); caps and thresholds from aggregator only. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
@@ -17416,9 +17413,11 @@
     }
    },
    "welcome_offer": {
-    "text": "AED 750 welcome bonus for digital applications 31 Aug to 31 Dec 2026 (minimum spend criteria apply, details not seen)",
+    "text": "AED 750 welcome bonus for digital applications from 31 Aug to 31 Dec 2026; a minimum spend applies (amount not published on the page)",
     "value_aed_est": 750,
-    "valid_until": "2026-12-31"
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.rakbank.ae/en/cards/credit-cards/world-credit-card",
+    "verified_on": "2026-11-28"
    },
    "community_notes": [],
    "notes": "No cashback at all in a month where total retail spend is under AED 10,000. Standard 1% (cap AED 100) and 3% wallet (cap AED 150, combined max AED 250) not fully modelled. Self-employed alternative and security cheque requirements exist. Annual AED 997.50 incl. VAT. Bank page confirms 10% categories, up to 3% retail, Careem Plus; caps from aggregator only. [2026-11 check] RAKBANK KFS, Service & Price Guide and cashback T&C PDFs are linked from the card page but robots.txt disallows fetching them (/globalassets), so thresholds, caps and ladder remain aggregator-sourced; extra key tier_ladder records the full ladder. Official page agrees with headline rates only (Titanium: up to 2% standard worldwide, 5% dining/supermarkets, 50% cinema/streaming).",
@@ -17609,10 +17608,13 @@
     }
    },
    "welcome_offer": {
-    "text": "AED 1,000 cashback for AED 10,000 spend within 60 days of opening (Oct-Dec 2026 promo terms)",
+    "text": "AED 1,000 cashback for spending AED 10,000 within 60 days of the card opening date; the same spend also waives the first-year fee. Promotion period 1 Oct to 31 Dec 2026 per the bank terms title",
     "value_aed_est": 1000,
     "min_spend_minor": 1000000,
-    "window_days": 60
+    "window_days": 60,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.sc.com/ae/credit-cards/journey/",
+    "verified_on": "2026-11-28"
    },
    "community_notes": [],
    "notes": "360 Rewards: 2 points per USD locally and 4 per USD internationally (international not modelled by category). Stored per AED by dividing by 3.6725. Bank page conflicts on point value (125 points = AED 1 in one place, a worked example implies a different figure); 0.008 AED per point used (125 per AED). Airline-booking cashback conversion of 2% of points balance exists. Existing Visa Infinite cards are renamed Journey on renewal. Needs existing SC account, minimum limit AED 20,000. Reduced-earn categories for this card were not found on the page. Single official source; KFS not opened. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site. Bank page: golf 1 round per cycle, 2 lounge visits a year then unlimited with USD 1 international spend; 4 Careem airport rides a year.",
@@ -18263,9 +18265,11 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "50,000 Smiles for AED 20,000 spend within 90 days",
+    "text": "50,000 bonus Smiles when you spend AED 20,000 within 90 days",
     "min_spend_minor": 2000000,
-    "window_days": 90
+    "window_days": 90,
+    "source_url": "https://sib.ae/en/Smiles-TCs",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

@@ -147,15 +147,22 @@
     }
    },
    "welcome_offer": {
-    "text": "25,000 Skywards Miles on activation, +25,000 for AED 50,000 balance transfer held 6 months, +25,000 for USD 20,000 spend in first four statements",
+    "text": "Up to 75,000 bonus Skywards Miles: 25,000 on activation, 25,000 for a balance transfer of at least 50,000 held for 6 months, and 25,000 for spend of USD 20,000 within the first 4 statements",
     "value_aed_est": 750,
-    "requires_fee_payment": true
+    "value_note": "value counts the 25,000 activation miles only",
+    "source_url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-infinite-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/dib-skywards-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/personal/cards/emirates-skywards-dib-infinite-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -312,17 +319,29 @@
     }
    },
    "welcome_offer": {
-    "text": "200,000 Wala'a Rewards (about AED 1,000) for USD 15,000 spend within 90 days, cards issued by 31 Dec 2026; also 20% cashback at Amazon, Deliveroo, Dubai Now, noon, Talabat for 3 months (AED 25 per merchant, AED 150 total per month)",
+    "text": "200,000 Wala'a Rewards for USD 15,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 25 per merchant a month, AED 450 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 1000,
     "min_spend_minor": 5508750,
     "window_days": 90,
-    "valid_until": "2026-12-31"
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-infinite-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/dib-shams-infinite-credit-card/details",
      "kind": "aggregator",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/personal/cards/shams-dib-infinite-covered-card",
+     "kind": "bank_page",
+     "verified_on": "2026-11-28"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -585,17 +604,24 @@
     }
    },
    "welcome_offer": {
-    "text": "100,000 Wala'a Rewards (up to AED 500) for USD 10,000 spend in 90 days; 20% cashback at Amazon, Dubai Now, Deliveroo, noon, talabat for 3 months (AED 20 per merchant a month, AED 360 total)",
+    "text": "100,000 Wala'a Rewards for USD 10,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 20 per merchant a month, AED 360 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 500,
     "min_spend_minor": 3672500,
     "window_days": 90,
-    "requires_fee_payment": false
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-signature-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://www.dib.ae/personal/cards/shams-dib-signature-covered-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",
@@ -673,17 +699,24 @@
     }
    },
    "welcome_offer": {
-    "text": "50,000 Wala'a Rewards (up to AED 250) for USD 5,000 spend in 90 days; 20% cashback at Amazon, Dubai Now, Deliveroo, noon, talabat for 3 months (AED 15 per merchant a month, AED 270 total)",
+    "text": "50,000 Wala'a Rewards for USD 5,000 spend within 90 days of card issue, plus 20% cashback for 3 months at Amazon, Dubai Now, Deliveroo, noon and Talabat (up to AED 15 per merchant a month, AED 270 in total). New-to-card customers only; cards issued by 31 Dec 2026",
     "value_aed_est": 250,
     "min_spend_minor": 1836250,
     "window_days": 90,
-    "requires_fee_payment": false
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.dib.ae/personal/cards/shams-dib-platinum-covered-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
      "url": "https://www.dib.ae/personal/cards/shams-dib-platinum-covered-card",
      "kind": "bank_page",
      "verified_on": "2026-11-24"
+    },
+    {
+     "url": "https://www.dib.ae/docs/default-source/cpr/tc/dib-shams-cc-lto-saf-en1.pdf",
+     "kind": "tc_pdf",
+     "verified_on": "2026-11-28"
     }
    ],
    "confidence": "medium",

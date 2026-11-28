@@ -39,9 +39,6 @@
     ]
    },
    "perks": {},
-   "welcome_offer": {
-    "text": "First year fee free"
-   },
    "sources": [
     {
      "url": "https://www.deem.io/wp-content/uploads/2026/04/Schedule-of-Fees-Charges-March-2026-English-1.pdf",
@@ -104,9 +101,6 @@
     "cinema": {
      "text": "VOX/Reel BOGO"
     }
-   },
-   "welcome_offer": {
-    "text": "First year fee free"
    },
    "sources": [
     {

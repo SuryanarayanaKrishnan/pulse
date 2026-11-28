@@ -146,11 +146,6 @@
      "count_per_month": 6
     }
    },
-   "welcome_offer": {
-    "text": "20% cashback on Amazon, noon, Careem, Talabat for 90 days, AED 50 per merchant/month, AED 600 total",
-    "value_aed_est": 600,
-    "window_days": 90
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/aafaq-world-elite-credit-card/details",

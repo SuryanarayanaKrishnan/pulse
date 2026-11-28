@@ -222,9 +222,11 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "50,000 Smiles for AED 20,000 spend within 90 days",
+    "text": "50,000 bonus Smiles when you spend AED 20,000 within 90 days",
     "min_spend_minor": 2000000,
-    "window_days": 90
+    "window_days": 90,
+    "source_url": "https://sib.ae/en/Smiles-TCs",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

@@ -547,12 +547,6 @@
      "text": "Optional Credit Shield at 1% of monthly outstanding balance"
     }
    },
-   "welcome_offer": {
-    "text": "0% on balance transfer and cash-on-call (6 or 12 months) if requested within 30 days of issuance; processing 1.99% (6m) or 2.99% (12m); valid to 31 Dec 2026",
-    "requires_fee_payment": false,
-    "window_days": 30,
-    "valid_until": "2026-12-31"
-   },
    "sources": [
     {
      "url": "https://www.cbd.ae/personal/cards/credit-cards/visa-platinum",

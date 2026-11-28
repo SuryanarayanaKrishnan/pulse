@@ -869,13 +869,6 @@
      "text": "3 free tickets/month"
     }
    },
-   "welcome_offer": {
-    "text": "Up to 25,000 Darna Points: 15,000 on paying the joining fee plus 10,000 on AED 30,000 spend in the first 3 months",
-    "value_aed_est": 2500,
-    "min_spend_minor": 3000000,
-    "window_days": 90,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/enbd-darna-infinite-privilege-credit-card/details",
@@ -1288,12 +1281,6 @@
      "text": "Annual free night award on anniversary; automatic Silver Elite status"
     }
    },
-   "welcome_offer": {
-    "text": "2 Free Night Awards (35,000 points each) on USD 6,000 cumulative retail spend in the first 3 billing statements",
-    "value_aed_est": null,
-    "min_spend_minor": 2203500,
-    "window_days": 90
-   },
    "sources": [
     {
      "url": "https://www.emiratesnbd.com/en/cards/credit-cards/marriott-bonvoy-world-mastercard",
@@ -1384,13 +1371,6 @@
      "text": "3/month per aggregator"
     }
    },
-   "welcome_offer": {
-    "text": "Up to 200,000 bonus Etihad Guest Miles: 40,000 on joining-fee payment, 60,000 on AED 90,000 spend and 100,000 on AED 120,000 spend, both within 6 months (aggregator breakdown)",
-    "value_aed_est": 3000,
-    "min_spend_minor": 12000000,
-    "window_days": 180,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/enbd-etihad-guest-visa-elevate-credit-card/details",
@@ -1478,11 +1458,6 @@
     "lounge": {
      "text": "Visa Airport Companion lounge access"
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 60,000 bonus Etihad Guest Miles and fast track to Silver tier after one return Etihad flight",
-    "value_aed_est": 900,
-    "requires_fee_payment": true
    },
    "sources": [
     {
@@ -1583,13 +1558,6 @@
      "text": "Mastercard Travel Pass lounge visits",
      "count_per_year": 4
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 1,000 dnata points: 500 on paying the joining fee, 500 on AED 10,000 retail spend in the first 3 statements",
-    "value_aed_est": 10,
-    "min_spend_minor": 1000000,
-    "window_days": 90,
-    "requires_fee_payment": true
    },
    "sources": [
     {
@@ -1701,12 +1669,6 @@
     "valet": {
      "text": "4 a month at select Abu Dhabi venues"
     }
-   },
-   "welcome_offer": {
-    "text": "Up to 2,500 dnata points: 1,000 on paying the joining fee, 1,500 on AED 25,000 spend in the first 3 statements",
-    "requires_fee_payment": true,
-    "min_spend_minor": 2500000,
-    "window_days": 90
    },
    "sources": [
     {
@@ -3103,12 +3065,6 @@
     ]
    },
    "perks": {},
-   "welcome_offer": {
-    "text": "AED 500 noon gift card after AED 5,000 spend within two months",
-    "value_aed_est": 500,
-    "min_spend_minor": 500000,
-    "window_days": 60
-   },
    "sources": [
     {
      "url": "https://cdn.emiratesnbd.com/enbd/files/pdf/kfs_credit_cards_horizontal_em_new.pdf",

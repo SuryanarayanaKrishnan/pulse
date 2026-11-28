@@ -66,6 +66,29 @@ def validate(card: dict, issuer: str) -> list[str]:
             errs.append(f"{cid}: {s['url']} is a comparison site or forum, not an official source")
     for fld, lvl in (card.get("field_confidence") or {}).items():
         need(lvl in FIELD_CONF, f"field_confidence[{fld}] must be one of {sorted(FIELD_CONF)}")
+    wo = card.get("welcome_offer")
+    if wo is not None:
+        need(bool(str(wo.get("text", "")).strip()), "welcome_offer needs text")
+        vu = wo.get("valid_until")
+        need(vu is None or bool(DATE_RE.match(str(vu))), "welcome_offer valid_until must be YYYY-MM-DD")
+        su, vo = wo.get("source_url"), wo.get("verified_on")
+        if su is not None or vo is not None:
+            need(str(su or "").startswith("https://"), "welcome_offer source_url must be https")
+            need(
+                not any(h in str(su or "").lower() for h in UNOFFICIAL_HOSTS),
+                "welcome_offer source_url is a comparison site or forum, not an official source",
+            )
+            need(bool(DATE_RE.match(str(vo or ""))), "welcome_offer verified_on must be YYYY-MM-DD")
+            need(
+                any(x.get("url") == su for x in srcs),
+                "welcome_offer source_url must also be listed in the card's sources",
+            )
+        else:
+            # An offer with no source of its own rides on a card-level official check.
+            need(
+                card.get("confidence") == "high",
+                "welcome_offer needs its own source_url + verified_on (or a high-confidence card)",
+            )
     if card.get("confidence") == "high":
         need(
             any(s.get("kind") in {"bank_page", "kfs", "tc_pdf"} for s in srcs),

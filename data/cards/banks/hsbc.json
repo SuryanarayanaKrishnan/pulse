@@ -369,10 +369,10 @@
     }
    },
    "welcome_offer": {
-    "text": "Up to AED 4,000 in value: AED 2,500 iStyle eGift card, 50,000 points for a supplementary card transaction, 50,000 points for a non-AED transaction of AED 500+, 1 year Noon One and talabat pro; primary card only; ends 31 Dec 2026",
-    "value_aed_est": null,
+    "text": "Rewards worth up to 4,000: AED 2,500 iStyle eGift card; 50,000 points for one transaction on a supplementary card; 50,000 points for a non-AED transaction of 500 or more; 1 year of Noon One and talabat pro plus a PlayStation top-up when used in a mobile wallet. Primary card only, and not open to anyone who held an HSBC primary card in the 6 months before applying. Ends 31 Dec 2026",
     "valid_until": "2026-12-31",
-    "requires_fee_payment": false
+    "source_url": "https://www.hsbc.ae/credit-cards/products/premier/",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
