@@ -122,6 +122,20 @@ async def test_oauth_callback_rejects_bad_requests(new_user, google):
     assert (await api.get("/v1/email-connections")).json() == []
 
 
+async def test_callback_shows_a_plain_page_in_a_browser(new_user, google):
+    api = new_user()
+    start = await api.post("/v1/email-connections/gmail/start")
+    state = parse_qs(urlparse(start.json()["authorization_url"]).query)["state"][0]
+    html = {"accept": "text/html,application/xhtml+xml"}
+    denied = await api.raw_get(
+        "/v1/email-connections/gmail/callback?error=access_denied&state=" + state, headers=html
+    )
+    assert denied.status_code == 400 and "text/html" in denied.headers["content-type"]
+    assert "not connected" in denied.text
+    ok = await api.raw_get(f"/v1/email-connections/gmail/callback?code=good-code&state={state}", headers=html)
+    assert ok.status_code == 200 and "Gmail connected" in ok.text and "me@example.com" not in ok.text
+
+
 async def test_start_requires_auth_and_config(new_user, make_client):
     api = new_user()
     assert (await api.c.post("/v1/email-connections/gmail/start")).status_code == 401

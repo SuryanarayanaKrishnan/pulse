@@ -5,8 +5,8 @@ from uuid import UUID, uuid4
 
 import httpx
 import structlog
-from fastapi import APIRouter, Depends, Query, Response
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi import APIRouter, Depends, Query, Request, Response
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from sqlalchemy import select
 
 from app.api.deps import CurrentUser, EncryptorDep, QueueDep, SessionDep, SettingsDep
@@ -46,15 +46,40 @@ async def gmail_start(user: CurrentUser, settings: SettingsDep) -> GmailStartOut
     return GmailStartOut(authorization_url=url)
 
 
-def _finish(settings_redirect: str, payload: dict[str, str], status_code: int = 200) -> Response:
+_PAGE = (
+    "<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
+    "<title>Pulse</title><body style='font-family:system-ui,sans-serif;max-width:28rem;margin:4rem auto;"
+    "padding:0 1.25rem;line-height:1.5;color:#1d2b27'><h2>{title}</h2><p>{body}</p>"
+)
+
+
+def _finish(
+    settings_redirect: str,
+    payload: dict[str, str],
+    status_code: int = 200,
+    *,
+    browser: bool = False,
+) -> Response:
     if settings_redirect:
         sep = "&" if "?" in settings_redirect else "?"
         return RedirectResponse(f"{settings_redirect}{sep}{urlencode(payload)}", status_code=302)
+    if browser:  # no app deep link configured: show a plain page instead of raw JSON
+        ok = payload.get("status") == "connected"
+        title, body = (
+            (
+                "Gmail connected",
+                "You can close this tab and go back to Pulse. Your statements will appear shortly.",
+            )
+            if ok
+            else ("Gmail was not connected", "Nothing was changed. Go back to Pulse and try again.")
+        )
+        return HTMLResponse(_PAGE.format(title=title, body=body), status_code=status_code)
     return JSONResponse(payload, status_code=status_code)
 
 
 @router.get("/gmail/callback", include_in_schema=True)
 async def gmail_callback(
+    request: Request,
     session: SessionDep,
     settings: SettingsDep,
     queue: QueueDep,
@@ -66,8 +91,9 @@ async def gmail_callback(
 ) -> Response:
     """Google redirects the browser here. Unauthenticated: the signed `state` identifies the user."""
     redirect = settings.oauth_success_redirect
+    browser = "text/html" in request.headers.get("accept", "")
     if error:  # e.g. access_denied when the user cancels the consent screen
-        return _finish(redirect, {"status": "denied", "reason": error[:100]}, 400)
+        return _finish(redirect, {"status": "denied", "reason": error[:100]}, 400, browser=browser)
     if not code or not state:
         raise AppError("Missing code or state", code="oauth_error")
     user_id = read_state(settings, state)
@@ -81,8 +107,8 @@ async def gmail_callback(
             raise OAuthError("The gmail.readonly permission was not granted")
         email = (await GmailClient(http, tokens.access_token).profile_email()).lower()
     except AppError as exc:
-        if redirect:
-            return _finish(redirect, {"status": "error", "code": exc.code})
+        if redirect or browser:
+            return _finish(redirect, {"status": "error", "code": exc.code}, 400, browser=browser)
         raise
 
     conn = (
@@ -124,7 +150,9 @@ async def gmail_callback(
         )
     except Exception:
         log.exception("gmail_sync_enqueue_failed", connection_id=str(conn.id))
-    return _finish(redirect, {"status": "connected", "email": email, "connection_id": str(conn.id)})
+    return _finish(
+        redirect, {"status": "connected", "email": email, "connection_id": str(conn.id)}, browser=browser
+    )
 
 
 @router.get("", response_model=list[EmailConnectionOut])
