@@ -736,9 +736,9 @@
     }
    },
    "welcome_offer": {
-    "text": "300,000 TouchPoints (about AED 1,500) as welcome gift",
-    "value_aed_est": 1500,
-    "requires_fee_payment": false
+    "text": "300,000 TouchPoints as a welcome bonus; UAE nationals only; spend and fee conditions not published on the page",
+    "source_url": "https://www.adcb.com/en/personal/cards/credit-cards/betaqti-credit-card.aspx",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

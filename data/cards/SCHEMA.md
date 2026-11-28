@@ -26,7 +26,7 @@ One JSON file per issuer in `data/cards/banks/<issuer-slug>.json`:
 | `fx_markup_pct` | number/null | |
 | `reward_structure` | object | **exactly the shape of `app/services/rewards.py::parse_structure`**. Extra keys per rule are allowed and ignored by the engine: `conditions` (text), `channel` (`online`, `wallet`, `in_store`, `international`), `mcc_exclusions` (list), `annual_cap_units`. |
 | `perks` | object | `lounge`, `cinema`, `golf`, `valet`, `dining`, `insurance` - free-form `{text, count_per_year?, conditions?}` |
-| `welcome_offer` | object/null | `{text, value_aed_est?, min_spend_minor?, window_days?, requires_fee_payment?, valid_until?}` |
+| `welcome_offer` | object/null | `{text, value_aed_est?, min_spend_minor?, window_days?, requires_fee_payment?, valid_until?, source_url, verified_on}`. `valid_until` is the application/issue deadline. `source_url` (https, official page or terms, never a comparison site) must also appear in `sources`; `verified_on` is the day a person read the offer there. Without them the card must be `confidence: high`. Drop an offer you cannot confirm from the bank's own page. |
 | `sources` | list | `{url, kind: bank_page / kfs / tc_pdf / aggregator / community, verified_on: YYYY-MM-DD}`; at least one |
 | `confidence` | high / medium / low | high = cross-checked with a bank page or T&C PDF; medium = single secondary source or recent-but-uncorroborated; low = headline numbers only |
 | `field_confidence` | `{field: verified/reported/community/unverified}` | optional. Fields weaker than the card's `confidence`, e.g. `annual_fee_minor` when only a comparison site states it. See docs/CARD_DATA_GUARDS.md. |

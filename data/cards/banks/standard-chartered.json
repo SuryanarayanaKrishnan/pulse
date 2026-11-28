@@ -31,10 +31,13 @@
     }
    },
    "welcome_offer": {
-    "text": "AED 1,000 cashback for AED 10,000 spend within 60 days of opening (Oct-Dec 2026 promo terms)",
+    "text": "AED 1,000 cashback for spending AED 10,000 within 60 days of the card opening date; the same spend also waives the first-year fee. Promotion period 1 Oct to 31 Dec 2026 per the bank terms title",
     "value_aed_est": 1000,
     "min_spend_minor": 1000000,
-    "window_days": 60
+    "window_days": 60,
+    "valid_until": "2026-12-31",
+    "source_url": "https://www.sc.com/ae/credit-cards/journey/",
+    "verified_on": "2026-11-28"
    },
    "community_notes": [],
    "notes": "360 Rewards: 2 points per USD locally and 4 per USD internationally (international not modelled by category). Stored per AED by dividing by 3.6725. Bank page conflicts on point value (125 points = AED 1 in one place, a worked example implies a different figure); 0.008 AED per point used (125 per AED). Airline-booking cashback conversion of 2% of points balance exists. Existing Visa Infinite cards are renamed Journey on renewal. Needs existing SC account, minimum limit AED 20,000. Reduced-earn categories for this card were not found on the page. Single official source; KFS not opened. [2026-11 official check] Service & Price Guide: foreign transactions up to 2.99% (stored as 2.99), late fee AED 241.50, annual fees incl. VAT: Infinite/Journey 1,575; Manhattan Rewards+, X, Cashback (Visa) 525. KFS not found on the bank site. Bank page: golf 1 round per cycle, 2 lounge visits a year then unlimited with USD 1 international spend; 4 Careem airport rides a year.",

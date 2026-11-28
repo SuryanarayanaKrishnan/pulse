@@ -138,3 +138,19 @@ def test_every_major_uae_issuer_has_a_live_card_in_the_catalog():
     ]
     live = {c["issuer"] for c in cards if c["status"] != "discontinued"}
     assert live >= REQUIRED_ISSUERS, f"missing issuers: {sorted(REQUIRED_ISSUERS - live)}"
+
+
+def test_every_welcome_offer_is_sourced_and_current():
+    """An offer is listed only with its own official source and check date, or on a high-confidence card.
+    (Passed deadlines are the freshness watcher's job: the app never lists an expired offer.)"""
+    cat = json.loads((ROOT / "data" / "cards" / "catalog.json").read_text())
+    for c in cat["cards"]:
+        wo = c.get("welcome_offer")
+        if not wo:
+            continue
+        if wo.get("source_url"):
+            assert wo["source_url"].startswith("https://"), c["id"]
+            assert wo.get("verified_on"), c["id"]
+            assert any(s["url"] == wo["source_url"] for s in c["sources"]), c["id"]
+        else:
+            assert c["confidence"] == "high", c["id"]

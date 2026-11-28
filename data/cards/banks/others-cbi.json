@@ -142,7 +142,9 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "100,000 miles joining bonus after first spend (per KFS)"
+    "text": "100,000 miles joining bonus after first spend (CBI schedule of charges, Nov 2025)",
+    "source_url": "https://www.cbiuae.com/media/ycyjcxh4/wee-soc-english.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

@@ -572,9 +572,10 @@
     }
    },
    "welcome_offer": {
-    "text": "55,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "text": "55,000 Etihad Guest miles as a one-time joining bonus (bank key facts). A limited-time offer with a three-month spend target ended or ends 30 Nov 2026; its per-card terms are not published",
     "value_aed_est": 1650,
-    "requires_fee_payment": true
+    "source_url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-infinite-credit-card.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -667,9 +668,10 @@
     }
    },
    "welcome_offer": {
-    "text": "35,000 Etihad Guest miles after activation and first annual fee payment; no spend condition",
+    "text": "35,000 Etihad Guest miles as a one-time joining bonus (bank key facts). A limited-time offer with a three-month spend target ended or ends 30 Nov 2026; its per-card terms are not published",
     "value_aed_est": 1050,
-    "requires_fee_payment": true
+    "source_url": "https://apply.bankfab.com/-/media/feature/fabmbib/productsservice/key-facts-statements/etihad-guest-signature-credit-card.pdf",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -754,12 +756,13 @@
     }
    },
    "welcome_offer": {
-    "text": "20,000 joining miles plus 20,000 bonus miles when AED 25,000 is spent within 3 months (bank page offer valid to 30 Nov 2026); Emiratis get first-year fee waived",
+    "text": "20,000 joining miles plus 20,000 bonus miles when AED 25,000 is spent within 3 months; Emiratis get the first year fee-free. Limited-time offer valid to and including 30 Nov 2026",
     "value_aed_est": 1200,
     "min_spend_minor": 2500000,
     "window_days": 90,
     "valid_until": "2026-11-30",
-    "requires_fee_payment": false
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/etihad-guest-platinum",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -1028,14 +1031,6 @@
     "lounge": {
      "text": "Up to 12 Visa Airport Companion visits/yr incl guests (2 free, 10 more unlocked)"
     }
-   },
-   "welcome_offer": {
-    "text": "AED 5,000 Al-Futtaim FAB Rewards for UAE nationals after AED 12,000 spend in each of first three 30-day cycles; applications 24 Sep-23 Nov 2026 (ended)",
-    "value_aed_est": 5000,
-    "min_spend_minor": 3600000,
-    "window_days": 90,
-    "valid_until": "2026-11-23",
-    "requires_fee_payment": false
    },
    "sources": [
     {
@@ -1529,10 +1524,11 @@
     }
    },
    "welcome_offer": {
-    "text": "3 months free TOD streaming after AED 3,000 spend in first 30 days",
+    "text": "3 months of free TOD streaming after spending AED 3,000 in the first 30 days of card issue",
     "min_spend_minor": 300000,
     "window_days": 30,
-    "requires_fee_payment": false
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-rewards-active-credit-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {
@@ -1695,8 +1691,9 @@
     }
    },
    "welcome_offer": {
-    "text": "Free Careem Plus and Noon One memberships for one year; no annual fee for first year",
-    "requires_fee_payment": false
+    "text": "Free Careem Plus and Noon One memberships for one year; no annual fee for the first year",
+    "source_url": "https://www.bankfab.com/en-ae/personal/credit-cards/fab-z-card",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

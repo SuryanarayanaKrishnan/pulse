@@ -195,12 +195,6 @@
      "count_per_month": 3
     }
    },
-   "welcome_offer": {
-    "text": "AED 500 (nationals) or AED 300 (expats) after one retail transaction in 30 days and fee payment",
-    "value_aed_est": 300,
-    "window_days": 30,
-    "requires_fee_payment": true
-   },
    "sources": [
     {
      "url": "https://media.ajmanbank.ae/site/files/KFS%20-%20ENAR%20ULTRACASH%20Card%20(ULTRA%20C)%20R3.pdf",
@@ -443,7 +437,9 @@
    },
    "perks": {},
    "welcome_offer": {
-    "text": "15,000 BRight Rewards upfront (page promotion)"
+    "text": "15,000 BRight Rewards upfront; terms not published on the page",
+    "source_url": "https://resources.ajmanbank.ae/site/bright-world.html",
+    "verified_on": "2026-11-28"
    },
    "sources": [
     {

@@ -35,13 +35,6 @@
      "text": "10% back up to AED 50/month after AED 4,000 monthly spend"
     }
    },
-   "welcome_offer": {
-    "text": "30,000 Membership Rewards points for USD 5,500 within 90 days",
-    "value_aed_est": 600,
-    "min_spend_minor": 2020000,
-    "window_days": 90,
-    "valid_until": "2026-12-31"
-   },
    "sources": [
     {
      "url": "https://kredit.ae/credit-cards/american-express-platinum-credit-card/details",
