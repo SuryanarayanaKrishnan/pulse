@@ -8,7 +8,7 @@ from sqlalchemy import select, update
 
 from app.api.deps import CurrentUser, QueueDep, SessionDep, SettingsDep, StorageDep
 from app.api.utils import get_owned
-from app.core.errors import AppError, DomainValidationError
+from app.core.errors import AppError, DomainValidationError, NotFoundError
 from app.core.queue import QueuePool
 from app.models.account import Account
 from app.models.statement import ParseStatus, Statement
@@ -24,6 +24,7 @@ from app.services.institutions import institutions
 from app.services.statements.documents import sniff_kind
 from app.services.statements.intake import create_statement
 from app.services.statements.report import build_report
+from app.services.storage import FileNotFoundInStorage
 
 router = APIRouter(prefix="/statements", tags=["statements"])
 log = structlog.get_logger(__name__)
@@ -123,6 +124,29 @@ async def list_statements(
 @router.get("/{statement_id}", response_model=StatementOut)
 async def get_statement(statement_id: UUID, user: CurrentUser, session: SessionDep) -> Statement:
     return await get_owned(session, Statement, statement_id, user.id)
+
+
+@router.get("/{statement_id}/file")
+async def download_statement_file(
+    statement_id: UUID, user: CurrentUser, session: SessionDep, storage: StorageDep
+) -> Response:
+    """The original statement exactly as the bank sent it (a locked PDF stays locked).
+
+    The phone pulls emailed statements through this and reads them on the device with the passwords
+    saved there, so the numbers reach the local database without a plaintext copy being sent.
+    """
+    stmt = await get_owned(session, Statement, statement_id, user.id)
+    if not stmt.file_storage_key:
+        raise NotFoundError("This statement has no stored file")
+    try:
+        data = await storage.get(stmt.file_storage_key)
+    except FileNotFoundInStorage as exc:
+        raise NotFoundError("The stored statement file is missing") from exc
+    return Response(
+        content=data,
+        media_type=stmt.content_type or "application/octet-stream",
+        headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"},
+    )
 
 
 @router.get("/{statement_id}/reconciliation", response_model=ReconciliationReport)

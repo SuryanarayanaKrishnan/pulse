@@ -26,6 +26,7 @@ class StatementOut(Timestamps):
     reconciliation_status: ReconciliationStatus
     diff_minor: int | None
     original_filename: str | None
+    file_sha256: str | None
     summary: dict[str, Any] | None
 
     @computed_field  # type: ignore[prop-decorator]

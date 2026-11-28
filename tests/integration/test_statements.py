@@ -397,3 +397,17 @@ async def test_consolidated_statement_creates_one_statement_per_account(
     assert await run_pipeline(sessionmaker_, storage, encryptor, sid) == "parsed"
     assert len((await sections()).json()) == 2
     assert len((await api.get("/v1/transactions?limit=100")).json()["items"]) == sum(counts)
+
+
+async def test_original_file_download_is_owner_only_and_untouched(new_user):
+    api, other = new_user(), new_user()
+    data = render_pdf(build_card(STYLES["enbd"]).lines, password="Pass#123")
+    r = await api.upload("/v1/statements/upload", data, "locked.pdf", {"institution": "Emirates NBD"})
+    sid = r.json()["id"]
+    got = await api.get(f"/v1/statements/{sid}/file")
+    assert got.status_code == 200
+    assert got.content == data  # byte for byte: still locked by the bank's own password
+    assert got.headers["cache-control"] == "no-store"
+    assert (await other.get(f"/v1/statements/{sid}/file")).status_code == 404
+    listed = (await api.get("/v1/statements")).json()[0]
+    assert len(listed["file_sha256"]) == 64
